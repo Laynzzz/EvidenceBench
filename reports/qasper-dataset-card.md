@@ -41,5 +41,4 @@ cannot be ruled out. This derived task is not the original QASPER leaderboard.
 
 Repeat builds produced identical corpus and label bytes. Corpus fingerprint:
 `7ee04c7e89a9e5997ece5a26960a820d61a85fc9dc47491b2c1383a201d16412`.
-Raw audit: `artifacts/verification/qasper-data-audit.json`. Final-test scoring stays
-disabled until release selection is frozen. See [protocol decision](../docs/adr/002-existing-human-labels.md).
+Raw audit: `artifacts/verification/qasper-data-audit.json`. Final-test scoring ran only after release selection was frozen. See [protocol decision](../docs/adr/002-existing-human-labels.md).

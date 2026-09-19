@@ -8,7 +8,7 @@
 
 **Research basis:** [September 18, 2026 market review](research/2026-09-18-job-market/market-review.md) and [200 source-linked postings](research/2026-09-18-job-market/job-sample-200.md).
 
-**Status:** Implementation in progress; verified corpus/retrieval pilot. See [execution status](docs/status.md). The user selected an existing human-labeled benchmark on September 18, 2026; corpus adaptation is in progress.
+**Status:** Experimental local implementation and reranker evaluation verified. QASPER supplies upstream human labels. Generated-answer quality remains weak and human semantic claim-support review is incomplete. See [execution status](docs/status.md) and [measured results](reports/final-evaluation.md).
 **Primary target:** MLE internship, particularly applied ML, search/ranking, and NLP/LLM systems.
 **Secondary target:** AI software engineering internship or graduate role.
 **Schedule:** Eight focused weeks, or roughly 10–12 part-time weeks as a planning estimate. The optional extension uses remaining time within that budget.
@@ -354,17 +354,17 @@ Experiments take versioned configs, data/index versions, model revisions, seeds,
 
 ## 18. Implementation phases
 
-Commands below are the CLI contract to implement, not currently available commands. Each phase has owned files, concrete work, and an acceptance gate. Make incremental changes and record a reviewable checkpoint after each accepted phase.
+Commands below describe the phase contract. Implemented commands and current config paths are documented in the README/runbook; historical `configs/evaluation.yaml` examples use `configs/qasper-evaluation.yaml` for the current benchmark. Each phase has owned files, concrete work, and an acceptance gate. Make incremental changes and record a reviewable checkpoint after each accepted phase.
 
 ### Phase 1 — corpus and reproducible data (week 1)
 
 **Files:** Environment/lockfile; `configs/budget.yaml`, `configs/corpus.yaml`; `data/manifests/`; `src/evidencebench/{schemas,cli,ingestion,chunking}.py`; ingestion fixtures/tests; dataset card.
 
-- [ ] Select/license-check the corpus, pilot hardware/extraction, and record limits.
-- [ ] Define shared schemas and source/family identifiers.
-- [ ] Add checks for repeatability, empty text, duplicate sources, and page mapping; confirm deliberately corrupt inputs are detected.
-- [ ] Implement extraction, normalization, fingerprints, and source inspection.
-- [ ] Assign families to splits and check near-duplicate/version grouping.
+- [x] Select/license-check the corpus, pilot hardware/extraction, and record limits.
+- [x] Define shared schemas and source/family identifiers.
+- [x] Add checks for repeatability, empty text, duplicate sources, and page mapping; confirm deliberately corrupt inputs are detected.
+- [x] Implement extraction, normalization, fingerprints, and source inspection.
+- [x] Assign families to splits and check near-duplicate/version grouping.
 
 **Check:** Run `uv run evidencebench build --config configs/corpus.yaml` twice into clean output directories. Fingerprints/IDs match and sampled elements resolve to their source pages. Reject a corpus requiring substantial OCR rescue.
 
@@ -372,11 +372,11 @@ Commands below are the CLI contract to implement, not currently available comman
 
 **Files:** `data/labels/`, labeling guide; retrieval/evaluation configs; indexing, retrieval, tracking, evaluation modules; metric/retrieval tests; error taxonomy.
 
-- [ ] Write scoring rules and separate training/evaluation query pools.
-- [ ] Review/freeze evaluation labels and audit cross-split duplicates.
-- [ ] Verify metrics on hand-calculated cases, including ties, empty results, and unanswerable queries.
-- [ ] Implement BM25, dense retrieval, fusion, and per-example recording.
-- [ ] Run development baselines and begin failure review without final-test outcomes.
+- [x] Write scoring rules and separate training/evaluation query pools.
+- [x] Review/freeze evaluation labels and audit cross-split duplicates.
+- [x] Verify metrics on hand-calculated cases, including ties, empty results, and unanswerable queries.
+- [x] Implement BM25, dense retrieval, fusion, and per-example recording.
+- [x] Run development baselines and begin failure review without final-test outcomes.
 
 **Check:** `uv run evidencebench evaluate --config configs/evaluation.yaml --split dev --suite retrieval-baselines`. Recalculate aggregates from saved predictions; verify family disjointness and exact query/pair counts.
 
@@ -384,12 +384,12 @@ Commands below are the CLI contract to implement, not currently available comman
 
 **Files:** Training config; training/reranking modules; training-data/checkpoint tests; model card and evaluation report.
 
-- [ ] Establish the untuned cross-encoder baseline.
-- [ ] Verify positive/negative construction and reject non-training-family candidates.
-- [ ] Run an overfit/debug pilot to check gradients, tokenizer compatibility, loss, and checkpoint reload.
-- [ ] Train the nested query subsets and matched negative-sampling ablation within budget.
-- [ ] Compare development quality, latency, slices, and failures.
-- [ ] Select using predeclared criteria and repeat seeds where affordable.
+- [x] Establish the untuned cross-encoder baseline.
+- [x] Verify positive/negative construction and reject non-training-family candidates.
+- [x] Run an overfit/debug pilot to check gradients, tokenizer compatibility, loss, and checkpoint reload.
+- [x] Train the nested query subsets and matched negative-sampling ablation within budget.
+- [x] Compare development quality, latency, slices, and failures.
+- [x] Select using predeclared criteria and repeat seeds where affordable.
 
 **Checks:** `uv run evidencebench train --config configs/training.yaml`; `uv run evidencebench evaluate --config configs/evaluation.yaml --split dev --suite rerankers`. Connect training data, curves, checkpoints, per-query changes, and latency. LoRA use and positive lift are not acceptance gates.
 
@@ -397,10 +397,10 @@ Commands below are the CLI contract to implement, not currently available comman
 
 **Files:** Generation config; generation/citation modules; citation/answer tests; evaluation report.
 
-- [ ] Implement evidence packing, structured output, citations, and development-calibrated refusal.
-- [ ] Test missing evidence, invalid IDs, malformed output, bounded repair, and instructions embedded in documents.
+- [x] Implement evidence packing, structured output, citations, and development-calibrated refusal.
+- [x] Test missing evidence, invalid IDs, malformed output, bounded repair, and instructions embedded in documents.
 - [ ] Evaluate answer/citation support, unsupported claims, and refusal errors.
-- [ ] Produce an inspection report linking rankings and answers to pages.
+- [x] Produce an inspection report linking rankings and answers to pages.
 
 **Check:** `uv run evidencebench evaluate --config configs/evaluation.yaml --split dev --suite answers`. Valid IDs alone cannot count as supported claims. Use development examples for demonstrations.
 
@@ -408,11 +408,11 @@ Commands below are the CLI contract to implement, not currently available comman
 
 **Files:** Serving modules, Dockerfile, Compose, release config, CI, API/load tests, runbook.
 
-- [ ] Implement bounded query/retrieval/health/version endpoints using the shared pipeline.
-- [ ] Add startup checks, timeouts, structured logs, and dependency-failure responses.
-- [ ] Deploy the development-selected configuration to one host.
-- [ ] Benchmark warm/cold behavior and concurrency; exercise rollback.
-- [ ] Verify documented commands in a fresh environment.
+- [x] Implement bounded query/retrieval/health/version endpoints using the shared pipeline.
+- [x] Add startup checks, timeouts, structured logs, and dependency-failure responses.
+- [x] Deploy the development-selected configuration to one host.
+- [x] Benchmark warm/cold behavior and concurrency; exercise rollback.
+- [x] Verify documented commands in a fresh environment.
 
 **Checks:** `uv run pytest tests/unit tests/integration`; `docker compose up --build`; recorded health, answer, refusal, invalid-input, and dependency-failure requests.
 
@@ -421,6 +421,8 @@ Commands below are the CLI contract to implement, not currently available comman
 ### Phase 6 — choose one focus (week 7)
 
 **Default MLE path:** Address the largest measured data/model weakness, complete uncertainty analysis, and reproduce the shortlisted run. Update existing modules/tests/reports; add no new subsystem.
+
+**Implemented focus:** controlled hard-negative training, exact cached mining, three-seed sensitivity, 36-query failure analysis and cross-environment ranking parity. The answer-format defect was fixed before test freeze. The agent remains deferred. Checkboxes below belong only to the unselected optional path.
 
 **Optional AI SWE path:** Add `src/evidencebench/agent.py`, `configs/agent.yaml`, agent tests, `data/labels/agent-dev.jsonl`, `data/labels/agent-test.jsonl`, and `reports/agent-comparison.md`.
 
@@ -435,11 +437,11 @@ Commands below are the CLI contract to implement, not currently available comman
 
 **Files:** Release config, final cards/reports, evidence index, runbook, README, optional agent comparison.
 
-- [ ] Freeze candidates, scoring, and release selection before final evaluation.
-- [ ] Run predeclared test comparisons, record all outcomes, then review test failures without tuning on them.
-- [ ] Reproduce the main comparison cleanly and verify the deployed version matches its manifest.
-- [ ] Complete limitations, baseline/candidate figures, and a short demo.
-- [ ] Link each prospective résumé claim to its run, data, metric definition, and limitation.
+- [x] Freeze candidates, scoring, and release selection before final evaluation.
+- [x] Run predeclared test comparisons, record all outcomes, then review test failures without tuning on them.
+- [x] Reproduce the main comparison cleanly and verify the deployed version matches its manifest.
+- [x] Complete limitations, baseline/candidate figures, and a short demo.
+- [x] Link each prospective résumé claim to its run, data, metric definition, and limitation.
 
 **Checks:** `uv run evidencebench evaluate --config configs/evaluation.yaml --split test --suite release`; inspect the actual emitted run with `uv run evidencebench inspect --run <recorded-run-id>`. Aggregates must be recalculable from predictions. Document how any post-test repair affects holdout validity.
 
@@ -461,19 +463,21 @@ The demo passes when the product works, ML reasoning is clear, results are repro
 
 ### MLE core
 
-- [ ] Corpus provenance, usage conditions, and family splits are documented.
-- [ ] Repeated ingestion/index builds and page citations are verified.
-- [ ] Training queries/pairs are separate from reviewed development/test labels.
-- [ ] Baselines precede adaptation and comparisons share one protocol.
-- [ ] Trained reranker, learning curve, and controlled negative-sampling ablation are reproducible.
-- [ ] Development selection and untouched final-test reporting are documented.
-- [ ] Quality, latency, memory, failures, and uncertainty are honestly reported.
-- [ ] Development failures are reviewed under the documented count rule.
+Unchecked criteria are not waived: automated answer/reference agreement does not replace human claim-support judgments. The release is explicitly experimental. Remote CI has not run; checked CI fixtures refer to local equivalents.
+
+- [x] Corpus provenance, usage conditions, and family splits are documented.
+- [x] Repeated ingestion/index builds and page citations are verified.
+- [x] Training queries/pairs are separate from reviewed development/test labels.
+- [x] Baselines precede adaptation and comparisons share one protocol.
+- [x] Trained reranker, learning curve, and controlled negative-sampling ablation are reproducible.
+- [x] Development selection and untouched final-test reporting are documented.
+- [x] Quality, latency, memory, failures, and uncertainty are honestly reported.
+- [x] Development failures are reviewed under the documented count rule.
 - [ ] Answers have measured support, citation, and refusal behavior.
-- [ ] One containerized deployment handles tested failures and exposes health/versions.
-- [ ] CI fixtures, clean-environment reproduction, and rollback checks pass.
-- [ ] Cards, reports, evidence index, README, and demo are complete.
-- [ ] Every résumé claim has supporting evidence.
+- [x] One containerized deployment handles tested failures and exposes health/versions.
+- [x] CI fixtures, clean-environment reproduction, and rollback checks pass.
+- [x] Cards, reports, evidence index, README, and demo are complete.
+- [x] Every résumé claim has supporting evidence.
 
 ### Optional AI SWE extension
 
@@ -510,3 +514,9 @@ LoRA, LangGraph, visual models, cloud object storage, and dashboards are not cor
 - Treat source-document instructions as content, not authorization to change tools or behavior.
 - Use public/authorized synthetic data; exclude credentials, private documents, résumé details, and application records.
 - Never fabricate quality, latency, cost, data-volume, deployment, or hiring-impact claims.
+
+## Recorded experimental handoff
+
+Held-out nDCG@10: selected 0.5015 versus untuned 0.3777; paired family-bootstrap delta interval [0.0620, 0.1819]. Held-out answers: 9% coverage, token F1 0.0559 and 45 failures / 100. All 49 tests pass, including a fresh locked environment and real PostgreSQL. Exact vectors, selected parameters and development rankings were reproduced; instance/checkpoint metadata hashes are not claimed identical across reruns. All nine training slots are used.
+
+The local service, restored reproduction bundle, terminal/API recording and teaching/interview guides are ready. No push, paid service or public deployment occurred. Human generated-claim semantic support/unsupported-claim rate remains unmeasured, so the full MLE core definition of done is not asserted. The optional agent remains deferred. The replay UI has static checks only because browser policy blocked local-file visual preview.

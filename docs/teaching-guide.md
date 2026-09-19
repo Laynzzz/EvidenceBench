@@ -1,102 +1,176 @@
 # Learning guide
 
-## Product and main flow
+This guide describes the agent-assisted implementation. It is a reading and practice
+plan, not evidence that you have already mastered or independently built every part.
+Start with the product and architecture, then follow the data and one request.
 
-EvidenceBench lets a developer search a fixed public PDF collection and trace every
-result back to a source page. For example, a question about zero-trust access returns
-NIST passages with stable IDs. Today it retrieves evidence; training, generated
-answers and API serving remain later work.
+## Product and architecture
+
+EvidenceBench searches a fixed collection of research papers and returns evidence
+with source-page citations. Example: ask the average sentence length in the
+performance-appraisal paper; the local demo answers **15.5** and links its evidence.
+The strongest component is evaluated retrieval/reranking. Generated answers remain
+experimental and often fail or refuse; a valid quote can still answer the wrong question.
 
 ```mermaid
 flowchart LR
-    M[Source manifest + checksums] --> P[PDF words and coordinates]
-    P --> C[Page-local chunks + corpus fingerprint]
-    C --> B[BM25]
-    C --> E[Pinned MiniLM embeddings]
-    E --> V[Local vectors / PostgreSQL parity check]
-    B --> F[Rank fusion]
-    V --> F
-    F --> R[Inspectable ranked passages]
-    L[Reviewed development labels] --> Q[Offline evaluator]
-    R --> Q
-    Q --> A[Predictions + run manifest + metrics]
+    S[QASPER human annotations + original PDFs] --> A[Deterministic paragraph/page alignment]
+    A --> C[5,908 evidence units + fingerprints]
+    C --> B[BM25 lexical search]
+    C --> D[MiniLM vectors / PostgreSQL]
+    B --> H[Reciprocal-rank fusion: 50 candidates]
+    D --> H
+    H --> R[Trained TinyBERT reranker]
+    R --> T[Development-calibrated evidence threshold]
+    T --> G[Bounded Qwen answer or refusal]
+    G --> V[Citation/quote validation]
+    V --> API[FastAPI response + page references + timings]
+    L[Train-only pairs] --> R
+    E[Separate dev/test labels] --> M[Offline rankings / answers / uncertainty]
 ```
 
-All current Python components run locally. Docker runs PostgreSQL. JSONL/Parquet
-and NumPy files hold labels, chunks and vectors; PostgreSQL stores a verified copy
-of vectors for integration. The CLI currently searches the local reference index.
+Python data/training/evaluation processes run locally. The container runs the same
+Python inference pipeline on Linux; PostgreSQL runs in a separate Compose service.
+Parquet stores content units, NumPy stores reference vectors, JSONL stores labels
+and predictions, and local files hold checkpoints. MLflow stores local experiment
+metadata in SQLite. No cloud object store, public API, agent tools or model registry
+has been added. The optional agent was deferred because answer quality is weak.
 
-## Data foundation
+## 1. Reproducible data
 
-- SHA-256 verifies downloaded bytes. A corpus fingerprint additionally covers
-  extraction dependencies, window parameters, source metadata and serialized records.
-  A source change and a preprocessing change are both meaningful experiment changes.
-- Page-local windows make citations unambiguous, but can split an answer across
-  chunks. Overlap helps continuity while creating duplicate relevant passages.
-- Family splits prevent training on another revision of a held-out manual. They
-  cannot prove absence of common boilerplate or pretrained-model exposure.
-- Pydantic validates IDs, positive page numbers, finite geometry, label consistency,
-  duplicates and split boundaries. It cannot establish factual relevance or human review.
-- Chosen extractor: pdfplumber provides words/geometry under MIT licensing. An OCR
-  pipeline would handle scanned pages but adds failure modes outside the initial scope.
-  Multicolumn reading order, diagrams and header noise remain recorded limitations.
+You can rebuild the filtered QASPER corpus and trace evidence to original PDF pages.
+Upstream humans wrote questions, answers and supporting paragraphs. The user chose
+this benchmark instead of personally reviewing agent-written NIST drafts. The
+original paper split becomes train/dev/test; a fixed seed and frozen ID selection
+produce 200/50/100 questions across 191 papers. No final outcome selects examples.
 
-Read Python modules `src/evidencebench/schemas.py` and `ingestion.py` first, then
-`chunking.py`. They run in the local data-building process. Inspect a returned page
-in its PDF and compare the coordinates before studying individual functions.
+A SHA-256 checksum identifies bytes; a corpus fingerprint covers content and its
+processing recipe. Pydantic checks schema invariants, not truth. Alignment requires
+numeric consistency, high character-shingle overlap and an unambiguous one/two-page
+window. This drops many hard examples and creates selection bias. Formula/reference
+placeholders remain; figures and tables are excluded. One dev reference still
+mentions missing table content, so filtering is imperfect. These labels were never
+silently repaired to improve results.
 
-## Retrieval and scoring
+Repeated ingestion produced identical corpus and label bytes. Frozen JSONL line
+endings are explicit and preserved by Git. File checksums detect accidental changes;
+they do not detect semantic duplicates or unknown model pretraining exposure.
 
-- BM25 uses word overlap, inverse document frequency and length normalization.
-  It is fast and interpretable, but synonyms can be missed. The implementation uses
-  positive Robertson IDF with k1=1.5, b=.75.
-- MiniLM maps texts into 384-dimensional vectors. Exact cosine search is adequate
-  for 1,773 chunks. Approximate indexes are an alternative when scale warrants
-  their recall/speed trade-off, not a necessary portfolio keyword.
-- Reciprocal-rank fusion combines ranks rather than incomparable BM25/cosine scores:
-  a passage ranked first contributes `1/(60+1)` from that list. Results in both
-  lists receive both contributions. Stable IDs break ties deterministically.
-- Recall measures how many judged relevant chunks are found; nDCG rewards useful
-  chunks appearing early, with grade 2 worth more than grade 1. A timeout counts
-  as a failed empty result. Unanswerable queries have separate denominators.
-- Paired family bootstrap resamples whole source families to respect dependence
-  between their questions. Two dev families cannot support a strong generalization claim.
+Read `schemas.py` (Python contracts), then `qasper.py` (Python alignment) under
+`src/evidencebench/`. See the [dataset card](../reports/qasper-dataset-card.md).
+Optional exercise: resolve a development evidence ID to its PDF page and identify
+what a text alignment cannot establish about a table or diagram.
 
-Read `retrieval.py`, then `evaluation/metrics.py` and `evaluation/runner.py`. Saved
-predictions allow recalculation without rerunning models. `labels.py` rejects
-unreviewed evaluation records and mines negatives only from training-family chunks.
+## 2. Retrieval and evaluation
 
-## Tools and decisions
+BM25 scores term matches with inverse document frequency and length normalization
+(k1=1.5, b=.75). MiniLM embeds text into 384 dimensions; exact cosine search is
+adequate for 5,908 paragraphs. Approximate search would trade recall for speed at
+larger scale. Reciprocal-rank fusion combines ranks rather than incompatible raw
+scores: rank one contributes `1/(60+1)` from each list. Stable IDs break ties.
 
-`pyproject.toml` declares dependency groups; `uv.lock` pins versions. The `ml` extra
-contains sentence-transformers, Transformers and CPU PyTorch on this Windows setup.
-`configs/retrieval.yaml` separately pins the model's immutable Hub commit and input
-length. uv manages environments and locking; Ruff formats/lints; pytest checks
-behavior; mypy checks shared contracts. Versions come from the lockfile/run records.
+Both query and paragraph include the paper title. Retrieval searches the full
+corpus; no gold paper filter is passed by evaluation. This is a title-conditioned
+benchmark, not general web search. The cross-encoder jointly reads question and
+passage, making it slower but often more precise than vector similarity.
 
-PostgreSQL/pgvector follows the plan. Exact cosine SQL is checked against NumPy
-rankings. Transactions prevent a failed import from leaving half an index. Local
-artifact directories reject overwrite. Neither mechanism is a hosted model registry.
-MLflow integration, trained checkpoints and release manifests are still pending.
+Recall@5/10/20 measures recovery of annotated evidence. nDCG@10 rewards early
+relevant results; this dataset has grade-2 support and unjudged zero, with no invented
+grade-1 judgments. MRR uses the first support within the returned 20. Unanswerable
+questions are excluded from ranking quality and retained in latency/failure/refusal
+metrics. Failed answerable retrievals score zero. A family bootstrap resamples whole
+papers, preserving dependence between their questions; 2,000 draws use seed 42.
 
-## Verification and limitations
+Read `retrieval.py` and `evaluation/metrics.py`. Hand-calculated fixture tests cover
+empty outputs, ties, duplicate IDs, failures and denominators. Saved predictions
+recalculate aggregates without rerunning a model. Optional exercise: explain why
+high recall@20 can coexist with low nDCG@10 and poor generated answers.
 
-See [evidence index](evidence-index.md). Tests use synthetic fixtures; live database
-parity uses a real pinned model. Neither provides human-labeled retrieval quality.
-Do not turn smoke timings into production latency or training performance claims.
+## 3. Training and model selection
 
-The README contains runnable setup/search/test commands. A successful build emits
-the corpus fingerprint; search emits source IDs/pages; test failures are not silently
-ignored. Reproduction needs the pinned source/model bytes to remain downloadable.
+You can train the reranker, compare learning curves and trace its checkpoint.
+The task is binary relevance classification for question/passage pairs. 200 training
+questions yield 266 human positive pairs and 800 sampled negatives. Four negatives
+per question are mined only from training papers; positives are excluded. Hard
+negatives are high-ranking BM25 distractors. Random negatives provide a controlled
+ablation. Unjudged does not mean truly irrelevant; false negatives remain possible.
 
-## Later learning session
+Weighted binary cross entropy compensates for the observed pair imbalance. CPU
+fp32 training uses batch 16, learning rate 2e-5, three epochs, 10% warmup, and best
+development nDCG checkpoint selection. The 50/100/200 subsets are nested. Seeds
+42/43/44 vary training, while subset/mining seed stays fixed. No seed is selected
+from final results. Larger training data produced a nearly flat learning curve;
+hard negatives were more useful than random negatives in this development sample.
 
-Milestone: you can now reproduce a corpus, inspect page evidence, compare retrieval
-mechanisms, and audit the difference between code verification and model evaluation.
-Alternative: a one-notebook demo is quicker initially but makes shared runtime paths
-and immutable artifacts harder to inspect. This project keeps the package authoritative.
+The selected nDCG is 0.5693 versus untuned 0.5145. Its paired 95% interval for the
+difference spans zero. Three seeds all improved point estimates, but this is not
+proof of generalization. Read the [experiment report](../reports/development-evaluation.md).
 
-Optional exercise after the project is built: hand-calculate a two-list fusion
-example, then explain why a shorter BM25 passage can outrank a labeled answer.
-This guide records agent-assisted implementation; it does not claim you have already
-practiced or independently implemented these components.
+`training.py` is Python/PyTorch orchestration using sentence-transformers; `labels.py`
+constructs pairs. Local MLflow and immutable runs record configs, source archives,
+loss history, checkpoints, hashes and failures. A failed model-card setup run is
+retained. Save/reload checks prove score parity within 1e-6. Optional exercise:
+explain why selecting the best seed would overstate the evidence.
+
+## 4. Answers and failure analysis
+
+`generation.py` runs a pinned Qwen model locally. `serving/pipeline.py` retrieves,
+checks the top score, packs three excerpts and resolves returned evidence IDs to
+source pages. The evidence-sufficiency threshold was calibrated on development
+balanced accuracy; the generator can still fail after the gate accepts evidence.
+
+The model has 1,536 input tokens, 100 output tokens, one format retry and a
+cooperative 20-second limit. Cooperative limits are checked between operations;
+they are not hard process termination. Evidence enters a user-data message and no
+tools are exposed. This reduces capability, but does not establish universal prompt
+injection resistance. Fixtures test message roles and bounded repair.
+
+Nonboolean answers must be exact quotes in each cited excerpt. Yes/No uses a weaker
+citation-only check and an English boolean-question heuristic. A development bug
+accepted No for What questions; v3 rejects it. The 50-question v3 run has 18%
+coverage, token F1 0.1184 and 22 failures. Citation-ID agreement is 0.60 precision,
+not a measured fraction of semantically supported claims. Human auditing of
+**generated claims** remains an unmet acceptance criterion. Upstream human answer
+labels do not automatically supply those new judgments.
+
+See [36 development failure cases](../reports/development-failures.md). They include
+wrong but real quotes, invented citation IDs, missing table content, truncated lists,
+false refusals and arithmetic questions answered with a single number. Optional
+exercise: distinguish provenance, answer correctness and semantic claim support.
+
+## 5. Service, deployment and reproducibility
+
+FastAPI exposes five read-only routes. PostgreSQL uses parameterized SQL and exact
+cosine search; startup validates corpus/index/model artifacts, and readiness counts
+actual evidence rows. A single inference lock bounds concurrency: excess requests
+return logged 429 responses. Dependency errors return 503; malformed generation
+returns 502; timeouts return 504; invalid input returns 422. No endpoint accepts
+labels, retraining, model reload or document uploads.
+
+Docker runs a non-root CPU image with pinned base digest, locked dependencies and
+read-only artifact mounts. The serving container has no labels or HF credentials.
+Rollback restarts the previous image/release. The local DB outage test returned
+live=200, ready=503, query=503; rollback restored the older NIST pilot. Fifty dev
+retrievals matched the exact Windows rankings in the fresh Linux service. The
+49-test suite includes real PostgreSQL checks; schema mypy is intentionally narrower
+than whole-project static typing. CI is configured but no remote CI run is claimed.
+
+Read `serving/app.py` (Python HTTP boundary) and `storage.py` (Python SQL boundary),
+then the YAML `compose.yaml` (container wiring) and Dockerfile (image build recipe).
+Follow the [runbook](runbook.md) for commands, retained state and recovery.
+Optional exercise: explain why liveness stays healthy during a database outage and
+why a five-request p95 cannot describe production load.
+
+## Tool choices and later practice
+
+`uv.lock` is the dependency version authority. uv manages the Python environment;
+Ruff formats/lints; pytest verifies behavior; mypy verifies shared contracts.
+PyTorch/sentence-transformers were chosen for trainable ranking, not keyword count.
+MLflow is local; exported artifacts remain usable without its UI. PostgreSQL follows
+the plan and provides a real serving dependency; NumPy remains the reference.
+Matplotlib is an optional report-generation tool (`uv run --with matplotlib ...`).
+
+Learning order: product demo → architecture → one evidence ID → ranking metrics →
+training data/loss → selected run → an answer failure → deployment/recovery →
+interview questions. The historical [NIST pilot card](../reports/nist-pilot-card.md)
+records earlier extraction checks. No study or quiz is required during implementation.

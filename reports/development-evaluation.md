@@ -13,7 +13,7 @@ All model selection uses development data. 38 answerable questions in 21 paper f
 | trained-50-hard | 0.5628 | 0.8421 | 305.1 | 0 |
 | untuned | 0.5145 | 0.8158 | 284.1 | 0 |
 
-Primary seed 42 was selected by nDCG, subject to the predeclared 1,000 ms reranking p95 ceiling and zero failures. All trained candidates use the same architecture and inference cost. Training size was selected on dev; test does not reselect.
+Seed 42 was predeclared. Configuration selection among its runs used nDCG, subject to the predeclared 1,000 ms reranking p95 ceiling and zero failures. All trained candidates use the same architecture and inference cost. Training size was selected on dev; test does not reselect.
 
 The selected 200-query hard-negative model improves nDCG by 0.0548 over untuned. The paired paper-family bootstrap 95% interval is [-0.0301, 0.1474] (2,000 draws, seed 42). It includes zero; this is not established population-level improvement.
 
@@ -37,3 +37,9 @@ One setup run failed before optimization because a replacement model-card object
 Cached BM25 statistics reproduce all four saved pair sets byte-for-byte; 200-query mining takes 23.78 seconds in the recorded parity check. This is an exact caching optimization; no before/after speedup ratio is claimed without a controlled timing pair.
 
 Raw provenance: `artifacts/verification/development-selection.json`, each training manifest/config/source.zip, local MLflow, and `reports/experiment-summary.json`. CPU four-thread results on this host are not cloud/GPU throughput measurements.
+
+## Unchanged reproduction after final scoring
+
+The ninth and final budgeted run (`20260919T030457Z-c2c07a6dd6`) repeated the selected seed-42 configuration without tuning or reselection. Training pairs and every model parameter were identical (maximum parameter difference 0.0), and dev nDCG remained 0.56931246. The checkpoint-tree fingerprint differs because surrounding artifact metadata differs; the released checkpoint remains the original. This replica is excluded from the three-seed uncertainty roster. All 9/9 training slots are now used.
+
+`python scripts/verify_reports.py` recalculates metrics from the captured original run roster. The frozen `report_experiments.py` is the historical pre-test generator; its directory-discovery assumption predates the later reproduction run. Use the roster-based verifier for the final reports.

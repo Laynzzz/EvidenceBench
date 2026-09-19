@@ -1,31 +1,88 @@
-# Interview preparation: current implementation
+# Interview preparation
 
-**Thirty-second explanation:** EvidenceBench is a document retrieval experiment
-project. I am building a pipeline that versions public PDFs, preserves source-page
-citations, compares lexical/dense retrieval, and will train and evaluate a reranker.
-The current implementation is agent-assisted and has tested corpus/retrieval
-foundations. Training gains and deployed answer quality have not been established.
+## Thirty-second explanation
 
-1. **How do you make an experiment reproducible?** Pin source checksums, preprocessing,
-   model revision, dependencies and index order; save predictions and configuration.
-   See `ingestion.py`, `indexing.py`, `tracking.py`. Follow-up: what do nondeterministic
-   GPU kernels and mutable upstream downloads change? Current CPU smoke is narrower.
-2. **Why use BM25 and dense retrieval together?** They encode different relevance
-   signals; fusion combines ranks without assuming comparable scores. It may improve
-   recall, but improvement requires labeled evidence. See `retrieval.py` and its tests.
-   Follow-up: why choose fusion depth/constant on dev, and when is a reranker worthwhile?
-3. **How do you prevent leakage?** Group document versions by family; reject duplicate
-   queries and non-training negative candidates; keep final tests disabled until freeze.
-   See `schemas.py` and `labels.py`. Follow-up: exact checks do not catch semantic
-   duplicates, common boilerplate or pretraining exposure.
-4. **What did verification catch?** Review found nonfinite geometry could pass ordered
-   comparisons. A regression test reproduced infinite coordinates and the validator
-   now rejects them. A BM25 fixture also exposed a mistaken expectation: the shorter
-   passage outranked the relevant one; the test now uses its hand-calculated nDCG.
-5. **What does database parity prove?** PostgreSQL and NumPy return the same top-10
-   vector results on three real-model smoke queries. It does not prove relevance,
-   high-concurrency throughput or deployment reliability. See `scripts/verify_postgres.py`.
+EvidenceBench is an agent-assisted retrieval/reranking project over research papers.
+It converts upstream human QASPER annotations into a reproducible 200/50/100-question
+benchmark with source-page evidence, compares lexical/dense/hybrid baselines, trains
+a small cross-encoder, and serves the selected checkpoint through a local containerized
+API. Its frozen held-out reranker improves nDCG@10 from 0.378 to 0.501 on 75 answerable
+questions; generation remains weak and is reported separately. I still need to
+practice explaining the implementation before claiming independent mastery.
 
-Before putting a claim on a resume, link it to `docs/evidence-index.md` and practice
-explaining its scope. Do not claim independent implementation, production users,
-measured accuracy gains, GPU training or API deployment from this milestone.
+## Architecture walkthrough
+
+Original PDFs and human annotations → paragraph/page alignment → immutable content
+units → BM25 and MiniLM embeddings → rank fusion → TinyBERT cross-encoder → calibrated
+refusal gate → bounded local Qwen output → quote/citation checks → API response.
+Training, development selection and held-out testing are separate CLI flows.
+The service uses PostgreSQL vectors and never loads labels. Offline ranking uses
+NumPy reference vectors; exact top-20 parity was checked on all 50 dev queries.
+
+## Questions and follow-ups
+
+1. **What exactly did you train?** A 4.39M-parameter cross-encoder relevance scorer,
+   using weighted binary cross entropy over 266 positive and 800 sampled negative
+   pairs. The embedding model and generator were not fine-tuned. Follow-up: why
+   reranking instead of LoRA? It directly targets a measurable ranking bottleneck
+   and allows a small controlled experiment. See `training.py` and the model card.
+2. **Where do the labels come from?** QASPER's original human questions, answers and
+   evidence paragraphs, filtered through deterministic PDF alignment. Human review
+   is upstream, not invented agent review. Follow-up: what bias does filtering add?
+   It excludes many table/figure/ambiguous cases and emphasizes answerable text.
+   See the dataset card and frozen selection/protocol files.
+3. **How do you prevent leakage?** Preserve paper-family splits, mine negatives only
+   from training papers, use nested training subsets and dev-only checkpoint/threshold
+   selection, freeze final code/data/config hashes, and allow one final attempt.
+   Follow-up: can you rule out pretrained-model exposure? No; public-data overlap is unknown.
+4. **Why hard negatives?** They force the reranker to distinguish plausible lexical
+   distractors. Matched 200-query random-negative training reached 0.5168 dev nDCG,
+   hard negatives 0.5693. Follow-up: are negatives truly irrelevant? Not necessarily;
+   unjudged passages can be false negatives. An exact-answer phrase audit is only a proxy.
+5. **What did the learning curve show?** 50/100/200 questions scored 0.5628/0.5602/0.5693.
+   More labels did not give a monotonic large gain. Follow-up: what would you try next?
+   Diagnose label/context quality and gather independently reviewed data before
+   changing model size. Any post-test tuning needs new held-out evidence.
+6. **How strong is the gain?** Dev's paired interval included zero. The frozen final
+   test gain is 0.1238 nDCG, interval [0.0620, 0.1819], using 2,000 paper-family
+   bootstrap draws over 41 answerable families. Follow-up: does that establish
+   real-world success? No; it describes this small filtered title-conditioned sample.
+7. **Why can citations still be wrong?** An ID proves provenance; a quote proves
+   text membership. Neither proves that the claim answers the question. Yes/No
+   has a weaker reference-only check. Follow-up: what is unsupported-claim rate?
+   It has not been measured with new human claim judgments. Do not relabel automated
+   citation overlap as semantic support. See development failure inspection.
+8. **What failures did testing catch?** Infinite coordinates, train-candidate cache
+   scope, a model-card registration failure, invalid citation formats, Boolean answers
+   to open questions, readiness trusting stale row counts, and omitted busy-request
+   logs. Follow-up: explain a regression test and how the fix addresses the cause.
+9. **How does the service behave under load?** One inference lock admits one request;
+   three of four simultaneous demo requests received logged 429 responses. This
+   bounds work but limits throughput. Follow-up: why not add a queue or more workers?
+   Both require measured capacity/memory needs; they are outside this small host demo.
+10. **What does deployment prove?** A local Linux image returned a real answer and
+    refusal, survived a DB outage with explicit status codes, and rolled back to a
+    previous image/release. Five warm demo requests measured 3.06 s p50/3.18 s p95.
+    Follow-up: is this production p95? No, just a small repeated local workload.
+11. **How can someone reproduce it?** Use the locked environment, frozen data/models,
+    exported selected artifacts and immutable run records. Recalculate predictions
+    to avoid test retuning. Follow-up: why record dirty Git state/source archives?
+    Experiments between commits still need exact code provenance.
+12. **What is not built?** Public hosting, production users, agent orchestration, GPU
+    training, live quality monitoring and a human generated-claim audit. Their absence
+    is explicit; adding infrastructure is not a substitute for better evidence.
+
+## Prospective resume wording — only after you can explain it
+
+“Built an agent-assisted, reproducible retrieval/reranking benchmark from 350 human-
+labeled QASPER questions; trained a TinyBERT reranker with controlled negative-sampling
+ablations and improved held-out nDCG@10 from 0.378 to 0.501 on 75 answerable questions.”
+
+“Containerized a shared inference pipeline with FastAPI and PostgreSQL/pgvector;
+verified 50-query ranking parity across Windows and Linux and tested dependency
+failure, bounded concurrency and rollback.”
+
+Before using these, inspect [evidence mapping](evidence-index.md), explain the filtered
+dataset and uncertainty, and practice the demo. Do not claim professional deployment,
+users, hiring impact, independent implementation, GPU acceleration or reliable answer
+accuracy. Do not describe the offline comparison as a production A/B test.

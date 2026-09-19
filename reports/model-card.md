@@ -67,3 +67,9 @@ answers. A narrow sample and wide family-bootstrap interval limit generalization
 Sources: [TinyBERT model card](https://huggingface.co/cross-encoder/ms-marco-TinyBERT-L2-v2),
 [Qwen model card](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct),
 [QASPER](https://huggingface.co/datasets/allenai/qasper).
+
+Final held-out answers: token F1 0.0559, coverage 9%, 45 failures / 100 queries. See the final report for complete denominators. The ninth training run reproduced the selected parameter values exactly without changing the released checkpoint; all training slots are used.
+
+Post-test inspection found contradictory Yes/No human alternatives in two emitted-answer cases. The frozen max-reference F1 accepts either response; this annotation ambiguity was retained rather than repaired after observing results.
+
+The remaining human gate has a concrete [nine-answer review form](../docs/claim-review.md). It is explicitly pending, not agent-filled human judgment.

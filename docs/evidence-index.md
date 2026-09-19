@@ -1,29 +1,62 @@
-# Verification evidence
+# Verification and claim-to-artifact index
 
-This file maps implementation claims to commands and retained local artifacts.
-Generated artifacts are ignored by Git and must be reproduced after cloning.
+Recorded locally on 2026-09-18/19 (UTC rollover). No push, publication or paid service.
+Portable summaries are committed under `reports/`; raw artifacts are retained locally
+and included selectively in the reproduction bundle. Original PDFs are not redistributed.
 
-| Claim | Evidence | Limits |
+| Claim | Evidence | Scope / limitation |
 |---|---|---|
-| Source integrity and reproducible extraction | `uv run evidencebench build --config configs/corpus.yaml` and a second clean `--output` | Original raw PDFs and pinned versions required |
-| Identical corpus content | `data/processed/nist-v1/manifest.json`, `artifacts/verification/corpus-repeat/manifest.json` | 1,773 chunks; see dataset card for omitted figures/tables |
-| Invalid data and regression handling | `uv run pytest` | Synthetic fixtures; database test needs configured URL |
-| Shared contract types | `uv run mypy src/evidencebench/schemas.py` | Not whole-project strict typing |
-| Real embedding build | `artifacts/indexes/minilm-v1/manifest.json` | CPU, four threads, 84.23 seconds includes model load; not quality evaluation |
-| Real-model search output | `artifacts/verification/hybrid-search.json` | Two passages from one smoke query, not relevance judgments |
-| PostgreSQL vector parity | `uv run --extra ml python scripts/verify_postgres.py`; `artifacts/verification/postgres-parity.json` | Three queries, exact top-10 IDs and score tolerance 1e-6 |
-| Raw predictions reproduce metrics | `tests/unit/test_runner.py` | Synthetic fixtures, including timeout; no benchmark labels |
-| Draft labels remain unapproved | `validate-labels --labels data/labels/dev-pilot-draft.jsonl --allow-drafts` | 12 drafts / 0 reviewed; evaluator refuses them |
+| Human benchmark provenance | `data/manifests/qasper-v1.json`, `qasper-selection.json`, `qasper-protocol.json`; QASPER dataset card | Upstream human questions/answers/evidence, automated page mapping |
+| 200/50/100 split, 191 papers, 5,908 paragraphs | Dataset manifest, public label files, `artifacts/verification/qasper-data-audit.json` | Filtered, title-conditioned NLP papers; not official leaderboard |
+| Repeated data bytes | `data/processed/qasper-v1`, `artifacts/verification/qasper-repeat`, `qasper-repeat-labels` | Identical fingerprint and labels, original pinned PDF bytes required |
+| Initial NIST pilot | `reports/nist-pilot-card.md`, `artifacts/verification/corpus-repeat` | Historical 1,773 chunks; its 12 draft questions never used for selection |
+| Baselines and dev selection | `artifacts/runs/20260919T022155Z-6b3e64a8cc`, `reports/experiment-summary.json` | 38 answerable dev questions, 21 families; 12 unanswerable separate |
+| Trained model, learning curve and ablation | `artifacts/training/*`, `reports/development-evaluation.md`, `development-comparison.png` | 50/100/200 queries; matched random/hard negatives; source archives |
+| Selected checkpoint | `artifacts/training/20260919T021808Z-bce3010267`, `artifacts/deployed/7a7ab6f966a2` | Tree hash in `configs/release.yaml`, reload score parity 1e-6 |
+| Seed uncertainty | Seeds 42/43/44: runs ending `bce3010267`, `7975d080bc`, `a791c82d12` | Same dev set, not independent generalization samples |
+| Failed training retained | `artifacts/training/20260919T021555Z-346e0e4c88` | Setup failure before optimization; not omitted from budget |
+| Negative mining audit | `artifacts/verification/mining-cache-parity.json`, `negative-phrase-audit.json` | Cached pairs byte-identical; phrase matches cannot prove true negatives |
+| Development generation | `artifacts/answers/20260919T024110Z-6fd1dea23b`; `development-answers-v3.json` | 50 dev questions; 18% coverage, F1 .1184, 22 failures |
+| Earlier generation failures | `smol-aborted-pilot.json`; Qwen v2 run `20260919T022955Z-8a2d02c769` | Smol pilot only 15/50 completed; v2 Boolean contract bug documented |
+| Development failure review | `reports/development-failures.md` | 36 retained failures; agent inspection, not new human semantic labels |
+| Frozen final ranking | `data/manifests/release-lock.json`; `artifacts/runs/20260919T025255Z-c1ee0ecf84` | 100 questions / 75 answerable / 41 answerable families; no test reselection |
+| Final uncertainty/recalculation | `reports/final-evaluation.json` and `.md` | nDCG delta .1238; paired family interval [.0620,.1819]; raw predictions rechecked |
+| Real local API and recovery | `reports/serving-evaluation.json` and `.md`; `artifacts/verification/api-benchmark.json` | Actual answer/refusal, DB outage, rollback; local CPU service only |
+| Cross-environment ranking parity | `artifacts/verification/serving-parity.json` and predictions | Exact selected top-20 match on all 50 dev queries, Windows/NumPy vs Linux/PG |
+| Memory/latency | Serving report, image ID and cgroup peak counter | 3.38 GiB peak container accounting; five repeated warm answers, small workload |
+| Tests / fresh environment | `artifacts/verification/clean-final-tests.log`, current pytest output | 49 passed including real PG; mocked generation contracts do not prove quality |
+| Formatting and types | Ruff format/check; mypy `src/evidencebench/schemas.py` | Mypy covers shared schemas, not whole-project typing |
+| Container build | `artifacts/verification/final-image-v3-build.log` | Local successful build; image source/runtime checked through real serving |
+| CI configuration | `.github/workflows/ci.yml` | Defined, not remotely executed; repository has not been pushed |
+| Budget | `configs/budget.yaml`, local manifests | All nine training slots; zero paid provider/cloud jobs; local resource cost not priced |
+| Learning and demo | `docs/teaching-guide.md`, `interview-prep.md`, `demo.md`, `runbook.md` | Prepared learning path; no claim of user mastery or camera/screen video |
 
-Hardware observed: Windows, Intel i7-13700K, approximately 31.7 GiB RAM,
-RTX 4090 (24,564 MiB), driver 591.86. The installed PyTorch wheel is CPU-only.
-Database: PostgreSQL 17 with pgvector 0.8.1, image digest pinned in Compose.
+## Recalculate without changing models
 
-Independent code review examined schema/chunk/ingestion behavior and both builds.
-It found a nonfinite-coordinate contract bug (fixed with regression coverage) and
-shared cross-family boilerplate (documented). It did not audit the whole future system.
+`uv run evidencebench recalculate --run artifacts/runs/20260919T025255Z-c1ee0ecf84`
+checks the predictions hash and recomputes ranking aggregates. Answer metrics use
+`evidencebench.evaluation.answers.answer_metrics` over their saved prediction rows;
+check the manifest's predictions hash first. Family-bootstrap calculations use the
+frozen `evaluation/metrics.py`, paired on identical query IDs.
 
-Monetary spending: no paid provider/cloud jobs launched. Retained local state:
-Python environment, Hugging Face model cache, source PDFs, processed artifacts and
-the `evidencebench_postgres-data` volume. `docker compose stop` stops the database
-without deleting its data. Do not delete the volume as incidental cleanup.
+## What remains unproven
+
+Human semantic support/unsupported-claim rate for generated outputs is unmeasured.
+Reference F1 and citation-ID agreement do not substitute for this criterion.
+There is no representative hiring-market claim, official QASPER leaderboard result,
+production traffic, public hosting, GPU training, or evidence that the user has
+already independently mastered the agent-assisted code. Historical market-research
+files referenced in the plan are absent from this checkout.
+
+## Retained local resources
+
+Python environments, downloaded public source/model files, corpus/index artifacts,
+checkpoints, local MLflow database/runs, Docker images and the project PostgreSQL
+volume remain. `docker compose stop` preserves them. The final handoff reports
+whether the app/database are running. No unrelated Docker projects were modified.
+
+Additional reproduction evidence: `artifacts/verification/training-reproduction.json` (identical pairs, parameter values and dev nDCG; checkpoint metadata differs), `artifacts/verification/index-repeat.json` (identical vector bytes/IDs; instance fingerprint differs with execution provenance). Use `python scripts/verify_reports.py` for captured-roster report verification.
+
+Recorded demo: `reports/demo.cast` and `reports/demo.html`; actual local HTTP output, 12 timestamped events. Static HTML/event/JavaScript checks passed; browser policy blocked local-file visual preview. Bundle: `reports/artifact-bundle.json`, 201 files / 32,055,932 bytes; all hashes and restored corpus/index/checkpoint verified.
+
+The remaining human gate has a concrete [nine-answer review form](claim-review.md). It is explicitly pending, not agent-filled human judgment.
