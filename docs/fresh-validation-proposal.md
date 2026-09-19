@@ -58,6 +58,8 @@ fixed once the comparison starts.
 The constructed dataset is recorded in [fresh-dataset.json](../reports/fresh-dataset.json):
 corpus fingerprint `e436aff0b5fb63209ab23faedf393321fa41250ff7bd33264048f2691ae3d9a1`;
 validation-label SHA-256 `20c1979353b31afe35526b6b55edf725085a652a76e4df61f0a3ee7226ac3dc5`.
-Construction and cache-only verification are complete. The evaluation runner remains
-to be implemented and verified before an authorized model run; this document is a
-bounded work proposal, not a claim that an executable comparison is already ready.
+Construction and cache-only verification are complete. The
+[comparison runner](fresh-validation-runner.md) is now implemented, with synthetic
+integration tests and real read-only preflight checks. It has not loaded models or
+run inference on the fresh dataset. Approval covers one execution of this prepared
+runner within the bounds above; it does not replenish the older experiment budgets.

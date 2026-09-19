@@ -277,3 +277,26 @@ rebuild, not arbitrary future PDF availability, human page verification or model
 quality. See the [dataset card](../reports/fresh-dataset.md). Optional later exercise:
 explain how a dataset can have human answer labels while its PDF page mapping is
 still automatic and generated-answer support still requires independent review.
+
+## Preparing a controlled model comparison
+
+The new local Python comparison retrieves once for each validation question and
+replays identical passages to both generators. This isolates the generation change
+from retrieval differences. Labels enter scoring after inference; model interfaces
+receive only the question and retrieved text. The frozen control and candidate
+share a loaded Qwen model/tokenizer but retain their existing generation methods.
+
+`evaluation/fresh_runner.py` owns preflight, model wiring and the process watchdog;
+`fresh_comparison.py` owns paired predictions, metrics and durable usage counters;
+`fresh_verification.py` checks saved evidence without rerunning models. Counters
+charge work before calls, and an interrupted attempt cannot be silently reused.
+Output-token reservations are upper bounds, not claims about actual emitted tokens.
+
+Review exposed subtle failures: offline flags set after importing a library may
+be too late; weights alone do not fingerprint pooling/tokenizer configurations;
+a reranker failure must not erase successful retrieval; and a worker's complete
+file does not override a supervisor timeout. Regression tests cover all four.
+Synthetic end-to-end tests and real artifact preflight establish readiness, while
+model performance remains unmeasured. See [runner details](fresh-validation-runner.md).
+Optional later exercise: explain why both generators need the same retrieved
+context and why a gate should fail when citation precision is undefined.

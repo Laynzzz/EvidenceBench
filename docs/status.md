@@ -120,3 +120,28 @@ Final checks: 78 tests pass with real PostgreSQL (two existing dependency warnin
 Ruff/format, schema typing, reservation verification and all three original cycles'
 report/provenance checks pass. Fresh construction, cache rebuild and source-code
 review are complete; no fresh model-quality result is claimed.
+
+## Fresh validation runner — prepared, awaiting new allowance
+
+The [runner](fresh-validation-runner.md) now implements the fixed control-versus-
+constrained comparison, shared retrieval/context, bounded usage, offline model
+loading, one retained attempt and a 45-minute external watchdog. Its read-only
+preflight verifies the real corpus/labels, checkpoint and complete cached model
+snapshots without inference. No attempt, index or fresh model predictions exist.
+
+Eleven new synthetic tests cover the comparison, watchdog, cache integrity and an
+entire worker with stand-in models, including saved-output verification and timeout
+completion races. Code review found and corrected late offline initialization,
+incomplete model metadata hashing, lost pre-ranking after a reranker failure and
+the supervisor/worker completion race. Real-model compatibility and quality remain
+unmeasured until the proposed execution is authorized and performed.
+
+The next user decision is approval of the [prepared bounded comparison](fresh-validation-proposal.md):
+one 50-question validation comparison, at most 150 underlying generation calls,
+45 minutes, existing models on local CPU, $0 external spend. This does not authorize
+training, final-test evaluation, extra attempts or deployment.
+
+Current verification: 89 tests pass including real PostgreSQL; Ruff/format, schema
+typing and all original-cycle report checks pass. Real read-only preflight is ready
+and confirms no fresh attempt exists. [Readiness evidence](../reports/fresh-validation-readiness.json)
+pins the current sources, inputs and cached models. No real fresh-model result exists.

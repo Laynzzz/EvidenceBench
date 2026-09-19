@@ -557,3 +557,9 @@ family overlap and high-Jaccard duplicate flags are zero. See the
 [dataset card](reports/fresh-dataset.md). No model evaluation, embeddings, training
 or deployment occurred. A [bounded validation proposal](docs/fresh-validation-proposal.md)
 is prepared for a new allowance; final test and human semantic review remain pending.
+
+The fresh-validation comparison runner is subsequently implemented and tested with
+synthetic models, with read-only preflight on the actual artifacts/caches. It keeps
+one shared retrieval pass, durable compute caps, a single attempt and an external
+watchdog, and verifies saved results without inference. [Execution instructions](docs/fresh-validation-runner.md)
+are ready. No fresh model run has occurred; the new allowance remains pending.

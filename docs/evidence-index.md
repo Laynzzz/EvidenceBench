@@ -108,3 +108,10 @@ questions / 105 papers / 3,161 paragraphs with `--check`, without model calls or
 network requests. Labels are under `data/labels/qasper-fresh-v1/`; source PDFs and
 paragraph caches remain local. Final-test examples were not displayed or inspected.
 Historical ZIP bundles do not include this dataset or its builder.
+
+Fresh runner preparation: [commands and boundaries](fresh-validation-runner.md),
+[compute proposal](fresh-validation-proposal.md), and
+[readiness record](../reports/fresh-validation-readiness.json). Default execution of
+`python -m evidencebench.evaluation.fresh_runner` performs read-only preflight;
+`scripts/verify_fresh_validation.py --run RUN_PATH` verifies saved results after
+an approved run. The current record is preparation evidence, not model evaluation.

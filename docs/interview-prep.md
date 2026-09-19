@@ -159,3 +159,17 @@ tests reproduced both, and the fixes preceded real acquisition.” Follow-up: wh
 does the new dataset prove? “It supplies a reproducible evaluation boundary. No
 new model quality result exists yet, and upstream human labels are not human review
 of generated answers.” See the [build record](fresh-dataset-build.md).
+
+## How would you make the fresh model comparison controlled and bounded?
+
+“The prepared runner retrieves each question once and shares the resulting context
+between the control and candidate. It pins data, source, weights and configuration,
+keeps references outside model inputs, and retains failures in the evaluation.
+Usage reservations are durable, and an external watchdog bounds the entire worker.
+Saved results verify only if the supervisor also reports a successful exit.”
+
+Follow-up: is this already a successful experiment? “No. Eleven synthetic tests and
+read-only checks of the real artifacts establish implementation readiness. Actual
+model execution and fresh quality measurements await the new compute allowance.”
+See [the runner](fresh-validation-runner.md). This distinction matters more than
+presenting test-fixture scores as model results.
