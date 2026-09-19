@@ -64,7 +64,8 @@ answers and 16 citations. [Structured judgments](../reports/claim-review-ai.json
 include original prediction/source hashes, PDF pages, citation IDs, rationales and
 suggested answers. Two answers are clearly correct and supported; the audit is
 descriptive and does not satisfy independent human review. The existing artifact
-bundle predates this audit; these review files are tracked separately in Git.
+bundle predates this audit; these review files are tracked separately in Git and
+packaged in the [review supplement](../reports/claim-review-bundle.json).
 
 Audit verification on 2026-09-19 checked all nine PDF hashes, nine prediction/reference
 matches, 16 citation IDs, verdict totals and unchanged original excerpts. Results:

@@ -38,3 +38,7 @@ three ambiguous. Complete-answer citation support: two supported, six unsupporte
 one unclear. PDF hashes match the frozen manifest; references and scoring remain
 unchanged. This completes the requested AI audit, not the plan's independent human
 review criterion. No further user action is needed for this audit.
+
+The completed audit and updated handoff documents are retained in a separate local
+[review supplement](../reports/claim-review-bundle.json). Its member hashes and
+restoration are verified without replacing the original reproduction ZIP.

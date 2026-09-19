@@ -8,7 +8,7 @@
 
 **Research basis:** [September 18, 2026 market review](research/2026-09-18-job-market/market-review.md) and [200 source-linked postings](research/2026-09-18-job-market/job-sample-200.md).
 
-**Status:** Experimental local implementation and reranker evaluation verified. QASPER supplies upstream human labels. Generated-answer quality remains weak and human semantic claim-support review is incomplete. See [execution status](docs/status.md) and [measured results](reports/final-evaluation.md).
+**Status:** Experimental local implementation and reranker evaluation verified. QASPER supplies upstream human labels. The requested [paper-based AI review](docs/claim-review.md) is complete for all nine emitted answers: two correct, four incorrect and three ambiguous. Generated-answer quality remains weak; independent human semantic review remains unperformed. See [execution status](docs/status.md) and [measured results](reports/final-evaluation.md).
 **Primary target:** MLE internship, particularly applied ML, search/ranking, and NLP/LLM systems.
 **Secondary target:** AI software engineering internship or graduate role.
 **Schedule:** Eight focused weeks, or roughly 10–12 part-time weeks as a planning estimate. The optional extension uses remaining time within that budget.
@@ -520,3 +520,12 @@ LoRA, LangGraph, visual models, cloud object storage, and dashboards are not cor
 Held-out nDCG@10: selected 0.5015 versus untuned 0.3777; paired family-bootstrap delta interval [0.0620, 0.1819]. Held-out answers: 9% coverage, token F1 0.0559 and 45 failures / 100. All 49 tests pass, including a fresh locked environment and real PostgreSQL. Exact vectors, selected parameters and development rankings were reproduced; instance/checkpoint metadata hashes are not claimed identical across reruns. All nine training slots are used.
 
 The local service, restored reproduction bundle, terminal/API recording and teaching/interview guides are ready. No push, paid service or public deployment occurred. Human generated-claim semantic support/unsupported-claim rate remains unmeasured, so the full MLE core definition of done is not asserted. The optional agent remains deferred. The replay UI has static checks only because browser policy blocked local-file visual preview.
+
+The subsequent user-requested AI paper review covers all nine emitted answers and
+16 citations. Complete-answer support: two supported, six unsupported, one unclear.
+It is supplementary post-test analysis and leaves benchmark labels, models and
+scores unchanged. The review is included in a separate local supplement recorded in
+[the review-bundle manifest](reports/claim-review-bundle.json); the original
+reproduction archive remains immutable. Further answer-quality work needs a
+documented new evaluation cycle before making new held-out claims; it cannot reuse
+this exposed test set as unseen evaluation or assume additional training slots.

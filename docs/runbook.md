@@ -161,3 +161,12 @@ invented. Do not remove volumes or user caches as incidental cleanup.
 Check the ZIP SHA-256 against `reports/artifact-bundle.json` (`Get-FileHash` on Windows), then extract only into the intended checkout. `BUNDLE-MANIFEST.json` records every member hash. The prepared ZIP was extracted into a separate directory and all 201 hashes, 5,908 corpus units, index fingerprint and selected checkpoint tree were verified. The bundle is local only.
 
 `uv run python scripts/verify_reports.py` recalculates the final and original development report roster without rerunning models. This deliberately excludes the later same-seed reproduction from the three-seed uncertainty calculation.
+
+The completed AI paper review is a separate supplement:
+`artifacts/exports/qasper-v1-paper-review-20260919.zip`, described by
+[`reports/claim-review-bundle.json`](../reports/claim-review-bundle.json).
+It contains the review and updated handoff documents, with a member checksum manifest;
+it does not contain models or original PDFs. Verify its ZIP hash, then extract into
+a new inspection directory and compare member hashes before copying any documents
+into an existing checkout. Keep the original reproduction archive alongside it.
+Both archives are local only; neither has been published.

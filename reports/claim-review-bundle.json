@@ -1,0 +1,16 @@
+{
+  "path": "artifacts/exports/qasper-v1-paper-review-20260919.zip",
+  "sha256": "40386a8a3d746a16d77336710e5fa47fcb753a2566c6a0c4fa08aaf44a8fbf44",
+  "bytes": 64626,
+  "file_count": 12,
+  "archive_member_count": 13,
+  "scope": "AI paper review and updated handoff documents; no model weights, raw PDFs or new benchmark results.",
+  "published": false,
+  "restoration_verified": true,
+  "restoration_directory": "artifacts/verification/paper-review-supplement-restore",
+  "original_reproduction_archive_unchanged": true,
+  "original_reproduction_sha256": "98588f8a3ead99a37d9ef9a8ac211ee0d0c0919ae2cafe864b4b0d2ea828a6a5",
+  "member_manifest": "REVIEW-BUNDLE-MANIFEST.json",
+  "source_revision": "48ccea8e9b375f965e330b965c2b1b34bc6dd93b",
+  "includes_working_tree_documentation_updates": true
+}

@@ -94,3 +94,7 @@ practiced explaining every component. Existing job-market research links in the 
 refer to files absent from this checkout and were not recreated during implementation.
 
 The selected reproduction bundle is recorded in [artifact-bundle.json](reports/artifact-bundle.json); all 201 included file hashes and a separate restore were verified. No bundle or repository content has been published. Replay HTML/JavaScript passed static checks; visual browser playback remains unverified because the browser policy blocked the local-file preview.
+
+The completed paper review and updated handoff documents are packaged separately in
+[claim-review-bundle.json](reports/claim-review-bundle.json). The supplement preserves
+the original reproduction archive and includes per-file hashes for verification.
