@@ -1,5 +1,7 @@
 * text eol=lf
 # Public label bytes were frozen with CRLF; preserve their exact checksum on checkout.
 data/labels/qasper-v1/*.jsonl -text
+# Preserve the exact pre-test report-script bytes recorded by release-lock.json.
+scripts/report_experiments.py -text
 *.png binary
 *.pdf binary
