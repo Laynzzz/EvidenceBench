@@ -1,0 +1,21 @@
+budget_config: configs/budget.yaml
+protocol: data/manifests/qasper-protocol.json
+retrieval_config: configs/qasper-retrieval.yaml
+train_labels: data/labels/qasper-v1/train.jsonl
+dev_labels: data/labels/qasper-v1/dev.jsonl
+runs_dir: artifacts/training
+query_count: 200
+negatives: 4
+negative_method: hard
+subset_seed: 42
+seed: 42
+epochs: 3
+batch_size: 16
+learning_rate: 0.00002
+candidate_k: 50
+model:
+  model_id: cross-encoder/ms-marco-TinyBERT-L2-v2
+  revision: 81d1926f67cb8eee2c2be17ca9f793c7c3bd20cc
+  device: cpu
+  cpu_threads: 4
+  max_length: 384

@@ -68,10 +68,15 @@ def mine_negatives(
     count: int = 4,
     seed: int = 42,
     method: str = "hard",
+    lexical: BM25Retriever | None = None,
 ) -> list[str]:
     if query.split != "train" or count < 1 or method not in {"random", "hard"}:
         raise ValueError("negative mining requires a training query and valid sampler")
     validate_labels([query], units)
+    if lexical is not None and {u.element_id for u in lexical.units} != {
+        u.element_id for u in units if u.split == "train"
+    }:
+        raise ValueError("cached negative index must contain exactly the training corpus")
     # Contextual positives are excluded too. Human audit must still catch unjudged positives.
     excluded = {key for key, grade in query.relevance.items() if grade > 0}
     pool = [u for u in units if u.split == "train" and u.element_id not in excluded]
@@ -82,8 +87,7 @@ def mine_negatives(
     rng.shuffle(pool)
     selected = []
     if method == "hard":
-        selected = [
-            h.element_id for h in BM25Retriever(pool).retrieve(query.text, {}, min(count, 100))
-        ]
+        retriever = lexical.excluding(excluded) if lexical is not None else BM25Retriever(pool)
+        selected = [h.element_id for h in retriever.retrieve(query.text, {}, min(count, 100))]
     selected.extend(u.element_id for u in pool if u.element_id not in selected)
     return selected[:count]

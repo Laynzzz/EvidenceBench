@@ -58,10 +58,35 @@ class BM25Retriever:
         if not self.avg_length:
             raise ValueError("no searchable tokens")
         frequency = Counter(term for doc in self.terms for term in doc)
+        self.frequency = frequency
         self.idf = {
             term: math.log(1 + (len(units) - count + 0.5) / (count + 0.5))
             for term, count in frequency.items()
         }
+
+    def excluding(self, element_ids: set[str]):
+        """Reuse token counts while exactly recomputing IDF/lengths after exclusions."""
+        selected = [i for i, u in enumerate(self.units) if u.element_id not in element_ids]
+        if not selected:
+            raise ValueError("empty BM25 corpus after exclusions")
+        result = object.__new__(BM25Retriever)
+        result.units = [self.units[i] for i in selected]
+        result.terms = [self.terms[i] for i in selected]
+        result.lengths = [self.lengths[i] for i in selected]
+        result.k1, result.b = self.k1, self.b
+        result.avg_length = sum(result.lengths) / len(selected)
+        removed = Counter(
+            term
+            for u, terms in zip(self.units, self.terms, strict=True)
+            if u.element_id in element_ids
+            for term in terms
+        )
+        result.frequency = self.frequency - removed
+        result.idf = {
+            term: math.log(1 + (len(selected) - count + 0.5) / (count + 0.5))
+            for term, count in result.frequency.items()
+        }
+        return result
 
     def retrieve(self, query: str, filters: dict[str, str], k: int) -> list[RankedEvidence]:
         validate_request(query, filters, k)

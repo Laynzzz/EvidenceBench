@@ -2,16 +2,22 @@ schema_version: 1
 approved_usd: 0
 paid_services_enabled: false
 development:
-  max_download_mb: 1500
+  max_download_mb: 3000
+  download_scope: Public corpus/model artifacts; dependency/container layers tracked separately
+  download_revision_reason: One additional local generator candidate after repeated SmolLM2 JSON failures on development evidence
   max_source_mb: 30
   max_source_pages: 250
   cpu_threads: 4
   max_pilot_seconds: 600
   max_model_pilot_runs: 3
 training:
-  enabled: false
-  reason: Requires audited training data and frozen reviewed development labels first
-  max_runs: 0
+  enabled: true
+  reason: QASPER data/scoring frozen; repeat corpus and label hashes verified identical
+  max_runs: 9
+  max_seconds_per_run: 600
+  enforcement: Cooperative stage/step checks; no hard OS preemption
+  planned_runs: One smoke, four learning-curve/ablation runs, two seed repeats, two failure retries
+  inference_pilot: TinyBERT scored 50 fixture pairs in 0.100 seconds on four CPU threads
 selection:
   primary_metric: ndcg_at_10
   max_rerank_p95_ms: 1000
