@@ -574,3 +574,12 @@ Evidence recall drops from .9737 among 50 candidates to .4934 in the reranked to
 three and .3487 after packing. Future evidence-selection and abstention work needs
 its own design and allowance; this diagnosis is not permission to retune or rerun.
 Independent human generated-claim review and Phase 4 acceptance remain outstanding.
+
+The subsequent [offline selection audit](reports/fresh-selection-audit.md) isolates
+the remaining issues using saved outputs. Reranking improves top-three gold recall
+from .1645 to .4934; its maximum score has answerability AUC .5702. Exhaustive stricter
+cutoff replay has one post-hoc gate-passing state out of 29, retaining only eight
+answers. It is diagnostic evidence, not a revised selection or permission to promote.
+The next experimental direction is to measure evidence sufficiency separately from
+relevance, with packing changes tested separately. This requires a new bounded
+experiment design before inference. The audit added no model calls or spending.

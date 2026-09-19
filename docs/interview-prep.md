@@ -192,3 +192,16 @@ services. Saved outputs verify against source/model/data hashes and the supervis
 exit. Token F1 and citation IDs remain proxies; generated claims still need
 independent human review.” See [the verified report](../reports/fresh-validation.md).
 This agent-assisted work is implemented; personal interview practice remains later.
+
+## Why didn't you simply remove the reranker or raise its threshold?
+
+“An offline audit found that reranking improved top-three evidence recall from .1645
+to .4934. Its maximum score was much weaker for answerability, with AUC .5702. A
+highly relevant passage may still omit the requested fact. I kept those two tasks
+separate rather than assuming a relevance score was calibrated answer confidence.”
+
+Follow-up: did another threshold work? “I replayed all 29 distinct stricter-cutoff
+states using saved answers. One met the original numerical gate, retaining only
+eight answers. That is a post-hoc operating point, not a validated improvement;
+I didn't deploy it or change the recorded failure. The next experiment should
+measure evidence sufficiency separately.” See [the audit](../reports/fresh-selection-audit.md).

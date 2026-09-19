@@ -38,6 +38,11 @@ The candidate is not promoted; the fresh final test remains unused and independe
 human semantic review remains outstanding. The approved single attempt used 86
 generation calls, 5.97 minutes on local CPU and $0 external spend.
 
+The [subsequent offline audit](reports/fresh-selection-audit.md) shows that reranking
+helps (top-three gold recall .1645 to .4934), while its top score weakly separates
+answerable questions (AUC .5702). A stricter cutoff has one post-hoc gate-passing
+state, retaining only eight answers; it is not adopted as a validated improvement.
+
 ![Development experiments](reports/development-comparison.png)
 
 ## Start the existing local deployment

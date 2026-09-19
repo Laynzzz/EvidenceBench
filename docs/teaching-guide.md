@@ -322,3 +322,27 @@ observed F1 delta on this sample, while leaving the failed gate intact. Read
 [the result](../reports/fresh-validation.md) and the existing Python
 `evaluation/fresh_comparison.py` for the scoring flow. Optional later exercise:
 explain why promotion can correctly fail when both F1 and failure rate improve.
+
+## Relevance is different from evidence sufficiency
+
+The new Python CLI, `scripts/audit_fresh_selection.py`, runs locally on saved JSON
+traces. It compares binary gold-ID ranking quality, computes score AUC with tied
+pairs receiving half credit, and replays stricter cutoffs by suppressing existing
+answers. Its `--check` mode makes the diagnosis reproducible without running models.
+Ten synthetic tests check metric denominators, ties, corrupted inputs and the
+requirement to verify provenance before writing a report.
+
+Reranking makes relevant passages easier to find: top-three recall rises from .1645
+to .4934. Yet a question with no supported answer can retrieve highly relevant text.
+The maximum reranker score has only .5702 answerability AUC on these 50 questions.
+This illustrates why ranking a passage and deciding whether it answers a question
+are different prediction tasks. The next investigation should preserve the useful
+ranking stage while measuring evidence sufficiency explicitly.
+
+Searching stricter cutoffs produces one apparent gate pass, but keeps only eight
+answers. That cutoff was discovered using the same outcomes it was scored on, so
+it is development analysis rather than evidence of generalization. A filter replay
+can remove saved answers; it cannot tell us what a model would say with new context
+or on previously refused queries. See [the audit](../reports/fresh-selection-audit.md).
+Optional later exercise: explain why the highest-scoring unanswerable query prevents
+any stricter monotone cutoff from retaining correct coverage with zero such answers.

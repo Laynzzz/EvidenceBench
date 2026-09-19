@@ -167,3 +167,29 @@ future evidence-selection/abstention study, not a validated fix. The fresh final
 test remains unused and independent human claim review remains outstanding.
 Phase 4 is still incomplete; the original experimental local release remains.
 Earlier preparation sections above are historical records, superseded by this result.
+
+## Offline selection audit — completed
+
+- [x] Compare saved pre/post rankings and packing with fixed denominators.
+- [x] Measure the frozen score's answerability separation.
+- [x] Replay all stricter answer-suppression states without new inference.
+- [x] Add synthetic regression tests and verify the retained report.
+
+The [audit](../reports/fresh-selection-audit.md) finds that reranking raises top-three
+gold recall from .1645 to .4934 and binary nDCG@10 from .2056 to .5080. Top-score
+answerability AUC is .5702. One of 29 post-hoc stricter-cutoff states meets the old
+numerical gate, but with only eight answers and F1 .0258. It is not selected or
+promoted. A direct evidence-sufficiency decision is the recommended next experiment
+direction; a relevance-score cutoff alone has weak discrimination in this sample.
+
+The analysis script and ten synthetic tests are separate from frozen model code.
+It verifies the original run first, pins its inputs and source, and supports exact
+read-only recomputation. No model calls, downloads, training, final-test examples or
+new spending were involved. All experimental allowances remain consumed. The failed
+original comparison and Phase 4's unmet semantic-review criterion remain unchanged.
+
+Verification: 99 tests pass including real PostgreSQL, with two existing dependency
+deprecation warnings. Ruff, formatting and schema typing pass. The new audit's
+exact recomputation, original fresh-run verification, earlier-cycle report checks,
+artifact checksums and documentation links pass. Review found no calculation defect;
+additional tests now exercise corrupted paired rankings and pre-write verification.

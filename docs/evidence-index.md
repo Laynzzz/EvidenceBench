@@ -127,3 +127,11 @@ The read-only verifier reproduces metrics and checks provenance, usage and super
 completion. Source commit is `529a74d`; the new reports preserve its frozen snapshot.
 This is validation evidence on new families, not a final-test or semantic-quality
 claim. The final test remains unused, and historical ZIPs predate this comparison.
+
+Offline selection audit: [interpretation](../reports/fresh-selection-audit.md),
+[rankings, cutoff replay and hashes](../reports/fresh-selection-audit.json), and
+[recomputation script](../scripts/audit_fresh_selection.py). The script's `--check`
+mode verifies the original 50-query validation run, then reproduces binary evidence
+ranking metrics, score AUC and every stricter answer-suppression state without
+inference or writes. Ten synthetic tests cover calculations and rejection paths.
+Its single post-hoc passing replay state is not a selected or validated model.
