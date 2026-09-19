@@ -1,0 +1,68 @@
+{
+  "protocol": "docs/answer-improvement-protocol.md",
+  "protocol_revision": "983b6ff",
+  "candidate_run": "artifacts/answer-selection-cycle2/20260919T062027Z-47d413129a",
+  "baseline_run": "artifacts/answers/20260919T024110Z-6fd1dea23b",
+  "interrupted_attempt": "artifacts/answer-selection-cycle2/20260919T061745Z-0ab2aa2ca9",
+  "metrics": {
+    "baseline": {
+      "answer_coverage": 0.18,
+      "answerable_count": 38,
+      "answerable_failure_rate": 0.5789473684210527,
+      "answerable_token_f1": 0.11842105263157894,
+      "answered_count": 9,
+      "failure_count": 22,
+      "false_refusal_rate": 0.23684210526315788,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims.",
+      "missing_refusal_rate": 0.16666666666666666,
+      "p50_ms": 6292.018249994726,
+      "p95_ms": 17425.461070009616,
+      "query_count": 50,
+      "unanswerable_count": 12,
+      "unanswerable_refusal_recall": 0.8333333333333334,
+      "upstream_citation_precision": 0.6,
+      "upstream_citation_recall": 0.12
+    },
+    "candidate": {
+      "answer_coverage": 0.6,
+      "answerable_count": 38,
+      "answerable_failure_rate": 0.0,
+      "answerable_token_f1": 0.10119166002146834,
+      "answered_count": 30,
+      "failure_count": 0,
+      "false_refusal_rate": 0.2631578947368421,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims.",
+      "missing_refusal_rate": 0.16666666666666666,
+      "p50_ms": 2136.9698500056984,
+      "p95_ms": 3995.5686599801948,
+      "query_count": 50,
+      "unanswerable_count": 12,
+      "unanswerable_refusal_recall": 0.8333333333333334,
+      "upstream_citation_precision": 0.4,
+      "upstream_citation_recall": 0.24
+    },
+    "candidate_reasons": {
+      "insufficient_evidence": 19,
+      "model_refusal": 1
+    },
+    "candidate_statuses": {
+      "answered": 30,
+      "refused": 20
+    },
+    "limitations": "Development replay only. Latency scopes differ; no deployment or held-out quality claim.",
+    "passes_exploration_gate": false
+  },
+  "decision": "Do not promote: answer F1 regressed; generation contract reliability alone is insufficient.",
+  "evaluation_scope": "Development replay after v1 test exposure; no new held-out claim.",
+  "human_reviewed": false,
+  "training_runs": 0,
+  "paid_usd": 0,
+  "downloaded_models": 0,
+  "verification": {
+    "tests_passed": 58,
+    "ruff": "passed",
+    "schema_mypy": "passed",
+    "frozen_v1_reports": "verified"
+  },
+  "prediction_sha256": "6b59335240b083bb94ff67c725f1e983f16d901635f8be1cb29407865c49c530"
+}

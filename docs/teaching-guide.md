@@ -190,3 +190,24 @@ human accuracy estimate over the full test set. Post-test findings are for expla
 future model improvements require a new evaluation protocol and held-out data.
 Optional later exercise: explain why the UIT-ViIC abstract establishes manual
 annotation but does not establish crowdsourcing.
+
+## A failed candidate can still answer an engineering question
+
+Cycle 2 separates generation-contract reliability from answer quality. The same
+small language model selects a source-sentence number through a finite token trie;
+ordinary Python constructs the answer and citation. This removes the need for the
+model to copy exact text and emit valid JSON. It eliminated failures on the replay,
+but the model often selected the wrong sentence, and average reference F1 fell.
+
+The original generator remains frozen. The new Python module
+`src/evidencebench/generation_selection.py` runs locally for this experiment;
+`evaluation/selection_runner.py` supplies only development question/context inputs.
+The runner checks label membership for evaluation but never sends labels to the
+model. Predeclared gates prevented deploying a candidate just because it answered
+more often. See the [result](../reports/answer-selection-development.md).
+
+A review caught incomplete sentences at clipped passage boundaries. A synthetic
+regression test reproduced the issue, the run was interrupted and retained, and a
+documented replacement completed after correction. Optional later exercise: explain
+why a reference-matching number can be preferable to a longer, perfectly quoted
+sentence that answers a different question.

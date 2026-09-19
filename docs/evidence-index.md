@@ -72,3 +72,11 @@ matches, 16 citation IDs, verdict totals and unchanged original excerpts. Result
 `artifacts/verification/paper-review/verification.json`. The existing
 `python scripts/verify_reports.py` check also passed after the review, confirming
 the captured ranking/answer/bootstrap/development reports still reproduce.
+
+Cycle 2: [development report](../reports/answer-selection-development.md) and
+[structured results](../reports/answer-selection-development.json). A complete
+50-query run and interrupted seven-query attempt are retained under
+`artifacts/answer-selection-cycle2/`. Source/config/environment and prediction hashes
+are recorded per run. `python scripts/verify_answer_selection.py` recalculates the
+metrics, verifies source citations and confirms the v1 release lock. The candidate
+failed the quality gate and was not deployed. Earlier ZIP bundles predate this cycle.

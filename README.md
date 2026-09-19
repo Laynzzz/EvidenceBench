@@ -21,6 +21,10 @@ citation support. Independent human semantic review remains an unmet plan criter
 The optional agent is deferred. See [status](docs/status.md) and
 [final evaluation](reports/final-evaluation.md).
 
+A subsequent [development-only sentence-selector experiment](reports/answer-selection-development.md)
+reduced failures from 22 to zero, but token F1 fell from 0.1184 to 0.1012.
+It was not promoted; the service still uses the original frozen release.
+
 ![Development experiments](reports/development-comparison.png)
 
 ## Start the existing local deployment

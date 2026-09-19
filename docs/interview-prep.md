@@ -100,3 +100,17 @@ Likely follow-up: why not fix the labels and rerun? Changing labels after observ
 test outputs would change the evaluation protocol. Record concerns separately and
 use independent adjudication and fresh held-out evaluation for future iterations.
 Do not present this AI audit as personally performed or independently human-reviewed.
+
+## Why did you reject the sentence-selector candidate?
+
+“A bounded decoder removed all 22 development generation failures, increasing
+coverage from 18% to 60%. But F1 fell from .1184 to .1012 and citation-ID precision
+fell, so it failed the predeclared gate. Valid source text did not mean the selected
+sentence answered the question. I retained the failed experiment and left the
+original service unchanged.” This is a development result, not held-out improvement.
+See the [comparison](../reports/answer-selection-development.md).
+
+Follow-up: what would you try next? Separate short-span selection, Boolean inference
+and output serialization in a new bounded experiment. Preserve the old result and
+use fresh held-out families before claiming release-quality improvement. Do not
+present these suggested next steps as implemented or validated.

@@ -42,3 +42,19 @@ review criterion. No further user action is needed for this audit.
 The completed audit and updated handoff documents are retained in a separate local
 [review supplement](../reports/claim-review-bundle.json). Its member hashes and
 restoration are verified without replacing the original reproduction ZIP.
+
+## Cycle 2 — completed development experiment, candidate not promoted
+
+The [sentence selector comparison](../reports/answer-selection-development.md)
+completed on the same 50 development queries: 30 answered, 20 refused, zero failures.
+F1 regressed from .1184 to .1012 and citation-ID precision from .600 to .400, so
+the predeclared quality gate failed. The source-sentence selection mechanism is
+implemented and verified, but it is not a better accepted answer pipeline.
+The original release and test outcomes remain unchanged.
+
+One interrupted seven-query attempt and one completed attempt are retained. The
+catalog bug and corrected two-attempt budget are explicit in the protocol. Current
+checks: 58 tests pass, including real PostgreSQL; Ruff, schema typing and frozen
+v1 reports pass. No extra training, model downloads, paid services or deployment.
+The next release gate still requires a new evaluation design and fresh held-out
+paper families, in addition to the independent human claim-review criterion.

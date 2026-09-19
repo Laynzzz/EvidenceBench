@@ -170,3 +170,16 @@ it does not contain models or original PDFs. Verify its ZIP hash, then extract i
 a new inspection directory and compare member hashes before copying any documents
 into an existing checkout. Keep the original reproduction archive alongside it.
 Both archives are local only; neither has been published.
+
+## Inspect cycle 2 without rerunning a model
+
+```powershell
+uv run python scripts/verify_answer_selection.py
+```
+
+This checks the saved development-only selector comparison, citation provenance,
+interrupted-attempt hash and original release lock. Read the
+[experiment report](../reports/answer-selection-development.md) before interpreting
+coverage or timings. The candidate was not deployed. Its runner enforces the spent
+two-attempt budget and rejects another run; do not remove retained attempts to
+bypass that guard. The original service startup commands remain applicable.

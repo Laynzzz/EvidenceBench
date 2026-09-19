@@ -529,3 +529,8 @@ scores unchanged. The review is included in a separate local supplement recorded
 reproduction archive remains immutable. Further answer-quality work needs a
 documented new evaluation cycle before making new held-out claims; it cannot reuse
 this exposed test set as unseen evaluation or assume additional training slots.
+
+Cycle 2 subsequently tested a constrained source-sentence selector on development
+data only. Failures fell from 22 to zero, but answer F1 fell from .1184 to .1012;
+the candidate was not promoted. See the [recorded comparison](reports/answer-selection-development.md).
+This is a completed follow-up experiment, not completion of Phase 4's quality gate.
