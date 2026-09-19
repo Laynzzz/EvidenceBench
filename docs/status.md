@@ -58,3 +58,18 @@ checks: 58 tests pass, including real PostgreSQL; Ruff, schema typing and frozen
 v1 reports pass. No extra training, model downloads, paid services or deployment.
 The next release gate still requires a new evaluation design and fresh held-out
 paper families, in addition to the independent human claim-review criterion.
+
+## Cycle 3 — bounded improvement cycle completed
+
+All three user-authorized local experiments completed. [Results](../reports/answer-spans-development.md):
+plain short-answer generation regressed to .0263 F1; constrained spans reached
+.1533; focused questions reached .1372. Both constrained variants had zero failures
+and passed the predeclared exploratory gate. Constrained spans win the F1-first
+development rule; focused refused all 12 unanswerable questions. Both reduce
+citation-ID precision and retain semantic errors, so neither is deployed.
+
+Exactly three attempts and 93 model calls; no new models, training or paid services.
+Current checks: 66 tests pass including PostgreSQL, Ruff/format and schema typing
+pass, and all three cycles' saved reports verify. The original service and final
+test results are unchanged. Fresh held-out evaluation and independent semantic
+review are still required for the next release; Phase 4 is not fully accepted.

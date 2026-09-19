@@ -114,3 +114,18 @@ Follow-up: what would you try next? Separate short-span selection, Boolean infer
 and output serialization in a new bounded experiment. Preserve the old result and
 use fresh held-out families before claiming release-quality improvement. Do not
 present these suggested next steps as implemented or validated.
+
+## What happened when you preserved short answers?
+
+“I compared three development variants using the same cached model and retrieved
+contexts. Plain prompting failed. A token-trie constraint over source spans improved
+development token F1 from .1184 to .1533 and removed generation failures. A focused
+question variant had lower F1 but refused all 12 unanswerable development questions.
+Both reduced citation-ID precision, so neither became a production-quality claim.”
+See the [three-way comparison](../reports/answer-spans-development.md).
+
+Follow-up: how did you avoid cherry-picking? The candidate definitions and F1-first
+selection rule were recorded before inference, every attempt was retained, and all
+50 questions were scored for every variant. These are repeatedly used development
+data, so independent generalization still requires fresh held-out families. Do not
+claim that the .1533 result is test accuracy or that the human-review gate is met.

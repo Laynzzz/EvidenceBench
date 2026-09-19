@@ -211,3 +211,23 @@ regression test reproduced the issue, the run was interrupted and retained, and 
 documented replacement completed after correction. Optional later exercise: explain
 why a reference-matching number can be preferable to a longer, perfectly quoted
 sentence that answers a different question.
+
+## Short answers and constrained generation
+
+Cycle 3 keeps short source spans instead of forcing whole sentences. The Python
+`generation_spans.py` module builds a token trie from eligible source text: each
+generated token must follow an allowed path, and a terminal node permits stopping.
+This makes exact-copy output reliable without retraining the model. Ordinary code
+supplies the first matching citation for quotes; Boolean citations remain model
+choices. The generator never receives evaluation references.
+
+Plain short-answer prompting failed, while constrained spans improved development
+F1 from .1184 to .1533 and removed explicit failures. Removing the repeated paper
+title lowered F1 to .1372 but improved observed refusal behavior. Citation precision
+declined for both. The predeclared selection rule preserves an honest comparison;
+it does not prove a candidate is ready for release. [Evidence](../reports/answer-spans-development.md).
+
+The external watchdog matters because cooperative checks cannot interrupt a stalled
+model call immediately. A killed attempt keeps its slot and termination record.
+Optional later exercise: explain why a valid token path guarantees source membership
+but neither question relevance nor correctness of a Yes/No inference.

@@ -80,3 +80,13 @@ Cycle 2: [development report](../reports/answer-selection-development.md) and
 are recorded per run. `python scripts/verify_answer_selection.py` recalculates the
 metrics, verifies source citations and confirms the v1 release lock. The candidate
 failed the quality gate and was not deployed. Earlier ZIP bundles predate this cycle.
+
+Cycle 3: [comparison](../reports/answer-spans-development.md),
+[structured results](../reports/answer-spans-development.json), and
+[predeclared protocol](answer-improvement-cycle3.md). All three variants completed
+under `artifacts/answer-improvement-cycle3/`, with atomic attempt records and
+source/config/prediction snapshots. `python scripts/verify_span_experiments.py`
+verifies all three results and citation provenance without model inference.
+The preferred development candidate reaches .1533 F1 but citation-ID precision
+declines; it is not deployed or a new held-out result. Earlier ZIP bundles are
+historical and do not contain this cycle's code or artifacts.

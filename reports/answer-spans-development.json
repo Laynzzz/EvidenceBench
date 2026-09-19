@@ -1,0 +1,197 @@
+{
+  "status": "complete",
+  "protocol": "docs/answer-improvement-cycle3.md",
+  "protocol_revision": "b5a93c8",
+  "experiments": {
+    "plain": {
+      "run": "artifacts/answer-improvement-cycle3/plain/20260919T085448Z-29084dac0c",
+      "status": "complete",
+      "metrics": {
+        "baseline": {
+          "answer_coverage": 0.18,
+          "answerable_count": 38,
+          "answerable_failure_rate": 0.5789473684210527,
+          "answerable_token_f1": 0.11842105263157894,
+          "answered_count": 9,
+          "failure_count": 22,
+          "false_refusal_rate": 0.23684210526315788,
+          "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims.",
+          "missing_refusal_rate": 0.16666666666666666,
+          "p50_ms": 6292.018249994726,
+          "p95_ms": 17425.461070009616,
+          "query_count": 50,
+          "unanswerable_count": 12,
+          "unanswerable_refusal_recall": 0.8333333333333334,
+          "upstream_citation_precision": 0.6,
+          "upstream_citation_recall": 0.12
+        },
+        "candidate": {
+          "answer_coverage": 0.04,
+          "answerable_count": 38,
+          "answerable_failure_rate": 0.6842105263157895,
+          "answerable_token_f1": 0.02631578947368421,
+          "answered_count": 2,
+          "failure_count": 28,
+          "false_refusal_rate": 0.2631578947368421,
+          "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims.",
+          "missing_refusal_rate": 0.0,
+          "p50_ms": 3214.823999995133,
+          "p95_ms": 5949.887149993446,
+          "query_count": 50,
+          "unanswerable_count": 12,
+          "unanswerable_refusal_recall": 0.8333333333333334,
+          "upstream_citation_precision": 0.5,
+          "upstream_citation_recall": 0.02
+        },
+        "candidate_reasons": {
+          "insufficient_evidence": 19,
+          "invalid_span_generation": 28,
+          "model_refusal": 1
+        },
+        "candidate_statuses": {
+          "answered": 2,
+          "failure": 28,
+          "refused": 20
+        },
+        "limitations": "Development replay only. Latency scopes differ; no deployment or held-out quality claim.",
+        "passes_exploration_gate": false
+      },
+      "run_seconds": 136.88932370001567,
+      "answerable_f1_changes": {
+        "tied": 33,
+        "regressed": 4,
+        "improved": 1
+      },
+      "prediction_sha256": "13ed010dd1609b5055a2af48e2cee0d4432c147fb31a6bbdc7c57a40497e9e87"
+    },
+    "constrained": {
+      "run": "artifacts/answer-improvement-cycle3/constrained/20260919T085713Z-05f09012a1",
+      "status": "complete",
+      "metrics": {
+        "baseline": {
+          "answer_coverage": 0.18,
+          "answerable_count": 38,
+          "answerable_failure_rate": 0.5789473684210527,
+          "answerable_token_f1": 0.11842105263157894,
+          "answered_count": 9,
+          "failure_count": 22,
+          "false_refusal_rate": 0.23684210526315788,
+          "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims.",
+          "missing_refusal_rate": 0.16666666666666666,
+          "p50_ms": 6292.018249994726,
+          "p95_ms": 17425.461070009616,
+          "query_count": 50,
+          "unanswerable_count": 12,
+          "unanswerable_refusal_recall": 0.8333333333333334,
+          "upstream_citation_precision": 0.6,
+          "upstream_citation_recall": 0.12
+        },
+        "candidate": {
+          "answer_coverage": 0.56,
+          "answerable_count": 38,
+          "answerable_failure_rate": 0.0,
+          "answerable_token_f1": 0.15334877265370253,
+          "answered_count": 28,
+          "failure_count": 0,
+          "false_refusal_rate": 0.3157894736842105,
+          "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims.",
+          "missing_refusal_rate": 0.16666666666666666,
+          "p50_ms": 3203.630100004375,
+          "p95_ms": 5548.150519988848,
+          "query_count": 50,
+          "unanswerable_count": 12,
+          "unanswerable_refusal_recall": 0.8333333333333334,
+          "upstream_citation_precision": 0.35714285714285715,
+          "upstream_citation_recall": 0.2
+        },
+        "candidate_reasons": {
+          "insufficient_evidence": 19,
+          "model_refusal": 3
+        },
+        "candidate_statuses": {
+          "answered": 28,
+          "refused": 22
+        },
+        "limitations": "Development replay only. Latency scopes differ; no deployment or held-out quality claim.",
+        "passes_exploration_gate": true
+      },
+      "run_seconds": 134.3721768000105,
+      "answerable_f1_changes": {
+        "tied": 23,
+        "improved": 13,
+        "regressed": 2
+      },
+      "prediction_sha256": "5e5fb62483eecea266c5bf664ed1b92ac768217becf2fb07c10370ac77cba1a4"
+    },
+    "focused": {
+      "run": "artifacts/answer-improvement-cycle3/focused/20260919T085941Z-83d3a109f8",
+      "status": "complete",
+      "metrics": {
+        "baseline": {
+          "answer_coverage": 0.18,
+          "answerable_count": 38,
+          "answerable_failure_rate": 0.5789473684210527,
+          "answerable_token_f1": 0.11842105263157894,
+          "answered_count": 9,
+          "failure_count": 22,
+          "false_refusal_rate": 0.23684210526315788,
+          "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims.",
+          "missing_refusal_rate": 0.16666666666666666,
+          "p50_ms": 6292.018249994726,
+          "p95_ms": 17425.461070009616,
+          "query_count": 50,
+          "unanswerable_count": 12,
+          "unanswerable_refusal_recall": 0.8333333333333334,
+          "upstream_citation_precision": 0.6,
+          "upstream_citation_recall": 0.12
+        },
+        "candidate": {
+          "answer_coverage": 0.56,
+          "answerable_count": 38,
+          "answerable_failure_rate": 0.0,
+          "answerable_token_f1": 0.13716560085018892,
+          "answered_count": 28,
+          "failure_count": 0,
+          "false_refusal_rate": 0.2631578947368421,
+          "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims.",
+          "missing_refusal_rate": 0.0,
+          "p50_ms": 3085.769650002476,
+          "p95_ms": 5213.274899990938,
+          "query_count": 50,
+          "unanswerable_count": 12,
+          "unanswerable_refusal_recall": 1.0,
+          "upstream_citation_precision": 0.32142857142857145,
+          "upstream_citation_recall": 0.18
+        },
+        "candidate_reasons": {
+          "insufficient_evidence": 19,
+          "model_refusal": 3
+        },
+        "candidate_statuses": {
+          "answered": 28,
+          "refused": 22
+        },
+        "limitations": "Development replay only. Latency scopes differ; no deployment or held-out quality claim.",
+        "passes_exploration_gate": true
+      },
+      "run_seconds": 126.95069049997255,
+      "answerable_f1_changes": {
+        "tied": 24,
+        "improved": 12,
+        "regressed": 2
+      },
+      "prediction_sha256": "55edb22a7ed750a152db4d78f3d83fcf38f12adb9b89e3e922d98e7055a9c676"
+    }
+  },
+  "preferred_development_candidate": "constrained",
+  "deployed": false,
+  "held_out_claim": false,
+  "human_reviewed": false,
+  "training_runs": 0,
+  "new_model_downloads": 0,
+  "paid_services": false,
+  "tests_passed": 66,
+  "attempts_used": 3,
+  "model_calls": 93,
+  "decision": "Constrained preferred by predeclared development F1 rule; focused has better observed refusal behavior. Neither promoted; citation precision and semantic quality remain limited."
+}

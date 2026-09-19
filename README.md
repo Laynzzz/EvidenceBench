@@ -25,6 +25,11 @@ A subsequent [development-only sentence-selector experiment](reports/answer-sele
 reduced failures from 22 to zero, but token F1 fell from 0.1184 to 0.1012.
 It was not promoted; the service still uses the original frozen release.
 
+The subsequent [three-experiment short-span cycle](reports/answer-spans-development.md)
+improved development F1 to **0.1533** with **zero failures**, using the same model.
+Citation-ID precision declined; this remains an undeployed development candidate,
+with fresh held-out and semantic evaluation still needed.
+
 ![Development experiments](reports/development-comparison.png)
 
 ## Start the existing local deployment

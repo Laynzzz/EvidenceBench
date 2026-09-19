@@ -183,3 +183,21 @@ interrupted-attempt hash and original release lock. Read the
 coverage or timings. The candidate was not deployed. Its runner enforces the spent
 two-attempt budget and rejects another run; do not remove retained attempts to
 bypass that guard. The original service startup commands remain applicable.
+
+## Inspect the three short-span experiments
+
+```powershell
+uv run python scripts/verify_span_experiments.py
+```
+
+See the [comparison and limitations](../reports/answer-spans-development.md).
+All three authorized attempts are retained under `artifacts/answer-improvement-cycle3/`.
+The execution wrapper is:
+
+```powershell
+uv run --extra ml python -m evidencebench.evaluation.span_watchdog --variant NAME
+```
+
+NAME is plain, constrained or focused. It supplies an external 900-second cap; the lower-level
+runner alone has cooperative bounds. Local attempt records reject reruns because
+all three slots are used. None of these candidates replaces the v1 service.

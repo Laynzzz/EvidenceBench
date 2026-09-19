@@ -534,3 +534,11 @@ Cycle 2 subsequently tested a constrained source-sentence selector on developmen
 data only. Failures fell from 22 to zero, but answer F1 fell from .1184 to .1012;
 the candidate was not promoted. See the [recorded comparison](reports/answer-selection-development.md).
 This is a completed follow-up experiment, not completion of Phase 4's quality gate.
+
+Cycle 3 completed the three additional experiments authorized by the user. Short
+source-span constraints improved development F1 to .1533 with zero failures; a
+focused-question variant scored .1372 and refused all 12 unanswerable development
+queries. Both reduced citation-ID precision. [All outcomes](reports/answer-spans-development.md)
+are retained; constrained spans are preferred by the predeclared F1-first rule,
+but neither variant is deployed. Fresh held-out and semantic evaluation remain
+necessary before accepting a new release. No new training or paid services occurred.
