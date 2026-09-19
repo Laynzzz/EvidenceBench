@@ -90,3 +90,12 @@ verifies all three results and citation provenance without model inference.
 The preferred development candidate reaches .1533 F1 but citation-ID precision
 declines; it is not deployed or a new held-out result. Earlier ZIP bundles are
 historical and do not contain this cycle's code or artifacts.
+
+Offline preparation: [citation diagnostics](../reports/citation-diagnostics-development.md),
+[per-query categories and hashes](../reports/citation-diagnostics-development.json),
+[fresh evaluation protocol](fresh-evaluation-protocol.md), and
+[family reservation](../data/manifests/fresh-evaluation-reservation.json).
+`python scripts/prepare_fresh_evaluation.py --check` reproduces the mechanical audit
+and verifies the deterministic reservation using its retained cache inventory.
+No model inference or new-test scoring is involved. The reservation excludes known
+local exposure; it cannot guarantee absence from a model's pretraining data.

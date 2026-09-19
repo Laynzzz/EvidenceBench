@@ -231,3 +231,27 @@ The external watchdog matters because cooperative checks cannot interrupt a stal
 model call immediately. A killed attempt keeps its slot and termination record.
 Optional later exercise: explain why a valid token path guarantees source membership
 but neither question relevance nor correctness of a Yes/No inference.
+
+## Diagnosing missing evidence and reserving a new test
+
+The local Python audit now separates wrong citation IDs from unavailable gold
+evidence. In 12 of the constrained candidate's 18 citation mismatches, the packed
+context has no gold paragraph. A decoder restricted to that context cannot emit its
+gold citation ID. This points toward measuring retrieval and packing separately;
+it does not prove that the available passages contain no valid support.
+
+`evaluation/development_audit.py` contains deterministic classification and family
+selection; `scripts/prepare_fresh_evaluation.py` connects these helpers to retained
+artifacts. A fixed hash order chooses new paper families without considering their
+questions, answers or model performance. Excluding cached and attempted papers as
+well as selected papers is conservative: previously rejected data may still have
+influenced development decisions. The trade-off is a smaller, potentially biased
+remaining population, which must be disclosed.
+
+Behavior tests cover missing versus available gold evidence, duplicate quote text,
+Boolean outputs, whole-word matching and split isolation. Artifact checks recover
+the existing citation precision and reproduce the reservation. This prepares the
+evaluation boundary; no fresh dataset has been aligned or evaluated yet. See the
+[diagnostics](../reports/citation-diagnostics-development.md) and
+[protocol](fresh-evaluation-protocol.md). Optional later exercise: explain why
+randomly splitting the old 191 papers again would not create a fresh held-out test.

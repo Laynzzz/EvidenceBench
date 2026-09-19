@@ -129,3 +129,18 @@ selection rule were recorded before inference, every attempt was retained, and a
 50 questions were scored for every variant. These are repeatedly used development
 data, so independent generalization still requires fresh held-out families. Do not
 claim that the .1533 result is test accuracy or that the human-review gate is met.
+
+## How did you diagnose the citation regression?
+
+“I used an offline audit of retained predictions. Of the preferred candidate's 18
+citation mismatches, 12 had no gold-labeled passage in the packed context. One quote
+also appeared in a gold passage, suggesting an attribution ambiguity. Those are
+mechanical observations, not proof of semantic correctness. The next evaluation
+must distinguish retrieval coverage from evidence lost during packing.” See the
+[audit](../reports/citation-diagnostics-development.md).
+
+Follow-up: how do you avoid reusing an exposed test? “I reserved new paper families
+in a fixed hash order, excluding all known selected, attempted and cached families.
+The manifest records sources, exclusions and fallback order. This is only dataset
+preparation; no new held-out result exists, and public pretraining contamination
+cannot be ruled out.” Do not claim this audit or reservation as model improvement.

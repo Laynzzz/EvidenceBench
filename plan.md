@@ -542,3 +542,10 @@ queries. Both reduced citation-ID precision. [All outcomes](reports/answer-spans
 are retained; constrained spans are preferred by the predeclared F1-first rule,
 but neither variant is deployed. Fresh held-out and semantic evaluation remain
 necessary before accepting a new release. No new training or paid services occurred.
+
+Offline follow-up found no gold passage in packed context for 12 of constrained's
+18 citation mismatches. [The audit](reports/citation-diagnostics-development.md)
+does not establish semantic correctness. [Fresh evaluation preparation](docs/fresh-evaluation-protocol.md)
+reserves 60 validation and 120 test families after excluding 333 known previously
+used/attempted/cached families. Corpus construction and evaluation remain unrun;
+the original experiment budgets and release artifacts are unchanged.

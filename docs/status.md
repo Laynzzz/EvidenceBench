@@ -73,3 +73,24 @@ Current checks: 66 tests pass including PostgreSQL, Ruff/format and schema typin
 pass, and all three cycles' saved reports verify. The original service and final
 test results are unchanged. Fresh held-out evaluation and independent semantic
 review are still required for the next release; Phase 4 is not fully accepted.
+
+## Offline diagnosis and fresh evaluation preparation
+
+[Citation diagnostics](../reports/citation-diagnostics-development.md) explain the
+28 constrained answers mechanically: 10 match gold citation IDs; among 18 mismatches,
+12 have no gold paragraph in packed context, one quote also occurs in a gold passage,
+three have gold available but select other evidence, and two answer unanswerable
+queries. These are provenance categories, not semantic judgments.
+
+The [fresh-evaluation protocol](fresh-evaluation-protocol.md) reserves 60 validation
+and 120 final-test families, with deterministic fallback pools, excluding 333 known
+previously selected, attempted or cached families. Only IDs were used for selection.
+This is a reservation, not a built/aligned dataset or a new held-out result.
+No model calls, downloads, training, deployment or spending occurred. The earlier
+experiment allowance remains exhausted. Construction, a new bounded compute
+allowance, fresh evaluation and human semantic review remain separate next steps.
+
+Verification: 71 tests passed with real PostgreSQL (two existing dependency
+deprecation warnings); Ruff, formatting and schema mypy passed. The new preparation
+check and all three cycles' report/provenance verifiers passed. Independent code
+review found no consequential issues. All checks were local and used no inference.
