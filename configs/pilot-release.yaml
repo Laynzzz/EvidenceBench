@@ -1,0 +1,32 @@
+release_id: nist-runtime-smoke-only
+corpus_fingerprint: 1644879e5b17288ccb6d90269089eaeb6a96a2a92deb958376077f57d5341c6b
+index_fingerprint: 85568ebe1bbe7c84c4fe0c48d05303a9f0bf9efc60108266ee1dc8c7a59a3e4b
+retrieval:
+  corpus: data/processed/nist-v1
+  index: artifacts/indexes/minilm-v1
+  model_id: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  device: cpu
+  max_seq_length: 384
+  batch_size: 32
+  cpu_threads: 4
+  candidate_k: 50
+  database_url_env: EVIDENCEBENCH_DATABASE_URL
+reranker:
+  model_id: cross-encoder/ms-marco-TinyBERT-L2-v2
+  revision: 81d1926f67cb8eee2c2be17ca9f793c7c3bd20cc
+  device: cpu
+  cpu_threads: 4
+  max_length: 384
+generation:
+  model_id: HuggingFaceTB/SmolLM2-360M-Instruct
+  revision: a10cc1512eabd3dde888204e902eca88bddb4951
+  cpu_threads: 4
+  max_input_tokens: 1536
+  max_new_tokens: 100
+  timeout_seconds: 20
+  context_passages: 3
+  passage_characters: 1000
+  prompt_version: extractive-json-v1
+  refusal_threshold: -100
+selection_status: Runtime smoke only; threshold uncalibrated; not a benchmark release

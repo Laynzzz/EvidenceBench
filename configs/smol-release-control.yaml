@@ -1,0 +1,38 @@
+release_id: qasper-v1-dev-selected
+retrieval:
+  corpus: data/processed/qasper-v1
+  index: artifacts/indexes/qasper-minilm-v1
+  model_id: sentence-transformers/all-MiniLM-L6-v2
+  revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+  device: cpu
+  max_seq_length: 384
+  batch_size: 32
+  cpu_threads: 4
+  candidate_k: 50
+  database_url_env: EVIDENCEBENCH_DATABASE_URL
+reranker:
+  model_id: cross-encoder/ms-marco-TinyBERT-L2-v2
+  revision: 81d1926f67cb8eee2c2be17ca9f793c7c3bd20cc
+  device: cpu
+  cpu_threads: 4
+  max_length: 384
+  checkpoint: artifacts/deployed/7a7ab6f966a2
+  checkpoint_hash: 7a7ab6f966a2034cd7c1bae44d0e87933e36e0201a5a5362143d7113754d9613
+generation:
+  model_id: HuggingFaceTB/SmolLM2-360M-Instruct
+  revision: a10cc1512eabd3dde888204e902eca88bddb4951
+  cpu_threads: 4
+  max_input_tokens: 1536
+  max_new_tokens: 100
+  timeout_seconds: 20
+  context_passages: 3
+  passage_characters: 1000
+  prompt_version: extractive-json-v1
+  refusal_threshold: 3.2478480339050293
+corpus_fingerprint: 7ee04c7e89a9e5997ece5a26960a820d61a85fc9dc47491b2c1383a201d16412
+index_fingerprint: c0beb1326fe25bed0f9a7f9a891e5e6839c8723b53c84780b9661240bde049ae
+selection_run: artifacts/runs/20260919T022155Z-6b3e64a8cc
+selected_system: trained-200-hard
+selection_seed: 42
+selection_status: Development-selected proposal; answer evaluation and release freeze
+  pending

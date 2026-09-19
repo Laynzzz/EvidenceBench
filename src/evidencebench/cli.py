@@ -18,7 +18,9 @@ def main() -> None:
     build.add_argument("--output", type=Path)
     build.add_argument("--no-fetch", action="store_true")
     inspect = commands.add_parser("inspect", help="Resolve evidence to source PDF pages")
-    inspect.add_argument("--corpus", type=Path, required=True)
+    inspect.add_argument("--corpus", type=Path)
+    inspect.add_argument("--run", type=Path)
+    inspect.add_argument("--query-id")
     inspect.add_argument("--document")
     inspect.add_argument("--page", type=int)
     index = commands.add_parser("index", help="Build a pinned dense index")
@@ -33,8 +35,17 @@ def main() -> None:
     evaluate_parser.add_argument("--config", type=Path, default=Path("configs/evaluation.yaml"))
     evaluate_parser.add_argument("--split", choices=["dev", "test"], default="dev")
     evaluate_parser.add_argument(
-        "--suite", choices=["retrieval-baselines"], default="retrieval-baselines"
+        "--suite",
+        choices=["retrieval-baselines", "rerankers", "answers", "release"],
+        default="retrieval-baselines",
     )
+    training = commands.add_parser(
+        "train", help="Train with training-only pairs and development selection"
+    )
+    training.add_argument("--config", type=Path, default=Path("configs/training.yaml"))
+    training.add_argument("--smoke", action="store_true")
+    training.add_argument("--query-count", type=int)
+    training.add_argument("--negative-method", choices=["random", "hard"])
     recalc = commands.add_parser("recalculate", help="Recompute metrics from saved predictions")
     recalc.add_argument("--run", type=Path, required=True)
     labels = commands.add_parser(
@@ -45,7 +56,16 @@ def main() -> None:
     labels.add_argument("--allow-drafts", action="store_true")
     args = parser.parse_args()
     try:
-        if args.command == "index":
+        if args.command == "train":
+            from evidencebench.training import train
+
+            config = yaml.safe_load(args.config.read_text("utf-8"))
+            if args.query_count:
+                config["query_count"] = args.query_count
+            if args.negative_method:
+                config["negative_method"] = args.negative_method
+            print(json.dumps({"run": str(train(config, smoke=args.smoke))}))
+        elif args.command == "index":
             from evidencebench.indexing import build_index
 
             result = build_index(yaml.safe_load(args.config.read_text("utf-8")))
@@ -99,13 +119,38 @@ def main() -> None:
             from evidencebench.labels import read_labels
             from evidencebench.pipelines import load_retrievers
 
+            if args.suite == "release":
+                if args.split != "test":
+                    raise ValueError("release suite requires test split")
+                from evidencebench.final_evaluation import run_final
+
+                print(json.dumps(run_final()))
+                return
+            if args.suite == "answers" and args.split == "dev":
+                from evidencebench.evaluation.generation_runner import main as answer_main
+
+                answer_main(["--release", "configs/release.yaml"])
+                return
             if args.split == "test":
                 raise ValueError(
                     "final test disabled until reviewed labels and release protocol are frozen"
                 )
             config = yaml.safe_load(args.config.read_text("utf-8"))
             retrieval = yaml.safe_load(Path(config["retrieval_config"]).read_text("utf-8"))
+            if config.get("protocol"):
+                from evidencebench.protocol import verify_protocol
+
+                verify_protocol(Path(config["protocol"]))
             units, retrievers, metadata = load_retrievers(retrieval)
+            reranker = None
+            if args.suite == "rerankers":
+                from evidencebench.reranking import RerankingRetriever, load_cross_encoder
+
+                reranker = yaml.safe_load(Path(config["reranker_config"]).read_text("utf-8"))
+                model = load_cross_encoder(reranker)
+                retrievers["cross-encoder"] = RerankingRetriever(
+                    retrievers["hybrid"], units, model, retrieval["candidate_k"]
+                )
             labels = read_labels(Path(config["dev_labels"]))
             run = evaluate(
                 labels,
@@ -113,7 +158,11 @@ def main() -> None:
                 retrievers,
                 Path(config["runs_dir"]),
                 metadata["fingerprint"],
-                provenance={"retrieval": retrieval, "index": metadata["index_fingerprint"]},
+                provenance={
+                    "retrieval": retrieval,
+                    "index": metadata["index_fingerprint"],
+                    "reranker": reranker,
+                },
             )
             print(json.dumps({"run": str(run)}))
         elif args.command == "recalculate":
@@ -125,12 +174,28 @@ def main() -> None:
             result = build_corpus(config, args.output or Path(config["output"]), not args.no_fetch)
             print(json.dumps(result, indent=2))
         elif args.command == "inspect":
+            if args.run:
+                if args.query_id:
+                    rows = [
+                        json.loads(line)
+                        for line in (args.run / "predictions.jsonl").read_text("utf-8").splitlines()
+                    ]
+                    result = [row for row in rows if row["query_id"] == args.query_id]
+                else:
+                    result = {
+                        "manifest": json.loads((args.run / "manifest.json").read_text("utf-8")),
+                        "metrics": json.loads((args.run / "metrics.json").read_text("utf-8")),
+                    }
+                print(json.dumps(result, ensure_ascii=True, indent=2))
+                return
+            if args.corpus is None:
+                raise ValueError("inspect requires --corpus or --run")
             units = load_units(args.corpus)
             rows = [
                 u.model_dump(mode="json")
                 for u in units
                 if (args.document is None or u.document_id == args.document)
-                and (args.page is None or u.page == args.page)
+                and (args.page is None or u.page <= args.page <= (u.page_end or u.page))
             ]
             if not rows:
                 raise ValueError("no evidence matches this document/page")

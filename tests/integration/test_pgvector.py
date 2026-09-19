@@ -39,3 +39,12 @@ def test_postgres_roundtrip_and_filtered_cosine_rank():
         store.search(fingerprint, np.ones(3), {}, 3)
     with pytest.raises(ValueError, match="already exists"):
         store.import_index(fingerprint, units, np.ones((3, 2)))
+    assert store.ready(fingerprint, 3)
+    import psycopg
+
+    with psycopg.connect(dsn) as conn:
+        conn.execute("DELETE FROM eb_evidence WHERE index_id=%s AND element_id='a'", (fingerprint,))
+    assert not store.ready(fingerprint, 3)
+    with psycopg.connect(dsn) as conn:
+        conn.execute("DELETE FROM eb_evidence WHERE index_id=%s", (fingerprint,))
+        conn.execute("DELETE FROM eb_indexes WHERE fingerprint=%s", (fingerprint,))

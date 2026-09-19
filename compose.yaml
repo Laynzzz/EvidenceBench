@@ -1,5 +1,29 @@
 name: evidencebench
 services:
+  app:
+    image: ${EVIDENCEBENCH_IMAGE:-evidencebench:qasper-v1}
+    build: .
+    environment:
+      EVIDENCEBENCH_DATABASE_URL: postgresql://evidencebench:${EVIDENCEBENCH_DB_PASSWORD}@db:5432/evidencebench
+      EVIDENCEBENCH_RELEASE: ${EVIDENCEBENCH_RELEASE:-configs/release.yaml}
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./artifacts/indexes:/app/artifacts/indexes:ro
+      - ./artifacts/deployed:/app/artifacts/deployed:ro
+      - ./artifacts/hf-cache:/models:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", ".venv/bin/python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      start_period: 60s
+      retries: 6
+    mem_limit: 6g
+    cpus: 4
   db:
     image: pgvector/pgvector:0.8.1-pg17@sha256:3e8b3adfd27b5707128f60956f62a793c3c9326ea8cfaf0eab7adccb5d700b21
     environment:

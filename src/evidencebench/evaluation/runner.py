@@ -61,15 +61,24 @@ def evaluate(
     root: Path,
     corpus_fingerprint: str,
     provenance: dict[str, Any] | None = None,
+    release_lock: Path | None = None,
 ) -> Path:
+    split = "dev"
     if any(q.split != "dev" for q in examples):
-        raise ValueError("only development evaluation enabled; final test requires release freeze")
+        if release_lock is None or any(q.split != "test" for q in examples):
+            raise ValueError(
+                "only development evaluation enabled; final test requires release freeze"
+            )
+        from evidencebench.release import verify_final_lock
+
+        verify_final_lock(release_lock, examples, corpus_fingerprint, list(retrievers), provenance)
+        split = "test"
     if not retrievers:
         raise ValueError("no retrieval systems")
     counts = validate_labels(examples, units)
     labels = [q.model_dump(mode="json") for q in examples]
     config = {
-        "split": "dev",
+        "split": split,
         "systems": sorted(retrievers),
         "corpus_fingerprint": corpus_fingerprint,
         "labels_hash": digest(canonical(labels)),

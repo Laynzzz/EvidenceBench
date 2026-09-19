@@ -1,0 +1,28 @@
+name: checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.1-pg17@sha256:3e8b3adfd27b5707128f60956f62a793c3c9326ea8cfaf0eab7adccb5d700b21
+        env:
+          POSTGRES_PASSWORD: fixture-password
+          POSTGRES_DB: evidencebench
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 3s --health-timeout 3s --health-retries 20
+    env:
+      EVIDENCEBENCH_TEST_DATABASE_URL: postgresql://postgres:fixture-password@localhost:5432/evidencebench
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+        with:
+          version: "0.12.17"
+      - run: uv sync --frozen --python 3.12
+      - run: uv run ruff format --check .
+      - run: uv run ruff check .
+      - run: uv run mypy src/evidencebench/schemas.py
+      - run: uv run pytest -q
+      - run: docker build -t evidencebench:ci .

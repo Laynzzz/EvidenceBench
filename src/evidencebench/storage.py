@@ -14,6 +14,18 @@ class VectorStore:
     def __init__(self, dsn: str):
         self.dsn = dsn
 
+    def ready(self, fingerprint: str, expected_count: int) -> bool:
+        with psycopg.connect(
+            self.dsn, connect_timeout=2, options="-c statement_timeout=2000"
+        ) as conn:
+            row = conn.execute(
+                "SELECT i.unit_count, COUNT(e.element_id) FROM eb_indexes i "
+                "LEFT JOIN eb_evidence e ON e.index_id=i.fingerprint "
+                "WHERE i.fingerprint=%s GROUP BY i.unit_count",
+                (fingerprint,),
+            ).fetchone()
+        return bool(row and row[0] == row[1] == expected_count)
+
     def import_index(self, fingerprint: str, units: list[ContentUnit], vectors: Any) -> None:
         values = np.asarray(vectors, dtype=np.float32)
         if values.ndim != 2 or len(values) != len(units) or not np.isfinite(values).all():
