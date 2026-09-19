@@ -1,6 +1,7 @@
 # Fresh evaluation preparation
 
-Status: **paper families reserved; dataset construction and evaluation not run**.
+Status at reservation: **paper families reserved; construction and evaluation not run**.
+Subsequent construction evidence is tracked in [the build record](fresh-dataset-build.md).
 The original test has been exposed, and the old development set has been reused
 for multiple experiments. Neither can support a new untouched-test claim.
 
