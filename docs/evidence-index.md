@@ -99,3 +99,12 @@ Offline preparation: [citation diagnostics](../reports/citation-diagnostics-deve
 and verifies the deterministic reservation using its retained cache inventory.
 No model inference or new-test scoring is involved. The reservation excludes known
 local exposure; it cannot guarantee absence from a model's pretraining data.
+
+Fresh construction: [dataset card](../reports/fresh-dataset.md),
+[hash/count report](../reports/fresh-dataset.json),
+[rebuild verification](../reports/fresh-dataset-verification.json), and
+[execution record](fresh-dataset-build.md). The separate builder reproduces 150
+questions / 105 papers / 3,161 paragraphs with `--check`, without model calls or
+network requests. Labels are under `data/labels/qasper-fresh-v1/`; source PDFs and
+paragraph caches remain local. Final-test examples were not displayed or inspected.
+Historical ZIP bundles do not include this dataset or its builder.

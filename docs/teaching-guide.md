@@ -255,3 +255,25 @@ evaluation boundary; no fresh dataset has been aligned or evaluated yet. See the
 [diagnostics](../reports/citation-diagnostics-development.md) and
 [protocol](fresh-evaluation-protocol.md). Optional later exercise: explain why
 randomly splitting the old 191 papers again would not create a fresh held-out test.
+
+## Building a fresh evaluation corpus reproducibly
+
+The fresh dataset is now built: 150 upstream-human-labeled questions over 105 new
+paper families and 3,161 aligned paragraphs. Python's `fresh_data.py` supplies the
+selection and download logic; `scripts/build_fresh_qasper.py` orchestrates it locally
+using httpx, pdfplumber and Parquet. Existing annotation and alignment helpers retain
+their original behavior. Two questions per family limit concentration, while fixed
+answerability quotas preserve the intended mix. These choices affect the population
+and should be disclosed, rather than described as random sampling.
+
+Download budgets must survive restarts. The builder records a request before sending
+it, verifies cached checksums, counts redirects as requests, and retains unavailable
+paper skips. Review revealed that automatic redirects could bypass pacing and that
+parser failures needed explicit recovery. Regression tests reproduced both cases.
+
+A cache-only verification recomputed alignment/selection and compared exact records
+and label bytes. It left 631 tracked build files unchanged. This proves this local
+rebuild, not arbitrary future PDF availability, human page verification or model
+quality. See the [dataset card](../reports/fresh-dataset.md). Optional later exercise:
+explain how a dataset can have human answer labels while its PDF page mapping is
+still automatic and generated-answer support still requires independent review.

@@ -93,6 +93,7 @@ PDFs stay outside Git and the redistribution bundle.
 - [Dataset card](reports/qasper-dataset-card.md) and [model card](reports/model-card.md).
 - [36 development failure cases](reports/development-failures.md).
 - [Citation mismatch diagnosis](reports/citation-diagnostics-development.md) and [fresh evaluation preparation](docs/fresh-evaluation-protocol.md): offline audit and reserved families; no new held-out scores.
+- [Fresh dataset](reports/fresh-dataset.md): 150 questions, 105 new paper families and 3,161 paragraphs; cache rebuild verified, model evaluation pending.
 - [Serving measurements](reports/serving-evaluation.md) and [runbook](docs/runbook.md).
 - [Recorded API replay](reports/demo.html), [raw recording](reports/demo.cast), and [five-minute guide](docs/demo.md).
 - [Teaching guide](docs/teaching-guide.md) and [interview preparation](docs/interview-prep.md).

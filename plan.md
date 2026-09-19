@@ -549,3 +549,11 @@ does not establish semantic correctness. [Fresh evaluation preparation](docs/fre
 reserves 60 validation and 120 test families after excluding 333 known previously
 used/attempted/cached families. Corpus construction and evaluation remain unrun;
 the original experiment budgets and release artifacts are unchanged.
+
+The reserved fresh dataset was subsequently constructed and verified: 50 validation
+and 100 final-test questions, 105 paper families and 3,161 aligned paragraphs. A
+cache-only rebuild reproduced the retained records and label bytes; known prior
+family overlap and high-Jaccard duplicate flags are zero. See the
+[dataset card](reports/fresh-dataset.md). No model evaluation, embeddings, training
+or deployment occurred. A [bounded validation proposal](docs/fresh-validation-proposal.md)
+is prepared for a new allowance; final test and human semantic review remain pending.

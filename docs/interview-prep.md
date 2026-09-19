@@ -144,3 +144,18 @@ in a fixed hash order, excluding all known selected, attempted and cached famili
 The manifest records sources, exclusions and fallback order. This is only dataset
 preparation; no new held-out result exists, and public pretraining contamination
 cannot be ruled out.” Do not claim this audit or reservation as model improvement.
+
+## How did you make the new dataset reproducible?
+
+“I built a separate 150-question QASPER evaluation set over 105 new paper families.
+The family and question order, answerability quotas and two-question family cap were
+fixed before construction. The builder preserves download attempts and checksums,
+reuses the original page aligner, and records excluded candidates. A cache-only
+rebuild reproduced the paragraph records and exact label bytes.”
+
+Follow-up: what failed during development? “Code review found automatic redirects
+bypassing request pacing and malformed PDFs stopping resume. Synthetic regression
+tests reproduced both, and the fixes preceded real acquisition.” Follow-up: what
+does the new dataset prove? “It supplies a reproducible evaluation boundary. No
+new model quality result exists yet, and upstream human labels are not human review
+of generated answers.” See the [build record](fresh-dataset-build.md).

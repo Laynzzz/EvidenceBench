@@ -94,3 +94,29 @@ Verification: 71 tests passed with real PostgreSQL (two existing dependency
 deprecation warnings); Ruff, formatting and schema mypy passed. The new preparation
 check and all three cycles' report/provenance verifiers passed. Independent code
 review found no consequential issues. All checks were local and used no inference.
+
+## Fresh evaluation dataset — constructed and verified
+
+The [fresh dataset](../reports/fresh-dataset.md) now contains 50 validation and 100
+final-test questions across 105 paper families, with 3,161 aligned paragraphs.
+Validation is 38/12 answerable/unanswerable; test is 75/25. Family overlap with v1
+and high-Jaccard document duplicate flags are both zero. A cache-only rebuild
+reproduced the retained records and label bytes; 631 build files were unchanged.
+
+The builder and seven new tests are committed as `1f5e773`. Review caught and fixed
+redirect pacing and malformed-PDF recovery before acquisition. There were 155 PDF
+downloads, two failed requests and one skipped unavailable paper; 119,437,820 PDF
+bytes remain cached. All previously attempted families remain recorded.
+No model inference, embeddings, training, paid services or deployment occurred.
+
+The [next comparison proposal](fresh-validation-proposal.md) is prepared, not run:
+50 fresh validation queries, the frozen control and constrained candidate, existing
+models, CPU only, at most 150 underlying generation calls and 45 minutes, $0 external
+spend. The previous experiment allowance remains exhausted. A new bounded allowance
+is needed before executing this comparison; final test and independent human review
+remain separate gates. Phase 4 acceptance is still incomplete.
+
+Final checks: 78 tests pass with real PostgreSQL (two existing dependency warnings);
+Ruff/format, schema typing, reservation verification and all three original cycles'
+report/provenance checks pass. Fresh construction, cache rebuild and source-code
+review are complete; no fresh model-quality result is claimed.
