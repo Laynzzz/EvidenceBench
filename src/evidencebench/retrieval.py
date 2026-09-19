@@ -37,6 +37,7 @@ def ranked(units: Sequence[ContentUnit], scores: Sequence[float], k: int) -> lis
             element_id=u.element_id,
             document_id=u.document_id,
             page=u.page,
+            page_end=u.page_end,
             rank=i + 1,
             retrieval_score=float(score),
         )

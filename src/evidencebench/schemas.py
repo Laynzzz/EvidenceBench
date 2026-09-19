@@ -52,6 +52,7 @@ class ContentUnit(Record):
     version: str
     split: Split
     page: int = Field(gt=0)
+    page_end: int | None = Field(default=None, gt=0)
     text: str = Field(min_length=1)
     section: str | None = None
     bbox: tuple[float, float, float, float] | None = None
@@ -60,6 +61,8 @@ class ContentUnit(Record):
 
     @model_validator(mode="after")
     def check_geometry(self) -> Self:
+        if self.page_end is not None and self.page_end < self.page:
+            raise ValueError("page range ends before its start")
         if self.bbox is not None:
             x0, top, x1, bottom = self.bbox
             if not all(math.isfinite(v) for v in self.bbox) or not (
@@ -98,6 +101,7 @@ class RankedEvidence(Record):
     element_id: str
     document_id: str
     page: int = Field(gt=0)
+    page_end: int | None = Field(default=None, gt=0)
     rank: int = Field(gt=0)
     retrieval_score: float = Field(allow_inf_nan=False)
     reranker_score: float | None = Field(default=None, allow_inf_nan=False)
