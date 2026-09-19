@@ -99,6 +99,12 @@ def test_no_partial_sentence_or_standalone_placeholder_options():
     assert [o["answer"] for o in options] == ["A useful complete sentence follows."]
 
 
+def test_clipped_paragraph_tail_is_not_an_answer_option():
+    packed = {"E1": "Title\nThe baseline uses random assignment. Compared to the baseline,"}
+    options = build_options("What baseline?", packed)
+    assert [o["answer"] for o in options] == ["The baseline uses random assignment."]
+
+
 def test_constraint_allows_only_exact_paths_and_eos():
     constraint = ChoiceConstraint([[10], [11, 12], [11, 13]], prompt_length=2, eos_id=99)
     assert constraint(0, [88, 89]) == [10, 11]

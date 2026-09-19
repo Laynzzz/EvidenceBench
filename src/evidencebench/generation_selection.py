@@ -38,7 +38,10 @@ def build_options(query: str, packed: dict[str, str], max_sentences: int = 18) -
             [
                 {"answer": s, "support_quote": s, "evidence_id": key}
                 for s in sentences
-                if 3 <= len(s.split()) and len(s) <= 450 and s in text
+                if 3 <= len(s.split())
+                and len(s) <= 450
+                and re.search(r"[.!?][\"'\u201d\u2019)\]]*$", s)
+                and s in text
             ]
         )
     interleaved = [s for group in zip_longest(*groups) for s in group if s is not None]

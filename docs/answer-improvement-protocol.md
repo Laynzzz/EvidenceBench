@@ -28,13 +28,15 @@ Sentence extraction can miss lists spanning sentences and may reduce token F1.
   generation, not improved retrieval. Never provide labels/references to the model.
 - Use the same cached model revision, four CPU threads, 1,536 input tokens and
   20-second per-call cooperative timeout. No downloads, paid services or training.
-- One full candidate run, maximum 600 seconds including setup; keep failed/partial
-  runs. No additional candidate tuning in this experiment after seeing its results.
+- One completed candidate run, maximum 600 seconds including setup; keep failed/partial
+  runs. The documented catalog correction below permits two attempts total. No
+  additional candidate tuning in this experiment after seeing its results.
 - Rank sentence candidates by their original passage/sentence order, interleaved
   across passages, up to 18 sentences. Drop standalone titles, very short fragments
   and sentences over 450 characters; do not silently truncate long sentences.
   If the catalog exceeds the input limit, remove its last sentence options until
   it fits (both Yes/No alternatives together), recording the dropped count.
+  Require terminal punctuation so clipped passage tails cannot become answer options.
 - Report the existing answer F1, citation-ID agreement, failure/refusal rates and
   coverage with all denominators. Report candidate generation-only timings
   separately; historical end-to-end timings are not a controlled latency comparison.
@@ -66,3 +68,18 @@ Implementation: `src/evidencebench/generation_selection.py`,
 `configs/answer-selection.yaml`, and independent tests. Transformers' documented
 [generation token constraints](https://huggingface.co/docs/transformers/main_classes/text_generation)
 provide the bounded option decoder; this does not require another framework.
+
+## Catalog correction before completed comparison
+
+Independent code review found that the initial splitter admitted incomplete tails
+from passages clipped to 1,000 characters. This violated the sentence-only design.
+Attempt `20260919T061745Z-0ab2aa2ca9` was interrupted after seven predictions, before
+aggregate scoring. Its files remain intact with a separate termination record;
+the hard interruption left its original manifest at running.
+
+A synthetic regression reproduces the incomplete-tail bug. The correction requires
+terminal punctuation, with optional closing quotes/brackets. One replacement attempt
+is allowed to complete the originally intended comparison; this is a documented
+protocol correction, not an unreported restart. Neither attempt is held-out evidence.
+The runner rejects an unresolved running attempt or any attempt after a completed
+comparison. The original training budget remains exhausted and unchanged.

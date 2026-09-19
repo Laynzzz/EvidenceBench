@@ -6,6 +6,7 @@ dev_labels_sha256: 903f397f6425f7c30081c62573de67c57e601ca0131abd6b1e8911c5fc7ee
 corpus: data/processed/qasper-v1
 output_root: artifacts/answer-selection-cycle2
 max_run_seconds: 600
+max_attempts: 2  # One interrupted catalog-bug attempt plus one corrected full comparison.
 generation:
   model_id: Qwen/Qwen2.5-0.5B-Instruct
   revision: 7ae557604adf67be50417f59c2c2f167def9a775

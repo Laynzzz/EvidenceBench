@@ -35,6 +35,21 @@ def validate_dev_roster(rows, labels):
             raise ValueError("development metadata mismatch")
 
 
+def verify_run_budget(root: Path, max_attempts: int):
+    manifests = list(root.glob("*/manifest.json"))
+    statuses = [json.loads(p.read_text("utf-8"))["status"] for p in manifests]
+    if len(manifests) >= max_attempts or "complete" in statuses:
+        raise ValueError("cycle 2 run budget already used; retain the original runs")
+    for path, status in zip(manifests, statuses, strict=True):
+        if status == "running":
+            termination = path.parent / "termination.json"
+            if (
+                not termination.exists()
+                or json.loads(termination.read_text("utf-8")).get("status") != "interrupted"
+            ):
+                raise ValueError("unresolved prior run; confirm termination before retry")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=Path("configs/answer-selection.yaml"))
@@ -54,8 +69,7 @@ def main(argv=None):
     labels = read_labels(label_path)
     validate_dev_roster(rows, labels)
     root = Path(config["output_root"])
-    if root.exists() and any(root.glob("*/manifest.json")):
-        raise ValueError("cycle 2 single-run budget already used; retain the original run")
+    verify_run_budget(root, config.get("max_attempts", 1))
     units = load_units(Path(config["corpus"]))
     by_text = {}
     for unit in units:
