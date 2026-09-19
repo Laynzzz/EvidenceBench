@@ -1,0 +1,9 @@
+retrieval_config: configs/qasper-retrieval.yaml
+protocol: data/manifests/qasper-protocol.json
+reranker_config: configs/reranker.yaml
+dev_labels: data/labels/qasper-v1/dev.jsonl
+runs_dir: artifacts/runs
+primary_metric: ndcg_at_10
+bootstrap_seed: 42
+bootstrap_samples: 2000
+test_enabled: false

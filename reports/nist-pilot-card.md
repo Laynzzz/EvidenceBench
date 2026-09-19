@@ -1,10 +1,4 @@
-# Dataset cards
-
-The active benchmark is [QASPER-derived v1](qasper-dataset-card.md): 191 papers,
-5,908 paragraphs and 350 upstream human-labeled questions. The historical NIST
-pilot below is separate; its agent drafts are not used for model selection.
-
-## Historical NIST cybersecurity corpus pilot
+# NIST cybersecurity corpus pilot
 
 Manifest: `data/manifests/nist-cybersecurity.json`. Ten publications, 647 physical
 PDF pages, 1,773 page-local chunks. Six families train, two development (800-207,

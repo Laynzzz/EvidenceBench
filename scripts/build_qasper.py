@@ -48,6 +48,12 @@ def main():
         raise SystemExit("Immutable QASPER output exists; use a new version instead of overwriting")
     started = time.perf_counter()
     sources, all_units, all_queries, audit = [], [], [], []
+    selection_path = Path("data/manifests/qasper-selection.json")
+    selection = json.loads(selection_path.read_text("utf-8")) if selection_path.exists() else None
+    locked_sources = {}
+    if selection:
+        locked = json.loads(Path("data/manifests/qasper-v1.json").read_text("utf-8"))
+        locked_sources = {s["document_id"].removeprefix("qasper-"): s for s in locked["sources"]}
     cache = ROOT / "processed-cache"
     cache.mkdir(parents=True, exist_ok=True)
     with httpx.Client(timeout=40, follow_redirects=True) as client:
@@ -56,10 +62,18 @@ def main():
             data = json.loads(filename.read_text("utf-8"))
             counts = Counter()
             for paper_id in sorted(data, key=order):
+                if selection and paper_id not in selection["paper_ids"]:
+                    continue
                 if counts[True] >= positive_target and counts[False] >= negative_target:
                     break
                 paper = data[paper_id]
                 candidates = [(q, select_annotation(q)) for q in paper["qas"]]
+                if selection:
+                    candidates = [
+                        (q, a)
+                        for q, a in candidates
+                        if q["question_id"] in selection["query_ids"][split]
+                    ]
                 candidates = [
                     (q, a)
                     for q, a in candidates
@@ -87,6 +101,11 @@ def main():
                             raise ValueError("not a bounded PDF")
                         path.write_bytes(response.content)
                     checksum = digest(path.read_bytes())
+                    if (
+                        paper_id in locked_sources
+                        and checksum != locked_sources[paper_id]["sha256"]
+                    ):
+                        raise RuntimeError("Source differs from frozen PDF checksum")
                     acquisition = path.with_suffix(".acquisition.json")
                     if acquisition.exists():
                         acquired = json.loads(acquisition.read_text("utf-8"))
@@ -102,6 +121,8 @@ def main():
                             "date_basis": "download file modification date at first import",
                         }
                         acquisition.write_bytes(canonical(acquired))
+                    if paper_id in locked_sources:
+                        acquired["retrieved_at"] = locked_sources[paper_id]["retrieved_at"]
                     cached = cache / f"{paper_id}-{checksum[:12]}-{EXTRACTION_ID}.json"
                     if cached.exists():
                         pages = json.loads(cached.read_text("utf-8"))
