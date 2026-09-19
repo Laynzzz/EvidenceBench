@@ -1,0 +1,7 @@
+retrieval_config: configs/retrieval.yaml
+dev_labels: data/labels/dev.jsonl
+runs_dir: artifacts/runs
+primary_metric: ndcg_at_10
+bootstrap_seed: 42
+bootstrap_samples: 2000
+test_enabled: false

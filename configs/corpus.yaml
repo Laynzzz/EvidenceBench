@@ -1,0 +1,5 @@
+manifest: data/manifests/nist-cybersecurity.json
+raw_dir: data/raw
+output: data/processed/nist-v1
+max_words: 180
+overlap: 30

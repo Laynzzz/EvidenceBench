@@ -1,0 +1,10 @@
+corpus: data/processed/nist-v1
+index: artifacts/indexes/minilm-v1
+model_id: sentence-transformers/all-MiniLM-L6-v2
+revision: 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+device: cpu
+max_seq_length: 384
+batch_size: 32
+cpu_threads: 4
+candidate_k: 50
+database_url_env: EVIDENCEBENCH_DATABASE_URL

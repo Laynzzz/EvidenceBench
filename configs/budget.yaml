@@ -1,0 +1,19 @@
+schema_version: 1
+approved_usd: 0
+paid_services_enabled: false
+development:
+  max_download_mb: 1500
+  max_source_mb: 30
+  max_source_pages: 250
+  cpu_threads: 4
+  max_pilot_seconds: 600
+  max_model_pilot_runs: 3
+training:
+  enabled: false
+  reason: Requires audited training data and frozen reviewed development labels first
+  max_runs: 0
+selection:
+  primary_metric: ndcg_at_10
+  max_rerank_p95_ms: 1000
+  max_gpu_memory_gib: 20
+  status: Predeclared provisional limits; measure before experiments

@@ -1,0 +1,124 @@
+{
+  "sources": [
+    {
+      "document_id": "nist-sp-800-207",
+      "family_id": "nist-sp-800-207",
+      "version": "800-207",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf",
+      "sha256": "0290d6ece24874287316f4bf430fef770aa4ec08a2227c8f2c1e5b2ff975e03d",
+      "retrieved_at": "2026-09-19",
+      "page_count": 59,
+      "split": "dev",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-218",
+      "family_id": "nist-sp-800-218",
+      "version": "800-218",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf",
+      "sha256": "617746e553a9e2da49bfbd4eef0dfc3094758a39b869314e4173ac36605cde22",
+      "retrieved_at": "2026-09-19",
+      "page_count": 36,
+      "split": "dev",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-137",
+      "family_id": "nist-sp-800-137",
+      "version": "800-137",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-137.pdf",
+      "sha256": "2d1c0bf459f5e1bfd41ceb5eac83bf62e4c34bf08e2e7088b37cb73a11442b98",
+      "retrieved_at": "2026-09-19",
+      "page_count": 80,
+      "split": "test",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-153",
+      "family_id": "nist-sp-800-153",
+      "version": "800-153",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-153.pdf",
+      "sha256": "6e8d44de32789ecb3267c8a7778eb3088c15f5c860cf6e823243c8030ed3ec09",
+      "retrieved_at": "2026-09-19",
+      "page_count": 24,
+      "split": "test",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-167",
+      "family_id": "nist-sp-800-167",
+      "version": "800-167",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-167.pdf",
+      "sha256": "9a383e711d8dc0ce4500db01b459257c0500e287415c1632a8a027dd8ca7f91e",
+      "retrieved_at": "2026-09-19",
+      "page_count": 24,
+      "split": "train",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-193",
+      "family_id": "nist-sp-800-193",
+      "version": "800-193",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf",
+      "sha256": "a07a759fe0e58f91c92d466afc9c582d1e1ff3a7cd4a04600ec7f7ff61d5bb06",
+      "retrieved_at": "2026-09-19",
+      "page_count": 45,
+      "split": "train",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-63b-4",
+      "family_id": "nist-sp-800-63",
+      "version": "800-63b-4",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b-4.pdf",
+      "sha256": "d9ab89576b5ae2cfb3ba37781110788dea27a85a5079496dbfc1a79834670afd",
+      "retrieved_at": "2026-09-19",
+      "page_count": 129,
+      "split": "train",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-61r3",
+      "family_id": "nist-sp-800-61",
+      "version": "800-61r3",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf",
+      "sha256": "e5593d6bb85daecec7e8d9549400c7b3473bcc3f06e469c82218073afa7fba2d",
+      "retrieved_at": "2026-09-19",
+      "page_count": 48,
+      "split": "train",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-46r2",
+      "family_id": "nist-sp-800-46",
+      "version": "800-46r2",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-46r2.pdf",
+      "sha256": "8d236e4b51c0ff0005e6a5be5724de6ba404954021d26c7d7aa4665b6b38a7de",
+      "retrieved_at": "2026-09-19",
+      "page_count": 53,
+      "split": "train",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    },
+    {
+      "document_id": "nist-sp-800-34r1",
+      "family_id": "nist-sp-800-34",
+      "version": "800-34r1",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf",
+      "sha256": "476f04d4c60b0770c1ac8b2720551972074ce78e936a3e7a535048416111d0df",
+      "retrieved_at": "2026-09-19",
+      "page_count": 149,
+      "split": "train",
+      "mime_type": "application/pdf",
+      "license": "NIST technical publication; generally public domain in US. Preserve attribution; third-party material may have separate rights."
+    }
+  ]
+}
