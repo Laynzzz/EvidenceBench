@@ -72,4 +72,9 @@ Final held-out answers: token F1 0.0559, coverage 9%, 45 failures / 100 queries.
 
 Post-test inspection found contradictory Yes/No human alternatives in two emitted-answer cases. The frozen max-reference F1 accepts either response; this annotation ambiguity was retained rather than repaired after observing results.
 
-The remaining human gate has a concrete [nine-answer review form](../docs/claim-review.md). It is explicitly pending, not agent-filled human judgment.
+The user-requested [paper-based AI review](../docs/claim-review.md) is complete:
+two of nine emitted answers are clearly correct and citation-supported, four are
+incorrect and three ambiguous. Complete-answer support is two supported, six
+unsupported and one unclear. True but nonresponsive fragments count as unsupported
+answers, not necessarily fabricated facts. This single AI audit does not satisfy
+independent human review and does not alter frozen labels or metrics.

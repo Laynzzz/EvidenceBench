@@ -86,3 +86,17 @@ Before using these, inspect [evidence mapping](evidence-index.md), explain the f
 dataset and uncertainty, and practice the demo. Do not claim professional deployment,
 users, hiring impact, independent implementation, GPU acceleration or reliable answer
 accuracy. Do not describe the offline comparison as a production A/B test.
+
+## What did the paper review reveal?
+
+“A post-test AI audit checked all nine emitted answers against their papers and
+16 citations. Two answers were clearly correct and supported, four were incorrect,
+and three ambiguous. Some outputs quoted real numbers but answered the wrong
+question. The audit also exposed conflicting references and ambiguous question scope.
+I kept the frozen benchmark labels and scores unchanged.” See the
+[complete audit](claim-review.md) for evidence.
+
+Likely follow-up: why not fix the labels and rerun? Changing labels after observing
+test outputs would change the evaluation protocol. Record concerns separately and
+use independent adjudication and fresh held-out evaluation for future iterations.
+Do not present this AI audit as personally performed or independently human-reviewed.

@@ -2,6 +2,12 @@
 
 This inspection occurred after the frozen final run. It did not change data, models, prompts, thresholds or scoring. Observations below are agent analysis of existing human references and saved outputs, not a human generated-claim audit.
 
+Follow-up: the user-requested [paper-based AI audit](../docs/claim-review.md) now
+adjudicates all nine emitted answers with original PDF locations. It resolves the
+LSA reference conflict and records paper/question ambiguity in other cases. The
+initial reference-based observations below remain historical; use the completed
+audit for the fuller judgments. Frozen labels and metrics remain unchanged.
+
 ## All nine emitted answers
 
 ### e9a0a69eacd554141f56b60ab2d1912cc33f526a

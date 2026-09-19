@@ -52,3 +52,14 @@ The corpus is a filtered, title-conditioned subset of public NLP papers. Selecti
 Local-only experiment reports and model/data artifacts are linked in the [evidence index](../docs/evidence-index.md). No paid provider or cloud jobs were launched.
 
 Post-test inspection of all nine emitted answers and all 14 ranking regressions is in [test failures](test-failures.md). Two emitted Boolean answers have contradictory Yes/No human alternatives; the predeclared max-reference F1 accepts either. This ambiguity is retained and further limits interpretation of answer F1. No labels or scoring were changed.
+
+The subsequent [paper-based AI review](../docs/claim-review.md), requested by the
+user, is complete for all nine answers and 16 citation links. Paper correctness:
+2 correct, 4 incorrect, 3 ambiguous. Complete-answer citation support: 2 supported,
+6 unsupported, 1 unclear. These are descriptive judgments conditional on emitted
+answers; unsupported includes true but nonresponsive fragments. The full LSA paper
+supports Yes despite conflicting references. UIT-ViIC's trained writers and the
+embedding paper's actual comparisons expose additional scope/annotation concerns.
+[Structured review provenance](claim-review-ai.json) preserves PDF and prediction
+hashes. This AI audit does not replace the human acceptance criterion or any frozen
+benchmark score; no model selection or tuning followed it.

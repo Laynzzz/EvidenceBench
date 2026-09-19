@@ -174,3 +174,19 @@ Learning order: product demo → architecture → one evidence ID → ranking me
 training data/loss → selected run → an answer failure → deployment/recovery →
 interview questions. The historical [NIST pilot card](../reports/nist-pilot-card.md)
 records earlier extraction checks. No study or quiz is required during implementation.
+
+## Paper-based answer review
+
+The completed [nine-answer audit](claim-review.md) separates paper correctness,
+support from emitted citations, and agreement with existing annotations. For example,
+`0.331` and `5` occur in valid sources but do not answer a method/list question.
+Conversely, the LSA paper supports Yes even though stored human alternatives disagree.
+This explains why token F1 and citation-ID overlap cannot measure semantic quality.
+
+The audit used original PDF text and selected page renderings, with source hashes
+checked against the frozen manifest. Its JSON records every answer, citation and
+paper location. It is single-reviewer AI analysis of nine emitted answers, not a
+human accuracy estimate over the full test set. Post-test findings are for explanation;
+future model improvements require a new evaluation protocol and held-out data.
+Optional later exercise: explain why the UIT-ViIC abstract establishes manual
+annotation but does not establish crowdsourcing.

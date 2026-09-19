@@ -1,16 +1,32 @@
-# Human claim-support review — nine generated answers
+# Paper-based claim review — all nine generated answers
 
-This is the remaining human evaluation gate in plan.md sections 11–12. QASPER supplies human questions, reference answers and relevant paragraphs; it does not directly judge these newly generated claims and their selected citations. This form is prepared, not completed.
+Reviewer: **Codex (AI-assisted review)**
 
-For each answer, record **supported / unsupported / unclear** based on whether the cited model-visible excerpts support the complete answer to the question. Separately record **correct / incorrect / ambiguous** against the human reference, and mark each citation **supports / does not support / unclear**. If references conflict or the excerpt is insufficient, use ambiguous/unclear rather than guessing. All nine emitted answers are included; refusals and failures have separate recorded denominators.
+Date: **2026-09-19**
 
-Reply with the nine numbered verdicts and any citation exceptions, or fill this document. Record reviewer and date when completed. The audit is descriptive after the final test; it must not silently trigger model or threshold tuning.
+Status: **completed AI review; not human-reviewed**
 
-Reviewer: **pending**
+Completed at the user's request against the corresponding original papers. All nine local PDFs match their frozen source-manifest SHA-256 hashes. Relevant sections were inspected in extracted full-paper text, with visual checks of the embedding comparison table and the caption annotation procedure. Original model-visible excerpts are retained below. Source fingerprints and structured judgments are in [the review JSON](../reports/claim-review-ai.json).
 
-Date: **pending**
+## Method and limits
 
-Status: **not human-reviewed**
+- **Claim support** evaluates whether the emitted citations support the complete answer *to the question*: supported / unsupported / unclear. A true number can still be unsupported as a complete answer when the question asks for a method or a list. This label does not necessarily mean a fabricated fact. Unclear means the evidence leaves the requested property unresolved.
+- **Answer correctness** is judged against the paper: correct / incorrect / ambiguous. Ambiguous preserves uncertainty about question scope or an unstated property. Original human references are retained and compared separately; agreement with a reference is not proof of paper correctness.
+- **Citation verdicts** use supports / does not support / unclear for each emitted citation. Context from other jointly emitted citations may resolve a term; such cases are explicitly noted. This is not a standalone-passage precision metric. Full-paper material outside the emitted citations can establish correctness but cannot retroactively ground a citation.
+- This is a single AI review after the frozen test, not independent human adjudication. The original human semantic-review criterion in plan.md sections 11–12 remains unmet. The user's requested AI review is complete and needs no further user action.
+- Scope is all **9 answered outputs and 16 citation links**, from 100 test queries with 46 refusals and 45 failures. Rates below are conditional on emitted answers, not all-query accuracy, and are not generalizable quality estimates. No reference labels, predictions, metrics, models, prompts or thresholds were changed, and these observations must not be used to tune on this test set.
+
+## Findings
+
+| Measure | AI judgment count |
+|---|---:|
+| Complete answer supported by emitted citations | 2 / 9 (22.2%) |
+| Complete answer unsupported by emitted citations | 6 / 9 (66.7%) |
+| Claim support unclear | 1 / 9 (11.1%) |
+| Paper-based correctness | 2 correct; 4 incorrect; 3 ambiguous |
+| Citation judgments, allowing stated joint context | 4 support; 11 do not support; 1 unclear (16 total) |
+
+The two clearly correct, supported answers concern LSA features and pretrained GloVe embeddings. Four incorrect answers substitute a score, a broad approach, a count, or the proposed method for the requested information. Three cases require qualifications about representativeness, crowdsourcing, or which publication is meant. The LSA paper resolves conflicting references; the captioning and embedding-comparison cases raise separate annotation/scope concerns. These findings explain limitations of the existing benchmark metrics without replacing them.
 
 ## 1. e9a0a69eacd554141f56b60ab2d1912cc33f526a
 
@@ -20,11 +36,21 @@ Generated answer: **0.331**
 
 Upstream human reference: Random labeling | Alternative human answer:  randomly assigning any of the sentiment values to each of the test instances
 
-Claim support: **pending**
+Claim support: **unsupported**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **incorrect**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E1: does not support** — E1 establishes the baseline score, but a score alone does not answer which baseline method was used.
+
+**Paper-based reasoning:** The question asks for the baseline method. Section 4.1 (PDF p. 5) specifies random sentiment-label assignment. The returned 0.331 is a real Hindi-English macro F-score, also reported in Table 2 and the conclusion, but does not identify that method. This is a nonresponsive extraction, not a fabricated number.
+
+**Suggested answer:** The baseline randomly assigned sentiment labels to test instances; its macro F-scores were 0.331 for Hindi-English and 0.339 for Bengali-English.
+
+**Reference comparison:** The paper supports the random-labeling references; the generated score does not answer their method question.
+
+**Paper locations checked:** [PDF p. 5](https://arxiv.org/pdf/1803.06745#page=5), [PDF p. 6](https://arxiv.org/pdf/1803.06745#page=6), [PDF p. 8](https://arxiv.org/pdf/1803.06745#page=8). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E1: source page 8–8
 
@@ -41,11 +67,23 @@ Generated answer: **Yes**
 
 Upstream human reference: Yes | Alternative human answer: No
 
-Claim support: **pending**
+Claim support: **supported**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **correct**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E1: does not support** — E1 describes prior LSA n-gram work but does not establish the hand-crafted designation.
+- **E2: supports** — E2 directly identifies the hand-crafted extension as LSA-reduced n-gram features.
+- **E3: supports** — E3 identifies the n-gram extension as hand-crafted; the LSA qualifier is supplied by the jointly cited E2. This is contextual support, not standalone proof of that qualifier.
+
+**Paper-based reasoning:** The introduction explicitly connects the added hand-crafted features to LSA-reduced n-grams. Section 4, Conclusion (PDF p. 7), states the same relationship directly. The paper therefore supports Yes despite the conflicting Yes/No annotations.
+
+**Suggested answer:** Yes. The authors call the LSA-reduced n-gram features hand-crafted and concatenate them with the learned RNN representation.
+
+**Reference comparison:** Matches Yes, conflicts with No. The full paper resolves the substantive question in favor of Yes; both original annotations remain unchanged.
+
+**Paper locations checked:** [PDF p. 2](https://arxiv.org/pdf/1908.09919#page=2), [PDF p. 5](https://arxiv.org/pdf/1908.09919#page=5), [PDF p. 7](https://arxiv.org/pdf/1908.09919#page=7). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E1: source page 1–1
 
@@ -76,11 +114,22 @@ Generated answer: **Yes**
 
 Upstream human reference: GloVe | Alternative human answer: Yes
 
-Claim support: **pending**
+Claim support: **supported**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **correct**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E1: supports** — E1 explicitly states that pretrained GloVe embeddings were used.
+- **E3: supports** — E3 identifies the GloVe-initialized variants; jointly cited E1 establishes their pretrained provenance. Random-initialization variants are a separate comparison.
+
+**Paper-based reasoning:** The experiments section (PDF p. 2) explicitly uses pretrained GloVe embeddings. The methods also compare random initialization, so Yes means pretrained embeddings were used in some evaluated variants, not every variant.
+
+**Suggested answer:** Yes. They evaluated pretrained GloVe embeddings, including 200-dimensional tweet-trained vectors, alongside random-initialization variants.
+
+**Reference comparison:** Consistent with both GloVe and Yes references.
+
+**Paper locations checked:** [PDF p. 1](https://arxiv.org/pdf/1706.00188#page=1), [PDF p. 2](https://arxiv.org/pdf/1706.00188#page=2). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E1: source page 2–2
 
@@ -104,11 +153,23 @@ Generated answer: **Yes**
 
 Upstream human reference: No | Alternative human answer: Yes
 
-Claim support: **pending**
+Claim support: **unsupported**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **ambiguous**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E1: does not support** — E1 measures style-classifier accuracy, not whether Henry VIII as a whole is representative of Shakespeare.
+- **E2: does not support** — E2 reports stylistic dissimilarity and attribution of scenes to Fletcher; it does not support an unqualified Yes.
+- **E3: does not support** — E3 discusses divided authorship, not general representativeness.
+
+**Paper-based reasoning:** Reflective of Shakespeare in general is underspecified: presence of his style is different from representativeness of the whole play. The introduction discusses stylistic dissimilarity, and Section 5 (PDF p. 9) concludes Shakespeare-Fletcher collaboration with different scene contributions. An unqualified Yes is not supported. It would be incorrect if interpreted as saying the whole play is representative of Shakespeare alone; the wording does not justify imposing that interpretation as an unambiguous gold answer.
+
+**Suggested answer:** The play contains Shakespeare-attributed sections, but the paper concludes it is a collaboration with Fletcher; it is not a clean whole-play example of Shakespeare alone.
+
+**Reference comparison:** Matches one of conflicting Yes/No references. That token match does not resolve the vague question or establish semantic correctness.
+
+**Paper locations checked:** [PDF p. 1](https://arxiv.org/pdf/1911.05652#page=1), [PDF p. 2](https://arxiv.org/pdf/1911.05652#page=2), [PDF p. 8](https://arxiv.org/pdf/1911.05652#page=8), [PDF p. 9](https://arxiv.org/pdf/1911.05652#page=9). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E1: source page 4–4
 
@@ -139,11 +200,21 @@ Generated answer: **active learning**
 
 Upstream human reference: Vote entropy and KL divergence;  all the active learning strategies we tested do not work well with deep learning model | Alternative human answer: Entropy algorithm is the best way to build machine learning models. Vote entropy and KL divergence are helpful for the training of machine learning ensemble classifiers. | Alternative human answer: entropy
 
-Claim support: **pending**
+Claim support: **unsupported**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **incorrect**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E3: does not support** — E3 explains active learning generally and gives no comparative finding identifying the most helpful strategy.
+
+**Paper-based reasoning:** Active learning names the broad approach, not the best strategy within it. Results (PDF p. 8) identify entropy as reaching optimal performance quickest for LR and RF. Discussion (pp. 9-10) distinguishes vote entropy/KL divergence for machine-learning ensembles and the lack of benefit for the tested deep-learning models.
+
+**Suggested answer:** Entropy was most efficient for the tested LR/RF models. Vote entropy and KL divergence helped machine-learning ensembles; the tested strategies did not help the deep-learning models.
+
+**Reference comparison:** The reference alternatives include these strategy-specific qualifications. Broad active learning text can overlap them without answering the question.
+
+**Paper locations checked:** [PDF p. 8](https://arxiv.org/pdf/2003.12139#page=8), [PDF p. 9](https://arxiv.org/pdf/2003.12139#page=9), [PDF p. 10](https://arxiv.org/pdf/2003.12139#page=10). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E3: source page 2–2
 
@@ -160,11 +231,21 @@ Generated answer: **5**
 
 Upstream human reference: These include 3 classification tasks: NLI (XNLI dataset), document classification (MLDoc dataset) and intent classification, and 2 sequence tagging tasks: POS tagging and NER. | Alternative human answer: NLI (XNLI dataset); document classification (MLDoc dataset); intent classification; POS tagging; NER | Alternative human answer: NLI (XNLI dataset); document classification (MLDoc dataset);  intent classification; sequence tagging tasks: POS tagging; NER | Alternative human answer: NLI; document classification; intent classification; POS tagging; NER
 
-Claim support: **pending**
+Claim support: **unsupported**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **incorrect**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E1: does not support** — E1 contains both the count and the complete list. It supports the number literally, but not 5 as a complete answer to which tasks.
+
+**Paper-based reasoning:** Section 3, Experiments and Results (PDF p. 4), names all five tasks. The returned 5 repeats the count in the question and omits every task name. The number is true, but the answer is nonresponsive even though its cited passage contains the needed list.
+
+**Suggested answer:** Natural language inference, document classification, intent classification, part-of-speech tagging, and named entity recognition.
+
+**Reference comparison:** The human references name the tasks; the generated count does not provide them.
+
+**Paper locations checked:** [PDF p. 3](https://arxiv.org/pdf/1909.00437#page=3), [PDF p. 4](https://arxiv.org/pdf/1909.00437#page=4). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E1: source page 3–4
 
@@ -181,11 +262,21 @@ Generated answer: **char INLINEFORM3 -MS-vec**
 
 Upstream human reference: Unanswerable in the named paper
 
-Claim support: **pending**
+Claim support: **unsupported**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **incorrect**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E2: does not support** — E2 describes the proposed method and its improvements, not the embeddings compared against; the answer also preserves a formula placeholder.
+
+**Paper-based reasoning:** The returned char INLINEFORM3 -MS-vec names the proposed char n-MS-vec method, with an unresolved formula placeholder, rather than a comparison embedding. Sections 4.2-4.3 and Tables 2/5 (PDF pp. 3-4) compare ordinary learned word embeddings, a two-embedding baseline, charCNN, char n-Sum-vec and char n-SS-vec. Thus the broad question has relevant comparisons in the paper, although a narrower question about named pretrained embedding products would need clarification. The stored unanswerable label should not be treated as proof that the paper contains no embedding comparisons.
+
+**Suggested answer:** For the representation comparisons, they use baseline word embeddings, a two-embedding baseline, charCNN, char n-Sum-vec and char n-SS-vec. The returned char n-MS-vec is their proposed method.
+
+**Reference comparison:** The frozen reference marks this unanswerable. This audit flags a scope/annotation concern rather than changing the label. The emitted proposed-method name is still incorrect for the comparison question.
+
+**Paper locations checked:** [PDF p. 3](https://arxiv.org/pdf/1906.05506#page=3), [PDF p. 4](https://arxiv.org/pdf/1906.05506#page=4), [PDF p. 7](https://arxiv.org/pdf/1906.05506#page=7), [PDF p. 8](https://arxiv.org/pdf/1906.05506#page=8). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E2: source page 7–8
 
@@ -202,11 +293,21 @@ Generated answer: **Yes**
 
 Upstream human reference: Yes
 
-Claim support: **pending**
+Claim support: **unclear**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **ambiguous**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E1: unclear** — E1 says manually written and gives dataset size, but says nothing about crowd recruitment. Manual annotation alone cannot establish Yes.
+
+**Paper-based reasoning:** The cited abstract establishes manually written captions, which does not establish crowdsourcing. Section 3.2 (PDF pp. 4-5) describes five native Vietnamese writers aged 22-25 who received sports/vocabulary training, using the web annotation tool in Section 3.1. The explicit Mechanical Turk statement on p. 4 concerns source MS-COCO captions, not the newly written Vietnamese captions. The paper does not clearly establish crowd recruitment for UIT-ViIC, so an unqualified Yes is not verified; this is insufficient evidence, not proof that crowdsourcing was impossible.
+
+**Suggested answer:** UIT-ViIC captions were written by five trained Vietnamese writers using a web tool. The paper explicitly attributes Mechanical Turk to MS-COCO; it does not clearly say UIT-ViIC used crowdsourcing.
+
+**Reference comparison:** Matches the upstream Yes, but the paper does not clearly establish that characterization of the Vietnamese annotation process.
+
+**Paper locations checked:** [PDF p. 1](https://arxiv.org/pdf/2002.00175#page=1), [PDF p. 4](https://arxiv.org/pdf/2002.00175#page=4), [PDF p. 5](https://arxiv.org/pdf/2002.00175#page=5). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E1: source page 1–1
 
@@ -223,11 +324,23 @@ Generated answer: **Croatian**
 
 Upstream human reference: Unanswerable in the named paper
 
-Claim support: **pending**
+Claim support: **unsupported**
 
-Answer correctness: **pending**
+Answer correctness against the paper: **ambiguous**
 
-Citation verdicts: **pending**
+Citation verdicts:
+
+- **E1: does not support** — E1 discusses translation/interlanguage examples, not the language in which research was published.
+- **E2: does not support** — E2 lists institutions and language departments; these do not establish publication language.
+- **E3: does not support** — E3 locates a Croatian research group historically; nationality/location is not publication language.
+
+**Paper-based reasoning:** This research could refer to the current paper or the historical studies it describes. The current paper is in English (PDF p. 1 onward). Its bibliography includes Croatian-language titles for historical works (pp. 11-13), but title language alone does not establish the publication language of every referenced study. None of the three emitted citations establishes publication language. Croatian therefore has no demonstrated citation support and is incorrect if the question means the current paper; the historical referent remains underspecified.
+
+**Suggested answer:** The current paper is written in English. If the question concerns a historical publication, specify which one; the cited passages do not establish its publication language.
+
+**Reference comparison:** The frozen reference marks the question unanswerable. That is consistent with ambiguity about historical research, but does not override the observable English language of the current paper.
+
+**Paper locations checked:** [PDF p. 1](https://arxiv.org/pdf/1908.08917#page=1), [PDF p. 2](https://arxiv.org/pdf/1908.08917#page=2), [PDF p. 4](https://arxiv.org/pdf/1908.08917#page=4), [PDF p. 5](https://arxiv.org/pdf/1908.08917#page=5), [PDF p. 11](https://arxiv.org/pdf/1908.08917#page=11), [PDF p. 12](https://arxiv.org/pdf/1908.08917#page=12), [PDF p. 13](https://arxiv.org/pdf/1908.08917#page=13). Page numbers are one-based PDF pages, not necessarily printed page labels.
 
 ### E1: source page 2–2
 

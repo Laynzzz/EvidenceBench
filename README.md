@@ -15,8 +15,9 @@ ablation, three seeds, immutable runs, checkpoint reload checks and local MLflow
 
 **Status:** retrieval/reranking and local service are verified; final held-out scoring is complete. Generated answers are experimental: the
 50-question development run has **0.118 token F1, 18% coverage and 22 failures**.
-Human semantic-support review of generated claims remains an unmet plan criterion;
-a [nine-answer review form](docs/claim-review.md) is prepared.
+The [paper-based AI review of all nine emitted test answers](docs/claim-review.md)
+is complete: two correct, four incorrect and three ambiguous; two have complete
+citation support. Independent human semantic review remains an unmet plan criterion.
 The optional agent is deferred. See [status](docs/status.md) and
 [final evaluation](reports/final-evaluation.md).
 

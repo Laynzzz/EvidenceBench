@@ -59,4 +59,15 @@ Additional reproduction evidence: `artifacts/verification/training-reproduction.
 
 Recorded demo: `reports/demo.cast` and `reports/demo.html`; actual local HTTP output, 12 timestamped events. Static HTML/event/JavaScript checks passed; browser policy blocked local-file visual preview. Bundle: `reports/artifact-bundle.json`, 201 files / 32,055,932 bytes; all hashes and restored corpus/index/checkpoint verified.
 
-The remaining human gate has a concrete [nine-answer review form](claim-review.md). It is explicitly pending, not agent-filled human judgment.
+The completed [paper-based AI review](claim-review.md) covers all nine emitted
+answers and 16 citations. [Structured judgments](../reports/claim-review-ai.json)
+include original prediction/source hashes, PDF pages, citation IDs, rationales and
+suggested answers. Two answers are clearly correct and supported; the audit is
+descriptive and does not satisfy independent human review. The existing artifact
+bundle predates this audit; these review files are tracked separately in Git.
+
+Audit verification on 2026-09-19 checked all nine PDF hashes, nine prediction/reference
+matches, 16 citation IDs, verdict totals and unchanged original excerpts. Results:
+`artifacts/verification/paper-review/verification.json`. The existing
+`python scripts/verify_reports.py` check also passed after the review, confirming
+the captured ranking/answer/bootstrap/development reports still reproduce.

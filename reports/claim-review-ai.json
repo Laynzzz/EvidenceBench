@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-09-19",
+  "reviewer": "Codex",
+  "review_type": "ai_assisted_paper_audit",
+  "human_reviewed": false,
+  "status": "complete",
+  "use": "descriptive_post_test_only_no_tuning",
+  "protocol": "docs/claim-review.md#method-and-limits",
+  "scope": {
+    "test_queries": 100,
+    "answered": 9,
+    "refused": 46,
+    "failures": 45,
+    "citation_links": 16
+  },
+  "provenance": {
+    "predictions": "artifacts/answers/20260919T025411Z-64ae20540f/predictions.jsonl",
+    "predictions_sha256": "7c8aaad68cb578d8e8a184c511c2a9319f2b9163c340437fc108656820ae1cd3",
+    "source_manifest": "data/manifests/qasper-v1.json",
+    "source_manifest_sha256": "568c1676c28bbd833dacbc60c347933f4f91638dd08487c8aaba6dbc752ea765"
+  },
+  "counts": {
+    "claim_support": {
+      "unsupported": 6,
+      "supported": 2,
+      "unclear": 1
+    },
+    "paper_answer_correctness": {
+      "incorrect": 4,
+      "correct": 2,
+      "ambiguous": 3
+    },
+    "citations": {
+      "does not support": 11,
+      "supports": 4,
+      "unclear": 1
+    }
+  },
+  "cases": [
+    {
+      "number": 1,
+      "query_id": "e9a0a69eacd554141f56b60ab2d1912cc33f526a",
+      "question": "In the paper 'Sentiment Analysis of Code-Mixed Indian Languages: An Overview of SAIL_Code-Mixed Shared Task @ICON-2017', what was the baseline?",
+      "generated_answer": "0.331",
+      "upstream_reference": "Random labeling | Alternative human answer:  randomly assigning any of the sentiment values to each of the test instances",
+      "upstream_answerable": true,
+      "claim_support": "unsupported",
+      "paper_answer_correctness": "incorrect",
+      "rationale": "The question asks for the baseline method. Section 4.1 (PDF p. 5) specifies random sentiment-label assignment. The returned 0.331 is a real Hindi-English macro F-score, also reported in Table 2 and the conclusion, but does not identify that method. This is a nonresponsive extraction, not a fabricated number.",
+      "suggested_paper_answer": "The baseline randomly assigned sentiment labels to test instances; its macro F-scores were 0.331 for Hindi-English and 0.339 for Bengali-English.",
+      "reference_comparison": "The paper supports the random-labeling references; the generated score does not answer their method question.",
+      "source": {
+        "document_id": "qasper-1803.06745",
+        "url": "https://arxiv.org/pdf/1803.06745",
+        "local_pdf": "data/raw/qasper/1803.06745.pdf",
+        "sha256": "ad44098687d693f3d144be1783570de2415760fbd5aa4bc99329c2d27aad0725",
+        "reviewed_pdf_pages": [
+          5,
+          6,
+          8
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E1",
+          "evidence_id": "750ee7dbec733ad32260d15cd6e0f9773e800348b49f74ca8642c2e0769b0a28",
+          "page": 8,
+          "page_end": 8,
+          "verdict": "does not support",
+          "rationale": "E1 establishes the baseline score, but a score alone does not answer which baseline method was used."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "query_id": "36cb7ebdd39e0b8a89ff946d3a3aef8a76a6bb43",
+      "question": "In the paper 'Gender Prediction from Tweets: Improving Neural Representations with Hand-Crafted Features', Are LSA-reduced n-gram features considered hand-crafted features?",
+      "generated_answer": "Yes",
+      "upstream_reference": "Yes | Alternative human answer: No",
+      "upstream_answerable": true,
+      "claim_support": "supported",
+      "paper_answer_correctness": "correct",
+      "rationale": "The introduction explicitly connects the added hand-crafted features to LSA-reduced n-grams. Section 4, Conclusion (PDF p. 7), states the same relationship directly. The paper therefore supports Yes despite the conflicting Yes/No annotations.",
+      "suggested_paper_answer": "Yes. The authors call the LSA-reduced n-gram features hand-crafted and concatenate them with the learned RNN representation.",
+      "reference_comparison": "Matches Yes, conflicts with No. The full paper resolves the substantive question in favor of Yes; both original annotations remain unchanged.",
+      "source": {
+        "document_id": "qasper-1908.09919",
+        "url": "https://arxiv.org/pdf/1908.09919",
+        "local_pdf": "data/raw/qasper/1908.09919.pdf",
+        "sha256": "8207c36388d5e893858b74fb28159902cfbd2a1ed980efdb2743b24c1bf4a5fd",
+        "reviewed_pdf_pages": [
+          2,
+          5,
+          7
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E1",
+          "evidence_id": "559945c2c28180439979be43d7f20449135f154a8b17fccb7d1de1009678b7f5",
+          "page": 1,
+          "page_end": 1,
+          "verdict": "does not support",
+          "rationale": "E1 describes prior LSA n-gram work but does not establish the hand-crafted designation."
+        },
+        {
+          "alias": "E2",
+          "evidence_id": "1b48556e83a1b5450a706095378b076cfd407d1012320a0eb47b050fa66b8660",
+          "page": 2,
+          "page_end": 2,
+          "verdict": "supports",
+          "rationale": "E2 directly identifies the hand-crafted extension as LSA-reduced n-gram features."
+        },
+        {
+          "alias": "E3",
+          "evidence_id": "def06409c4496b86a965ca821c4011ae8ebaad922473345648db14d89e88fde0",
+          "page": 5,
+          "page_end": 5,
+          "verdict": "supports",
+          "rationale": "E3 identifies the n-gram extension as hand-crafted; the LSA qualifier is supplied by the jointly cited E2. This is contextual support, not standalone proof of that qualifier."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "query_id": "452e2d7d7d9e1bb4914903479cd7caff9f6fae42",
+      "question": "In the paper 'Deep Learning for Hate Speech Detection in Tweets', Are pretrained embeddings used?",
+      "generated_answer": "Yes",
+      "upstream_reference": "GloVe | Alternative human answer: Yes",
+      "upstream_answerable": true,
+      "claim_support": "supported",
+      "paper_answer_correctness": "correct",
+      "rationale": "The experiments section (PDF p. 2) explicitly uses pretrained GloVe embeddings. The methods also compare random initialization, so Yes means pretrained embeddings were used in some evaluated variants, not every variant.",
+      "suggested_paper_answer": "Yes. They evaluated pretrained GloVe embeddings, including 200-dimensional tweet-trained vectors, alongside random-initialization variants.",
+      "reference_comparison": "Consistent with both GloVe and Yes references.",
+      "source": {
+        "document_id": "qasper-1706.00188",
+        "url": "https://arxiv.org/pdf/1706.00188",
+        "local_pdf": "data/raw/qasper/1706.00188.pdf",
+        "sha256": "d3ee2661fbca1a5843d88bc42beec367a950c7748a2125631a7a886996aeacc1",
+        "reviewed_pdf_pages": [
+          1,
+          2
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E1",
+          "evidence_id": "014573e860d8a103ec67513a2cd7085643d262f8b856d8ecd1fef5bbec7fab85",
+          "page": 2,
+          "page_end": 2,
+          "verdict": "supports",
+          "rationale": "E1 explicitly states that pretrained GloVe embeddings were used."
+        },
+        {
+          "alias": "E3",
+          "evidence_id": "e7da36e93a8bc41a2d58c2bed6cb7fb1ee15227fbafcdc79f97d8a3636071ee3",
+          "page": 1,
+          "page_end": 2,
+          "verdict": "supports",
+          "rationale": "E3 identifies the GloVe-initialized variants; jointly cited E1 establishes their pretrained provenance. Random-initialization variants are a separate comparison."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "query_id": "2301424672cb79297cf7ad95f23b58515e4acce8",
+      "question": "In the paper 'Relative contributions of Shakespeare and Fletcher in Henry VIII: An Analysis Based on Most Frequent Words and Most Frequent Rhythmic Patterns', Is Henry VIII reflective of Shakespeare in general?",
+      "generated_answer": "Yes",
+      "upstream_reference": "No | Alternative human answer: Yes",
+      "upstream_answerable": true,
+      "claim_support": "unsupported",
+      "paper_answer_correctness": "ambiguous",
+      "rationale": "Reflective of Shakespeare in general is underspecified: presence of his style is different from representativeness of the whole play. The introduction discusses stylistic dissimilarity, and Section 5 (PDF p. 9) concludes Shakespeare-Fletcher collaboration with different scene contributions. An unqualified Yes is not supported. It would be incorrect if interpreted as saying the whole play is representative of Shakespeare alone; the wording does not justify imposing that interpretation as an unambiguous gold answer.",
+      "suggested_paper_answer": "The play contains Shakespeare-attributed sections, but the paper concludes it is a collaboration with Fletcher; it is not a clean whole-play example of Shakespeare alone.",
+      "reference_comparison": "Matches one of conflicting Yes/No references. That token match does not resolve the vague question or establish semantic correctness.",
+      "source": {
+        "document_id": "qasper-1911.05652",
+        "url": "https://arxiv.org/pdf/1911.05652",
+        "local_pdf": "data/raw/qasper/1911.05652.pdf",
+        "sha256": "32e6c8f61b11a412a246742cd11de1f6a60a6e331f53e3ac42f1ac6ef5fd12e0",
+        "reviewed_pdf_pages": [
+          1,
+          2,
+          8,
+          9
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E1",
+          "evidence_id": "1bfce30a9f3e00414b06c9fa607b45ed92b303f5b33c5e18894c6489fb99bd46",
+          "page": 4,
+          "page_end": 4,
+          "verdict": "does not support",
+          "rationale": "E1 measures style-classifier accuracy, not whether Henry VIII as a whole is representative of Shakespeare."
+        },
+        {
+          "alias": "E2",
+          "evidence_id": "630b17f9ff35cfd2fdb7d9758065bcdb9b0ba0f0a1a215a549bd77c57941944a",
+          "page": 1,
+          "page_end": 2,
+          "verdict": "does not support",
+          "rationale": "E2 reports stylistic dissimilarity and attribution of scenes to Fletcher; it does not support an unqualified Yes."
+        },
+        {
+          "alias": "E3",
+          "evidence_id": "e3d8bb37dfa684f47016a71d07a193531503163b0ec4bda90db865a2afa7cc77",
+          "page": 2,
+          "page_end": 2,
+          "verdict": "does not support",
+          "rationale": "E3 discusses divided authorship, not general representativeness."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "query_id": "0aca0a208a1e28857fab44e397dc7880e010dbca",
+      "question": "In the paper 'Integrating Crowdsourcing and Active Learning for Classification of Work-Life Events from Tweets', Which was the most helpful strategy?",
+      "generated_answer": "active learning",
+      "upstream_reference": "Vote entropy and KL divergence;  all the active learning strategies we tested do not work well with deep learning model | Alternative human answer: Entropy algorithm is the best way to build machine learning models. Vote entropy and KL divergence are helpful for the training of machine learning ensemble classifiers. | Alternative human answer: entropy",
+      "upstream_answerable": true,
+      "claim_support": "unsupported",
+      "paper_answer_correctness": "incorrect",
+      "rationale": "Active learning names the broad approach, not the best strategy within it. Results (PDF p. 8) identify entropy as reaching optimal performance quickest for LR and RF. Discussion (pp. 9-10) distinguishes vote entropy/KL divergence for machine-learning ensembles and the lack of benefit for the tested deep-learning models.",
+      "suggested_paper_answer": "Entropy was most efficient for the tested LR/RF models. Vote entropy and KL divergence helped machine-learning ensembles; the tested strategies did not help the deep-learning models.",
+      "reference_comparison": "The reference alternatives include these strategy-specific qualifications. Broad active learning text can overlap them without answering the question.",
+      "source": {
+        "document_id": "qasper-2003.12139",
+        "url": "https://arxiv.org/pdf/2003.12139",
+        "local_pdf": "data/raw/qasper/2003.12139.pdf",
+        "sha256": "0953aa423d9322de234b976a5584aabf718960165fe0aa708028145b1de679a8",
+        "reviewed_pdf_pages": [
+          8,
+          9,
+          10
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E3",
+          "evidence_id": "1eba376f485287e53c10c665709aba6da24e947cf38799ac14bceea5458a9414",
+          "page": 2,
+          "page_end": 2,
+          "verdict": "does not support",
+          "rationale": "E3 explains active learning generally and gives no comparative finding identifying the most helpful strategy."
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "query_id": "b70e4c49300dc3eab18e907ab903afd2a0c6075a",
+      "question": "In the paper 'Evaluating the Cross-Lingual Effectiveness of Massively Multilingual Neural Machine Translation', What are the five downstream tasks?",
+      "generated_answer": "5",
+      "upstream_reference": "These include 3 classification tasks: NLI (XNLI dataset), document classification (MLDoc dataset) and intent classification, and 2 sequence tagging tasks: POS tagging and NER. | Alternative human answer: NLI (XNLI dataset); document classification (MLDoc dataset); intent classification; POS tagging; NER | Alternative human answer: NLI (XNLI dataset); document classification (MLDoc dataset);  intent classification; sequence tagging tasks: POS tagging; NER | Alternative human answer: NLI; document classification; intent classification; POS tagging; NER",
+      "upstream_answerable": true,
+      "claim_support": "unsupported",
+      "paper_answer_correctness": "incorrect",
+      "rationale": "Section 3, Experiments and Results (PDF p. 4), names all five tasks. The returned 5 repeats the count in the question and omits every task name. The number is true, but the answer is nonresponsive even though its cited passage contains the needed list.",
+      "suggested_paper_answer": "Natural language inference, document classification, intent classification, part-of-speech tagging, and named entity recognition.",
+      "reference_comparison": "The human references name the tasks; the generated count does not provide them.",
+      "source": {
+        "document_id": "qasper-1909.00437",
+        "url": "https://arxiv.org/pdf/1909.00437",
+        "local_pdf": "data/raw/qasper/1909.00437.pdf",
+        "sha256": "e52a42dd3d711f38887b4df278ef023cba262deb42fd96db2a6f13a6648b5ea4",
+        "reviewed_pdf_pages": [
+          3,
+          4
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E1",
+          "evidence_id": "46fd8d3b5f3df9efd201eac4cff6cbadf8cdcd3465d5ffd1858eff56d50a361e",
+          "page": 3,
+          "page_end": 4,
+          "verdict": "does not support",
+          "rationale": "E1 contains both the count and the complete list. It supports the number literally, but not 5 as a complete answer to which tasks."
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "query_id": "3dad6b792044018bb968ac0d0fd4628653f9e4b7",
+      "question": "In the paper 'Character n-gram Embeddings to Improve RNN Language Models', Which word embeddings do they compare against?",
+      "generated_answer": "char INLINEFORM3 -MS-vec",
+      "upstream_reference": "Unanswerable in the named paper",
+      "upstream_answerable": false,
+      "claim_support": "unsupported",
+      "paper_answer_correctness": "incorrect",
+      "rationale": "The returned char INLINEFORM3 -MS-vec names the proposed char n-MS-vec method, with an unresolved formula placeholder, rather than a comparison embedding. Sections 4.2-4.3 and Tables 2/5 (PDF pp. 3-4) compare ordinary learned word embeddings, a two-embedding baseline, charCNN, char n-Sum-vec and char n-SS-vec. Thus the broad question has relevant comparisons in the paper, although a narrower question about named pretrained embedding products would need clarification. The stored unanswerable label should not be treated as proof that the paper contains no embedding comparisons.",
+      "suggested_paper_answer": "For the representation comparisons, they use baseline word embeddings, a two-embedding baseline, charCNN, char n-Sum-vec and char n-SS-vec. The returned char n-MS-vec is their proposed method.",
+      "reference_comparison": "The frozen reference marks this unanswerable. This audit flags a scope/annotation concern rather than changing the label. The emitted proposed-method name is still incorrect for the comparison question.",
+      "source": {
+        "document_id": "qasper-1906.05506",
+        "url": "https://arxiv.org/pdf/1906.05506",
+        "local_pdf": "data/raw/qasper/1906.05506.pdf",
+        "sha256": "ba758d565548846c87c4549530057617547943694851fd0dfdf7ccaa8bf7713a",
+        "reviewed_pdf_pages": [
+          3,
+          4,
+          7,
+          8
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E2",
+          "evidence_id": "f815c8db259cd39a9487f6444cadb2f615ead7c76703faab854793c2511c576a",
+          "page": 7,
+          "page_end": 8,
+          "verdict": "does not support",
+          "rationale": "E2 describes the proposed method and its improvements, not the embeddings compared against; the answer also preserves a formula placeholder."
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "query_id": "b424ad7f9214076b963a0077d7345d7bb5a7a205",
+      "question": "In the paper 'UIT-ViIC: A Dataset for the First Evaluation on Vietnamese Image Captioning', Do they use crowdsourcing for the captions?",
+      "generated_answer": "Yes",
+      "upstream_reference": "Yes",
+      "upstream_answerable": true,
+      "claim_support": "unclear",
+      "paper_answer_correctness": "ambiguous",
+      "rationale": "The cited abstract establishes manually written captions, which does not establish crowdsourcing. Section 3.2 (PDF pp. 4-5) describes five native Vietnamese writers aged 22-25 who received sports/vocabulary training, using the web annotation tool in Section 3.1. The explicit Mechanical Turk statement on p. 4 concerns source MS-COCO captions, not the newly written Vietnamese captions. The paper does not clearly establish crowd recruitment for UIT-ViIC, so an unqualified Yes is not verified; this is insufficient evidence, not proof that crowdsourcing was impossible.",
+      "suggested_paper_answer": "UIT-ViIC captions were written by five trained Vietnamese writers using a web tool. The paper explicitly attributes Mechanical Turk to MS-COCO; it does not clearly say UIT-ViIC used crowdsourcing.",
+      "reference_comparison": "Matches the upstream Yes, but the paper does not clearly establish that characterization of the Vietnamese annotation process.",
+      "source": {
+        "document_id": "qasper-2002.00175",
+        "url": "https://arxiv.org/pdf/2002.00175",
+        "local_pdf": "data/raw/qasper/2002.00175.pdf",
+        "sha256": "a5e663e5a319149b141a37fcca27b1218e0c89c2d9020e3a15a2230aa3ccf477",
+        "reviewed_pdf_pages": [
+          1,
+          4,
+          5
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E1",
+          "evidence_id": "e55a17bc9015aa5d4902c528a1f43aa53a0742fb48355527609fe26ac73896dc",
+          "page": 1,
+          "page_end": 1,
+          "verdict": "unclear",
+          "rationale": "E1 says manually written and gives dataset size, but says nothing about crowd recruitment. Manual annotation alone cannot establish Yes."
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "query_id": "de346decb1fbca8746b72c78ea9d1208902f5e0a",
+      "question": "In the paper 'A Lost Croatian Cybernetic Machine Translation Program', What language was this research published in?",
+      "generated_answer": "Croatian",
+      "upstream_reference": "Unanswerable in the named paper",
+      "upstream_answerable": false,
+      "claim_support": "unsupported",
+      "paper_answer_correctness": "ambiguous",
+      "rationale": "This research could refer to the current paper or the historical studies it describes. The current paper is in English (PDF p. 1 onward). Its bibliography includes Croatian-language titles for historical works (pp. 11-13), but title language alone does not establish the publication language of every referenced study. None of the three emitted citations establishes publication language. Croatian therefore has no demonstrated citation support and is incorrect if the question means the current paper; the historical referent remains underspecified.",
+      "suggested_paper_answer": "The current paper is written in English. If the question concerns a historical publication, specify which one; the cited passages do not establish its publication language.",
+      "reference_comparison": "The frozen reference marks the question unanswerable. That is consistent with ambiguity about historical research, but does not override the observable English language of the current paper.",
+      "source": {
+        "document_id": "qasper-1908.08917",
+        "url": "https://arxiv.org/pdf/1908.08917",
+        "local_pdf": "data/raw/qasper/1908.08917.pdf",
+        "sha256": "a1cd45fce98b5799a52b7da687911bd21b9ea415c580a7e88e526ea157d49da8",
+        "reviewed_pdf_pages": [
+          1,
+          2,
+          4,
+          5,
+          11,
+          12,
+          13
+        ]
+      },
+      "citations": [
+        {
+          "alias": "E1",
+          "evidence_id": "7b33ccdb476776add7a093fe255807c6cf67c2676b1a0d5f7f1d639aed3d1436",
+          "page": 2,
+          "page_end": 2,
+          "verdict": "does not support",
+          "rationale": "E1 discusses translation/interlanguage examples, not the language in which research was published."
+        },
+        {
+          "alias": "E2",
+          "evidence_id": "49ec96d3aeda5585e6924f8438efa652aa6625f8ec796bc5b200c7b041879b4f",
+          "page": 4,
+          "page_end": 5,
+          "verdict": "does not support",
+          "rationale": "E2 lists institutions and language departments; these do not establish publication language."
+        },
+        {
+          "alias": "E3",
+          "evidence_id": "ae06e05262aa1a3a0cd07aabdbfcd59f98ef9f90a11476663bca5f8f48258a56",
+          "page": 2,
+          "page_end": 2,
+          "verdict": "does not support",
+          "rationale": "E3 locates a Croatian research group historically; nationality/location is not publication language."
+        }
+      ]
+    }
+  ]
+}
