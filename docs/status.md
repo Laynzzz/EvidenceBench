@@ -10,7 +10,7 @@ production-ready or fully complete.
 | 1. Corpus and reproducible data | Verified | 191 papers, 5,908 paragraphs, byte-identical rebuild and frozen selection |
 | 2. Labels and baselines | Verified | 200/50/100 human-labeled questions; baselines; 36 dev failures inspected |
 | 3. Adaptation | Verified | 50/100/200 learning curve, hard/random ablation, three seeds, reload parity and failed-run retention |
-| 4. Grounded answers | Implemented and measured; acceptance incomplete | V3 dev F1 .1184, coverage 18%, 22/50 failures; human generated-claim support audit missing |
+| 4. Grounded answers | Implemented and measured; acceptance incomplete | Fresh validation candidate F1 .0754 versus .0120, zero versus 21 failures; promotion gate fails on abstention and citation precision; human support review missing |
 | 5. Deployment | Verified locally | Five routes, real answer/refusal, DB outage, rollback, concurrency, fresh environment, 50-query Linux parity |
 | 6. MLE focus | Verified within local scope | Controlled hard negatives, exact mining cache, three-seed sensitivity and failure analysis; agent deferred |
 | 7. Final evaluation / portfolio | Verified experimental handoff | Five-system ranking, 100-question answers, restored artifact bundle and recorded API demo; human claim audit remains missing |
@@ -145,3 +145,25 @@ Current verification: 89 tests pass including real PostgreSQL; Ruff/format, sche
 typing and all original-cycle report checks pass. Real read-only preflight is ready
 and confirms no fresh attempt exists. [Readiness evidence](../reports/fresh-validation-readiness.json)
 pins the current sources, inputs and cached models. No real fresh-model result exists.
+
+## Fresh validation — completed; candidate not promoted
+
+The user approved the prepared single attempt, recorded in
+[authorization](../reports/fresh-validation-authorization.json). All 50 fresh
+validation questions completed and saved artifacts passed the verifier, including
+the supervisor's successful exit. [Results](../reports/fresh-validation.md): F1
+.0120 to .0754, failures 21 to zero, unanswerable answers 3/12 to 6/12, citation-ID
+precision .364 to .321. Two of four predeclared criteria fail; no promotion occurs.
+
+This used 86 generation calls, 3,161 document embeddings, 50 query embeddings and
+2,500 reranker pairs in 358.109 seconds, with $0 external spend. The allowance is
+consumed. The job exited and its index, predictions, counters and manifests remain
+local. Frozen source/config/data/model hashes and earlier reports verify unchanged.
+No new source implementation was needed during execution or reporting.
+
+Offline diagnosis finds evidence recall .9737 at depth 50, .4934 in reranked top
+three and .3487 after threshold-based packing. These ID diagnostics suggest a
+future evidence-selection/abstention study, not a validated fix. The fresh final
+test remains unused and independent human claim review remains outstanding.
+Phase 4 is still incomplete; the original experimental local release remains.
+Earlier preparation sections above are historical records, superseded by this result.

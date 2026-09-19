@@ -115,3 +115,15 @@ Fresh runner preparation: [commands and boundaries](fresh-validation-runner.md),
 `python -m evidencebench.evaluation.fresh_runner` performs read-only preflight;
 `scripts/verify_fresh_validation.py --run RUN_PATH` verifies saved results after
 an approved run. The current record is preparation evidence, not model evaluation.
+
+Fresh validation execution: [result and failed gate](../reports/fresh-validation.md),
+[structured verification and hashes](../reports/fresh-validation.json),
+[supplementary diagnostics](../reports/fresh-validation-diagnostics.json), and
+[authorization](../reports/fresh-validation-authorization.json). All 50 paired
+questions completed under `artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e`.
+The candidate's F1 .0754 versus .0120 and zero versus 21 failures do not qualify it
+for promotion: unanswerable answers increase and citation-ID precision declines.
+The read-only verifier reproduces metrics and checks provenance, usage and supervisor
+completion. Source commit is `529a74d`; the new reports preserve its frozen snapshot.
+This is validation evidence on new families, not a final-test or semantic-quality
+claim. The final test remains unused, and historical ZIPs predate this comparison.

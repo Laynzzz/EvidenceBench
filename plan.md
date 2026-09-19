@@ -563,3 +563,14 @@ synthetic models, with read-only preflight on the actual artifacts/caches. It ke
 one shared retrieval pass, durable compute caps, a single attempt and an external
 watchdog, and verifies saved results without inference. [Execution instructions](docs/fresh-validation-runner.md)
 are ready. No fresh model run has occurred; the new allowance remains pending.
+
+The user subsequently approved and completed the single fresh-validation comparison.
+[Verified results](reports/fresh-validation.md): constrained F1 .0754 versus control
+.0120, zero versus 21 failures, but unanswerable answers increase from 3/12 to 6/12
+and citation-ID precision declines from .364 to .321. The predeclared gate fails;
+the candidate is not promoted. One attempt consumed 86 generation calls and 5.97
+minutes of local CPU time at $0 external spend. The fresh final test remains unused.
+Evidence recall drops from .9737 among 50 candidates to .4934 in the reranked top
+three and .3487 after packing. Future evidence-selection and abstention work needs
+its own design and allowance; this diagnosis is not permission to retune or rerun.
+Independent human generated-claim review and Phase 4 acceptance remain outstanding.

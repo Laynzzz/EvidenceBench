@@ -300,3 +300,25 @@ Synthetic end-to-end tests and real artifact preflight establish readiness, whil
 model performance remains unmeasured. See [runner details](fresh-validation-runner.md).
 Optional later exercise: explain why both generators need the same retrieved
 context and why a gate should fail when citation precision is undefined.
+
+## Learning from the completed fresh comparison
+
+The real comparison now demonstrates why format reliability and answer quality
+need separate measurements. Constrained spans eliminate 21 failures and raise F1
+from .0120 to .0754, yet answer six unanswerable questions instead of three and
+lower citation-ID precision. The fixed gate rejects promotion even though the most
+visible metrics improve. Both systems refused six of 12 unanswerable questions;
+three control failures became answers, so zero failures is not better abstention.
+
+The saved Python/JSON evaluation traces also separate retrieval depth from packing.
+Gold-evidence recall is .9737 at depth 50, .4934 in reranked top three and .3487 after
+the threshold. This directs future investigation toward selection and abstention,
+but is not a causal experiment proving a fix. Citation IDs alone cannot tell whether
+the supporting sentence survives clipping or whether the generated claim is true.
+
+The completed run's hashes, metrics, paired contexts, usage and supervisor exit were
+verified without additional inference. A post-hoc family bootstrap supports the
+observed F1 delta on this sample, while leaving the failed gate intact. Read
+[the result](../reports/fresh-validation.md) and the existing Python
+`evaluation/fresh_comparison.py` for the scoring flow. Optional later exercise:
+explain why promotion can correctly fail when both F1 and failure rate improve.

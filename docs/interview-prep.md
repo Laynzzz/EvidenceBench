@@ -173,3 +173,22 @@ read-only checks of the real artifacts establish implementation readiness. Actua
 model execution and fresh quality measurements await the new compute allowance.”
 See [the runner](fresh-validation-runner.md). This distinction matters more than
 presenting test-fixture scores as model results.
+
+## What happened when you tested the candidate on fresh validation families?
+
+“On 50 fresh validation questions, constrained spans raised token F1 from .0120 to
+.0754 and eliminated 21 failures. I did not promote the candidate: it answered six
+of 12 unanswerable questions versus three for the control, and citation-ID precision
+fell from .364 to .321. Those violated criteria frozen before the run.”
+
+Follow-up: where would you investigate next? “Recall was .9737 among 50 candidates,
+.4934 among reranked top three, and .3487 after threshold-based packing. I would
+design a separate development experiment for evidence selection and abstention.
+These diagnostics do not prove a fix, and I kept the final test unused.”
+
+Follow-up: how much compute and how trustworthy is the result? “One approved
+attempt used 86 generation calls and about six minutes on local CPU, with no paid
+services. Saved outputs verify against source/model/data hashes and the supervisor
+exit. Token F1 and citation IDs remain proxies; generated claims still need
+independent human review.” See [the verified report](../reports/fresh-validation.md).
+This agent-assisted work is implemented; personal interview practice remains later.

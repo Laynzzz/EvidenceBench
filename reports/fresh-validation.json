@@ -1,0 +1,106 @@
+{
+  "status": "verified",
+  "queries": 50,
+  "metrics": {
+    "control": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 11,
+      "failure_count": 21,
+      "answer_coverage": 0.22,
+      "answerable_token_f1": 0.012025255446308078,
+      "false_refusal_rate": 0.3157894736842105,
+      "answerable_failure_rate": 0.47368421052631576,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.36363636363636365,
+      "upstream_citation_recall": 0.06896551724137931,
+      "p50_ms": 3098.6144499620423,
+      "p95_ms": 10283.844715001758,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "constrained": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 28,
+      "failure_count": 0,
+      "answer_coverage": 0.56,
+      "answerable_token_f1": 0.07542449567049109,
+      "false_refusal_rate": 0.42105263157894735,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.5,
+      "upstream_citation_precision": 0.32142857142857145,
+      "upstream_citation_recall": 0.15517241379310345,
+      "p50_ms": 2097.253099986119,
+      "p95_ms": 3533.3005700551435,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "passes_validation_gate": false,
+    "evidence_recall": {
+      "pre_ids": 0.9736842105263158,
+      "post_ids": 0.9736842105263158,
+      "packed_ids": 0.34868421052631576
+    },
+    "evidence_recall_definition": "Macro recall over answerable questions; pre/post rerank depth 50; packed IDs after threshold and top-3 selection. ID presence does not prove support survives character clipping."
+  },
+  "usage": {
+    "constrained_calls": 32,
+    "constrained_invocations": 32,
+    "control_calls": 54,
+    "control_invocations": 32,
+    "document_embeddings": 3161,
+    "query_embeddings": 50,
+    "reranker_pairs": 2500,
+    "reserved_tokens": 7448
+  },
+  "run": "artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e",
+  "code_revision": "529a74da0b9bc2f4f4e3ecf39472d6c13c010e2a",
+  "snapshot_sha256": "bddf14849d135ddf84528d5d986e5f51966a45e9d5d9d69e5f6395f2e966da68",
+  "supervisor": {
+    "elapsed_seconds": 358.10899999999674,
+    "exit_code": 0,
+    "reason": "process_exit"
+  },
+  "external_spend_usd": 0,
+  "attempts": 1,
+  "generation_calls": 86,
+  "gate": {
+    "f1_strictly_improves": true,
+    "failures_do_not_increase": true,
+    "unanswerable_answers_do_not_increase": false,
+    "citation_precision_does_not_decline": false
+  },
+  "decision": "reject_candidate_for_promotion; final test remains unused",
+  "diagnostics": "reports/fresh-validation-diagnostics.json",
+  "verification": {
+    "fresh_run": "verified",
+    "original_reports": "verified",
+    "cycle2": "verified",
+    "cycle3": "verified",
+    "reservation_and_old_citation_diagnostics": "verified"
+  },
+  "artifact_sha256": {
+    "artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e/manifest.json": "dc6066897e2074517395f74f72d7f2413e6e1d9a8ab7b39bba2a1dadd92f12f5",
+    "artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e/metrics.json": "bd000291d410953be8e40038c29360d67fae647aea17286ca5d7df57db70a18d",
+    "artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e/usage.json": "72775f924315fa1c769227ba5343a48b5354e30c77f1121a7d5f655b85608baf",
+    "artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e/control.jsonl": "185df9180f510217a57abc2ba3ae98fb07781eae0f23b1efc5d90c4f7e12c115",
+    "artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e/constrained.jsonl": "444a82082d066fa07ac3e32ff6f6deada3cf97fe497a387b08071f88bfc93643",
+    "artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e/source.zip": "c75bf868849915bca76e05c0f5268e67636ff523f8dcdb578cd1a9394c473a00",
+    "artifacts/fresh-validation-v1/runs/20260919T233427Z-ddfba1b48e/config.json": "bddf14849d135ddf84528d5d986e5f51966a45e9d5d9d69e5f6395f2e966da68",
+    "artifacts/fresh-validation-v1/attempt.json": "7ad1489444733fc74223c04b2168fbd8407178cbb3d35407091fd66a4f5a0735",
+    "artifacts/fresh-validation-v1/termination.json": "d90e3c87b9b74f57624dc68abbb7a184ed797cd0c7b1efb1fa9076792863c7e6",
+    "reports/fresh-validation-authorization.json": "02dbd2a4744d8e1e6839e5b3aff0e5681ba3acee8c49af9b00fd0f47d0f36a5a",
+    "reports/fresh-validation-diagnostics.json": "b7d862d345cca3496b95858e74678b3f25b9df548273c5329e320b482c6bb374"
+  },
+  "limitations": [
+    "Filtered validation sample, not official QASPER leaderboard or final-test result.",
+    "Token F1 and citation-ID overlap do not establish semantic correctness.",
+    "Supplementary diagnostics and bootstrap were chosen after the run and do not modify its predeclared gate.",
+    "Latency includes shared retrieval plus individual generation on this local CPU, not production load.",
+    "reserved_tokens is a maximum-output-token reservation, not actual emitted tokens.",
+    "No independent human review of these generated answers has been performed."
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "paired_answerable_f1": [
+    {
+      "query_id": "7bd6a6ec230e1efb27d691762cc0674237dc7967",
+      "family_id": "qasper-1808.09029",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "family_id": "qasper-1806.05513",
+      "baseline": 0.23076923076923078,
+      "candidate": 0.56
+    },
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "family_id": "qasper-1806.05513",
+      "baseline": 0.0,
+      "candidate": 0.15384615384615385
+    },
+    {
+      "query_id": "91e326fde8b0a538bc34d419541b5990d8aae14b",
+      "family_id": "qasper-1710.03348",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "bb3267c3f0a12d8014d51105de5d81686afe5f1b",
+      "family_id": "qasper-1811.08603",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "family_id": "qasper-1811.08603",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "family_id": "qasper-1610.08815",
+      "baseline": 0.0,
+      "candidate": 0.1
+    },
+    {
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "family_id": "qasper-1610.08815",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "family_id": "qasper-2002.04181",
+      "baseline": 0.0,
+      "candidate": 0.125
+    },
+    {
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "family_id": "qasper-2002.04181",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "b962cc817a4baf6c56150f0d97097f18ad6cd9ed",
+      "family_id": "qasper-1810.12196",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "c571deefe93f0a41b60f9886db119947648e967c",
+      "family_id": "qasper-1810.12085",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "family_id": "qasper-1909.09587",
+      "baseline": 0.0,
+      "candidate": 0.10810810810810811
+    },
+    {
+      "query_id": "ef396a34436072cb3c40b0c9bc9179fee4a168ae",
+      "family_id": "qasper-1705.04153",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "family_id": "qasper-1610.09225",
+      "baseline": 0.0,
+      "candidate": 0.2608695652173913
+    },
+    {
+      "query_id": "4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",
+      "family_id": "qasper-1610.09225",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "family_id": "qasper-1703.10344",
+      "baseline": 0.03571428571428571,
+      "candidate": 0.03571428571428571
+    },
+    {
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "family_id": "qasper-1703.10344",
+      "baseline": 0.0,
+      "candidate": 0.14285714285714285
+    },
+    {
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "family_id": "qasper-1906.07662",
+      "baseline": 0.0,
+      "candidate": 0.43636363636363634
+    },
+    {
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "family_id": "qasper-1906.07662",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "03ebb29c08375afc42a957c7b2dc1a42bed7b713",
+      "family_id": "qasper-1909.05359",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "435570723b37ee1f5898c1a34ef86a0b2e8701bb",
+      "family_id": "qasper-1801.10293",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "family_id": "qasper-1801.06482",
+      "baseline": 0.19047619047619047,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "family_id": "qasper-1801.06482",
+      "baseline": 0.0,
+      "candidate": 0.13333333333333333
+    },
+    {
+      "query_id": "b8d7d055ddb94f5826a9aad7479b4a92a9c8a2f0",
+      "family_id": "qasper-1612.03226",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "family_id": "qasper-1612.03226",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "family_id": "qasper-1907.03187",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "family_id": "qasper-1910.05603",
+      "baseline": 0.0,
+      "candidate": 0.2
+    },
+    {
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "family_id": "qasper-1612.02482",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "family_id": "qasper-1805.07133",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "family_id": "qasper-1805.07133",
+      "baseline": 0.0,
+      "candidate": 0.2857142857142857
+    },
+    {
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "family_id": "qasper-1912.08960",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "45e9533586199bde19313cd43b3d0ecadcaf7a33",
+      "family_id": "qasper-1809.09194",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "family_id": "qasper-1910.14076",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "family_id": "qasper-1910.14076",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "family_id": "qasper-2002.07306",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "d571e0b0f402a3d36fb30d70cdcd2911df883bc7",
+      "family_id": "qasper-2002.07306",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "family_id": "qasper-1909.02027",
+      "baseline": 0.0,
+      "candidate": 0.32432432432432434
+    }
+  ],
+  "supplementary_posthoc_family_bootstrap": {
+    "delta": 0.06339924022418303,
+    "low": 0.028204771097628246,
+    "high": 0.10064370149000901,
+    "family_count": 26,
+    "query_count": 38,
+    "samples": 2000,
+    "seed": 42,
+    "warning": null
+  },
+  "variants": {
+    "control": {
+      "statuses": {
+        "refused": 18,
+        "answered": 11,
+        "failure": 21
+      },
+      "nonanswer_reasons": {
+        "insufficient_evidence": 18,
+        "invalid_generation": 21
+      },
+      "answerable_false_refusals": 12,
+      "unanswerable_answers": 3,
+      "citation_categories": {
+        "at_least_one_gold_citation": 4,
+        "gold_packed_but_other_cited": 3,
+        "no_gold_paragraph_packed": 1,
+        "unanswerable_answer": 3
+      },
+      "retrieval_refused_answerable": 12,
+      "reranked_top3_macro_recall_before_threshold": 0.4934210526315789,
+      "answerable_with_any_gold_in_packed": 17
+    },
+    "constrained": {
+      "statuses": {
+        "refused": 22,
+        "answered": 28
+      },
+      "nonanswer_reasons": {
+        "insufficient_evidence": 18,
+        "model_refusal": 4
+      },
+      "answerable_false_refusals": 16,
+      "unanswerable_answers": 6,
+      "citation_categories": {
+        "gold_packed_but_other_cited": 7,
+        "no_gold_paragraph_packed": 6,
+        "at_least_one_gold_citation": 9,
+        "unanswerable_answer": 6
+      },
+      "retrieval_refused_answerable": 12,
+      "reranked_top3_macro_recall_before_threshold": 0.4934210526315789,
+      "answerable_with_any_gold_in_packed": 17
+    }
+  },
+  "f1_change_counts": {
+    "improved": 12,
+    "equal": 25,
+    "worse": 1
+  }
+}
