@@ -1,0 +1,5 @@
+* text eol=lf
+# Public label bytes were frozen with CRLF; preserve their exact checksum on checkout.
+data/labels/qasper-v1/*.jsonl -text
+*.png binary
+*.pdf binary

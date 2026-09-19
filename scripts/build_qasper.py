@@ -297,7 +297,7 @@ def main():
     for split in TARGETS:
         rows = [q for q in all_queries if q.split == split]
         (labels_dir / f"{split}.jsonl").write_text(
-            "\n".join(q.model_dump_json() for q in rows) + "\n", encoding="utf-8"
+            "\n".join(q.model_dump_json() for q in rows) + "\n", encoding="utf-8", newline="\r\n"
         )
     (output / "alignment-audit.json").write_bytes(canonical(audit))
     Path("data/manifests/qasper-v1.json").write_bytes(canonical(corpus.model_dump(mode="json")))
