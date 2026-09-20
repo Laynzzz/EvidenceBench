@@ -139,3 +139,8 @@ The quality gate fails, so the checker is not promoted. One approved attempt use
 verify. The [runner guide](docs/gpu-support-runner.md) explains reproduction.
 The preparation's 125 software tests passed, including PostgreSQL. Further model
 runs require new approval; answer-quality acceptance remains incomplete.
+
+The [saved-answer audit](reports/gpu-answer-audit.md) finds that source copying did
+not establish useful answers: 19 of 22 answerable cases had better reference-overlap
+spans available. Provisional agent review and a blank independent-human review
+packet are provided; labels and failed acceptance gates remain unchanged.

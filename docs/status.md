@@ -279,3 +279,13 @@ are now verified. Launch verification and separate read-only verification both
 pass. The preparation's 125-test result remains historical software-test evidence.
 The allowance is consumed; no retry or new model work is authorized. Final test
 remains unused and Phase 4 independent human review/quality acceptance remain open.
+
+## Saved-answer audit — completed
+
+[Audit](../reports/gpu-answer-audit.md): all 28 source matches are not proof of
+answer quality; 19 of 22 answerable outputs have better-overlap eligible spans
+available. Eight new tests pass (133 total including PostgreSQL). The assistant
+draft identifies 20 nonresponsive, six partial, one unclear and one label-conflict
+case; these are not human labels. A masked review packet and blank response
+template are ready. No model run, label edit or final-test access occurred.
+The next comparison will isolate larger-model answer selection on fixed inputs.

@@ -174,3 +174,12 @@ attempt: 28 calls, 24 rejections, four retained answers, no failures, failed qua
 gate. The pinned model loaded and ran on RTX 4090; this does not establish general
 training capacity or an accepted answer system. The preparation/readiness records
 above remain historical. No final-test access or independent human review occurred.
+
+## Offline answer diagnosis
+
+[Audit narrative](../reports/gpu-answer-audit.md) and [recomputable data](../reports/gpu-answer-audit.json)
+separate source matching, gold-ID overlap and token F1 from assistant judgments.
+[Draft review](../reports/gpu-answer-review-draft.json) is not human evaluation.
+The [masked packet](../reports/gpu-answer-review-packet.md) and
+[blank response template](../reports/gpu-answer-human-review-template.json)
+prepare independent review without claiming it occurred.

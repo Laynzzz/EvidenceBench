@@ -1,0 +1,150 @@
+{
+  "reviewer_type": "agent_draft",
+  "scope": "Post-hoc assistant review of 28 saved answers after seeing model verdicts and benchmark references; not blind or independent human review. All cases use saved cited evidence; case 28 additionally uses local paper text. No new model inference run.",
+  "label_changes": 0,
+  "extra_source_sha256": {
+    "data/raw/qasper-fresh-v1/1903.07406.pages.json": "92ae745e71ed5fbd82d92f5dddde18f4acbf994e35442956f791263d64ce51f8"
+  },
+  "cases": [
+    {
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "response_assessment": "partial",
+      "rationale": "Names two classifiers explicitly described in E3, but omits other requested baseline components. Rejection can reflect the full-answer requirement; it is not evidence that these two names are unsupported."
+    },
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "response_assessment": "nonresponsive",
+      "rationale": "An unfinished introduction about social-network data does not describe the corpus experiments."
+    },
+    {
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "response_assessment": "nonresponsive",
+      "rationale": "Reports an F1 score and starts another sentence instead of identifying baseline features."
+    },
+    {
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "response_assessment": "nonresponsive",
+      "rationale": "A generalization F1 score does not identify the state-of-the-art models requested."
+    },
+    {
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "response_assessment": "partial",
+      "rationale": "Mentions CCR, the requested measure, but continues into an unfinished definition. The cited text contains the complete name and definition."
+    },
+    {
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "response_assessment": "nonresponsive",
+      "rationale": "Describes crowdworker location and ends before naming a platform; it does not identify NLP toolkits."
+    },
+    {
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "response_assessment": "unclear",
+      "rationale": "The question is underspecified and the supplied human reference describes training rather than what zero-shot learning learns. The saved answer is also unfinished. Do not resolve this ambiguity into a checker-error label."
+    },
+    {
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "response_assessment": "partial",
+      "rationale": "Identifies Microsoft stock-price data in the cited passage, but omits tweet-derived features and dataset detail present in the human references."
+    },
+    {
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "response_assessment": "partial",
+      "rationale": "B1 is a real baseline identifier in the citation, but gives no method description and omits other baselines. A supported identifier is not a complete explanation."
+    },
+    {
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "response_assessment": "nonresponsive",
+      "rationale": "The fragment The novelty value of does not name the KL-divergence feature, although it is stated earlier in the citation."
+    },
+    {
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "response_assessment": "partial",
+      "rationale": "Identifies acquiring a large Vietnamese corpus as one challenge, but stops mid-clause and omits the other challenges."
+    },
+    {
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "response_assessment": "nonresponsive",
+      "rationale": "Names social-media platforms when asked for cyberbullying topics. The cited text distinguishes platforms from topics, and truncates the concluding topic list."
+    },
+    {
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "response_assessment": "nonresponsive",
+      "rationale": "Describes the EGL sampling method and 100 candidate labels rather than the speech dataset."
+    },
+    {
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "response_assessment": "nonresponsive",
+      "rationale": "Gives this submission paper's baseline score, not the methods of the best competition systems. It ends in an incomplete next sentence."
+    },
+    {
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "response_assessment": "nonresponsive",
+      "rationale": "Repeats language model combination technique from the question without identifying the technique, such as the decoding-lattice combination named by the human references."
+    },
+    {
+      "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+      "response_assessment": "nonresponsive",
+      "rationale": "The 0.73 BLEU gain is attributed in the citation to Word2Vec embeddings, not a measurement of attention-mechanism efficacy. This is a relation mismatch despite a matching number."
+    },
+    {
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "response_assessment": "nonresponsive",
+      "rationale": "None is one endpoint of an adequacy rating scale, not how human judgments were assembled. The citation explicitly mentions annotators, sample size and rating scales."
+    },
+    {
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "response_assessment": "nonresponsive",
+      "rationale": "BPE is the experimental segmentation method applied to baseline data, not an identification of the baseline translation systems."
+    },
+    {
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "response_assessment": "partial",
+      "rationale": "The parallel-corpus type is consistent with E1, but the answer omits the dataset name requested; the named WIT3 reference is absent from this cited paragraph."
+    },
+    {
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "response_assessment": "nonresponsive",
+      "rationale": "An unfinished sentence about diagnostic results omits even the LRCN1u model named later in the same short citation."
+    },
+    {
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "response_assessment": "nonresponsive",
+      "rationale": "Describes the proposed few-shot approach rather than the comparison baseline models."
+    },
+    {
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "response_assessment": "nonresponsive",
+      "rationale": "The availability of an implementation does not identify the corrected training dataset."
+    },
+    {
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "response_assessment": "nonresponsive",
+      "rationale": "A general statement about low-resource applications does not list the transfer languages."
+    },
+    {
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "response_assessment": "nonresponsive",
+      "rationale": "Gives the 1,200-query out-of-scope subset and a dangling Table fragment rather than the 23,700 total explicitly available in the same citation."
+    },
+    {
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "response_assessment": "nonresponsive",
+      "rationale": "A statement about using a definition as a reference point does not describe the authors' background."
+    },
+    {
+      "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+      "response_assessment": "nonresponsive",
+      "rationale": "A generic claim about dataset size does not identify a dataset used by these authors."
+    },
+    {
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "response_assessment": "nonresponsive",
+      "rationale": "Table does not identify any inflection types."
+    },
+    {
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "response_assessment": "responsive_label_conflict",
+      "rationale": "TF-IDF is explicitly named as the feature representation in the citation and in the locally extracted paper, page 3 section B. The saved upstream unanswerable label appears inconsistent with this question/evidence. The answer also includes unnecessary classifiers wording. Flag for independent adjudication; do not relabel or rescore."
+    }
+  ]
+}

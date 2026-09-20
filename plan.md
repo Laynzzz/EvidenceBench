@@ -620,3 +620,10 @@ Unanswerable answers improve from six to one, but F1/answer retention and citati
 precision gates fail. It is not promoted. The run used 28 calls and 38.765 seconds
 on RTX 4090 at $0 external spend. The allowance is consumed; further model runs
 need new approval. Final test and Phase 4's unmet acceptance criteria are unchanged.
+
+A subsequent [offline answer audit](reports/gpu-answer-audit.md) separates copied
+text from responsiveness. All 28 outputs match source spans; 13 reach the 15-word
+cap, and 19 of 22 answerable cases have higher-F1 spans available in packed text.
+The draft review flags one possible label conflict without altering scores/labels.
+133 software tests pass. Next prepare a fixed-input 7B answer-selector comparison;
+its execution needs a new allowance. Independent human review remains pending.

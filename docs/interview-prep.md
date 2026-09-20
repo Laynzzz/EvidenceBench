@@ -271,3 +271,16 @@ text and source papers, separating poor evidence packing, answer generation and
 checker mistakes. Scaling the checker changed refusal behavior but did not meet
 acceptance. [Evidence](../reports/gpu-support-development.md) is development-only;
 independent human review and personal interview practice remain outstanding.
+
+## Correcting an interpretation after error analysis
+
+**Does a large F1 drop prove the checker rejected useful answers?** No. An offline
+review found many copied but nonresponsive spans. Token overlap credits shared
+words without checking the requested relation or quantity. The frozen gate still
+fails; this diagnosis changes the explanation, not the benchmark result.
+
+**How would you isolate the next bottleneck?** Keep retrieval, packing, question
+wording and output contract fixed, then compare a stronger answer selector. A
+gold-aware span ceiling suggests opportunity, but is never a deployable policy.
+One possible label conflict is flagged for adjudication without retroactive
+rescores. See the [audit](../reports/gpu-answer-audit.md).

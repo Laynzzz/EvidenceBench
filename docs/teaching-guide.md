@@ -440,3 +440,16 @@ original answer pipeline, and hardware/model/runtime differences prevent a clean
 CPU/GPU speedup claim. Keep the failed run and its consumed allowance. Optional
 exercise: explain how a gate can pass abstention safety while failing usefulness,
 and why filtering cannot recover evidence lost before generation.
+
+## Diagnosing the generator before scaling the checker
+
+The [offline audit](../reports/gpu-answer-audit.md) shows why constrained decoding
+can produce valid source copies that do not answer a question. The source-span
+trie permits prefixes ending at up to 15 words; many grammatical or incomplete
+fragments are therefore valid outputs. Thirteen answers reach the cap. A gold-aware
+best-span F1 calculation is a diagnostic ceiling only; using it to choose answers
+would leak references. Nineteen of 22 answerable outputs have a better-overlap
+span in the existing input, motivating a fixed-input generator comparison.
+Eight new regression tests protect denominator/roster/citation checks; 133 total
+tests pass. Optional exercise: explain how the wrong subset size can receive
+positive token F1 despite failing the actual question.
