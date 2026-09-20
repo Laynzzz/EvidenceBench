@@ -655,3 +655,15 @@ selection of the requested information and complete answers over mere source
 copying. Suggested corrections do not change frozen predictions or scores.
 This completes the requested assistant review; it does not fulfill or waive the
 independent-human criterion. No new model run or final-test access occurred.
+
+The next [complete-answer experiment](docs/grounded-answer-proposal.md) is prepared.
+It keeps the same 7B model and saved evidence but replaces 15-word source-span
+selection with an up-to-80-word answer and one to three exact supporting quotations.
+This jointly changes prompt, decoding contract and token/time limits; it does not
+isolate answer length. The eight previous gates remain and three new conditions
+compare F1, citation-ID precision and answer retention against the saved 7B result.
+All 170 software tests pass, including PostgreSQL. Code review's baseline-provenance
+gap was fixed with a regression test. Read-only preflight passes without inference.
+One attempt of at most 32 calls/12,288 reserved tokens/20 minutes/$0 external spend
+requires fresh approval. Serving, frozen labels, independent-human acceptance and
+the unused final test remain unchanged.

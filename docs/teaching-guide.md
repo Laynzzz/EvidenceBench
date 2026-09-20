@@ -510,3 +510,26 @@ preserves comparability when a paper contradicts a benchmark annotation. The
 verification record checks roster, exact outputs/citations, page ranges and hashes;
 it cannot certify the assistant's semantic judgments. Optional later exercise:
 explain why case 11's copied pronoun changes the subject and invalidates support.
+
+## Complete answers with auditable quotations
+
+The experimental Python contract in `scripts/grounded_answer_contract.py` allows
+an answer to combine evidence and attaches exact quotes. It runs in both the CPU
+validator and isolated GPU worker without importing the serving package. The
+worker receives only the question and evidence; scoring labels remain in the parent.
+This gives the generator room to supply lists and method names while preserving
+the original retrieval comparison. The production API remains unchanged.
+
+The alternative was longer extractive spans. Allowing paraphrases can improve
+responsiveness, but introduces unsupported-inference risk: a true quote does not
+entail every answer attached to it. The output therefore says
+`exact_quote_presence_only`, not semantically verified. Strict JSON, known IDs,
+unique keys and bounded body quotes catch structural failures; paper review still
+addresses meaning. Invalid output counts as failure, not a successful refusal.
+
+Twenty-six synthetic checks and all 170 software tests pass, including PostgreSQL.
+Code review found that hashing a verified run was insufficient if a report could
+select another baseline path; the runner now binds both paths to the same run.
+Read-only preparation verifies cached files without model execution. The proposed
+32-call allowance is new and unconsumed. Optional later exercise: explain why an
+80-word correct response can have lower token F1 than a short partial response.

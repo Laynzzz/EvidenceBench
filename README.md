@@ -159,3 +159,10 @@ documented rubric. Each case includes source pages and a suggested correction.
 These are assistant judgments on emitted development answers, not independent
 human labels. Source copying often misses the requested information; original
 scores and benchmark labels remain unchanged. The candidate remains development-only.
+
+A [complete-answer comparison](docs/grounded-answer-proposal.md) is prepared using
+the same 7B model and saved evidence, with up to 80-word answers and exact supporting
+quotations. Quote presence is checked separately from semantic correctness. All
+170 software tests pass, including PostgreSQL. Its [runner](docs/grounded-answer-runner.md)
+requires new approval for one 32-call, 20-minute local attempt; no new model run has
+occurred. [Readiness](reports/grounded-answer-readiness.json) binds the exact snapshot.

@@ -212,3 +212,14 @@ cover all 24 emitted answers and 16 source PDFs. Three answers are adequate,
 hashes and original answers/citations are preserved. Six PDF pages were visually
 checked for table layout and source ambiguities. No new model evaluation occurred;
 this non-blinded assistant review does not constitute independent human labels.
+
+## Prepared complete-answer comparison
+
+[Proposal](grounded-answer-proposal.md), [runner](grounded-answer-runner.md),
+[readiness](../reports/grounded-answer-readiness.json) and
+[synthetic tests](../tests/unit/test_grounded_answer.py) cover a new answer contract
+using fixed saved evidence and model weights. Twenty-six new tests cover strict
+JSON, quote limits, reference exclusion, budgets, tampering, baseline binding,
+failure/refusal separation and full-cohort reconstruction. All 170 tests pass with
+PostgreSQL. Preflight is read-only; no real experiment or semantic quality result
+exists for this candidate. The requested allowance remains unapproved.

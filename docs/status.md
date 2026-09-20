@@ -339,3 +339,19 @@ review, not independent human evaluation; Phase 4 is still incomplete.
 The user's requested review is finished, with no new model calls, training or
 final-test access. Future preparation can address answer selection and completeness;
 any new model experiment still requires a concrete proposal and fresh approval.
+
+## Complete-answer comparison — prepared; execution awaits approval
+
+- [x] Implement complete-answer JSON and exact source-body quotation validation.
+- [x] Keep worker inputs free of old answers, references and annotation labels.
+- [x] Preserve 18 threshold refusals and all 50 scoring rows.
+- [x] Verify 26 new synthetic checks and all 170 software tests, including PostgreSQL.
+- [x] Fix the code-review finding binding baseline selection to the verified prior run.
+- [x] Verify cached source/model/runtime artifacts and 32 payloads without inference.
+- [ ] Obtain new explicit approval for the single bounded GPU attempt.
+
+[Proposal](grounded-answer-proposal.md), [runner](grounded-answer-runner.md) and
+[readiness](../reports/grounded-answer-readiness.json) describe one 32-call,
+12,288-token, 20-minute experiment at $0 external spend. Exact quotes prove source
+presence only. No generated-answer quality claim, training, new inference, service
+change or final-test access occurred. Phase 4 is still incomplete.

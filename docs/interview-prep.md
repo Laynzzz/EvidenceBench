@@ -331,3 +331,20 @@ dataset identity, plus completeness of lists and sentences. Some corrections nee
 more than the frozen 15-word extractive contract. Treat that as a separately
 designed change, with approval before a new model run. The review and corrections
 were created with agent assistance; personal explanation practice remains future work.
+
+## Preparing the complete-answer experiment
+
+**What does exact quote validation guarantee?** The returned quote occurs in the
+cited passage body. It does not establish that the answer follows from it or that
+all requested information is present. The candidate exposes that narrower claim
+explicitly and keeps semantic review separate. [Contract](../scripts/grounded_answer_contract.py).
+
+**Is this an isolated answer-length ablation?** No. The prompt, decoding constraints,
+output budget and format change together. The weights and retrieved evidence stay
+fixed. We can compare protocols, but cannot attribute any improvement solely to length.
+
+**How was reproducibility checked before compute?** Synthetic tests exercise complete
+50-row reconstruction, one-use authorization, quotation bounds, mutated inputs and
+unchanged refusals. A reviewer found a baseline-path binding gap, fixed before any
+new model run. All 170 software tests pass; model quality remains unmeasured until
+the user approves the [bounded experiment](grounded-answer-proposal.md).
