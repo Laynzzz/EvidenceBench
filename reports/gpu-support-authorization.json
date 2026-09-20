@@ -1,0 +1,20 @@
+{
+  "status": "approved",
+  "scope": "gpu-support-v1",
+  "snapshot_sha256": "dea56f72d2ad0dd731bd360dac28e199c1e4c4ecf9a01803e0d5f4d5ccbffb58",
+  "user_approval_text": "approved",
+  "recorded_at_utc": "2026-09-20T02:50:20.161481+00:00",
+  "limits": {
+    "attempts": 1,
+    "generation_calls": 28,
+    "reserved_output_tokens": 224,
+    "worker_deadline_seconds": 1200,
+    "external_spend_usd": 0
+  },
+  "exclusions": [
+    "training",
+    "final-test access",
+    "retry",
+    "deployment"
+  ]
+}

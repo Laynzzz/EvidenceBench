@@ -34,3 +34,9 @@ no model was loaded and no GPU tensor workload occurred. The original `.venv` is
 still CPU-only. See the [pending proposal](gpu-support-proposal.md) and
 [execution guide](gpu-support-runner.md). GPU compatibility and memory fit remain
 unverified until the next explicitly approved attempt.
+
+The user subsequently approved and completed that exact GPU attempt.
+[Results](../reports/gpu-support-development.md) verify 28 calls and successful
+CUDA/BF16 model execution within 38.765 seconds. The quality gate fails and the
+allowance is consumed. The original preparation records remain historical; no
+additional model work is authorized by this successful execution.

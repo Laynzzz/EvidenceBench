@@ -612,3 +612,11 @@ binds the proposed execution; no real GPU model loading or inference occurred.
 Execution awaits explicit approval for one attempt, at most 28 calls and 20
 minutes, $0 external spend. This does not complete Phase 4 or independent human
 review, and does not authorize training or the unused final test.
+
+The subsequently approved GPU support-checker attempt completed and
+[verified](reports/gpu-support-development.md). It rejected 24 of 28 answers,
+leaving four answers, F1 .013068, citation-ID precision .25 and zero failures.
+Unanswerable answers improve from six to one, but F1/answer retention and citation
+precision gates fail. It is not promoted. The run used 28 calls and 38.765 seconds
+on RTX 4090 at $0 external spend. The allowance is consumed; further model runs
+need new approval. Final test and Phase 4's unmet acceptance criteria are unchanged.

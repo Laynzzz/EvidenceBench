@@ -1,6 +1,9 @@
 # GPU support-checker execution
 
-The [proposal](gpu-support-proposal.md) defines one pending experiment. The
+The [proposal](gpu-support-proposal.md) defined the now-completed single experiment.
+Its allowance is consumed; [verified results](../reports/gpu-support-development.md)
+fail the quality gate. The proposal and readiness record remain frozen historical
+preparation records, and the existing attempt prevents another execution. The
 [asset manifest](../reports/gpu-support-assets.json) pins the 14 downloaded files
 (15,242,807,270 bytes), revision and installed runtime. The isolated environment
 uses PyTorch 2.10.0+cu128, Transformers 4.57.6 and Accelerate 1.12.0; the existing
@@ -67,4 +70,5 @@ approval binding, durable call accounting, single attempts and timeout terminati
 Ruff, formatting, schema typing, dependency checks and class imports pass. Existing
 CPU reports and the offline selection audit still verify. Follow-up code review
 found the three identified defects addressed and no remaining blocking defect.
-These are software and artifact checks; no real GPU model execution has occurred.
+Those preparation checks preceded real GPU execution. The subsequent completed
+attempt and its failed quality gate are documented in the results linked above.

@@ -423,3 +423,20 @@ frozen base address them. Real GPU execution awaits approval. Read the
 [gpu runner guide](gpu-support-runner.md) for reproduction and limits. Optional
 later exercise: explain why an unchanged answer-quality gate can still overfit
 when the same development sample is inspected repeatedly.
+
+## GPU result: reliable execution can still fail product acceptance
+
+The approved [GPU comparison](../reports/gpu-support-development.md) ran without
+errors but retained only four answers. Answering fewer unanswerable questions is
+helpful, yet suppressing most answers also lowers coverage and token F1. The
+predeclared retention guards prevent presenting near-universal refusal as success.
+Question answerability labels do not prove a particular answer is supported by
+the snippets actually supplied. Human semantic review remains separate.
+
+The unchanged scripts loaded the 7B model on RTX 4090 and produced 28 valid labels.
+Saved-artifact verification recomputed the complete 50-question comparison twice
+without additional inference. Checker p50/p95 (.135/.207 seconds) exclude the
+original answer pipeline, and hardware/model/runtime differences prevent a clean
+CPU/GPU speedup claim. Keep the failed run and its consumed allowance. Optional
+exercise: explain how a gate can pass abstention safety while failing usefulness,
+and why filtering cannot recover evidence lost before generation.

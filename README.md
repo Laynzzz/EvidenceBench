@@ -132,9 +132,10 @@ The completed paper review and updated handoff documents are packaged separately
 [claim-review-bundle.json](reports/claim-review-bundle.json). The supplement preserves
 the original reproduction archive and includes per-file hashes for verification.
 
-A [GPU support-checker comparison](docs/gpu-support-proposal.md) is prepared with
-a separate CUDA environment and pinned Qwen2.5-7B files. The
-[runner guide](docs/gpu-support-runner.md) distinguishes read-only preflight from
-approval-gated inference. 125 software tests pass, including real PostgreSQL; no
-real GPU model loading or evaluation has occurred. The next 28-call attempt
-requires explicit approval. Answer-quality acceptance remains incomplete.
+The [GPU support-checker comparison](reports/gpu-support-development.md) completed
+on the RTX 4090: 24 of 28 answers were rejected, leaving four answers and F1 .0131.
+The quality gate fails, so the checker is not promoted. One approved attempt used
+28 calls and 38.765 seconds of worker time at $0 external spend; saved results
+verify. The [runner guide](docs/gpu-support-runner.md) explains reproduction.
+The preparation's 125 software tests passed, including PostgreSQL. Further model
+runs require new approval; answer-quality acceptance remains incomplete.

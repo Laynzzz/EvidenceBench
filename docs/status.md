@@ -262,3 +262,20 @@ attempt exists. Next execution requires the user's explicit per-run approval:
 one attempt, at most 28 calls/224 reserved output tokens/20 minutes, $0 external
 spend. The 100-question final test remains unused; Phase 4 acceptance and
 independent human generated-claim review remain incomplete.
+
+## GPU support checker — completed; not promoted
+
+The user approved the exact prepared snapshot and the single RTX 4090 evaluation
+completed. [Verified results](../reports/gpu-support-development.md): 24 UNSUPPORTED,
+four SUPPORTED, zero failures. Answers to unanswerable questions fall from six to
+one, but answer coverage falls from 56% to 8%, F1 from .075424 to .013068 and
+citation-ID precision from .321429 to .25. Four of seven gate conditions pass;
+F1 retention, answer retention and citation precision fail. No promotion occurs.
+
+One attempt used 28 calls, 224 reserved and 84 actual output tokens, 38.765 seconds
+of worker time and $0 external spend. Checker-only p50/p95 are .135/.207 seconds,
+not serving latency. Model loading and inference on the pinned CUDA/BF16 setup
+are now verified. Launch verification and separate read-only verification both
+pass. The preparation's 125-test result remains historical software-test evidence.
+The allowance is consumed; no retry or new model work is authorized. Final test
+remains unused and Phase 4 independent human review/quality acceptance remain open.

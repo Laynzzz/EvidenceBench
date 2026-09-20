@@ -1,0 +1,406 @@
+{
+  "status": "verified",
+  "run": "artifacts/gpu-support-v1/runs/20260920T025107Z-d0f904ba5f",
+  "metrics": {
+    "control": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 11,
+      "failure_count": 21,
+      "answer_coverage": 0.22,
+      "answerable_token_f1": 0.012025255446308078,
+      "false_refusal_rate": 0.3157894736842105,
+      "answerable_failure_rate": 0.47368421052631576,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.36363636363636365,
+      "upstream_citation_recall": 0.06896551724137931,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "unfiltered": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 28,
+      "failure_count": 0,
+      "answer_coverage": 0.56,
+      "answerable_token_f1": 0.07542449567049109,
+      "false_refusal_rate": 0.42105263157894735,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.5,
+      "upstream_citation_precision": 0.32142857142857145,
+      "upstream_citation_recall": 0.15517241379310345,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "filtered": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 4,
+      "failure_count": 0,
+      "answer_coverage": 0.08,
+      "answerable_token_f1": 0.013067996077149395,
+      "false_refusal_rate": 0.9210526315789473,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.9166666666666666,
+      "missing_refusal_rate": 0.08333333333333333,
+      "upstream_citation_precision": 0.25,
+      "upstream_citation_recall": 0.017241379310344827,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "gate": {
+      "f1_exceeds_control": true,
+      "failures_do_not_increase": true,
+      "no_new_checker_failures": true,
+      "unanswerable_answers_do_not_increase": true,
+      "citation_precision_not_lower": false,
+      "retain_80_percent_f1": false,
+      "retain_half_answers": false
+    },
+    "passes_development_gate": false,
+    "scope": "Reused validation development experiment; not independent semantic review"
+  },
+  "usage": {
+    "call_limit": 28,
+    "calls": 28,
+    "reserved_tokens": 224
+  },
+  "supervisor": {
+    "elapsed_seconds": 38.76499999995576,
+    "exit_code": 0,
+    "reason": "process_exit"
+  },
+  "verified_at_utc": "2026-09-20T02:52:50.845028+00:00",
+  "prepared_commit": "b5747c1",
+  "snapshot_sha256": "dea56f72d2ad0dd731bd360dac28e199c1e4c4ecf9a01803e0d5f4d5ccbffb58",
+  "decisions": [
+    {
+      "elapsed_ms": 1099.697700003162,
+      "generation_calls": 1,
+      "input_sha256": "5aa463ee8a1f72b5f31e9e11e3ceb1b9bd2e85925be277c28b9c0abf83e10f52",
+      "output_tokens": 3,
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 185.25229999795556,
+      "generation_calls": 1,
+      "input_sha256": "4d3644b4b5c4ec7601fa96d878bd1c4e196a0dd60299ad4d2a87e114f7ae8ea1",
+      "output_tokens": 3,
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 176.97620001854375,
+      "generation_calls": 1,
+      "input_sha256": "76e10ed644df5a742c418c19a76070250a2072fab89b0d1f417c1b2ca8ec421d",
+      "output_tokens": 3,
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 162.07829996710643,
+      "generation_calls": 1,
+      "input_sha256": "0a118d4912c33038d114e5d01acbc20fc71b1844c9e46ba15e53654840757ae2",
+      "output_tokens": 3,
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 128.50669998442754,
+      "generation_calls": 1,
+      "input_sha256": "99c749838a9c34574ccd49afe3d6c3bb6415efa87cadd21f02f2b5542bc49333",
+      "output_tokens": 3,
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 126.77329999860376,
+      "generation_calls": 1,
+      "input_sha256": "ee93b8938da5a3726551ecdfef2228ad2ce66e63a59ee78ced1f40b3ffd223e2",
+      "output_tokens": 3,
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 139.83960001496598,
+      "generation_calls": 1,
+      "input_sha256": "8713d6e475ee34e547c66dea7d1f542a60a27e73a8923224ff641e8760476c47",
+      "output_tokens": 3,
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 150.92809998895973,
+      "generation_calls": 1,
+      "input_sha256": "f6276b610989d617e8af9515d54c81e0de735ad3aa7b93665f26f76d8a0ef113",
+      "output_tokens": 3,
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "raw": "SUPPORTED",
+      "reason": null,
+      "verdict": "SUPPORTED"
+    },
+    {
+      "elapsed_ms": 126.402500027325,
+      "generation_calls": 1,
+      "input_sha256": "9e0a15151bd161353b795f034f3dd00c8c3ac49d6ae2e0f57c90468faec36934",
+      "output_tokens": 3,
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "raw": "SUPPORTED",
+      "reason": null,
+      "verdict": "SUPPORTED"
+    },
+    {
+      "elapsed_ms": 171.03820003103465,
+      "generation_calls": 1,
+      "input_sha256": "c3a610711504bfc6e68917d2a9e00b2f5603190c505fb3700e20a97d46f2d5ab",
+      "output_tokens": 3,
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 193.11870000092313,
+      "generation_calls": 1,
+      "input_sha256": "f8c8134ada70cf5c50b47c3956d487491d0b849d108abb8bea61f6d6c863d145",
+      "output_tokens": 3,
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 210.29670001007617,
+      "generation_calls": 1,
+      "input_sha256": "bfcf6f15af3f1dd80c0bf9d7f4b2ad5dd38ebc1f752c2e886d04160c0743add1",
+      "output_tokens": 3,
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 167.54190000938252,
+      "generation_calls": 1,
+      "input_sha256": "464d69724520800b7a49169cd54e461cfbc9daa697c7d97c8333f5780618d161",
+      "output_tokens": 3,
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 149.52450001146644,
+      "generation_calls": 1,
+      "input_sha256": "9d00fc9b3c7f59d135d905bf7d6737eea0633ae21cb1022cad5fd02966b59100",
+      "output_tokens": 3,
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 129.6265999553725,
+      "generation_calls": 1,
+      "input_sha256": "80e433f4e44b97b43d9772c38a29017667c859edcc1d1d122064a354caaa3966",
+      "output_tokens": 3,
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "raw": "SUPPORTED",
+      "reason": null,
+      "verdict": "SUPPORTED"
+    },
+    {
+      "elapsed_ms": 132.71370000438765,
+      "generation_calls": 1,
+      "input_sha256": "a4f0979c872acbb846a0c57501f68be3b3d96d387833c2ce918ad2c48bfa3899",
+      "output_tokens": 3,
+      "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 154.80880002724007,
+      "generation_calls": 1,
+      "input_sha256": "43b12639c3adb9b81c0263baf45ddf16cb944546a0567e820f14f369e2729dc7",
+      "output_tokens": 3,
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 137.84550002310425,
+      "generation_calls": 1,
+      "input_sha256": "778dcc535fd7f1a6f941a03d820d3c5a68ee1ddd3fb0daf059e5a27fd7245c50",
+      "output_tokens": 3,
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 123.3733999542892,
+      "generation_calls": 1,
+      "input_sha256": "f46c32f9c7ee813f339439712f03a2787c92ae3c73abb7264086e6009108e5b8",
+      "output_tokens": 3,
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 109.1209999867715,
+      "generation_calls": 1,
+      "input_sha256": "4acf7ba00fc792449ae6ca3d216722721658ec435f064fd2dd48af73679d11c2",
+      "output_tokens": 3,
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 199.87049995688722,
+      "generation_calls": 1,
+      "input_sha256": "4642d9b6310f65465347373bb20986bcda3fb89616e6870283f0f69057192f17",
+      "output_tokens": 3,
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 118.47509996732697,
+      "generation_calls": 1,
+      "input_sha256": "2e88b471d84a674c2611de6ecc4b402b6bbbba7240bfe6a7bfe0a0a5024a00a1",
+      "output_tokens": 3,
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 126.90249999286607,
+      "generation_calls": 1,
+      "input_sha256": "7347b115fa1b2ae17d2275b34d589c3a3360f2489f611536cf3ce00cf5381c89",
+      "output_tokens": 3,
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 125.11230004020035,
+      "generation_calls": 1,
+      "input_sha256": "dc8431d7211181d25200fbe1806cd4928f2392c2c8706fba0ffed05813b354cf",
+      "output_tokens": 3,
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 125.0793999643065,
+      "generation_calls": 1,
+      "input_sha256": "eb639a41904c8b0374a0ff0ab96c27004b51eb452eba043f4dbac55cdc900555",
+      "output_tokens": 3,
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 121.2451999890618,
+      "generation_calls": 1,
+      "input_sha256": "2ef1d4737d6d9215b1d620d0d2a75ca36cf35ecfd6593c0fdfefd3cf3a1531fc",
+      "output_tokens": 3,
+      "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 127.11760000092909,
+      "generation_calls": 1,
+      "input_sha256": "d8d0666cb1989621e3c23f91adaf17339040576a5f533bc7dda8c8ccc1cda300",
+      "output_tokens": 3,
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "raw": "UNSUPPORTED",
+      "reason": "unsupported",
+      "verdict": "UNSUPPORTED"
+    },
+    {
+      "elapsed_ms": 121.14960001781583,
+      "generation_calls": 1,
+      "input_sha256": "5b0d2c6b31f1d8a35053d1110b4fa64abca64fbf482ab68699fd4acb2b5dbeb4",
+      "output_tokens": 3,
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "raw": "SUPPORTED",
+      "reason": null,
+      "verdict": "SUPPORTED"
+    }
+  ],
+  "verdict_counts": {
+    "UNSUPPORTED": 24,
+    "SUPPORTED": 4
+  },
+  "actual_output_tokens": 84,
+  "checker_latency_seconds": {
+    "p50": 0.13527960001374595,
+    "p95": 0.20664752999146002
+  },
+  "hardware": {
+    "device": "cuda:0",
+    "dtype": "bfloat16",
+    "free_vram_before_load": 24104665088,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "total_vram": 25756696576
+  },
+  "external_spend_usd": 0,
+  "attempt_consumed": true,
+  "final_test_used": false,
+  "artifact_sha256": {
+    "config.json": "dea56f72d2ad0dd731bd360dac28e199c1e4c4ecf9a01803e0d5f4d5ccbffb58",
+    "decisions.jsonl": "0fc5536e89f3b6726194837848db2fad0d1472106e98972f20e5f95f9156d42f",
+    "inputs.json": "00a831189c168f7abfa15da0e1341fe0e5a01177d714cccc5923a5f50ef4ccc8",
+    "manifest.json": "c9f61121bf71d8a3b109a9ab0eab43ae8369962e504427ff30e94d7abf23cd7e",
+    "metrics.json": "0936fa63c24af2f4889a6d306a1442bf4171c91855e24c16789c8bcf8544cbc3",
+    "predictions.jsonl": "0b3de67f1854ad12298e8c82ab8a9f148f693a564233873a00b1795b5f3ae1b0",
+    "source.zip": "5dce287a15927c22ad44fbb565c297454874259cf49697ed7b02d52334f28499",
+    "usage.json": "7576daa2b0f654dd306c687b4351161053a8b5c3026db9185aa0245ee858b214",
+    "worker-complete.json": "b730fb36de00fa1cab2d52d12f250708361c5c971beb46cf12ebbda7e9918d3f"
+  },
+  "root_artifact_sha256": {
+    "attempt.json": "8cfb9accaaab0c554bbcd3c0cb882c061a5708f2397f53fed7724991b0381b4b",
+    "authorization.json": "75edccb5a8042532895a4cc93383be63e75e27821864b22bf2a611ef85d48148",
+    "termination.json": "d98d51da2851923f23c0a6aa7330741c2d35e5c95f468938a779b86ee1ac3ad4",
+    "worker.started": "83c6463112b3f165a5fdc0b76e44b3dfe7d916288eae64d8c617d756e8bd7a62"
+  },
+  "verdict_by_answerability": {
+    "answerable": {
+      "UNSUPPORTED": 19,
+      "SUPPORTED": 3
+    },
+    "unanswerable": {
+      "UNSUPPORTED": 5,
+      "SUPPORTED": 1
+    }
+  }
+}

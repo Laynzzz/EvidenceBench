@@ -164,3 +164,13 @@ user's per-experiment approval requirement; it is not GPU performance evidence.
 
 Preparation supports reproducibility and software-behavior claims only. No GPU
 quality, performance or memory-fit result exists; no new model run is authorized.
+
+## Completed GPU support comparison
+
+[Verified report](../reports/gpu-support-development.md),
+[structured results](../reports/gpu-support-development.json) and
+[approval](../reports/gpu-support-authorization.json) document one completed GPU
+attempt: 28 calls, 24 rejections, four retained answers, no failures, failed quality
+gate. The pinned model loaded and ran on RTX 4090; this does not establish general
+training capacity or an accepted answer system. The preparation/readiness records
+above remain historical. No final-test access or independent human review occurred.

@@ -253,3 +253,21 @@ fit, latency or better answers. The proposed comparison changes model, precision
 and runtime, so it cannot isolate model size. See the
 [proposal](gpu-support-proposal.md) and [tests](../tests/unit/test_gpu_support.py).
 This was built with agent assistance; personal understanding remains to practice.
+
+## Discussing the completed GPU experiment
+
+**Did the larger checker improve the system?** It reduced answers on unanswerable
+questions from six to one but rejected 24 of 28 answers. F1 fell to .013068 and
+coverage to 8%; the fixed gate failed. I would report the trade-off and reject
+promotion, rather than cite only the improved abstention metric.
+
+**What did you learn about the GPU implementation?** The pinned 7B model loaded
+and ran in BF16 on RTX 4090 with no runtime failures, using 28 calls and 38.765
+seconds of worker time. Checker-only timings do not measure serving latency or
+training capacity. No additional benchmark was needed to complete the experiment.
+
+**What would you investigate next?** Inspect rejected answers against their cited
+text and source papers, separating poor evidence packing, answer generation and
+checker mistakes. Scaling the checker changed refusal behavior but did not meet
+acceptance. [Evidence](../reports/gpu-support-development.md) is development-only;
+independent human review and personal interview practice remain outstanding.
