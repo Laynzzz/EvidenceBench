@@ -183,3 +183,11 @@ separate source matching, gold-ID overlap and token F1 from assistant judgments.
 The [masked packet](../reports/gpu-answer-review-packet.md) and
 [blank response template](../reports/gpu-answer-human-review-template.json)
 prepare independent review without claiming it occurred.
+
+## Prepared GPU answer generation
+
+[Proposal](gpu-generation-proposal.md), [execution guide](gpu-generation-runner.md),
+[readiness](../reports/gpu-generation-readiness.json), and
+[synthetic tests](../tests/unit/test_gpu_generation.py) document the pending
+32-call comparison. 144 software tests pass; GPU behavior and answer quality for
+this new workload remain unmeasured. No authorization or attempt exists.

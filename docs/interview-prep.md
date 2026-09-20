@@ -284,3 +284,16 @@ wording and output contract fixed, then compare a stronger answer selector. A
 gold-aware span ceiling suggests opportunity, but is never a deployable policy.
 One possible label conflict is flagged for adjudication without retroactive
 rescores. See the [audit](../reports/gpu-answer-audit.md).
+
+## Designing the next comparison before spending compute
+
+**What stays fixed in the larger-generator experiment?** Questions, selected
+passages, their clipping, prompt, candidate-span rules and acceptance metrics.
+Only 32 rows have evidence; the 18 threshold refusals remain in all-50 scoring.
+Model/precision/runtime differ, so parameter-count causality cannot be claimed.
+
+**How do you avoid declaring a weak candidate a success?** Preserve the previous
+seven gate conditions and additionally require F1 above the saved constrained
+baseline. Report failed gates and consumption even on crashes. The
+[proposal](gpu-generation-proposal.md) is prepared, not executed, and the new
+allowance must be approved before any model loading or inference.

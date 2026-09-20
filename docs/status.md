@@ -289,3 +289,18 @@ draft identifies 20 nonresponsive, six partial, one unclear and one label-confli
 case; these are not human labels. A masked review packet and blank response
 template are ready. No model run, label edit or final-test access occurred.
 The next comparison will isolate larger-model answer selection on fixed inputs.
+
+## Fixed-input GPU generation — prepared; new allowance pending
+
+- [x] Reuse frozen prompts/evidence/choices for 32 nonempty inputs.
+- [x] Preserve 18 original refusals and all-50 scoring denominators.
+- [x] Prepare 32-call/2,048-token/20-minute single-attempt supervision.
+- [x] Verify 11 new synthetic tests, full 144-test suite and review fix.
+- [ ] Obtain new explicit approval and execute the comparison once.
+
+[Proposal](gpu-generation-proposal.md), [runner](gpu-generation-runner.md) and
+[readiness](../reports/gpu-generation-readiness.json) are complete. The new gate
+retains all seven prior conditions and adds F1 strictly above the constrained
+baseline. No source weights, references, scores or deployed behavior changed.
+Model files/runtime/predecessor evidence verify; no new GPU model load, inference,
+training or final-test access occurred. This preparation is not Phase 4 acceptance.

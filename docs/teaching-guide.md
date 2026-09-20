@@ -453,3 +453,21 @@ span in the existing input, motivating a fixed-input generator comparison.
 Eight new regression tests protect denominator/roster/citation checks; 133 total
 tests pass. Optional exercise: explain how the wrong subset size can receive
 positive token F1 despite failing the actual question.
+
+## Isolating answer selection with saved evidence
+
+The new Python runner `scripts/run_gpu_generation.py` prepares the same textual
+choices and prompt as the frozen CPU constrained generator. Its standalone GPU
+worker uses the already pinned CUDA environment and a token-prefix trie, without
+importing the scoring package or receiving labels. The parent validates spans and
+scores afterward. Thus model/runtime change while retrieval and input text stay
+fixed; this still is not a pure parameter-count experiment.
+
+Eleven synthetic tests verify full 50-row reconstruction, 32-call accounting,
+approval/attempt binding and failure paths. Review exposed an eligible Yes span
+in a nonboolean question: downstream validation must record a per-query failure
+rather than abort scoring. Its regression now passes. All 144 tests pass with
+PostgreSQL. See the [runner guide](gpu-generation-runner.md). The pending budget
+is one attempt/32 calls/2,048 output tokens/20 minutes, no warmup or retry.
+Optional exercise: explain why the 18 unchanged refusals must stay in denominators
+but must not be mixed into a new GPU-generation latency percentile.

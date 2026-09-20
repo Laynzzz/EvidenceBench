@@ -144,3 +144,8 @@ The [saved-answer audit](reports/gpu-answer-audit.md) finds that source copying 
 not establish useful answers: 19 of 22 answerable cases had better reference-overlap
 spans available. Provisional agent review and a blank independent-human review
 packet are provided; labels and failed acceptance gates remain unchanged.
+
+A [fixed-input GPU generator comparison](docs/gpu-generation-proposal.md) is now
+prepared: 32 generation inputs, 18 preserved refusals and all 50 development rows
+scored. All 144 software tests pass. [Execution](docs/gpu-generation-runner.md)
+requires a new explicit allowance; no new model run has occurred.

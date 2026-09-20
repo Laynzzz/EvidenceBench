@@ -627,3 +627,10 @@ cap, and 19 of 22 answerable cases have higher-F1 spans available in packed text
 The draft review flags one possible label conflict without altering scores/labels.
 133 software tests pass. Next prepare a fixed-input 7B answer-selector comparison;
 its execution needs a new allowance. Independent human review remains pending.
+
+That [GPU generator comparison](docs/gpu-generation-proposal.md) is implemented
+and synthetically verified. The same prompt, evidence and 15-word output contract
+are retained; the candidate must also strictly beat the saved constrained F1.
+[Readiness](reports/gpu-generation-readiness.json) pins a single proposed attempt:
+32 calls, 2,048 reserved tokens, 20 minutes, $0 external spend. 144 tests pass
+including PostgreSQL. Execution awaits new approval; no new model work occurred.
