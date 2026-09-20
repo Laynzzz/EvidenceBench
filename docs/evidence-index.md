@@ -144,3 +144,12 @@ adapter, transformations, evaluation guards, ledger/watchdog and verification.
 Default CLI execution performs real integrity/cache checks without model loading.
 No support-filter attempt or result exists yet; the separate new allowance is
 pending. Future real outputs belong under `artifacts/support-filter-v1/`.
+
+Support-filter execution: [outcome](../reports/support-filter-development.md),
+[metrics, counts and hashes](../reports/support-filter-development.json), and
+[approval receipt](../reports/support-filter-authorization.json). All 28 checked
+answers were accepted, so no quality metric changed and the fixed gate failed.
+`python scripts/run_support_filter.py --verify` checks the retained single attempt,
+including supervisor success and all 50 output transformations, without inference.
+The new [GPU compute policy](compute-policy.md) records hardware inspection and the
+user's per-experiment approval requirement; it is not GPU performance evidence.

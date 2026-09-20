@@ -1,0 +1,141 @@
+{
+  "status": "verified",
+  "run": "artifacts/support-filter-v1/runs/20260920T013654Z-10773dc70d",
+  "metrics": {
+    "control": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 11,
+      "failure_count": 21,
+      "answer_coverage": 0.22,
+      "answerable_token_f1": 0.012025255446308078,
+      "false_refusal_rate": 0.3157894736842105,
+      "answerable_failure_rate": 0.47368421052631576,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.36363636363636365,
+      "upstream_citation_recall": 0.06896551724137931,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "unfiltered": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 28,
+      "failure_count": 0,
+      "answer_coverage": 0.56,
+      "answerable_token_f1": 0.07542449567049109,
+      "false_refusal_rate": 0.42105263157894735,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.5,
+      "upstream_citation_precision": 0.32142857142857145,
+      "upstream_citation_recall": 0.15517241379310345,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "filtered": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 28,
+      "failure_count": 0,
+      "answer_coverage": 0.56,
+      "answerable_token_f1": 0.07542449567049109,
+      "false_refusal_rate": 0.42105263157894735,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.5,
+      "upstream_citation_precision": 0.32142857142857145,
+      "upstream_citation_recall": 0.15517241379310345,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "gate": {
+      "f1_exceeds_control": true,
+      "failures_do_not_increase": true,
+      "no_new_checker_failures": true,
+      "unanswerable_answers_do_not_increase": false,
+      "citation_precision_not_lower": false,
+      "retain_80_percent_f1": true,
+      "retain_half_answers": true
+    },
+    "passes_development_gate": false,
+    "scope": "Reused validation development experiment; not independent semantic review"
+  },
+  "usage": {
+    "support_invocations": 28,
+    "support_calls": 28,
+    "reserved_tokens": 224
+  },
+  "actual_output_tokens": 84,
+  "checker_elapsed_ms": [
+    972.9280999745242,
+    848.6531000235118,
+    793.4283000067808,
+    959.718799975235,
+    812.6936000189744,
+    725.9479999775067,
+    627.6923000114039,
+    854.0841999929398,
+    464.5202999818139,
+    647.7644999977201,
+    821.9974000239745,
+    976.5942000085488,
+    1075.9955000248738,
+    960.314100026153,
+    575.4553999868222,
+    787.3073000228032,
+    811.8781999801286,
+    783.6852999753319,
+    673.463899991475,
+    605.7352999923751,
+    798.4598999610171,
+    658.2319000153802,
+    731.3486999482848,
+    620.9528000326827,
+    839.8566999821924,
+    688.4223000379279,
+    841.0506999935023,
+    863.1457000155933
+  ],
+  "decision_counts": {
+    "NOT_APPLICABLE": 22,
+    "SUPPORTED": 28
+  },
+  "decisions_on_checked_unanswerable": {
+    "SUPPORTED": 6
+  },
+  "checker_latency_ms": {
+    "p50": 795.9440999838989,
+    "p95": 975.3110649966402,
+    "scope": "28 checks only, not end-to-end service latency"
+  },
+  "supervisor": {
+    "elapsed_seconds": 31.375,
+    "exit_code": 0,
+    "reason": "process_exit"
+  },
+  "snapshot_sha256": "aab7753b653b9aaa566d003830220e6e5f13cead1d2cd012e1611e83cd3fd227",
+  "source_revision": "59114e8918e1f371289334fd8083ada713be9478",
+  "external_spend_usd": 0,
+  "attempts": 1,
+  "decision": "rejected: all 28 answers accepted; unchanged F1, abstention and citation metrics",
+  "artifact_sha256": {
+    "artifacts/support-filter-v1/runs/20260920T013654Z-10773dc70d/manifest.json": "5fdf5f750625e3e148bca17a1b9f5f56ef9cd755c98a707ddded2559fdda2d42",
+    "artifacts/support-filter-v1/runs/20260920T013654Z-10773dc70d/config.json": "aab7753b653b9aaa566d003830220e6e5f13cead1d2cd012e1611e83cd3fd227",
+    "artifacts/support-filter-v1/runs/20260920T013654Z-10773dc70d/source.zip": "13ddf73a866a75d7a6cb74d235feaa9138b582a9a508fdc0fd58bac4babc543d",
+    "artifacts/support-filter-v1/runs/20260920T013654Z-10773dc70d/predictions.jsonl": "71cf96f16723ea51e6540c64d6ab8cc9ba248efe56b92eb72a7f17baecda4ec2",
+    "artifacts/support-filter-v1/runs/20260920T013654Z-10773dc70d/metrics.json": "800a4432f8abcca1ef1c89e97aa02bc8e013a9f53de23a9ba8c9f538347ee92c",
+    "artifacts/support-filter-v1/runs/20260920T013654Z-10773dc70d/usage.json": "3b7a35435ace02b66a08933c9b1c54013f2900f46900da0cf25256e0ec9e669b",
+    "artifacts/support-filter-v1/attempt.json": "a642939ab302a873405bccade100b726ee429bdd9cb20675eddb408f720d45cb",
+    "artifacts/support-filter-v1/termination.json": "057387c5f52d90c7e3ef5611d581d4d450507d9af838b53e534599bef0d6222e",
+    "artifacts/support-filter-v1/worker.started": "2aef0426980ccc12ba951cff825ff628100a54cdc821ec3f52bee891adc56642",
+    "reports/support-filter-authorization.json": "412fa4484a177ca9d40a79958bb243d964724131522678dea05caf0ab43759dd"
+  },
+  "limitations": [
+    "Reused validation development data; not fresh holdout results.",
+    "Model verdict SUPPORTED is not independent human or semantic verification.",
+    "Reference answer and citation ID agreement are proxy metrics.",
+    "A fixed small-model self-check failed to filter; broader verifier designs are untested."
+  ]
+}

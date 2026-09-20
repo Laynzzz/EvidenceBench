@@ -219,3 +219,17 @@ real cache/preflight checks establish preparation. A new 28-call local allowance
 is needed to measure the fixed design. The same small model may share the original
 generator's mistakes; even a passing result would still need independent evaluation
 and human support review.” See [the fixed proposal](support-filter-proposal.md).
+
+## Did the explicit support checker help?
+
+“The completed run accepted all 28 answers, including six answers to unanswerable
+questions. It changed no quality metric and added about .796 seconds median check
+latency. I rejected it rather than presenting its SUPPORTED labels as verified
+facts. The fixed experiment consumed 28 calls and its outputs remain reproducible.”
+
+Follow-up: what did that establish? “It rejected this particular intervention on
+development data. It doesn't tell us which design component caused the failure or
+that all support checking is ineffective.” Follow-up: could you use a GPU? “An RTX
+4090 is available, but the existing environment and measurements are CPU-only. A
+new GPU experiment needs a compatible isolated runtime and its own approval.”
+See [the recorded result](../reports/support-filter-development.md).

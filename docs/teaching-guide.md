@@ -371,3 +371,23 @@ timeouts are checked again after return. Approval pins an exact snapshot, and an
 interrupted attempt cannot be silently reused. See [the runner guide](support-filter-runner.md).
 Optional later exercise: explain why same-model verification is neither independent
 human review nor proof that the cited claim is true.
+
+## The support checker accepted everything
+
+The completed fixed experiment returned SUPPORTED for all 28 proposed answers,
+including all six unanswerable cases. It added about .796 seconds median check time
+without changing any prediction or quality metric. The pipeline and its controls
+worked, but the proposed ML intervention did not. The failure belongs in the
+portfolio evidence rather than being relabeled a successful verification layer.
+
+This is one small-model, fixed-prompt result on reused development questions; it
+does not isolate whether model capacity, prompt wording, constrained decoding or
+correlated mistakes caused the behavior. No causal diagnosis or universal failure
+of self-checking is claimed. See [the result](../reports/support-filter-development.md).
+
+The user's RTX 4090 broadens future experiment options, but the current PyTorch build
+is CPU-only. A driver/device inventory is not a model benchmark. A separate compatible
+runtime, pinned dependencies and explicit approval for each new model training or
+evaluation run are needed. Preserve CPU reproduction and state hardware scope when
+comparing performance. Optional later exercise: explain the difference between a
+well-controlled experiment and an intervention that actually improves the model.

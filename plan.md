@@ -593,3 +593,12 @@ hashes, meters calls, and permits one attempt under an external watchdog.
 115 tests pass including PostgreSQL; real artifact preflight is ready without
 inference. A new allowance is required before its single 28-call/20-minute local
 execution. No support-filter performance or independent human review is claimed.
+
+The user subsequently approved that single support-filter run. It completed and
+[verified](reports/support-filter-development.md), but accepted all 28 answers,
+including the six unanswerable cases. Metrics are unchanged and the gate still fails.
+One attempt used 28 calls and 31.375 seconds on CPU at $0 external spend. It is not
+promoted; final test remains unused. The user confirmed an RTX 4090 and requires
+approval for every new model training/evaluation run. The current PyTorch runtime
+is CPU-only; [future GPU work](docs/compute-policy.md) needs a separate compatible
+runtime and a newly approved bounded experiment.

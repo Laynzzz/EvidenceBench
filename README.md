@@ -44,10 +44,12 @@ answerable questions (AUC .5702). A stricter cutoff has one post-hoc gate-passin
 state, retaining only eight answers; it is not adopted as a validated improvement.
 
 A [bounded support-filter experiment](docs/support-filter-proposal.md) is now
-implemented and tested, with [read-only readiness evidence](reports/support-filter-readiness.json).
-It would check the 28 saved answers against their cited text. Real execution awaits
-a new allowance: one attempt, at most 28 generation calls, 20 minutes and $0 external
-spend. No new model-quality result is claimed from its synthetic tests.
+[completed and verified](reports/support-filter-development.md): it accepted all 28
+answers, including six on unanswerable questions, so it improved no quality metric
+and was not promoted. It used 28 calls and 31.375 seconds on CPU, $0 external spend.
+An RTX 4090 is available for future work, but the current PyTorch environment is CPU
+only. Every new model training/evaluation run needs user approval; see
+[compute policy](docs/compute-policy.md).
 
 ![Development experiments](reports/development-comparison.png)
 

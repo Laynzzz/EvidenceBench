@@ -217,3 +217,24 @@ calls and 20 minutes, $0 external spend. The previous allowance explicitly cover
 one completed comparison and is exhausted. No final-test access, training, extra
 attempts or deployment is included. Preparation is complete; execution waits for
 that new approval. Phase 4 acceptance remains incomplete.
+
+## Support filter — completed; no improvement
+
+The user approved the exact prepared snapshot. [Verified results](../reports/support-filter-development.md):
+the model accepted all 28 answers, including all six answers on unanswerable questions.
+No output changed. F1 remains .075424, citation-ID precision .321429, failures zero;
+the same two original gate conditions fail. The filter is rejected for promotion.
+
+One attempt consumed 28 calls, 224 reserved and 84 actual output tokens; the
+supervisor exited successfully in 31.375 seconds. All 50 output rows, transformations,
+model inputs, source/config/data hashes, metrics, usage and completion verified.
+The checker added .796 s p50 / .975 s p95 per checked answer on this CPU. No training,
+new models, spending or deployment occurred. The preparation's 115-test result is
+historical test evidence; this step verified real model execution and retained results.
+
+The user also identified an RTX 4090 and requires approval for every new model
+training/evaluation attempt. Read-only inspection confirmed the GPU and 24,564 MiB
+reported memory; the current PyTorch package is CPU-only. [Compute policy](compute-policy.md)
+records the preference and need for a separate compatible GPU runtime. No GPU model
+work was run. The original service and unused final test remain unchanged; Phase 4
+still lacks accepted answer quality and independent human semantic review.

@@ -13,3 +13,7 @@ includes every stricter-cutoff replay state and is reproducible without inferenc
 
 [Support-filter readiness](support-filter-readiness.json) records preparation of the
 next bounded experiment. It is implementation/preflight evidence, not model quality.
+
+[Completed support-filter result](support-filter-development.md) records 28 of 28
+answers accepted and no quality improvement. [Structured evidence](support-filter-development.json)
+and [approval](support-filter-authorization.json) preserve the single-attempt outcome.

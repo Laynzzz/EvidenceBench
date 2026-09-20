@@ -1,5 +1,15 @@
 # Project agent instructions
 
+## Explicit user compute preference
+
+The user has an NVIDIA RTX 4090 available for future local ML work. Obtain explicit
+approval for **every new model training or evaluation/testing run**, including
+GPU runs with no external cost. Hardware availability and a general request to
+continue do not renew a consumed experiment allowance. Prepare the concrete design,
+runtime requirements, call/time budget and verification first, then ask for approval.
+Keep existing frozen CPU experiments reproducible; use a separate compatible runtime
+for GPU work. See `docs/compute-policy.md` for the recorded hardware and scope.
+
 Use this file with the project's `plan.md`. For a new repository, copy this file
 to the repository root as `AGENTS.md`, or give both files directly to the agent.
 These are reusable working preferences; `plan.md` defines the particular product,
