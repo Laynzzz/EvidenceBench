@@ -135,3 +135,12 @@ mode verifies the original 50-query validation run, then reproduces binary evide
 ranking metrics, score AUC and every stricter answer-suppression state without
 inference or writes. Ten synthetic tests cover calculations and rejection paths.
 Its single post-hoc passing replay state is not a selected or validated model.
+
+Support-filter preparation: [fixed proposal](support-filter-proposal.md),
+[commands and bounds](support-filter-runner.md),
+[readiness hashes](../reports/support-filter-readiness.json), and
+[runner](../scripts/run_support_filter.py). Sixteen synthetic cases exercise the
+adapter, transformations, evaluation guards, ledger/watchdog and verification.
+Default CLI execution performs real integrity/cache checks without model loading.
+No support-filter attempt or result exists yet; the separate new allowance is
+pending. Future real outputs belong under `artifacts/support-filter-v1/`.

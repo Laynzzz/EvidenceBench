@@ -1,0 +1,35 @@
+{
+  "status": "ready_for_authorization",
+  "scope": "support-filter-v1",
+  "snapshot_sha256": "aab7753b653b9aaa566d003830220e6e5f13cead1d2cd012e1611e83cd3fd227",
+  "base_snapshot_sha256": "bddf14849d135ddf84528d5d986e5f51966a45e9d5d9d69e5f6395f2e966da68",
+  "source_sha256": {
+    "scripts/run_support_filter.py": "7457eeb3d52faf313451ce072de508f77fa3fb4d260792842ca03208d989fa6f",
+    "docs/support-filter-proposal.md": "75ef6726413b4c77362c5f46695499fadf7e89e1b58826685d8b481d6a6e1428"
+  },
+  "original_sha256": {
+    "control.jsonl": "185df9180f510217a57abc2ba3ae98fb07781eae0f23b1efc5d90c4f7e12c115",
+    "constrained.jsonl": "444a82082d066fa07ac3e32ff6f6deada3cf97fe497a387b08071f88bfc93643",
+    "manifest.json": "dc6066897e2074517395f74f72d7f2413e6e1d9a8ab7b39bba2a1dadd92f12f5"
+  },
+  "limits": {
+    "support_invocations": 28,
+    "support_calls": 28,
+    "reserved_tokens": 224
+  },
+  "deadline_seconds": 1200,
+  "model_calls": 0,
+  "attempt_exists": false,
+  "approval_exists": false,
+  "synthetic_tests": 16,
+  "full_suite_passed": 115,
+  "verification": [
+    "original_run_verified",
+    "real_cache_preflight",
+    "synthetic_adapter_and_worker",
+    "ruff",
+    "format",
+    "schema_mypy",
+    "prior_report_verifiers"
+  ]
+}

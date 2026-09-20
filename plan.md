@@ -583,3 +583,13 @@ answers. It is diagnostic evidence, not a revised selection or permission to pro
 The next experimental direction is to measure evidence sufficiency separately from
 relevance, with packing changes tested separately. This requires a new bounded
 experiment design before inference. The audit added no model calls or spending.
+
+That next [support-filter design](docs/support-filter-proposal.md) is now implemented
+and synthetically verified: 28 cited-evidence checks on existing answers, all 50
+development questions retained in scoring. Explicit errors count as failures;
+additional guards prevent new failures or loss of most F1/coverage. The
+[runner](docs/support-filter-runner.md) binds approval to frozen source/data/model
+hashes, meters calls, and permits one attempt under an external watchdog.
+115 tests pass including PostgreSQL; real artifact preflight is ready without
+inference. A new allowance is required before its single 28-call/20-minute local
+execution. No support-filter performance or independent human review is claimed.

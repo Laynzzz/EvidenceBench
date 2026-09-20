@@ -43,6 +43,12 @@ helps (top-three gold recall .1645 to .4934), while its top score weakly separat
 answerable questions (AUC .5702). A stricter cutoff has one post-hoc gate-passing
 state, retaining only eight answers; it is not adopted as a validated improvement.
 
+A [bounded support-filter experiment](docs/support-filter-proposal.md) is now
+implemented and tested, with [read-only readiness evidence](reports/support-filter-readiness.json).
+It would check the 28 saved answers against their cited text. Real execution awaits
+a new allowance: one attempt, at most 28 generation calls, 20 minutes and $0 external
+spend. No new model-quality result is claimed from its synthetic tests.
+
 ![Development experiments](reports/development-comparison.png)
 
 ## Start the existing local deployment

@@ -346,3 +346,28 @@ can remove saved answers; it cannot tell us what a model would say with new cont
 or on previously refused queries. See [the audit](../reports/fresh-selection-audit.md).
 Optional later exercise: explain why the highest-scoring unanswerable query prevents
 any stricter monotone cutoff from retaining correct coverage with zero such answers.
+
+## Preparing a direct support check
+
+The new Python CLI `scripts/run_support_filter.py` reuses saved answers and their
+cited text. Its proposed question to Qwen is whether that text supports the answer
+and whether the answer addresses the question. It shares the existing tokenizer,
+model loader and constrained-decoding trie; no new service or model is introduced.
+The simpler alternative was a stricter relevance cutoff, whose observed trade-off
+was poor. A support check adds inference cost and correlated model errors, so its
+benefit must be measured rather than assumed.
+
+Checker prompts are built from an explicit three-field payload: question, proposed
+answer and cited evidence. Labels remain outside that boundary. The output can
+keep an answer, refuse it, or record a failure. The experiment scores all 50 rows,
+preserves original failures/refusals, and rejects a result that improves some metrics
+by losing most existing F1 or coverage. Checker time is separate from replayed
+historical generation time; adding those timings is not a new service benchmark.
+
+Tests use real Torch tensor operations with fake model weights/outputs to exercise
+the adapter and a complete synthetic worker. They cannot measure Qwen's judgment
+quality. A hard external deadline protects the whole process; cooperative per-call
+timeouts are checked again after return. Approval pins an exact snapshot, and an
+interrupted attempt cannot be silently reused. See [the runner guide](support-filter-runner.md).
+Optional later exercise: explain why same-model verification is neither independent
+human review nor proof that the cited claim is true.

@@ -205,3 +205,17 @@ states using saved answers. One met the original numerical gate, retaining only
 eight answers. That is a post-hoc operating point, not a validated improvement;
 I didn't deploy it or change the recorded failure. The next experiment should
 measure evidence sufficiency separately.” See [the audit](../reports/fresh-selection-audit.md).
+
+## How would you test support checking without confounding retrieval?
+
+“I prepared an experiment that reuses the exact 28 candidate answers and their
+cited packed passages. One fixed checker prompt either keeps each answer or refuses
+it; errors remain failures. It scores the full 50-question development set and adds
+F1, coverage and reliability safeguards. Gold answers and labels never enter the
+checker payload, and retrieval stays identical.”
+
+Follow-up: has it improved quality? “Not yet measured. Sixteen synthetic tests and
+real cache/preflight checks establish preparation. A new 28-call local allowance
+is needed to measure the fixed design. The same small model may share the original
+generator's mistakes; even a passing result would still need independent evaluation
+and human support review.” See [the fixed proposal](support-filter-proposal.md).

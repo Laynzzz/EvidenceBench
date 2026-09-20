@@ -193,3 +193,27 @@ deprecation warnings. Ruff, formatting and schema typing pass. The new audit's
 exact recomputation, original fresh-run verification, earlier-cycle report checks,
 artifact checksums and documentation links pass. Review found no calculation defect;
 additional tests now exercise corrupted paired rankings and pre-write verification.
+
+## Support-filter experiment — prepared; awaiting new allowance
+
+The [fixed proposal](support-filter-proposal.md) and
+[runner](support-filter-runner.md) are implemented. Each of the 28 saved answers
+would receive one cited-evidence support decision; the other 22 rows stay unchanged,
+and all 50 are scored. References and gold labels do not enter checker inputs.
+The original gate is supplemented by no new failures, 80% candidate F1 retention
+and at least 14 retained answers. This is a proposed same-model self-check, not
+independent human semantic review or an accepted replacement.
+
+Sixteen synthetic tests cover the checker adapter, filtering, full worker output,
+strict verification, approval binding and timeout behavior. Review suggested stricter
+saved-trace validation; failing tests reproduced those gaps and the fixes pass.
+All 115 tests pass with real PostgreSQL; Ruff/format and schema typing pass. Existing
+reports and the fresh-selection audit still verify. Real read-only preflight confirms
+matching cached artifacts and no new attempt. [Readiness](../reports/support-filter-readiness.json)
+pins the exact proposed execution. No real checker inference has occurred.
+
+Required next user decision: approve one new local attempt, at most 28 generation
+calls and 20 minutes, $0 external spend. The previous allowance explicitly covered
+one completed comparison and is exhausted. No final-test access, training, extra
+attempts or deployment is included. Preparation is complete; execution waits for
+that new approval. Phase 4 acceptance remains incomplete.
