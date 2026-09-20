@@ -238,3 +238,27 @@ reported memory; the current PyTorch package is CPU-only. [Compute policy](compu
 records the preference and need for a separate compatible GPU runtime. No GPU model
 work was run. The original service and unused final test remain unchanged; Phase 4
 still lacks accepted answer quality and independent human semantic review.
+
+## GPU support-checker comparison — prepared; awaiting approval
+
+- [x] Pin Qwen2.5-7B revision and verify all 14 model files (15.24 GB).
+- [x] Prepare an isolated CUDA runtime; check dependencies and imports.
+- [x] Implement offline worker, exact-snapshot approval and single-attempt limits.
+- [x] Verify synthetic behavior, review fixes and existing frozen evidence.
+- [ ] Obtain approval for one real GPU evaluation; execute and report its outcome.
+
+The [proposal](gpu-support-proposal.md), [runner guide](gpu-support-runner.md) and
+[readiness snapshot](../reports/gpu-support-readiness.json) describe 28 support
+checks of saved answers on the same 50 reused development questions. The prompt,
+cited-only payloads and seven gate conditions stay fixed. The model, precision,
+hardware and runtime change, so this is not a pure model-size ablation.
+
+125 tests pass including real PostgreSQL, with two existing dependency warnings.
+Ruff, formatting, schema typing, CUDA-environment dependency/import checks and
+existing report verifiers pass. Ten synthetic tests cover the new orchestration;
+review fixes handle Windows Unicode, changed scoring data and extra checkpoints.
+No GPU model loading, inference or training occurred. No authorization or real
+attempt exists. Next execution requires the user's explicit per-run approval:
+one attempt, at most 28 calls/224 reserved output tokens/20 minutes, $0 external
+spend. The 100-question final test remains unused; Phase 4 acceptance and
+independent human generated-claim review remain incomplete.

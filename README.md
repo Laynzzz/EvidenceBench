@@ -131,3 +131,10 @@ The selected reproduction bundle is recorded in [artifact-bundle.json](reports/a
 The completed paper review and updated handoff documents are packaged separately in
 [claim-review-bundle.json](reports/claim-review-bundle.json). The supplement preserves
 the original reproduction archive and includes per-file hashes for verification.
+
+A [GPU support-checker comparison](docs/gpu-support-proposal.md) is prepared with
+a separate CUDA environment and pinned Qwen2.5-7B files. The
+[runner guide](docs/gpu-support-runner.md) distinguishes read-only preflight from
+approval-gated inference. 125 software tests pass, including real PostgreSQL; no
+real GPU model loading or evaluation has occurred. The next 28-call attempt
+requires explicit approval. Answer-quality acceptance remains incomplete.

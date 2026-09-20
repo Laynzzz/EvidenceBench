@@ -602,3 +602,13 @@ promoted; final test remains unused. The user confirmed an RTX 4090 and requires
 approval for every new model training/evaluation run. The current PyTorch runtime
 is CPU-only; [future GPU work](docs/compute-policy.md) needs a separate compatible
 runtime and a newly approved bounded experiment.
+
+GPU preparation is now complete for a bounded larger-checker comparison using
+Qwen2.5-7B on the local RTX 4090. The [proposal](docs/gpu-support-proposal.md)
+keeps the saved 28 answers, cited-only inputs and seven gate conditions fixed.
+An isolated CUDA environment and 14 pinned model files are prepared; 125 tests
+pass including real PostgreSQL. [Readiness](reports/gpu-support-readiness.json)
+binds the proposed execution; no real GPU model loading or inference occurred.
+Execution awaits explicit approval for one attempt, at most 28 calls and 20
+minutes, $0 external spend. This does not complete Phase 4 or independent human
+review, and does not authorize training or the unused final test.

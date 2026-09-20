@@ -391,3 +391,35 @@ runtime, pinned dependencies and explicit approval for each new model training o
 evaluation run are needed. Preserve CPU reproduction and state hardware scope when
 comparing performance. Optional later exercise: explain the difference between a
 well-controlled experiment and an intervention that actually improves the model.
+
+## Preparing a bounded GPU comparison
+
+The project can now prepare and supervise a separate GPU support checker while
+retaining the verified CPU pipeline. The Python parent
+`scripts/run_gpu_support_filter.py` runs in the original environment and constructs
+28 cited-only payloads. The standalone Python `scripts/gpu_support_worker.py` uses
+an isolated CUDA environment and returns decisions; scoring stays in the parent.
+This prevents accidental inclusion of reference labels in model inputs. It is an
+input boundary, not an operating-system security sandbox.
+
+PyTorch supplies tensor execution, Transformers loads the pinned model, and
+Accelerate supports device placement. A separate lockfile avoids changing the
+frozen CPU runtime. BF16 avoids adding quantization to the proposed comparison;
+its memory cost may still exceed available VRAM. Model files are hashed before
+execution, and an exact file roster rejects an extra checkpoint that a loader
+might otherwise prefer. Package imports prove neither model fit nor inference.
+
+The CPU checker accepted every answer. The next hypothesis is that a larger
+checker may distinguish supported answers better with the same prompt and input.
+It could also repeat that failure. Because precision, device and library versions
+change too, any difference cannot be attributed solely to parameter count.
+A per-call meter reserves tokens before generation; the external parent kills a
+worker exceeding the hard deadline. A consumed attempt cannot silently retry.
+
+Verification: ten new synthetic tests, 125 total tests including PostgreSQL,
+static checks and read-only artifact verification pass. Review exposed Windows
+default text decoding and stale-scoring risks; explicit UTF-8 and rechecking the
+frozen base address them. Real GPU execution awaits approval. Read the
+[gpu runner guide](gpu-support-runner.md) for reproduction and limits. Optional
+later exercise: explain why an unchanged answer-quality gate can still overfit
+when the same development sample is inspected repeatedly.

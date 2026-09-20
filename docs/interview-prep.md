@@ -233,3 +233,23 @@ that all support checking is ineffective.” Follow-up: could you use a GPU? “
 4090 is available, but the existing environment and measurements are CPU-only. A
 new GPU experiment needs a compatible isolated runtime and its own approval.”
 See [the recorded result](../reports/support-filter-development.md).
+
+## GPU experiment preparation (not a measured GPU result)
+
+**Why isolate the runtime?** Existing CPU experiments pin their dependencies and
+source. A separate CUDA environment enables a new comparison without breaking
+that evidence. Model revision, every checkpoint file and package inventory are
+recorded. Follow-up: what remains nondeterministic across hardware?
+
+**How do you stop a checker from seeing evaluation labels?** The parent constructs
+objects containing only the question, proposed answer and cited text. The worker
+validates their exact schema and hash; scoring runs afterward in the parent.
+This is explicit input separation, not a security sandbox. Follow-up: why recheck
+scoring-data hashes after the worker exits?
+
+**What does the GPU preparation establish?** Synthetic orchestration and approval
+boundaries pass, and artifacts/imports verify. It does not establish GPU model
+fit, latency or better answers. The proposed comparison changes model, precision
+and runtime, so it cannot isolate model size. See the
+[proposal](gpu-support-proposal.md) and [tests](../tests/unit/test_gpu_support.py).
+This was built with agent assistance; personal understanding remains to practice.

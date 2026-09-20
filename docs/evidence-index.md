@@ -153,3 +153,14 @@ answers were accepted, so no quality metric changed and the fixed gate failed.
 including supervisor success and all 50 output transformations, without inference.
 The new [GPU compute policy](compute-policy.md) records hardware inspection and the
 user's per-experiment approval requirement; it is not GPU performance evidence.
+
+## Prepared GPU support comparison
+
+- [Proposal](gpu-support-proposal.md): fixed comparison and pending compute scope.
+- [Runner guide](gpu-support-runner.md): preflight, approval, execution and verification.
+- [Asset manifest](../reports/gpu-support-assets.json) and [runtime lock](../configs/gpu-support-requirements.lock): pinned model files and isolated dependencies.
+- [Readiness](../reports/gpu-support-readiness.json): exact proposed snapshot; zero model calls.
+- [Synthetic tests](../tests/unit/test_gpu_support.py): Unicode, input isolation, inventory, budget, approval, scoring integrity and termination.
+
+Preparation supports reproducibility and software-behavior claims only. No GPU
+quality, performance or memory-fit result exists; no new model run is authorized.

@@ -26,3 +26,11 @@ outputs and metered usage; a replacement attempt needs its own allowance.
 
 The fresh final-test set remains unused. No training/evaluation approval implicitly
 authorizes final-test access, paid infrastructure, model publication or deployment.
+
+Subsequent authorized preparation created `artifacts/gpu-support-env` with
+PyTorch 2.10.0+cu128, Transformers 4.57.6 and Accelerate 1.12.0, and downloaded the
+pinned Qwen2.5-7B checkpoint. Hashes, dependency consistency and imports were checked;
+no model was loaded and no GPU tensor workload occurred. The original `.venv` is
+still CPU-only. See the [pending proposal](gpu-support-proposal.md) and
+[execution guide](gpu-support-runner.md). GPU compatibility and memory fit remain
+unverified until the next explicitly approved attempt.
