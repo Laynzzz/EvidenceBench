@@ -1,0 +1,21 @@
+{
+  "status": "approved",
+  "scope": "gpu-generation-v1",
+  "snapshot_sha256": "9d18f8259b643720968ae21a5c9b5622a49afe4be1778544325f8abec45d0cdc",
+  "user_approval_text": "approved",
+  "recorded_at_utc": "2026-09-20T14:54:04.226050+00:00",
+  "limits": {
+    "attempts": 1,
+    "generation_calls": 32,
+    "reserved_output_tokens": 2048,
+    "worker_deadline_seconds": 1200,
+    "external_spend_usd": 0
+  },
+  "exclusions": [
+    "training",
+    "final-test access",
+    "retry",
+    "deployment",
+    "label revision"
+  ]
+}

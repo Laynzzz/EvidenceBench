@@ -191,3 +191,13 @@ prepare independent review without claiming it occurred.
 [synthetic tests](../tests/unit/test_gpu_generation.py) document the pending
 32-call comparison. 144 software tests pass; GPU behavior and answer quality for
 this new workload remain unmeasured. No authorization or attempt exists.
+
+## Completed GPU generator comparison
+
+[Report](../reports/gpu-generation-development.md),
+[structured results](../reports/gpu-generation-development.json) and
+[authorization](../reports/gpu-generation-authorization.json) document a verified
+32-call GPU run and all-eight-condition development gate pass. The descriptive
+F1-gain interval includes zero. [Human review materials](../reports/gpu-generation-human-review.md)
+and [blank response template](../reports/gpu-generation-human-review-template.json)
+do not claim completed human labels. Candidate results remain development-only.

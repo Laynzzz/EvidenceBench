@@ -145,7 +145,10 @@ not establish useful answers: 19 of 22 answerable cases had better reference-ove
 spans available. Provisional agent review and a blank independent-human review
 packet are provided; labels and failed acceptance gates remain unchanged.
 
-A [fixed-input GPU generator comparison](docs/gpu-generation-proposal.md) is now
-prepared: 32 generation inputs, 18 preserved refusals and all 50 development rows
-scored. All 144 software tests pass. [Execution](docs/gpu-generation-runner.md)
-requires a new explicit allowance; no new model run has occurred.
+A [fixed-input GPU generator comparison](reports/gpu-generation-development.md)
+completed and passed all eight development checks: F1 .1236 versus .0754, citation-ID
+precision .4583 versus .3214, and three versus six answers on unanswerable questions.
+The F1-gain bootstrap interval includes zero. One attempt used 32 calls and 50.750
+seconds of worker time at $0 external spend. The candidate is not deployed; human
+semantic review and a separately approved fresh final evaluation remain pending.
+The [24-answer review packet](reports/gpu-generation-human-review.md) is ready.

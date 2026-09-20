@@ -471,3 +471,20 @@ PostgreSQL. See the [runner guide](gpu-generation-runner.md). The pending budget
 is one attempt/32 calls/2,048 output tokens/20 minutes, no warmup or retry.
 Optional exercise: explain why the 18 unchanged refusals must stay in denominators
 but must not be mixed into a new GPU-generation latency percentile.
+
+## A gate pass with uncertainty still visible
+
+The [fixed-input GPU result](../reports/gpu-generation-development.md) passes all
+eight predeclared conditions. F1 rises from .075424 to .123578 and unanswerable
+answers fall from six to three. The paired bootstrap resamples paper families,
+keeping related question pairs together; its interval [-.022313, .125398] includes
+zero. A point-estimate gate pass and inconclusive uncertainty can both be true.
+The interval is descriptive and does not correct repeated development selection.
+
+Only 32 rows incurred generation. All 50 stay in quality metrics, while the new
+GPU latency summary excludes the 18 historical refusal timings. The 24-answer
+review packet checks a different question: whether the actual cited text supports
+useful answers. Token overlap and citation-ID precision cannot provide that human
+judgment. Real run verification recomputed predictions/metrics and preserved all
+source, input, output and usage hashes. Optional exercise: explain why a gate pass
+is not permission to deploy or repeatedly inspect the final test.

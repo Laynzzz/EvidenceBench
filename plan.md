@@ -634,3 +634,15 @@ are retained; the candidate must also strictly beat the saved constrained F1.
 [Readiness](reports/gpu-generation-readiness.json) pins a single proposed attempt:
 32 calls, 2,048 reserved tokens, 20 minutes, $0 external spend. 144 tests pass
 including PostgreSQL. Execution awaits new approval; no new model work occurred.
+
+The approved [GPU generation run](reports/gpu-generation-development.md) completed
+and passed all eight predeclared development conditions: F1 .123578 versus .075424,
+citation-ID precision .458333 versus .321429, 24 answers and zero failures. Answers
+on unanswerable questions fall from six to three. The post-hoc paired family
+bootstrap F1-gain interval [-.022313, .125398] includes zero; it is not a selection-
+adjusted interval or proof of improvement. One attempt used 32 calls/380 actual
+output tokens/50.750 seconds, $0 external spend. The allowance is consumed.
+The candidate remains development-only; the service and final test are unchanged.
+A [24-answer human review packet](reports/gpu-generation-human-review.md) and blank
+response template are ready. Phase 4 is incomplete until the semantic-review
+criterion is met; fresh final evaluation requires a separately approved scope.

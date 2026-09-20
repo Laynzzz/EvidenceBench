@@ -40,3 +40,9 @@ The user subsequently approved and completed that exact GPU attempt.
 CUDA/BF16 model execution within 38.765 seconds. The quality gate fails and the
 allowance is consumed. The original preparation records remain historical; no
 additional model work is authorized by this successful execution.
+
+The user subsequently approved the exact fixed-input GPU generation snapshot.
+[Verified results](../reports/gpu-generation-development.md) record 32 calls, 380
+actual tokens and 50.750 seconds of worker time. All eight development conditions
+pass; the single allowance is consumed. It does not authorize further inference,
+training, final-test access or deployment.

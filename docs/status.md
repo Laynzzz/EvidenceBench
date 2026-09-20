@@ -10,7 +10,7 @@ production-ready or fully complete.
 | 1. Corpus and reproducible data | Verified | 191 papers, 5,908 paragraphs, byte-identical rebuild and frozen selection |
 | 2. Labels and baselines | Verified | 200/50/100 human-labeled questions; baselines; 36 dev failures inspected |
 | 3. Adaptation | Verified | 50/100/200 learning curve, hard/random ablation, three seeds, reload parity and failed-run retention |
-| 4. Grounded answers | Implemented and measured; acceptance incomplete | Fresh validation candidate F1 .0754 versus .0120, zero versus 21 failures; promotion gate fails on abstention and citation precision; human support review missing |
+| 4. Grounded answers | Latest development gate passed; acceptance incomplete | Fixed-input GPU candidate F1 .1236 versus constrained .0754, zero failures, 3/12 unanswerable answers; F1 interval includes zero; human support review and fresh final evaluation remain pending |
 | 5. Deployment | Verified locally | Five routes, real answer/refusal, DB outage, rollback, concurrency, fresh environment, 50-query Linux parity |
 | 6. MLE focus | Verified within local scope | Controlled hard negatives, exact mining cache, three-seed sensitivity and failure analysis; agent deferred |
 | 7. Final evaluation / portfolio | Verified experimental handoff | Five-system ranking, 100-question answers, restored artifact bundle and recorded API demo; human claim audit remains missing |
@@ -304,3 +304,20 @@ retains all seven prior conditions and adds F1 strictly above the constrained
 baseline. No source weights, references, scores or deployed behavior changed.
 Model files/runtime/predecessor evidence verify; no new GPU model load, inference,
 training or final-test access occurred. This preparation is not Phase 4 acceptance.
+
+## GPU generation — completed; development gate passed
+
+[Results](../reports/gpu-generation-development.md) verify one approved attempt:
+32 calls, 380 actual output tokens, 2,048 reserved tokens and 50.750 seconds of
+worker time. The candidate answers 24/50 with zero failures; F1 .123578 versus
+.075424 and citation-ID precision .458333 versus .321429. Unanswerable answers
+fall from six to three. All eight gate conditions pass. A descriptive family
+bootstrap interval for the F1 gain is [-.022313, .125398], including zero.
+
+Launch verification and separate read-only recomputation pass. The 18 threshold
+refusals are unchanged; reference labels and scoring denominators stay frozen.
+The preparation's 144 software tests are historical verification, not rerun here.
+[Human review packet](../reports/gpu-generation-human-review.md) contains all 24
+answers with citations and paper links; the response template is blank. Human
+claim-support review remains required by the plan. No service change, training,
+final-test access or additional attempt is authorized. The allowance is consumed.

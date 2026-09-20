@@ -1,0 +1,675 @@
+{
+  "status": "verified",
+  "run": "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5",
+  "metrics": {
+    "control": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 11,
+      "failure_count": 21,
+      "answer_coverage": 0.22,
+      "answerable_token_f1": 0.012025255446308078,
+      "false_refusal_rate": 0.3157894736842105,
+      "answerable_failure_rate": 0.47368421052631576,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.36363636363636365,
+      "upstream_citation_recall": 0.06896551724137931,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "gate": {
+      "f1_exceeds_control": true,
+      "failures_do_not_increase": true,
+      "unanswerable_answers_do_not_increase": true,
+      "citation_precision_not_lower": true,
+      "retain_80_percent_f1": true,
+      "retain_half_answers": true,
+      "no_new_generation_failures": true,
+      "f1_exceeds_constrained_baseline": true
+    },
+    "passes_development_gate": true,
+    "scope": "Reused validation development experiment; not independent semantic review",
+    "baseline": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 28,
+      "failure_count": 0,
+      "answer_coverage": 0.56,
+      "answerable_token_f1": 0.07542449567049109,
+      "false_refusal_rate": 0.42105263157894735,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.5,
+      "upstream_citation_precision": 0.32142857142857145,
+      "upstream_citation_recall": 0.15517241379310345,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "candidate": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 24,
+      "failure_count": 0,
+      "answer_coverage": 0.48,
+      "answerable_token_f1": 0.12357810681224572,
+      "false_refusal_rate": 0.4473684210526316,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.75,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.4583333333333333,
+      "upstream_citation_recall": 0.1896551724137931,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    }
+  },
+  "usage": {
+    "call_limit": 32,
+    "calls": 32,
+    "reserved_tokens": 2048
+  },
+  "supervisor": {
+    "elapsed_seconds": 50.75,
+    "exit_code": 0,
+    "reason": "process_exit"
+  },
+  "verified_at_utc": "2026-09-20T14:56:47.191698+00:00",
+  "prepared_commit": "89781c1",
+  "snapshot_sha256": "9d18f8259b643720968ae21a5c9b5622a49afe4be1778544325f8abec45d0cdc",
+  "decisions": [
+    {
+      "elapsed_ms": 1704.1841999744065,
+      "generation_calls": 1,
+      "input_sha256": "bbd92c47756387e918da14106e5ee1f0484ddf7450f26704342d56d8663bc779",
+      "output_tokens": 9,
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "raw": "support vector machines with radial basis function kernel",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 696.7485999921337,
+      "generation_calls": 1,
+      "input_sha256": "11f65f2f0e0150b1e2be6e01db7b87afc48f603289d006a532d815d8125eb438",
+      "output_tokens": 19,
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "raw": "10-fold cross validation on 3543 code-mixed tweets was carried out",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 941.269300004933,
+      "generation_calls": 1,
+      "input_sha256": "7aa2c6e1da4509d31122d066e52486ad4837cc26d1785b7790eceaadf52d508d",
+      "output_tokens": 25,
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "raw": "Trained on collected Wikipedia hyperlinks, NCEL outperforms the state-of-the-art collective methods across five different datasets",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 986.3092000014149,
+      "generation_calls": 1,
+      "input_sha256": "2ec4a80ec26f6bc231747dca589ec016c288f4b77e7f0f563d0da96d7892a6d5",
+      "output_tokens": 27,
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "raw": "Baseline features have performed significantly better (F1-score: 92.32%) than all other features. Supporting the observations",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 537.5120000098832,
+      "generation_calls": 1,
+      "input_sha256": "e7a38896cacb640cfaaa94d80c27c484ec2f356feacf6bf27e2fbb2b023b803b",
+      "output_tokens": 12,
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "raw": "F1-score: 92.37%",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 586.8900999776088,
+      "generation_calls": 1,
+      "input_sha256": "e0710c544618a9d0099179364bd841c5f2145d147c4017f5e7331124c6f82f25",
+      "output_tokens": 16,
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "raw": "We report the experimental results for our two tasks in terms of the correct classification",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 205.81870002206415,
+      "generation_calls": 1,
+      "input_sha256": "629d902679ec89b1ffc8f341d353b2076a813a86bb392ace74e6dc597792e51d",
+      "output_tokens": 4,
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "raw": "TensiStrength",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 128.6606999929063,
+      "generation_calls": 1,
+      "input_sha256": "5256ec441ee4205bd4897c012d0b9cb40259621028cf6bc2bdd748194b411755",
+      "output_tokens": 2,
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "raw": "UNKNOWN",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 235.53539998829365,
+      "generation_calls": 1,
+      "input_sha256": "bc5da2613d516de4a6b9e76cb4c8b406dc31d294df8c7c98a177022a78ca104a",
+      "output_tokens": 2,
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "raw": "UNKNOWN",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 676.0821000207216,
+      "generation_calls": 1,
+      "input_sha256": "361a49f5bf8acf7f7e95df964c11edfa2dffae944fabbe56b416b3eca4943ae1",
+      "output_tokens": 21,
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "raw": "B1. The first baseline uses only the salience-based features by Dunietz and Gillick",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 418.3822000049986,
+      "generation_calls": 1,
+      "input_sha256": "4804521b5654b69a35638132349d45564809dbb5f92257e882f5d36e7018092f",
+      "output_tokens": 11,
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "raw": "novelty of news articles for an entity page",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 146.73179999226704,
+      "generation_calls": 1,
+      "input_sha256": "b52df1c4ab6f7273964fe1ae97082a5848527c8148026009e79ba2d9c9afbb6b",
+      "output_tokens": 2,
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "raw": "UNKNOWN",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 215.65600001486018,
+      "generation_calls": 1,
+      "input_sha256": "84be4dbb94c8c193dde361a48037c06738ba142d81cf77a809c8562efd0739e7",
+      "output_tokens": 2,
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "raw": "UNKNOWN",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 635.3273999993689,
+      "generation_calls": 1,
+      "input_sha256": "1fd14a0e44b003f72ace84d318bb15d3217dd42065d788dd747533aff01eb4aa",
+      "output_tokens": 18,
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "raw": "DNN based models coupled with transfer learning beat the best-known results for all three datasets",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 855.924999981653,
+      "generation_calls": 1,
+      "input_sha256": "f63c86e1dd431eceb9aa4020e66a2baa09e2bb4178bea4047e80d7a584482194",
+      "output_tokens": 22,
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "raw": "Second, they address just one topic of cyberbullying. Third, they rely on carefully handcrafted features",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 230.83709995262325,
+      "generation_calls": 1,
+      "input_sha256": "2333414945fab72ac11820294d21970046282833ef4a150350d0a16703f17249",
+      "output_tokens": 5,
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "raw": "190 hours",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 305.19250000361353,
+      "generation_calls": 1,
+      "input_sha256": "d788e427e8db1de8c85d4e4c620a4951b58f035bc9897a7f1ef3c60f0de8ebb4",
+      "output_tokens": 6,
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "raw": "We tied the embedding weights",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1131.8117000046186,
+      "generation_calls": 1,
+      "input_sha256": "d13abcaa65376b330e60f12437473db44f0f634abe7e61c5494bb7610055be23",
+      "output_tokens": 29,
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "raw": "Our entry into the HAHA 2019 Challenge placed $3^{rd}$ in the classification task and $2^{nd}$",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 201.80589996743947,
+      "generation_calls": 1,
+      "input_sha256": "bf58cca737c0d0948a9860e3712b879674344f2fffd12aa41c8a9b0b9197d461",
+      "output_tokens": 5,
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "raw": "language models combination techniques",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 166.11590003594756,
+      "generation_calls": 1,
+      "input_sha256": "e8a4147c8a47dc79c82bb419f3e8b10039766828ae931416f7c18aef47c5da8e",
+      "output_tokens": 2,
+      "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+      "raw": "UNKNOWN",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1061.2502999720164,
+      "generation_calls": 1,
+      "input_sha256": "ec3a99c03954637ac4a31d16672e894c9be491f9db9f6f68a3e1f741b5911c18",
+      "output_tokens": 20,
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "raw": "A group of 50 native people who were well-versed in both English and Tamil languages",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1048.7337000085972,
+      "generation_calls": 1,
+      "input_sha256": "1ce4bdde174404950939fb55a5b645c3e278947d382c618800dc29973e5cec0c",
+      "output_tokens": 26,
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "raw": "For the baseline systems, the training data includes KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 280.6187000242062,
+      "generation_calls": 1,
+      "input_sha256": "7f8508a9201fe3db9c280a81e8a9bc33b8bcde48e15e176fc60f5b81e705bc78",
+      "output_tokens": 7,
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "raw": "Japanese-Vietnamese parallel corpus",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 120.34369999310002,
+      "generation_calls": 1,
+      "input_sha256": "bf0c3a4f8dae2a513fb4ece9fa5c1ca3aa4e22ccadee7c3faad15a27a626df9b",
+      "output_tokens": 2,
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "raw": "UNKNOWN",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 763.5368999908678,
+      "generation_calls": 1,
+      "input_sha256": "e058da2991ac7e888eaa0ff4510857965e31e599d6f6394f80f59b7b760a3528",
+      "output_tokens": 18,
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "raw": "We applied traditional features by simply taking the TF-IDF features as the inputs into the",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 641.1563999718055,
+      "generation_calls": 1,
+      "input_sha256": "e80314825c8542b45e0466f57b2c4df1439eab79110ae6692264ec496e292527",
+      "output_tokens": 18,
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "raw": "We re-examine and correct an existing dataset for training and collect a test set to",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 959.4513999763876,
+      "generation_calls": 1,
+      "input_sha256": "da9b4f23808f7295a53e34261056584bfc092f49981047d056afefa603b0ea13",
+      "output_tokens": 28,
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "raw": "French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi). These languages",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 343.6397999757901,
+      "generation_calls": 1,
+      "input_sha256": "5b94b3c93613d4dce3e3fc8fd3bcb68cd9bf87d009fec6e05cb880e179565e50",
+      "output_tokens": 8,
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "raw": "23,700 queries",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 243.07769996812567,
+      "generation_calls": 1,
+      "input_sha256": "0fa8254ef811ec9a0b6a4abe9076ded04091ab9e11ca1c1de0df32a88b0f994d",
+      "output_tokens": 2,
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "raw": "UNKNOWN",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 170.07079999893904,
+      "generation_calls": 1,
+      "input_sha256": "832e459d796fcc6d648aa10e25cbb0119e1336a58c976565e69de5d2d392c8ac",
+      "output_tokens": 2,
+      "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+      "raw": "UNKNOWN",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 277.4335999856703,
+      "generation_calls": 1,
+      "input_sha256": "82eb879f9f82422cb104af6a8dd87b44f11aa4599b5b3e485f411b9e9cee0d1a",
+      "output_tokens": 5,
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "raw": "inflected word form",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 256.7908000200987,
+      "generation_calls": 1,
+      "input_sha256": "23063e865e162cda2aaffa59154efbf6e03fc432aeb8eb2f7c85954d6f800672",
+      "output_tokens": 5,
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "raw": "TF-IDF features",
+      "reason": null
+    }
+  ],
+  "actual_output_tokens": 380,
+  "generation_latency_seconds": {
+    "p50": 0.38101099999039434,
+    "p95": 1.0930029299866872
+  },
+  "hardware": {
+    "device": "cuda:0",
+    "dtype": "bfloat16",
+    "free_vram_before_load": 24104665088,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "total_vram": 25756696576
+  },
+  "external_spend_usd": 0,
+  "attempt_consumed": true,
+  "final_test_used": false,
+  "preserved_threshold_refusals": 18,
+  "status_counts": {
+    "refused": 26,
+    "answered": 24
+  },
+  "paired_answerable_f1": {
+    "delta": 0.04815361114175462,
+    "low": -0.022312526504936953,
+    "high": 0.12539838872668407,
+    "family_count": 26,
+    "query_count": 38,
+    "samples": 2000,
+    "seed": 42,
+    "warning": null
+  },
+  "paired_answerable_rows": [
+    {
+      "query_id": "7bd6a6ec230e1efb27d691762cc0674237dc7967",
+      "family_id": "qasper-1808.09029",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "family_id": "qasper-1806.05513",
+      "baseline": 0.56,
+      "candidate": 0.19047619047619047
+    },
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "family_id": "qasper-1806.05513",
+      "baseline": 0.15384615384615385,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "91e326fde8b0a538bc34d419541b5990d8aae14b",
+      "family_id": "qasper-1710.03348",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "bb3267c3f0a12d8014d51105de5d81686afe5f1b",
+      "family_id": "qasper-1811.08603",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "family_id": "qasper-1811.08603",
+      "baseline": 0.0,
+      "candidate": 0.16
+    },
+    {
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "family_id": "qasper-1610.08815",
+      "baseline": 0.1,
+      "candidate": 0.1
+    },
+    {
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "family_id": "qasper-1610.08815",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "family_id": "qasper-2002.04181",
+      "baseline": 0.125,
+      "candidate": 0.23529411764705882
+    },
+    {
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "family_id": "qasper-2002.04181",
+      "baseline": 0.0,
+      "candidate": 0.13333333333333333
+    },
+    {
+      "query_id": "b962cc817a4baf6c56150f0d97097f18ad6cd9ed",
+      "family_id": "qasper-1810.12196",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "c571deefe93f0a41b60f9886db119947648e967c",
+      "family_id": "qasper-1810.12085",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "family_id": "qasper-1909.09587",
+      "baseline": 0.10810810810810811,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "ef396a34436072cb3c40b0c9bc9179fee4a168ae",
+      "family_id": "qasper-1705.04153",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "family_id": "qasper-1610.09225",
+      "baseline": 0.2608695652173913,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",
+      "family_id": "qasper-1610.09225",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "family_id": "qasper-1703.10344",
+      "baseline": 0.03571428571428571,
+      "candidate": 0.3582089552238806
+    },
+    {
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "family_id": "qasper-1703.10344",
+      "baseline": 0.14285714285714285,
+      "candidate": 0.3
+    },
+    {
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "family_id": "qasper-1906.07662",
+      "baseline": 0.43636363636363634,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "family_id": "qasper-1906.07662",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "03ebb29c08375afc42a957c7b2dc1a42bed7b713",
+      "family_id": "qasper-1909.05359",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "435570723b37ee1f5898c1a34ef86a0b2e8701bb",
+      "family_id": "qasper-1801.10293",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "family_id": "qasper-1801.06482",
+      "baseline": 0.0,
+      "candidate": 0.17647058823529413
+    },
+    {
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "family_id": "qasper-1801.06482",
+      "baseline": 0.13333333333333333,
+      "candidate": 0.08
+    },
+    {
+      "query_id": "b8d7d055ddb94f5826a9aad7479b4a92a9c8a2f0",
+      "family_id": "qasper-1612.03226",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "family_id": "qasper-1612.03226",
+      "baseline": 0.0,
+      "candidate": 0.5714285714285714
+    },
+    {
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "family_id": "qasper-1907.03187",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "family_id": "qasper-1910.05603",
+      "baseline": 0.2,
+      "candidate": 0.2
+    },
+    {
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "family_id": "qasper-1612.02482",
+      "baseline": 0.0,
+      "candidate": 0.17647058823529413
+    },
+    {
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "family_id": "qasper-1805.07133",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "family_id": "qasper-1805.07133",
+      "baseline": 0.2857142857142857,
+      "candidate": 0.2857142857142857
+    },
+    {
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "family_id": "qasper-1912.08960",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "45e9533586199bde19313cd43b3d0ecadcaf7a33",
+      "family_id": "qasper-1809.09194",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "family_id": "qasper-1910.14076",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "family_id": "qasper-1910.14076",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "family_id": "qasper-2002.07306",
+      "baseline": 0.0,
+      "candidate": 0.9285714285714286
+    },
+    {
+      "query_id": "d571e0b0f402a3d36fb30d70cdcd2911df883bc7",
+      "family_id": "qasper-2002.07306",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "family_id": "qasper-1909.02027",
+      "baseline": 0.32432432432432434,
+      "candidate": 0.8
+    }
+  ],
+  "uncertainty_scope": "Post-hoc descriptive paired paper-family bootstrap of reference F1 on reused development data; not a predeclared gate or selection-adjusted interval.",
+  "artifact_sha256": {
+    "config.json": "9d18f8259b643720968ae21a5c9b5622a49afe4be1778544325f8abec45d0cdc",
+    "decisions.jsonl": "4c12f1eebcfdd6240bfa83961b8396f100a883ccc0bbdc27226fd6b0fd966de1",
+    "inputs.json": "92c6acd73daa848a796b5681025a8a512919ed610631d2c727e6ab43be1e1064",
+    "manifest.json": "105cab3c163a9dc0df27fa10890f806a6590bb90ea78e7867dfed5a61119f3eb",
+    "metrics.json": "9b5d3f08e2043b94eadb1763e4d9ad557cfef887517d578e8a5df39838f39a34",
+    "predictions.jsonl": "a7e3ab230bf22d14a575c66dab688bfab8328ed08d8867aba8cb88b163b38047",
+    "source.zip": "eee9ef30fd49ed66d9a2155cfb2f94d8d944607bb933ac910982b0babcf9f985",
+    "usage.json": "2cf5c87b3286b880d7de9a0314c4f0ce8254c5429700f97b1c71ff8df2364e7a",
+    "worker-complete.json": "70099680367fbdff78dca340483a3eff1ddba7f46ae3cc099889d41805ef9d94"
+  },
+  "root_artifact_sha256": {
+    "attempt.json": "4b5360a7f9ea7555eebcf8e1073546d7eeabb35b708a9493fb4aff626cc9ca1c",
+    "authorization.json": "41fa79afdc00b9b55a0b4f42904d9177b3101f21bf7275908f2b9296f3af3669",
+    "termination.json": "fcfec30e889af5edf72409f7d9cbc9757ff9b5d166327d34026de87348ad0746",
+    "worker.started": "afe47111be65ed1284da7c1bda48affd934647c2fcc98fe56e311cbcd37987bc"
+  },
+  "status_transitions": {
+    "refused -> refused": 19,
+    "answered -> answered": 21,
+    "refused -> answered": 3,
+    "answered -> refused": 7
+  },
+  "review_material_sha256": {
+    "reports/gpu-generation-human-review.md": "21064bbcfba2d1f0536884e133de4ec08247f28c94efcec2e9fda01214e0e2ef",
+    "reports/gpu-generation-human-review-template.json": "4a95a6738ad0060d5cc615da0de3cd07859516dc9cdf4b9db92011c3c9bdad9f"
+  },
+  "review_source_pdfs_sha256": {
+    "data/raw/qasper-fresh-v1/1610.08815.pdf": "21ecb52240460890a581e724d20b2c8081ca3b6e357ff2d8889b1a4df27cb0e5",
+    "data/raw/qasper-fresh-v1/1612.02482.pdf": "c039656781f1e752cd1387e49696029228604b0549b6d630bd2e5241314c8378",
+    "data/raw/qasper-fresh-v1/1612.03226.pdf": "8475795b62187d16625ed7ea7d73203d5039ef345e25ddfafe78c7a2f5f4e0c8",
+    "data/raw/qasper-fresh-v1/1703.10344.pdf": "f20ca8357ff02fe03415a9792568c12a02a42fe9c5bc9cfc6af1cc0e11d3b447",
+    "data/raw/qasper-fresh-v1/1801.06482.pdf": "9b08fa8ffde5165df06b762c50e1f349677b1893ee3df0c0091b48600a6960cb",
+    "data/raw/qasper-fresh-v1/1805.07133.pdf": "8ef0e6434859aaf767b340c358d7798aed845907b6e93c8096f4a0757ffcba78",
+    "data/raw/qasper-fresh-v1/1806.05513.pdf": "415d7cbe7b0a5a6eb2d06160d7f5e514fe4a37dd26e40355e078e5a1fcc7fa9a",
+    "data/raw/qasper-fresh-v1/1809.01541.pdf": "99d9cbed4fa2be85ec45af5d90c9585192a203837790bf8680bef2a3fe678f4c",
+    "data/raw/qasper-fresh-v1/1811.08603.pdf": "efcef7cf2e3edb107fee4b3c61502a835c8201b5bbc6f2ccad96ac6fe1a185e5",
+    "data/raw/qasper-fresh-v1/1903.07406.pdf": "2981b734772829d2994d3d6dec4332f2fe8d2bb1021e9faa5e1c4b1203e12947",
+    "data/raw/qasper-fresh-v1/1907.03187.pdf": "eced5fe80a0efca6df0ca81a223811c9e45b6858c2d1792f731795009621a80d",
+    "data/raw/qasper-fresh-v1/1909.02027.pdf": "dea6cf0bdf4cd9cd06a048e5f5aac7b2165f8788ad9793593af885511c871497",
+    "data/raw/qasper-fresh-v1/1910.05603.pdf": "f618b4b9c686f01d5da7208d8d5b72d3a4e37bc4c9cd00ae218b45af158ff5d5",
+    "data/raw/qasper-fresh-v1/1910.14076.pdf": "6947f536bf1d18d179a730be9d328af7c702cb5e43e254703330b3780fdc2685",
+    "data/raw/qasper-fresh-v1/2002.04181.pdf": "59130916e02aef176497abe93be07629964cbd6aaa31e16ab04fb954e8b0117c",
+    "data/raw/qasper-fresh-v1/2002.07306.pdf": "79be7a045afc79ae192d93ed1db20dd48f9fa3624795918038b3f6764da8af74"
+  }
+}

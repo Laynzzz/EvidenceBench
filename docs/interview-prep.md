@@ -297,3 +297,17 @@ seven gate conditions and additionally require F1 above the saved constrained
 baseline. Report failed gates and consumption even on crashes. The
 [proposal](gpu-generation-proposal.md) is prepared, not executed, and the new
 allowance must be approved before any model loading or inference.
+
+## Explaining the positive GPU development result
+
+**What improved?** With saved evidence and extraction rules fixed, the 7B/runtime
+candidate reached .123578 token F1 versus .075424, citation-ID precision .458333
+versus .321429, and three versus six unanswerable answers. All eight numerical
+conditions pass with zero failures. Model/runtime change together, so this does
+not isolate parameter count.
+
+**How strong is the evidence?** The paired paper-family bootstrap F1-gain interval
+includes zero, and development data were inspected repeatedly. Report the point
+estimates and limitations together. No new unbiased test or human semantic score
+is claimed. [Results](../reports/gpu-generation-development.md) and a complete
+24-answer review packet are available; the candidate is not deployed.

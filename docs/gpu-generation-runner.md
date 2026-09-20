@@ -1,9 +1,10 @@
 # Fixed-input GPU answer-generator runner
 
-The [proposal](gpu-generation-proposal.md) is implemented and prepared; no new
-model execution is authorized. Existing 7B model files and the isolated environment
-are reused without installation or dependency changes. The previous support-checker
-run remains frozen and its allowance is consumed.
+The approved [proposal](gpu-generation-proposal.md) completed once and
+[passed the development gate](../reports/gpu-generation-development.md). Its
+allowance is consumed. The proposal and readiness records remain frozen historical
+preparation evidence. Existing 7B model files and the isolated environment were
+reused without installation or dependency changes. No further run is authorized.
 
 ## Read-only preflight
 
@@ -67,4 +68,5 @@ Follow-up review found no remaining actionable issue.
 Read-only review found all 125,041 textual choices in the fixed inputs pass the
 frozen validator. Runtime tokenizer/path filtering still follows the existing
 fewer-than-64-token rule. No new model load or generation was performed during
-preparation. Synthetic success is not a measured answer-quality or GPU result.
+preparation. Subsequent actual execution is documented in the result report above;
+the preparation's synthetic checks remain distinct from those measurements.
