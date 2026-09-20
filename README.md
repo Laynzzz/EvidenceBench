@@ -152,3 +152,10 @@ The F1-gain bootstrap interval includes zero. One attempt used 32 calls and 50.7
 seconds of worker time at $0 external spend. The candidate is not deployed; human
 semantic review and a separately approved fresh final evaluation remain pending.
 The [24-answer review packet](reports/gpu-generation-human-review.md) is ready.
+
+The requested [paper-grounded AI review](reports/gpu-generation-ai-review.md) is
+complete: 3 adequate, 11 partial, 8 inadequate and 2 ambiguous answers under its
+documented rubric. Each case includes source pages and a suggested correction.
+These are assistant judgments on emitted development answers, not independent
+human labels. Source copying often misses the requested information; original
+scores and benchmark labels remain unchanged. The candidate remains development-only.

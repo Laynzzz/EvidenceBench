@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "verified_at_utc": "2026-09-20T15:23:01.665370+00:00",
+  "command": ".venv/Scripts/python.exe artifacts/gpu-generation-ai-review/verify_review.py",
+  "scope": "Document consistency and saved-artifact provenance only; not a model or software-suite evaluation.",
+  "checks": {
+    "exact_answer_roster": 24,
+    "exact_question_answer_citation_matches": 24,
+    "citation_page_mappings": 24,
+    "complete_judgment_records": 24,
+    "matching_markdown_cases": 24,
+    "source_files_sha256": 44,
+    "source_pdfs": 16,
+    "rendered_page_hashes": 6,
+    "unchanged_run_artifacts": 9,
+    "unchanged_root_artifacts": 4,
+    "blank_human_template_preserved": true,
+    "markdown_targets_exist": true,
+    "git_diff_check": true
+  },
+  "limitations": "These checks establish consistency and provenance, not the correctness or independence of semantic judgments.",
+  "verified_artifacts_sha256": {
+    "reports/gpu-generation-ai-review.json": "1bb11d4dd4e02f7c2c5727d10c0392444b317216021331c9995c24a8808a046d",
+    "reports/gpu-generation-ai-review.md": "b0232a4d4a4fdcb702f11115801c4fb991179d1bae4dd85a08adabfa79645bdc"
+  },
+  "local_document_assembly_scripts_sha256": {
+    "artifacts/gpu-generation-ai-review/build_review.py": "7ed3484f28022aa6ef770ffc52b8774b4babb5863890ec9937eb084cdda69a57",
+    "artifacts/gpu-generation-ai-review/verify_review.py": "c0593251e8c9c6472114c505bbc6292e86c8b34651ac66c06a516622ad590756"
+  }
+}

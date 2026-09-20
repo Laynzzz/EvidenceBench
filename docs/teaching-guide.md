@@ -488,3 +488,25 @@ useful answers. Token overlap and citation-ID precision cannot provide that huma
 judgment. Real run verification recomputed predictions/metrics and preserved all
 source, input, output and usage hashes. Optional exercise: explain why a gate pass
 is not permission to deploy or repeatedly inspect the final test.
+
+## Reviewing whether an answer actually answers the question
+
+The [paper-grounded review](../reports/gpu-generation-ai-review.md) provides an
+explanation and suggested correction for every emitted GPU answer. It sits after
+generation and scoring as diagnostic documentation; it does not rewrite predictions.
+Python reads saved JSON and hashes local files; PDF page text locates evidence and
+pypdfium2 renders ambiguous tables for visual inspection. No model was loaded.
+
+Four axes prevent misleading conclusions: responsiveness asks whether the requested
+fact is supplied, completeness checks omissions, citation support checks the emitted
+content with its referent, and full-paper correctness checks broader evidence.
+A source-grounded F1 score still fails a question asking for model names. NCEL's
+conclusion claims broad superiority, while its table includes losses and ties.
+
+The conservative review gives 3 adequate, 11 partial, 8 inadequate and 2 ambiguous
+out of 24 emitted answers. This is single-assistant, non-blinded analysis; neither
+the 26 refusals nor final-test examples were reviewed. Keeping the original labels
+preserves comparability when a paper contradicts a benchmark annotation. The
+verification record checks roster, exact outputs/citations, page ranges and hashes;
+it cannot certify the assistant's semantic judgments. Optional later exercise:
+explain why case 11's copied pronoun changes the subject and invalidates support.

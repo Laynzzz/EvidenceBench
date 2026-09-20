@@ -1,0 +1,980 @@
+{
+  "status": "completed_ai_assisted_review",
+  "reviewer": "Codex assistant",
+  "reviewed_at_utc": "2026-09-20T15:23:01.461758+00:00",
+  "source_commit": "94685b8",
+  "review_kind": "paper_grounded_assistant_analysis_of_saved_outputs",
+  "independent_human_review": false,
+  "blinded": false,
+  "prior_exposure": "Reviewer has seen saved benchmark answerability/references, prior audit and model-comparison results before finalizing judgments. Review is neither blinded nor independent.",
+  "run": "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5",
+  "prepared_commit": "89781c1",
+  "scope": "All 24 emitted answers from 50 reused development queries; no review of the 26 refusals, no final-test examples.",
+  "new_project_model_calls": 0,
+  "new_training_runs": 0,
+  "final_test_used": false,
+  "denominator": 24,
+  "rubric": {
+    "answer_adequacy": "adequate: answers the requested information correctly; partial: useful requested information but missing detail or needing qualification; inadequate: wrong referent, wrong answer type or no requested information; ambiguous: question scope prevents a unique judgment, with emitted deficiencies explained.",
+    "responsiveness": "responsive / partial / nonresponsive / unclear; whether the response addresses what was asked.",
+    "completeness": "complete / partial / missing / unclear; requested information coverage, independent of truth.",
+    "cited_support": "supported / unsupported / unclear for the emitted literal content with source referents preserved. A supported fragment or score can still be a useless answer. This is NOT complete-answer support or benchmark citation-ID precision. Pronoun misattribution is unsupported; an unspecified best-system referent is unclear.",
+    "paper_correctness": "correct / partially_correct / incorrect / ambiguous as an answer to this question. Incorrect includes wrong answer types and tautological nonanswers, even if the isolated words are true."
+  },
+  "counts": {
+    "answer_adequacy": {
+      "partial": 11,
+      "inadequate": 8,
+      "ambiguous": 2,
+      "adequate": 3
+    },
+    "responsiveness": {
+      "partial": 10,
+      "responsive": 4,
+      "nonresponsive": 8,
+      "unclear": 2
+    },
+    "completeness": {
+      "partial": 10,
+      "complete": 4,
+      "missing": 8,
+      "unclear": 2
+    },
+    "cited_support": {
+      "supported": 22,
+      "unsupported": 1,
+      "unclear": 1
+    },
+    "paper_correctness": {
+      "partially_correct": 11,
+      "incorrect": 8,
+      "ambiguous": 2,
+      "correct": 3
+    }
+  },
+  "limitations": [
+    "Single assistant judgment, not a human audit or a validated semantic accuracy estimate.",
+    "Full-paper corrections may need different evidence passages and exceed the frozen 15-word source-span contract; they are not rescored predictions.",
+    "Cases 1, 6, 8 and 14 have documented rubric/scope sensitivity; cases 13 and 23 remain ambiguous.",
+    "The already-passed development gate is unchanged. No promotion, label edits, model calls or waiver of Phase 4 criteria follows from this review."
+  ],
+  "source_sha256": {
+    "reports/gpu-generation-human-review.md": "21064bbcfba2d1f0536884e133de4ec08247f28c94efcec2e9fda01214e0e2ef",
+    "reports/gpu-generation-human-review-template.json": "4a95a6738ad0060d5cc615da0de3cd07859516dc9cdf4b9db92011c3c9bdad9f",
+    "data/raw/qasper-fresh-v1/1610.08815.pdf": "21ecb52240460890a581e724d20b2c8081ca3b6e357ff2d8889b1a4df27cb0e5",
+    "data/raw/qasper-fresh-v1/1612.02482.pdf": "c039656781f1e752cd1387e49696029228604b0549b6d630bd2e5241314c8378",
+    "data/raw/qasper-fresh-v1/1612.03226.pdf": "8475795b62187d16625ed7ea7d73203d5039ef345e25ddfafe78c7a2f5f4e0c8",
+    "data/raw/qasper-fresh-v1/1703.10344.pdf": "f20ca8357ff02fe03415a9792568c12a02a42fe9c5bc9cfc6af1cc0e11d3b447",
+    "data/raw/qasper-fresh-v1/1801.06482.pdf": "9b08fa8ffde5165df06b762c50e1f349677b1893ee3df0c0091b48600a6960cb",
+    "data/raw/qasper-fresh-v1/1805.07133.pdf": "8ef0e6434859aaf767b340c358d7798aed845907b6e93c8096f4a0757ffcba78",
+    "data/raw/qasper-fresh-v1/1806.05513.pdf": "415d7cbe7b0a5a6eb2d06160d7f5e514fe4a37dd26e40355e078e5a1fcc7fa9a",
+    "data/raw/qasper-fresh-v1/1809.01541.pdf": "99d9cbed4fa2be85ec45af5d90c9585192a203837790bf8680bef2a3fe678f4c",
+    "data/raw/qasper-fresh-v1/1811.08603.pdf": "efcef7cf2e3edb107fee4b3c61502a835c8201b5bbc6f2ccad96ac6fe1a185e5",
+    "data/raw/qasper-fresh-v1/1903.07406.pdf": "2981b734772829d2994d3d6dec4332f2fe8d2bb1021e9faa5e1c4b1203e12947",
+    "data/raw/qasper-fresh-v1/1907.03187.pdf": "eced5fe80a0efca6df0ca81a223811c9e45b6858c2d1792f731795009621a80d",
+    "data/raw/qasper-fresh-v1/1909.02027.pdf": "dea6cf0bdf4cd9cd06a048e5f5aac7b2165f8788ad9793593af885511c871497",
+    "data/raw/qasper-fresh-v1/1910.05603.pdf": "f618b4b9c686f01d5da7208d8d5b72d3a4e37bc4c9cd00ae218b45af158ff5d5",
+    "data/raw/qasper-fresh-v1/1910.14076.pdf": "6947f536bf1d18d179a730be9d328af7c702cb5e43e254703330b3780fdc2685",
+    "data/raw/qasper-fresh-v1/2002.04181.pdf": "59130916e02aef176497abe93be07629964cbd6aaa31e16ab04fb954e8b0117c",
+    "data/raw/qasper-fresh-v1/2002.07306.pdf": "79be7a045afc79ae192d93ed1db20dd48f9fa3624795918038b3f6764da8af74",
+    "reports/gpu-generation-development.json": "1323f423d8f491373e143329fbd5bcc4abb44dc4db303fee507ff38064f5b221",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/config.json": "9d18f8259b643720968ae21a5c9b5622a49afe4be1778544325f8abec45d0cdc",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/decisions.jsonl": "4c12f1eebcfdd6240bfa83961b8396f100a883ccc0bbdc27226fd6b0fd966de1",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/inputs.json": "92c6acd73daa848a796b5681025a8a512919ed610631d2c727e6ab43be1e1064",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/manifest.json": "105cab3c163a9dc0df27fa10890f806a6590bb90ea78e7867dfed5a61119f3eb",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/metrics.json": "9b5d3f08e2043b94eadb1763e4d9ad557cfef887517d578e8a5df39838f39a34",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/predictions.jsonl": "a7e3ab230bf22d14a575c66dab688bfab8328ed08d8867aba8cb88b163b38047",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/source.zip": "eee9ef30fd49ed66d9a2155cfb2f94d8d944607bb933ac910982b0babcf9f985",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/usage.json": "2cf5c87b3286b880d7de9a0314c4f0ce8254c5429700f97b1c71ff8df2364e7a",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/worker-complete.json": "70099680367fbdff78dca340483a3eff1ddba7f46ae3cc099889d41805ef9d94",
+    "data/raw/qasper-fresh-v1/1610.08815.pages.json": "7583217ca604531a2d67cf4297533d268dc72485b5941b6144bc3b51a8b90f0b",
+    "data/raw/qasper-fresh-v1/1612.02482.pages.json": "59e783a237187d4aefd510b841678fbdf3dea47c75f9939d8438ddb9fd4e03e4",
+    "data/raw/qasper-fresh-v1/1612.03226.pages.json": "c2d4354aeaea7edfadf9f3edf88f244c1611225b4c72801f1fb6d5bc8d98299d",
+    "data/raw/qasper-fresh-v1/1703.10344.pages.json": "3d6404a8d91d94fdfe7962d9114e8220a404bbec89b3aa99f532a714c324d1ee",
+    "data/raw/qasper-fresh-v1/1801.06482.pages.json": "ade9fb247ba7a0798d49e7217b23d1dad88455ee700c810fa062e118124bd066",
+    "data/raw/qasper-fresh-v1/1805.07133.pages.json": "918ba59c1ce38bcd1b96cfe01b336b1e873fb348369d2302076ff8bb2f5ec397",
+    "data/raw/qasper-fresh-v1/1806.05513.pages.json": "13c3a593bdc67c5b4e3c39915b10f9e4fa77e647dc5c4b91c0a304f2db1df4f1",
+    "data/raw/qasper-fresh-v1/1809.01541.pages.json": "0ef4a76bbfdd98adbb038c34cc90663ee5e77d4462ee9281ca985cc04cc6d110",
+    "data/raw/qasper-fresh-v1/1811.08603.pages.json": "e37f3b50cc8e7835801492f87c8ab5e0e2e7f1628cbbf4dec65445d511d52b18",
+    "data/raw/qasper-fresh-v1/1903.07406.pages.json": "92ae745e71ed5fbd82d92f5dddde18f4acbf994e35442956f791263d64ce51f8",
+    "data/raw/qasper-fresh-v1/1907.03187.pages.json": "2ed7595eaeb5d32781b69ac318ca07b3d6c51306fc320c0f2556f453bfaa2eb8",
+    "data/raw/qasper-fresh-v1/1909.02027.pages.json": "9381341714672e4102bde9e5eb1d9f4727dc68facc6ce5a5d6d77777d37764b6",
+    "data/raw/qasper-fresh-v1/1910.05603.pages.json": "fd2f6d9c992ea4405c3b49544608ab80e2247d78f1420c56a2c1397f8e8f60c8",
+    "data/raw/qasper-fresh-v1/1910.14076.pages.json": "db65ebdf05646df3d6ef7a7d21c264ebbc1f91afd965e42ccd9e5034f0a09b50",
+    "data/raw/qasper-fresh-v1/2002.04181.pages.json": "f010283678a68d72d93f2fec84ad5f5755179c5a593ac58599d9126d5c3260e5",
+    "data/raw/qasper-fresh-v1/2002.07306.pages.json": "d3881d5c3558e077d372ab7985b597f08fa4296240625a5de9cf5b5a2481bec5"
+  },
+  "visually_inspected_page_images_sha256": {
+    "artifacts/gpu-generation-ai-review/1610.08815-p9.png": "e75db2619a41e80631292794f127fba3973bff67677d281a3247fcbf9c3a9d76",
+    "artifacts/gpu-generation-ai-review/1806.05513-p2.png": "a4a26a6210d1042e0b4a4d92e68a847ff60e6b293f811234693793c4c9793d22",
+    "artifacts/gpu-generation-ai-review/1806.05513-p4.png": "443ec00c13d96f88162163dc846974f154fe296cf87477a080f968ad0165bd0a",
+    "artifacts/gpu-generation-ai-review/1809.01541-p2.png": "3ed0fd3f644d9c7a59cf72341d761b648221c783ec214af2f0a5ae5290ea002a",
+    "artifacts/gpu-generation-ai-review/1811.08603-p8.png": "23368063a73a9a1c23d4cb18d3c4db50db3f4f4571ecfe4dfe594bf40edc4057",
+    "artifacts/gpu-generation-ai-review/1907.03187-p7.png": "959a949239bb8fdf89d59be5e94cb59b7215b547893d137fff9948beceee2e90"
+  },
+  "cases": [
+    {
+      "case": 1,
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "question": "In the paper 'Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System', What type of system does the baseline classification use?",
+      "original_answer": "support vector machines with radial basis function kernel",
+      "citation_ids": [
+        "73ef08cee3d541066bd8a40bb48e6ede4b0030669bf08e9312a3664c50659f2b"
+      ],
+      "cited_passages": [
+        {
+          "id": "E1",
+          "text": "Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System\nIn this paper, we describe a freely available corpus of 3453 English-Hindi code-mixed tweets. The tweets are annotated with humorous(H) and non-humorous(N) tags along with the language tags at the word level. The task of humor identification in social media texts is analyzed as a classification problem and several machine learning classification models are used. The features used in our classification system are n-grams, bag-of-words, common words and hashtags. N-grams when trained with support vector machines with radial basis function kernel performed better than other features and yielded an accuracy of 68.5%. The best accuracy (69.3%) was given by support vector machines with radial basis function kernel.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1806.05513.pdf",
+      "source_pdf_sha256": "415d7cbe7b0a5a6eb2d06160d7f5e514fe4a37dd26e40355e078e5a1fcc7fa9a",
+      "paper_pages_checked": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cited_passage_pages": [
+        4
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "RBF-SVM is a real classifier and the best reported configuration, so the citation supports the selected system. Section 3.3 describes four classifiers, however. The answer identifies one member rather than the overall supervised humor-classification setup.",
+      "suggested_answer": "A supervised humor classifier using n-grams, bag-of-words, common words and hashtags; the experiments compare RBF-SVM, random forest, extra trees and naive Bayes. RBF-SVM gives the best reported accuracy, 69.3%.",
+      "caveat": "If the singular question is interpreted as asking only for the best classifier, this short answer is adequate. The broader baseline-system reading used here yields partial.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "support vector machine BIBREF18 , random forest, extra tree and naive bayes classifier BIBREF19 | Alternative human answer: Classification system use n-grams, bag-of-words, common words and hashtags as features and SVM, random forest, extra tree and NB classifiers."
+    },
+    {
+      "case": 2,
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "question": "In the paper 'Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System', What experiments were carried out on the corpus?",
+      "original_answer": "10-fold cross validation on 3543 code-mixed tweets was carried out",
+      "citation_ids": [
+        "e368501d32ed3457935de46fa33983fc33dfdc21368e35537767d90f435f8d81"
+      ],
+      "cited_passages": [
+        {
+          "id": "E3",
+          "text": "Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System\n10-fold cross validation on 3543 code-mixed tweets was carried out by dividing the corpus into 10 equal parts with nine parts as training corpus and rest one for testing. Mean accuracy is calculated by taking the average of the accuracy obtained in each iteration of the testing process. Table 2 shows the accuracy for each feature when trained using mentioned classifiers along with the accuracy when all the features are used along with the overall accuracy. Support vector machine with radial basis function kernel and extra tree classifier performs better than other classifiers and yields 69.3% and 67.8% accuracy respectively. The reason kernel SVM yields the best result is because the number of observations is greator than the number of features BIBREF20 . N-grams proved to be the most efficient in all classification models followed by common words and hastags. Bag-of-words feature performed th",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1806.05513.pdf",
+      "source_pdf_sha256": "415d7cbe7b0a5a6eb2d06160d7f5e514fe4a37dd26e40355e078e5a1fcc7fa9a",
+      "paper_pages_checked": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "cited_passage_pages": [
+        4
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "It gives the cross-validation protocol but omits the actual task: humorous versus non-humorous tweet classification with feature/classifier comparisons. The cited results section says 3,543, while the conclusion says 3,453 and Table 1 totals 1,755 + 1,698 = 3,453. Both conflicting numbers are visible in the PDF.",
+      "suggested_answer": "They evaluated humor/non-humor classification with four classifiers and several feature sets using ten-fold cross-validation and mean accuracy. The paper inconsistently reports the corpus size as 3,543 and 3,453.",
+      "caveat": "Do not silently replace the generated number or call it a hallucination: its cited passage really says 3,543. The inconsistency is in the paper.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "task of humor identification in social media texts is analyzed as a classification problem"
+    },
+    {
+      "case": 3,
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "question": "In the paper 'Neural Collective Entity Linking', How effective is their NCEL approach overall?",
+      "original_answer": "Trained on collected Wikipedia hyperlinks, NCEL outperforms the state-of-the-art collective methods across five different datasets",
+      "citation_ids": [
+        "44f4ac2694aca983869722da7de8fdce9e758a7d6f313ca42a6157edd6084871"
+      ],
+      "cited_passages": [
+        {
+          "id": "E2",
+          "text": "Neural Collective Entity Linking\nIn this paper, we propose a neural model for collective entity linking that is end-to-end trainable. It applies GCN on subgraphs instead of the entire entity graph to efficiently learn features from both local and global information. We design an attention mechanism that endows NCEL robust to noisy data. Trained on collected Wikipedia hyperlinks, NCEL outperforms the state-of-the-art collective methods across five different datasets. Besides, further analysis of the impacts of main modules as well as qualitative results demonstrates its effectiveness.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1811.08603.pdf",
+      "source_pdf_sha256": "efcef7cf2e3edb107fee4b3c61502a835c8201b5bbc6f2ccad96ac6fe1a185e5",
+      "paper_pages_checked": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "cited_passage_pages": [
+        10
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "responsive",
+      "completeness": "complete",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "The emitted sentence matches the conclusion, but its unqualified superiority claim is stronger than Table 1. NCEL has ACE2004 macro-F1 .89 versus WNED .90; CoNLL-TestA micro-F1 .79 versus PBoH .80; other entries tie. The paper reports best performance in most cases and better averages, not a strict win for every metric/dataset.",
+      "suggested_answer": "NCEL performs strongly across five datasets, with the best GERBIL average micro- and macro-F1 (.84 each), and wins on WW and TAC2010; individual GERBIL results include ties and losses.",
+      "caveat": "Supported by the cited conclusion does not mean fully justified by all experimental evidence. This is a qualification issue, not missing numerical detail alone.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "NCEL consistently outperforms various baselines with a favorable generalization ability"
+    },
+    {
+      "case": 4,
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "question": "In the paper 'A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks', What are the network's baseline features?",
+      "original_answer": "Baseline features have performed significantly better (F1-score: 92.32%) than all other features. Supporting the observations",
+      "citation_ids": [
+        "16acd0fda96cf58d4630fd1cdaf9794a2f8c26a8577c30fba386f5273cec8efe"
+      ],
+      "cited_passages": [
+        {
+          "id": "E2",
+          "text": "A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks\n5-fold cross-validation has been carried out on Dataset 2. Also for this dataset, we get the best accuracy when we use all features. Baseline features have performed significantly better (F1-score: 92.32%) than all other features. Supporting the observations we have made from the experiments on Dataset 1, we see CNN-SVM outperforming CNN on Dataset 2. However, when we use all the features, CNN alone (F1-score: 89.73%) does not outperform the state of the art BIBREF8 (F1-score: 92.37%). As shown in Table TABREF30 , CNN-SVM on the baseline + sentiment + emotion + personality feature set outperforms the state of the art (F1-score: 94.80%). Among the pre-trained models, the sentiment model performs best (F1-score: 87.00%).",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1610.08815.pdf",
+      "source_pdf_sha256": "21ecb52240460890a581e724d20b2c8081ca3b6e357ff2d8889b1a4df27cb0e5",
+      "paper_pages_checked": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "cited_passage_pages": [
+        8
+      ],
+      "answer_adequacy": "inadequate",
+      "responsiveness": "nonresponsive",
+      "completeness": "missing",
+      "cited_support": "supported",
+      "paper_correctness": "incorrect",
+      "rationale": "The answer reports an F1 result rather than identifying the baseline features. Section 4.5 defines them as the learned features from a CNN trained on the sarcasm corpus; the fully connected layer supplies 100 features.",
+      "suggested_answer": "The baseline features are the 100-dimensional fully connected representation learned by a CNN trained to distinguish sarcastic from non-sarcastic tweets.",
+      "caveat": "The 92.32% figure is grounded in the cited results, but a true score is not an answer to a feature-identification question.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "The features extracted from CNN."
+    },
+    {
+      "case": 5,
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "question": "In the paper 'A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks', What are the state of the art models?",
+      "original_answer": "F1-score: 92.37%",
+      "citation_ids": [
+        "16acd0fda96cf58d4630fd1cdaf9794a2f8c26a8577c30fba386f5273cec8efe"
+      ],
+      "cited_passages": [
+        {
+          "id": "E2",
+          "text": "A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks\n5-fold cross-validation has been carried out on Dataset 2. Also for this dataset, we get the best accuracy when we use all features. Baseline features have performed significantly better (F1-score: 92.32%) than all other features. Supporting the observations we have made from the experiments on Dataset 1, we see CNN-SVM outperforming CNN on Dataset 2. However, when we use all the features, CNN alone (F1-score: 89.73%) does not outperform the state of the art BIBREF8 (F1-score: 92.37%). As shown in Table TABREF30 , CNN-SVM on the baseline + sentiment + emotion + personality feature set outperforms the state of the art (F1-score: 94.80%). Among the pre-trained models, the sentiment model performs best (F1-score: 87.00%).",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1610.08815.pdf",
+      "source_pdf_sha256": "21ecb52240460890a581e724d20b2c8081ca3b6e357ff2d8889b1a4df27cb0e5",
+      "paper_pages_checked": [
+        2,
+        3,
+        8,
+        9
+      ],
+      "cited_passage_pages": [
+        8
+      ],
+      "answer_adequacy": "inadequate",
+      "responsiveness": "nonresponsive",
+      "completeness": "missing",
+      "cited_support": "supported",
+      "paper_correctness": "incorrect",
+      "rationale": "A score is returned where model identities are requested. Table 3 compares the methods of Ptacek et al. (2014) and Joshi et al. (2015); 92.37% belongs to Ptacek on Dataset 2.",
+      "suggested_answer": "The comparison methods are Ptacek et al. (2014), using n-gram/word-shape/punctuation features, and Joshi et al. (2015), using contextual incongruity with lexical and pragmatic features.",
+      "caveat": "The full PDF resolves the BIBREF placeholder in the retrieved passage. The isolated score is real but does not name either approach.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "BIBREF9 ; BIBREF8  | Alternative human answer: BIBREF9 , BIBREF8"
+    },
+    {
+      "case": 6,
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "question": "In the paper 'Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets', What measures are used for evaluation?",
+      "original_answer": "We report the experimental results for our two tasks in terms of the correct classification",
+      "citation_ids": [
+        "5f47870252ed44c727275bba11d6ee17dbe98dd4f1871b4ae8802921ae524cfb"
+      ],
+      "cited_passages": [
+        {
+          "id": "E3",
+          "text": "Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets\nWe report the experimental results for our two tasks in terms of the correct classification rate (CCR). For sentiment analysis, we have a three-class problem (positive, negative, and neutral), where the classes are mutually exclusive. The CCR, averaged for a set of tweets, is defined to be the number of correctly-predicted sentiments over the number of groundtruth sentiments in these tweets. For NER, we consider that each tweet may reference up to four candidates, i.e., targeted entities. The CCR, averaged for a set of tweets, is the number of correctly predicted entities (candidates) over the number of groundtruth entities (candidates) in this set.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/2002.04181.pdf",
+      "source_pdf_sha256": "59130916e02aef176497abe93be07629964cbd6aaa31e16ab04fb954e8b0117c",
+      "paper_pages_checked": [
+        2,
+        3
+      ],
+      "cited_passage_pages": [
+        2
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "The response reaches the words correct classification but stops before rate (CCR), so it never finishes naming the metric. The complete metric and its task-specific definitions are immediately present in the cited paragraph.",
+      "suggested_answer": "Correct classification rate (CCR): correctly predicted sentiments or entities divided by the corresponding ground-truth counts, as defined for each task.",
+      "caveat": "Partial credit recognizes the identifiable metric stem. A stricter answerability rubric could mark the unfinished phrase inadequate; it is not a complete metric name.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "correct classification rate (CCR)"
+    },
+    {
+      "case": 7,
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "question": "In the paper 'Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets', Which toolkits do they use?",
+      "original_answer": "TensiStrength",
+      "citation_ids": [
+        "08096ee5c3e269ddcd6f75076cf4254014ed736efb1affef1526e23be2eacf9d"
+      ],
+      "cited_passages": [
+        {
+          "id": "E2",
+          "text": "Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets\nAmong commercial NLP toolkits (e.g., BIBREF14, BIBREF15, BIBREF16), we selected BIBREF17 and BIBREF18 for our experiments, which, to the best of our knowledge, are the only publicly accessible commercial APIs for the task of entity-level sentiment analysis that is agnostic to the text domain. We also report results of TensiStrength BIBREF13, TwitterNLP BIBREF6, BIBREF19, CogComp-NLP BIBREF20, and Stanford NLP NER BIBREF21.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/2002.04181.pdf",
+      "source_pdf_sha256": "59130916e02aef176497abe93be07629964cbd6aaa31e16ab04fb954e8b0117c",
+      "paper_pages_checked": [
+        2,
+        3
+      ],
+      "cited_passage_pages": [
+        2
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "TensiStrength is one of seven evaluated toolkits. It omits the other six. The PDF resolves the commercial/API names hidden behind BIBREF placeholders in the packed text.",
+      "suggested_answer": "TensiStrength, Google Cloud Natural Language, Rosette Text Analytics, TwitterNLP, spaCy, CogComp-NLP and Stanford NER; their use differs between sentiment analysis and NER.",
+      "caveat": "The paper mentions other commercial products as background; AYLIEN, MS Text Analytics and IBM Watson are not part of the seven evaluated tools.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "BIBREF17; BIBREF18; TensiStrength BIBREF13; TwitterNLP BIBREF6; BIBREF19; CogComp-NLP BIBREF20; Stanford NLP NER BIBREF21 | Alternative human answer: BIBREF23; BIBREF17; BIBREF18; BIBREF19; BIBREF24; BIBREF25; BIBREF26"
+    },
+    {
+      "case": 8,
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "question": "In the paper 'Automated News Suggestions for Populating Wikipedia Entity Pages', What baseline model is used?",
+      "original_answer": "B1. The first baseline uses only the salience-based features by Dunietz and Gillick",
+      "citation_ids": [
+        "63446954c95a94c941b01c0d74760738b8647bcbc4ca2e0611daef04a996bfb7"
+      ],
+      "cited_passages": [
+        {
+          "id": "E1",
+          "text": "Automated News Suggestions for Populating Wikipedia Entity Pages\nB1. The first baseline uses only the salience-based features by Dunietz and Gillick BIBREF11 .",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1703.10344.pdf",
+      "source_pdf_sha256": "f20ca8357ff02fe03415a9792568c12a02a42fe9c5bc9cfc6af1cc0e11d3b447",
+      "paper_pages_checked": [
+        8,
+        9
+      ],
+      "cited_passage_pages": [
+        8
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "It correctly identifies B1, one article-entity placement baseline. The study also has B2 and two article-section baselines, so this is incomplete under a study-wide reading.",
+      "suggested_answer": "For article-entity placement: B1 uses Dunietz and Gillick salience features; B2 accepts entities appearing in the article title. For article-section placement: S1 chooses highest lexical similarity and S2 the most frequent section.",
+      "caveat": "The singular wording is underspecified. If only B1 was intended, the emitted answer is adequate; the paper-wide review marks partial and retains that uncertainty.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "For Article-Entity placement, they consider two baselines: the first one using only salience-based features, and the second baseline checks if the entity appears in the title of the article. \n\nFor Article-Section Placement, they consider two baselines: the first picks the section with the highest lexical similarity to the article, and the second one picks the most frequent section. | Alternative human answer: B1. The first baseline uses only the salience-based features by Dunietz and Gillick BIBREF11 .; B2. The second baseline assigns the value relevant to a pair INLINEFORM0 , if and only if INLINEFORM1 appears in the title of INLINEFORM2 .\n\n; S1: Pick the section from template INLINEFORM0 with the highest lexical similarity to INLINEFORM1 : S1 INLINEFORM2; S2: Place the news into the most frequent section in INLINEFORM0"
+    },
+    {
+      "case": 9,
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "question": "In the paper 'Automated News Suggestions for Populating Wikipedia Entity Pages', What features are used to represent the novelty of news articles to entity pages?",
+      "original_answer": "novelty of news articles for an entity page",
+      "citation_ids": [
+        "6f709a5076341663a8a3a3ecb9e63636ede99a17b99470d857093beecef38f3b"
+      ],
+      "cited_passages": [
+        {
+          "id": "E1",
+          "text": "Automated News Suggestions for Populating Wikipedia Entity Pages\nIn this work, we have proposed an automated approach for the novel task of suggesting news articles to Wikipedia entity pages to facilitate Wikipedia updating. The process consists of two stages. In the first stage, article–entity placement, we suggest news articles to entity pages by considering three main factors, such as entity salience in a news article, relative authority and novelty of news articles for an entity page. In the second stage, article–section placement, we determine the best fitting section in an entity page. Here, we remedy the problem of incomplete entity section profiles by constructing section templates for specific entity classes. This allows us to add missing sections to entity pages. We carry out an extensive experimental evaluation on 351,983 news articles and 73,734 entities coming from 27 distinct entity classes. For the first stage, we achieve an overall performance with P=0.93, R=0.514 and F",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1703.10344.pdf",
+      "source_pdf_sha256": "f20ca8357ff02fe03415a9792568c12a02a42fe9c5bc9cfc6af1cc0e11d3b447",
+      "paper_pages_checked": [
+        5,
+        10
+      ],
+      "cited_passage_pages": [
+        10
+      ],
+      "answer_adequacy": "inadequate",
+      "responsiveness": "nonresponsive",
+      "completeness": "missing",
+      "cited_support": "supported",
+      "paper_correctness": "incorrect",
+      "rationale": "The phrase repeats the property named in the question without explaining how it is represented. Section 4.1.3 describes KL divergence between article language models combined with entity overlap, compared against previously referenced articles.",
+      "suggested_answer": "Novelty combines language-model KL divergence with entity overlap against existing news references, using the minimum comparison value over previous articles.",
+      "caveat": "The conclusion supports the generic term novelty but not the requested feature definition. The suggested answer requires a different source passage on page 5.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "KL-divergences of language models for the news article and the already added news references | Alternative human answer: KL divergence between the language model of INLINEFORM5 and articles in INLINEFORM6"
+    },
+    {
+      "case": 10,
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "question": "In the paper 'Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms', What were their performance results?",
+      "original_answer": "DNN based models coupled with transfer learning beat the best-known results for all three datasets",
+      "citation_ids": [
+        "68fbda457f1c9dbf437f2cdb21f0cce715041ad7aabb50e1fb29860eb6bf2409"
+      ],
+      "cited_passages": [
+        {
+          "id": "E3",
+          "text": "Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms\nDNN based models coupled with transfer learning beat the best-known results for all three datasets. Previous best F1 scores for Wikipedia BIBREF4 and Twitter BIBREF8 datasets were 0.68 and 0.93 respectively. We achieve F1 scores of 0.94 for both these datasets using BLSTM with attention and feature level transfer learning (Table TABREF25 ). For Formspring dataset, authors have not reported F1 score. Their method has accuracy score of 78.5% BIBREF2 . We achieve F1 score of 0.95 with accuracy score of 98% for the same dataset.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1801.06482.pdf",
+      "source_pdf_sha256": "9b08fa8ffde5165df06b762c50e1f349677b1893ee3df0c0091b48600a6960cb",
+      "paper_pages_checked": [
+        2,
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "cited_passage_pages": [
+        10
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "This is a supported qualitative summary, but it omits the reported performance numbers available in the same citation. The paper distinguishes F1 from accuracy and notes that prior Formspring work did not report F1.",
+      "suggested_answer": "The paper reports F1 .94 on Wikipedia and Twitter, and F1 .95 with accuracy .98 on Formspring using deep models and transfer learning.",
+      "caveat": "These are the authors' historical reported results, not a current state-of-the-art claim or a revalidation of their experimental protocol.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "best model achieves 0.94 F1 score for Wikipedia and Twitter datasets and 0.95 F1 on Formspring dataset"
+    },
+    {
+      "case": 11,
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "question": "In the paper 'Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms', What cyberbulling topics did they address?",
+      "original_answer": "Second, they address just one topic of cyberbullying. Third, they rely on carefully handcrafted features",
+      "citation_ids": [
+        "bb3a5b6721f18354a2c77393b497ba166fca821c10d8443dd81bcbfc78c43e49"
+      ],
+      "cited_passages": [
+        {
+          "id": "E3",
+          "text": "Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms\nHarassment by cyberbullies is a significant phenomenon on the social media. Existing works for cyberbullying detection have at least one of the following three bottlenecks. First, they target only one particular social media platform (SMP). Second, they address just one topic of cyberbullying. Third, they rely on carefully handcrafted features of the data. We show that deep learning based models can overcome all three bottlenecks. Knowledge learned by these models on one dataset can be transferred to other datasets. We performed extensive experiments using three real-world datasets: Formspring (12k posts), Twitter (16k posts), and Wikipedia(100k posts). Our experiments provide several useful insights about cyberbullying detection. To the best of our knowledge, this is the first work that systematically analyzes cyberbullying detection on various topics across multiple SMPs using deep learning based models ",
+          "packet_omitted_trailing_whitespace": true
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1801.06482.pdf",
+      "source_pdf_sha256": "9b08fa8ffde5165df06b762c50e1f349677b1893ee3df0c0091b48600a6960cb",
+      "paper_pages_checked": [
+        1,
+        2,
+        3
+      ],
+      "cited_passage_pages": [
+        1
+      ],
+      "answer_adequacy": "inadequate",
+      "responsiveness": "nonresponsive",
+      "completeness": "missing",
+      "cited_support": "unsupported",
+      "paper_correctness": "incorrect",
+      "rationale": "The selected they refers to existing works in the abstract, not the authors' proposed system. Used as an answer about this paper, the excerpt misattributes a limitation of prior work and never supplies any topic.",
+      "suggested_answer": "They address personal attacks, racism and sexism. Wikipedia covers personal attacks, Twitter covers racism/sexism, and Formspring is not restricted to one topic.",
+      "caveat": "Verbatim copying does not preserve support when a pronoun is attached to the wrong subject.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "personal attack, racism, and sexism | Alternative human answer: racism; sexism; personal attack; not specifically about any single topic"
+    },
+    {
+      "case": 12,
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "question": "In the paper 'Active Learning for Speech Recognition: the Power of Gradients', Which dataset do they use?",
+      "original_answer": "190 hours",
+      "citation_ids": [
+        "fdb8739cfeb7ed99a347cccaf1a5677e094b6dca880db200c8192c3986726d0b"
+      ],
+      "cited_passages": [
+        {
+          "id": "E3",
+          "text": "Active Learning for Speech Recognition: the Power of Gradients\nA base model, INLINEFORM0 , is trained on 190 hours ( INLINEFORM1 100K instances) of transcribed speech data. Then, it selects a subset of a 1,700-hour ( INLINEFORM2 1.1M instances) unlabeled dataset. We query labels for the selected subset and incorporate them into training. Learning rates are tuned on a small validation set of 2048 instances. The trained model is then tested on a 156-hour ( INLINEFORM3 100K instances) test set and we report CTC loss, Character Error Rate (CER) and Word Error Rate (WER).",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1612.03226.pdf",
+      "source_pdf_sha256": "8475795b62187d16625ed7ea7d73203d5039ef345e25ddfafe78c7a2f5f4e0c8",
+      "paper_pages_checked": [
+        3
+      ],
+      "cited_passage_pages": [
+        3
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "190 hours is the labeled base-training subset size, not a dataset identity or a description of the complete setup. The passage describes transcribed speech, an unlabeled pool, validation instances and a separate test set.",
+      "suggested_answer": "The setup uses 190 hours of transcribed speech, a 1,700-hour unlabeled pool, 2,048 validation instances and a 156-hour test set; the cited setup does not name a public benchmark.",
+      "caveat": "Do not infer a corpus name or language from the model's Deep Speech citation. The saved reference emphasizes sizes, but that does not make the two-word response self-contained.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "190 hours ( INLINEFORM1 100K instances) | Alternative human answer: trained on 190 hours ( INLINEFORM1 100K instances) of transcribed speech data; selects a subset of a 1,700-hour ( INLINEFORM2 1.1M instances) unlabeled dataset"
+    },
+    {
+      "case": 13,
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "question": "In the paper 'Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction', What did the best systems use for their model?",
+      "original_answer": "We tied the embedding weights",
+      "citation_ids": [
+        "73ef061fa0b6167114acecb9d09bfd111998e8e4e9445580bf1eea3387a5df85"
+      ],
+      "cited_passages": [
+        {
+          "id": "E3",
+          "text": "Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction\nWe train the LM using a 90/10 training/validation split, reporting the validation loss and accuracy of next-word prediction on the validation set. For the LM, we selected an ASGD Weight-Dropped Long Short Term Memory (AWD_LSTM, described in Merity et al. BIBREF5 ) model included in Fast.ai. We replaced the typical Long Short Term Memory (LSTM) units with Quasi Recurrent Neural Network (QRNN, described in Bradbury et al. BIBREF6 ) units. Our network has 2304 hidden-states, 3 layers and a softmax layer to predict the next-word. We tied the embedding weights BIBREF7 on the encoder and decoder for training. We performed some simple tests with LSTM units and a Transformer Language model, finding all models were similar in performance during LM training. We thus chose to use QRNN units due to improved training speed compared to the alternatives. This model has about 60 million trainable parameters.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1907.03187.pdf",
+      "source_pdf_sha256": "eced5fe80a0efca6df0ca81a223811c9e45b6858c2d1792f731795009621a80d",
+      "paper_pages_checked": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "cited_passage_pages": [
+        4
+      ],
+      "answer_adequacy": "ambiguous",
+      "responsiveness": "unclear",
+      "completeness": "unclear",
+      "cited_support": "unclear",
+      "paper_correctness": "ambiguous",
+      "rationale": "Tied embeddings are a detail of the authors' own model. The question does not identify whether best systems means their selected runs or the winning competitors. The paper describes its own QRNN-based ULMFiT variant and reports its ranks, but does not establish the architectures of the first-place competitors.",
+      "suggested_answer": "If referring to this submission: a ULMFiT-style model with QRNN units, tied encoder/decoder embeddings and task-specific heads. If referring to the competition winners: their architectures are not established in this paper.",
+      "caveat": "The benchmark marks this unanswerable. Retain that label; the source supports tied embeddings for the authors, not the unspecified best systems. This is not an adequate answer under either reading.",
+      "frozen_benchmark_answerable": false,
+      "frozen_answer_criteria": "Unanswerable in the named paper"
+    },
+    {
+      "case": 14,
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "question": "In the paper 'Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction', What were their results on the classification and regression tasks",
+      "original_answer": "Our entry into the HAHA 2019 Challenge placed $3^{rd}$ in the classification task and $2^{nd}$",
+      "citation_ids": [
+        "998bfaff140c55c2c0f84e0aaf173f04b60e4e68906030c166c571afc29d64bf"
+      ],
+      "cited_passages": [
+        {
+          "id": "E2",
+          "text": "Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction\nOur entry into the HAHA 2019 Challenge placed $3^{rd}$ in the classification task and $2^{nd}$ in the regression task. We describe our system and innovations, as well as comparing our results to a Naive Bayes baseline. A large Twitter based corpus allowed us to train a language model from scratch focused on Spanish and transfer that knowledge to our competition model. To overcome the inherent errors in some labels we reduce our class confidence with label smoothing in the loss function. All the code for our project is included in a GitHub repository for easy reference and to enable replication by others.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1907.03187.pdf",
+      "source_pdf_sha256": "eced5fe80a0efca6df0ca81a223811c9e45b6858c2d1792f731795009621a80d",
+      "paper_pages_checked": [
+        1,
+        4,
+        5,
+        6,
+        7
+      ],
+      "cited_passage_pages": [
+        1
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "It gives the correct classification rank and begins the regression rank, but omits in the regression task and the available classification metrics. Table 3 reports test F1 .8099; the results text and conclusion give second place for regression without a numeric regression result.",
+      "suggested_answer": "Third in classification with test F1 .8099 (accuracy .8458, precision .7806, recall .8416), and second in regression. A numeric regression score is not supplied in the reported results.",
+      "caveat": "Do not invent an RMSE value. Under a ranks-only reading the intended information is largely recoverable, but the emitted sentence remains unfinished.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "F1 of 0.8099 | Alternative human answer: F1 score result of 0.8099"
+    },
+    {
+      "case": 15,
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "question": "In the paper 'VAIS ASR: Building a conversational speech recognition system using language model combination', What is the language model combination technique used in the paper?",
+      "original_answer": "language models combination techniques",
+      "citation_ids": [
+        "dd26663492ff6aceaa2e4af661161a4747d42e25e0ff7e3e55c20363734caa5e"
+      ],
+      "cited_passages": [
+        {
+          "id": "E1",
+          "text": "VAIS ASR: Building a conversational speech recognition system using language model combination\nAutomatic Speech Recognition (ASR) systems have been evolving quickly and reaching human parity in certain cases. The systems usually perform pretty well on reading style and clean speech, however, most of the available systems suffer from situation where the speaking style is conversation and in noisy environments. It is not straight-forward to tackle such problems due to difficulties in data collection for both speech and text. In this paper, we attempt to mitigate the problems using language models combination techniques that allows us to utilize both large amount of writing style text and small number of conversation text data. Evaluation on the VLSP 2019 ASR challenges showed that our system achieved 4.85% WER on the VLSP 2018 and 15.09% WER on the VLSP 2019 data sets.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1910.05603.pdf",
+      "source_pdf_sha256": "f618b4b9c686f01d5da7208d8d5b72d3a4e37bc4c9cd00ae218b45af158ff5d5",
+      "paper_pages_checked": [
+        1,
+        2
+      ],
+      "cited_passage_pages": [
+        1
+      ],
+      "answer_adequacy": "inadequate",
+      "responsiveness": "nonresponsive",
+      "completeness": "missing",
+      "cited_support": "supported",
+      "paper_correctness": "incorrect",
+      "rationale": "The response merely restates language model combination. Section II.B describes combining domain n-gram models based on perplexity on a small target-domain text; Section IV.C additionally combines general and conversational systems at the decoding-lattice level.",
+      "suggested_answer": "Domain n-gram models are combined using target-domain perplexity; general and conversational systems are then combined at decoding-lattice level, with general:conversation weights .6:.4 for VLSP2018 and .7:.3 for VLSP2019.",
+      "caveat": "This is lattice/system combination, not an unsupported assertion about interpolating model parameters. The method details need page 2, beyond the emitted abstract citation.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "system combination on the decoding lattice level; combination weights | Alternative human answer: system combination on the decoding lattice level"
+    },
+    {
+      "case": 16,
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "question": "In the paper 'Improving the Performance of Neural Machine Translation Involving Morphologically Rich Languages', How were the human judgements assembled?",
+      "original_answer": "A group of 50 native people who were well-versed in both English and Tamil languages",
+      "citation_ids": [
+        "d6c1ef8eee6488ca505001bca8f3cb9de7c4f79ac0cc9eecdf5ade5559ad7e19"
+      ],
+      "cited_passages": [
+        {
+          "id": "E2",
+          "text": "Improving the Performance of Neural Machine Translation Involving Morphologically Rich Languages\nTo ensure that the increase in BLEU score correlated to actual increase in performance of translation, human evaluation metrics like adequacy, precision and ranking values (between RNNSearch and RNNMorph outputs) were estimated in Table TABREF30 . A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation. A collection of samples of about 100 sentences were taken from the test set results for comparison. This set included a randomized selection of the translation results to ensure the objectivity of evaluation. Fluency and adequacy results for the RNNMorph results are tabulated. Adequacy rating was calculated on a 5-point scale of how much of the meaning is conveyed by the translation (All, Most, Much, Little, None). The fluency rating was calculated based on grammatical correctness on a 5-point scale of (Flawless, Good, Non-n",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1612.02482.pdf",
+      "source_pdf_sha256": "c039656781f1e752cd1387e49696029228604b0549b6d630bd2e5241314c8378",
+      "paper_pages_checked": [
+        11
+      ],
+      "cited_passage_pages": [
+        11
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "The answer identifies the annotators but leaves out how judgments were collected. Section 5.2 describes about 100 randomly selected translation outputs, five-point adequacy and fluency scales, and relative rankings allowing ties.",
+      "suggested_answer": "Fifty English/Tamil-proficient native annotators judged about 100 randomly selected translations, using five-point adequacy and fluency ratings and pairwise relative rankings with ties allowed.",
+      "caveat": "The full PDF supplies the end of the procedure that is truncated in the packed passage; it does not retroactively make the generated response complete.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "50 human annotators ranked a random sample of 100 translations by Adequacy, Fluency and overall ranking on a 5-point scale. | Alternative human answer: adequacy, precision and ranking values"
+    },
+    {
+      "case": 17,
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "question": "In the paper 'Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation', what was the baseline?",
+      "original_answer": "For the baseline systems, the training data includes KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts",
+      "citation_ids": [
+        "3f6ad0f6ad50272338d87ef8913d7b3607ef71d1f99be60fae76fc5affedc2ef"
+      ],
+      "cited_passages": [
+        {
+          "id": "E3",
+          "text": "Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation\nBaseline. For the baseline systems, the training data includes KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts. For comparison purpose, we build two baseline systems for each direction: one is use the traditional phrase-based statistical machine translation (SMT), the other one is the NMT system. Although our training set is small but we find that the NMT systems (2) are still more effective than the phrase-based SMT models (1) in both translation directions.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1805.07133.pdf",
+      "source_pdf_sha256": "8ef0e6434859aaf767b340c358d7798aed845907b6e93c8096f4a0757ffcba78",
+      "paper_pages_checked": [
+        5,
+        6
+      ],
+      "cited_passage_pages": [
+        5
+      ],
+      "answer_adequacy": "inadequate",
+      "responsiveness": "nonresponsive",
+      "completeness": "missing",
+      "cited_support": "supported",
+      "paper_correctness": "incorrect",
+      "rationale": "The response describes preprocessing of the baseline training data without identifying the baseline systems. The next sentence in its own cited paragraph gives the needed answer: phrase-based SMT and NMT in each translation direction.",
+      "suggested_answer": "A phrase-based statistical machine translation system and an NMT system for each direction, trained on KyTea-segmented Japanese and pyvi-segmented Vietnamese.",
+      "caveat": "The preprocessing statement is true, but it is the wrong answer type for which baseline.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "traditional phrase-based statistical machine translation (SMT); NMT system"
+    },
+    {
+      "case": 18,
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "question": "In the paper 'Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation', what japanese-vietnamese dataset do they use?",
+      "original_answer": "Japanese-Vietnamese parallel corpus",
+      "citation_ids": [
+        "3dbb1f0ae946dcbb5dc3e9ddeec55bd3f60b17eb98da65b9cd3cf45ed5df4522"
+      ],
+      "cited_passages": [
+        {
+          "id": "E1",
+          "text": "Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation\nThe data augmentation methods has been applied only for the Japanese INLINEFORM0 Vietnamese direction. For Back Translation, we use Vietnamese monolingual data from VNESEcorpus of DongDu which includes 349578 sentences. We shuffle the lines of VNESEcorpus corpus and take out the first 106758 sentences (the same as the number of sentence pairs in the original parallel corpus). For Mix-Source, instead of using a subsampled monolingual corpus, we use the Vietnamese part of the Japanese-Vietnamese parallel corpus in order to learn the multilingual information in the same domain. Our datasets are listed in Table TABREF14 .",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1805.07133.pdf",
+      "source_pdf_sha256": "8ef0e6434859aaf767b340c358d7798aed845907b6e93c8096f4a0757ffcba78",
+      "paper_pages_checked": [
+        5,
+        6
+      ],
+      "cited_passage_pages": [
+        5
+      ],
+      "answer_adequacy": "partial",
+      "responsiveness": "partial",
+      "completeness": "partial",
+      "cited_support": "supported",
+      "paper_correctness": "partially_correct",
+      "rationale": "Japanese-Vietnamese parallel corpus gives only the language pair and data type already requested. Section V.A identifies TED talks extracted from WIT3, with 106,758 cleaned sentence pairs.",
+      "suggested_answer": "Japanese-Vietnamese TED-talk parallel data extracted from WIT3: 106,758 training sentence pairs, with dev2010 for validation and tst2010 for testing.",
+      "caveat": "The citation discusses augmentation and does not name WIT3. The full-paper correction requires citing the data-collection paragraph, not reusing the generic excerpt as if it named the dataset.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "WIT3's corpus"
+    },
+    {
+      "case": 19,
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "question": "In the paper 'A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation', To what baseline models is proposed model compared?",
+      "original_answer": "We applied traditional features by simply taking the TF-IDF features as the inputs into the",
+      "citation_ids": [
+        "f7a883b21fcdc91e78956a3d9c7ecf3bc3f0e67e47d384e103df4c027535b830"
+      ],
+      "cited_passages": [
+        {
+          "id": "E3",
+          "text": "A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation\nWe conducted a comprehensive comparison with the baseline models, and some of them were never investigated for the abbreviation disambiguation task. We applied traditional features by simply taking the TF-IDF features as the inputs into the classic classifiers. Deep features are also considered: a Doc2vec model BIBREF19 was pre-trained using Gensim and these word embeddings were applied to initialize deep models and fine-tuned.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1910.14076.pdf",
+      "source_pdf_sha256": "6947f536bf1d18d179a730be9d328af7c702cb5e43e254703330b3780fdc2685",
+      "paper_pages_checked": [
+        3,
+        4
+      ],
+      "cited_passage_pages": [
+        3
+      ],
+      "answer_adequacy": "inadequate",
+      "responsiveness": "nonresponsive",
+      "completeness": "missing",
+      "cited_support": "supported",
+      "paper_correctness": "incorrect",
+      "rationale": "The unfinished sentence names a feature representation but none of the baseline models. Section 3 explicitly lists four classical classifiers and four neural baselines.",
+      "suggested_answer": "TF-IDF with SVM, logistic regression, naive Bayes and random forest; plus CNN, LSTM, LSTM with soft attention and LSTM with self-attention.",
+      "caveat": "TF-IDF is an input representation, not a replacement for the requested classifier identities.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "support vector machine classifier (SVM); logistic regression classifier (LR); Naive Bayes classifier (NB); random forest (RF); CNN; LSTM ; LSTM-soft; LSTM-self"
+    },
+    {
+      "case": 20,
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "question": "In the paper 'A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation', What existing dataset is re-examined and corrected for training?",
+      "original_answer": "We re-examine and correct an existing dataset for training and collect a test set to",
+      "citation_ids": [
+        "a7d5933bbb91162837b430cd199f833ab80cc5002cbd62dd1ecee288bd0bb320"
+      ],
+      "cited_passages": [
+        {
+          "id": "E1",
+          "text": "A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation\nAutomated analysis of clinical notes is attracting increasing attention. However, there has not been much work on medical term abbreviation disambiguation. Such abbreviations are abundant, and highly ambiguous, in clinical documents. One of the main obstacles is the lack of large scale, balance labeled data sets. To address the issue, we propose a few-shot learning approach to take advantage of limited labeled data. Specifically, a neural topic-attention model is applied to learn improved contextualized sentence representations for medical term abbreviation disambiguation. Another vital issue is that the existing scarce annotations are noisy and missing. We re-examine and correct an existing dataset for training and collect a test set to evaluate the models fairly especially for rare senses. We train our model on the training set which contains 30 abbreviation terms as categories (on average, 479 samples and 3.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1910.14076.pdf",
+      "source_pdf_sha256": "6947f536bf1d18d179a730be9d328af7c702cb5e43e254703330b3780fdc2685",
+      "paper_pages_checked": [
+        1,
+        2
+      ],
+      "cited_passage_pages": [
+        1
+      ],
+      "answer_adequacy": "inadequate",
+      "responsiveness": "nonresponsive",
+      "completeness": "missing",
+      "cited_support": "supported",
+      "paper_correctness": "incorrect",
+      "rationale": "The response repeats that an existing dataset was corrected without identifying it. Section 2 names UMInventory, created by University of Minnesota researchers; the authors remove erroneous samples and select 30 abbreviation terms.",
+      "suggested_answer": "UMInventory, the University of Minnesota clinical abbreviation dataset, cleaned to remove erroneous samples and retain 30 abbreviation terms.",
+      "caveat": "The abstract citation cannot support the missing dataset name; the correction needs the dataset section on page 2.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "UM Inventory"
+    },
+    {
+      "case": 21,
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "question": "In the paper 'From English To Foreign Languages: Transferring Pre-trained Language Models', What languages are the model transferred to?",
+      "original_answer": "French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi). These languages",
+      "citation_ids": [
+        "b76b2d9ce9a06eafa7108ff22558300359e5f741b0b75b18631a561531fcedc5"
+      ],
+      "cited_passages": [
+        {
+          "id": "E2",
+          "text": "From English To Foreign Languages: Transferring Pre-trained Language Models\nWe evaluate our approach for six target languages: French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi). These languages belong to four different language families. French, Russian, and Hindi are Indo-European languages, similar to English. Arabic, Chinese, and Vietnamese belong to Afro-Asiatic, Sino-Tibetan, and Austro-Asiatic family respectively. The choice of the six languages also reflects different training conditions depending on the amount of monolingual data. French and Russian, and Arabic can be regarded as high resource languages whereas Hindi has far less data and can be considered as low resource.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/2002.07306.pdf",
+      "source_pdf_sha256": "79be7a045afc79ae192d93ed1db20dd48f9fa3624795918038b3f6764da8af74",
+      "paper_pages_checked": [
+        4
+      ],
+      "cited_passage_pages": [
+        4
+      ],
+      "answer_adequacy": "adequate",
+      "responsiveness": "responsive",
+      "completeness": "complete",
+      "cited_support": "supported",
+      "paper_correctness": "correct",
+      "rationale": "All six target languages are correctly listed in the cited paragraph and in the paper's data section. The trailing words These languages are a formatting defect but do not omit or alter any requested language.",
+      "suggested_answer": "French, Russian, Arabic, Chinese, Hindi and Vietnamese.",
+      "caveat": "A cosmetic trailing fragment is recorded without treating it as a substantive factual failure.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi)"
+    },
+    {
+      "case": 22,
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "question": "In the paper 'An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction', What is the size of this dataset?",
+      "original_answer": "23,700 queries",
+      "citation_ids": [
+        "a405aa0aa05aca332f43985a32b70ea3d75bedbf8b1ef1a68eb2179c4b66ad21"
+      ],
+      "cited_passages": [
+        {
+          "id": "E1",
+          "text": "An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction\nThis paper fills this gap by analyzing intent classification performance with a focus on out-of-scope handling. To do so, we constructed a new dataset with 23,700 queries that are short and unstructured, in the same style made by real users of task-oriented systems. The queries cover 150 intents, plus out-of-scope queries that do not fall within any of the 150 in-scope intents.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1909.02027.pdf",
+      "source_pdf_sha256": "dea6cf0bdf4cd9cd06a048e5f5aac7b2165f8788ad9793593af885511c871497",
+      "paper_pages_checked": [
+        2,
+        5
+      ],
+      "cited_passage_pages": [
+        2
+      ],
+      "answer_adequacy": "adequate",
+      "responsiveness": "responsive",
+      "completeness": "complete",
+      "cited_support": "supported",
+      "paper_correctness": "correct",
+      "rationale": "23,700 queries directly answers the size question. Section 2 gives 22,500 in-scope plus 1,200 out-of-scope queries, and Table 4 repeats the total.",
+      "suggested_answer": "23,700 queries: 22,500 in-scope and 1,200 out-of-scope.",
+      "caveat": "This is the full dataset size, not just the training split or number of intents.",
+      "frozen_benchmark_answerable": true,
+      "frozen_answer_criteria": "23,700  | Alternative human answer:  23,700 queries, including 22,500 in-scope queries covering 150 intents, which can be grouped into 10 general domains and 1,200 out-of-scope queries."
+    },
+    {
+      "case": 23,
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "question": "In the paper 'Copenhagen at CoNLL--SIGMORPHON 2018: Multilingual Inflection in Context with Explicit Morphosyntactic Decoding', What type of inflections are considered?",
+      "original_answer": "inflected word form",
+      "citation_ids": [
+        "6190e86cbc9ae45523138b1acbc560aabe9fd0f5990ca3703b9985e03a0d11fc"
+      ],
+      "cited_passages": [
+        {
+          "id": "E2",
+          "text": "Copenhagen at CoNLL--SIGMORPHON 2018: Multilingual Inflection in Context with Explicit Morphosyntactic Decoding\nThis paper describes our approach and results for Task 2 of the CoNLL–SIGMORPHON 2018 shared task on universal morphological reinflection BIBREF0 . The task is to generate an inflected word form given its lemma and the context in which it occurs.",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1809.01541.pdf",
+      "source_pdf_sha256": "99d9cbed4fa2be85ec45af5d90c9585192a203837790bf8680bef2a3fe678f4c",
+      "paper_pages_checked": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "cited_passage_pages": [
+        1
+      ],
+      "answer_adequacy": "ambiguous",
+      "responsiveness": "unclear",
+      "completeness": "unclear",
+      "cited_support": "supported",
+      "paper_correctness": "ambiguous",
+      "rationale": "Inflected word form names the output without specifying a type. The question could mean contextual versus context-agnostic inflection, or specific morphological categories. Page 1 establishes contextual morphological (re)inflection; Table 1 illustrates made with V;PST;V.PTCP;PASS, but an example is not an exhaustive category inventory.",
+      "suggested_answer": "The task is morphological inflection in context: generate a word form from a lemma and its sentence context. If a complete list of inflection categories is intended, the paper does not establish such an inventory in the inspected task description.",
+      "caveat": "Retain the frozen unanswerable label and document the scope ambiguity. The emitted generic phrase is inadequate under both readings; do not infer a complete category list from one example.",
+      "frozen_benchmark_answerable": false,
+      "frozen_answer_criteria": "Unanswerable in the named paper"
+    },
+    {
+      "case": 24,
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "question": "In the paper 'Automatic Classification of Pathology Reports using TF-IDF Features', What features are used?",
+      "original_answer": "TF-IDF features",
+      "citation_ids": [
+        "343455627f6a06fa94ae71eff460616a99eef2e74c558b33b5359f53779d35c3"
+      ],
+      "cited_passages": [
+        {
+          "id": "E1",
+          "text": "Automatic Classification of Pathology Reports using TF-IDF Features\nIn this study, we performed two different series of experiments: i) evaluating the performance of TF-IDF features and various machine learning classifiers on the task of predicting primary diagnosis from the text content of a given report, and ii) using TF-IDF and LDA techniques to highlight the important keywords within a report. For the first experiment series, training reports are pre-processed, then their TF-IDF features are extracted. The TF-IDF features and the training labels are used to train different classification models. These different classification models and their hyper-parameters are reported in tab:classifier. The performance of classifiers is measured quantitatively on the test dataset using the evaluation metrics discussed in the previous section. For the second experiment series, a random report is selected and its top 50 keywords are extracted using TF-IDF weights. These 50 keywords are highlighte",
+          "packet_omitted_trailing_whitespace": false
+        }
+      ],
+      "source_pdf": "data/raw/qasper-fresh-v1/1903.07406.pdf",
+      "source_pdf_sha256": "2981b734772829d2994d3d6dec4332f2fe8d2bb1021e9faa5e1c4b1203e12947",
+      "paper_pages_checked": [
+        3
+      ],
+      "cited_passage_pages": [
+        3
+      ],
+      "answer_adequacy": "adequate",
+      "responsiveness": "responsive",
+      "completeness": "complete",
+      "cited_support": "supported",
+      "paper_correctness": "correct",
+      "rationale": "TF-IDF features correctly identifies the classification representation. Section III.B defines the term-weight vector and III.E says it is used for classifier training. LDA is used separately for topic grouping of keywords.",
+      "suggested_answer": "TF-IDF-weighted term vectors extracted from the preprocessed pathology reports.",
+      "caveat": "The frozen benchmark row says unanswerable, creating a paper/annotation conflict. Preserve its reference label and all official scores; record this separately rather than silently granting benchmark credit.",
+      "frozen_benchmark_answerable": false,
+      "frozen_answer_criteria": "Unanswerable in the named paper"
+    }
+  ]
+}

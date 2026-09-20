@@ -321,3 +321,21 @@ The preparation's 144 software tests are historical verification, not rerun here
 answers with citations and paper links; the response template is blank. Human
 claim-support review remains required by the plan. No service change, training,
 final-test access or additional attempt is authorized. The allowance is consumed.
+
+## GPU answer paper review — completed with AI assistance
+
+- [x] Review all 24 emitted answers against their actual citations and local papers.
+- [x] Separate responsiveness, completeness, citation support and paper correctness.
+- [x] Record source pages, corrected answers and scope/annotation conflicts.
+- [x] Preserve frozen outputs, metrics, labels and blank human response template.
+
+[Review](../reports/gpu-generation-ai-review.md): 3 adequate, 11 partial,
+8 inadequate and 2 ambiguous under the stated rubric. The main failure is choosing
+the wrong information despite copying source text. Case 3 also shows why a paper's
+conclusion must be checked against its result table. Case 24 remains a documented
+benchmark-label conflict, with no rescore. This is a single, non-blinded assistant
+review, not independent human evaluation; Phase 4 is still incomplete.
+
+The user's requested review is finished, with no new model calls, training or
+final-test access. Future preparation can address answer selection and completeness;
+any new model experiment still requires a concrete proposal and fresh approval.

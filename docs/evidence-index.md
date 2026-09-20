@@ -201,3 +201,14 @@ this new workload remain unmeasured. No authorization or attempt exists.
 F1-gain interval includes zero. [Human review materials](../reports/gpu-generation-human-review.md)
 and [blank response template](../reports/gpu-generation-human-review-template.json)
 do not claim completed human labels. Candidate results remain development-only.
+
+## Completed AI-assisted paper review of GPU answers
+
+[Per-case review](../reports/gpu-generation-ai-review.md),
+[structured judgments](../reports/gpu-generation-ai-review.json) and
+[verification record](../reports/gpu-generation-ai-review-verification.json)
+cover all 24 emitted answers and 16 source PDFs. Three answers are adequate,
+11 partial, eight inadequate and two ambiguous under an explicit rubric. Source
+hashes and original answers/citations are preserved. Six PDF pages were visually
+checked for table layout and source ambiguities. No new model evaluation occurred;
+this non-blinded assistant review does not constitute independent human labels.

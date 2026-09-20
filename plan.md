@@ -646,3 +646,12 @@ The candidate remains development-only; the service and final test are unchanged
 A [24-answer human review packet](reports/gpu-generation-human-review.md) and blank
 response template are ready. Phase 4 is incomplete until the semantic-review
 criterion is met; fresh final evaluation requires a separately approved scope.
+
+The user requested that the assistant perform the review. That
+[paper-grounded AI review](reports/gpu-generation-ai-review.md) is now complete
+for all 24 emitted answers: 3 adequate, 11 partial, 8 inadequate and 2 ambiguous,
+with rubric-sensitive cases explicitly qualified. The findings prioritize better
+selection of the requested information and complete answers over mere source
+copying. Suggested corrections do not change frozen predictions or scores.
+This completes the requested assistant review; it does not fulfill or waive the
+independent-human criterion. No new model run or final-test access occurred.

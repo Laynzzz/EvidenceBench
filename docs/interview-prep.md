@@ -311,3 +311,23 @@ includes zero, and development data were inspected repeatedly. Report the point
 estimates and limitations together. No new unbiased test or human semantic score
 is claimed. [Results](../reports/gpu-generation-development.md) and a complete
 24-answer review packet are available; the candidate is not deployed.
+
+## What the paper review revealed
+
+**Why can a source-constrained answer still be wrong?** It can select the wrong
+answer type, omit essential information or change a pronoun's referent. The
+[AI-assisted review](../reports/gpu-generation-ai-review.md) rated 3 of 24 emitted
+answers adequate under its rubric, despite many source-grounded fragments. That
+is diagnostic assistant judgment, not human-validated semantic precision.
+
+**What if a reference label conflicts with the paper?** Record the discrepancy
+with source pages and keep the frozen benchmark scores. Case 24 correctly names
+TF-IDF features even though its frozen row is unanswerable. Silent relabeling would
+mix model improvement with evaluation changes. Follow-up: how would a separately
+versioned, independently adjudicated dataset change the comparison protocol?
+
+**What should improve next?** Selection of the requested model, method, metric or
+dataset identity, plus completeness of lists and sentences. Some corrections need
+more than the frozen 15-word extractive contract. Treat that as a separately
+designed change, with approval before a new model run. The review and corrections
+were created with agent assistance; personal explanation practice remains future work.
