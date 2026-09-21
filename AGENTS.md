@@ -80,6 +80,13 @@ The user authorizes incremental local commits for this project.
   verified: a feature slice, a fix, a refactor or a useful documentation update.
 - Keep commits reviewable. Do not save the entire project for one large commit,
   and do not create a commit for every trivial edit.
+- Explicit user preference: commit each meaningful, verified change as work
+  progresses, rather than waiting until the whole experiment is prepared.
+  Separate independently reviewable changes such as the answer contract,
+  runner integration, and readiness documentation into smaller commits. Keep
+  implementation and its relevant tests together; each commit should be coherent.
+  The 12-file complete-answer preparation commit (`2053027`) was larger than
+  desired and should not be the pattern for future work.
 - Use short, descriptive messages, such as `feat: add baseline evaluation`,
   `fix: prevent data leakage`, or `docs: explain training pipeline`.
 - Inspect the diff and stage only the intended files. Preserve unrelated user
