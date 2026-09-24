@@ -1,0 +1,1199 @@
+{
+  "status": "verified",
+  "run": "artifacts/intact-passage-v1/runs/20260924T210922Z-e266a7a622",
+  "metrics": {
+    "control": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 11,
+      "failure_count": 21,
+      "answer_coverage": 0.22,
+      "answerable_token_f1": 0.012025255446308078,
+      "false_refusal_rate": 0.3157894736842105,
+      "answerable_failure_rate": 0.47368421052631576,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.36363636363636365,
+      "upstream_citation_recall": 0.06896551724137931,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "gate": {
+      "f1_exceeds_control": true,
+      "failures_do_not_increase": true,
+      "unanswerable_answers_do_not_increase": false,
+      "citation_precision_not_lower": true,
+      "retain_80_percent_f1": true,
+      "retain_half_answers": true,
+      "no_new_generation_failures": false,
+      "f1_exceeds_constrained_baseline": true,
+      "f1_exceeds_saved_7b": true,
+      "citation_precision_not_lower_than_saved_7b": false,
+      "retain_80_percent_saved_7b_answers": true,
+      "f1_exceeds_saved_span_id": true
+    },
+    "passes_development_gate": false,
+    "scope": "Reused validation development experiment; not independent semantic review",
+    "baseline": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 28,
+      "failure_count": 0,
+      "answer_coverage": 0.56,
+      "answerable_token_f1": 0.07542449567049109,
+      "false_refusal_rate": 0.42105263157894735,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.5,
+      "upstream_citation_precision": 0.32142857142857145,
+      "upstream_citation_recall": 0.15517241379310345,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "candidate": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 31,
+      "failure_count": 1,
+      "answer_coverage": 0.62,
+      "answerable_token_f1": 0.24018587721750354,
+      "false_refusal_rate": 0.3157894736842105,
+      "answerable_failure_rate": 0.02631578947368421,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.5,
+      "upstream_citation_precision": 0.4,
+      "upstream_citation_recall": 0.2413793103448276,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "saved_7b_baseline": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 24,
+      "failure_count": 0,
+      "answer_coverage": 0.48,
+      "answerable_token_f1": 0.12357810681224572,
+      "false_refusal_rate": 0.4473684210526316,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.75,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.4583333333333333,
+      "upstream_citation_recall": 0.1896551724137931,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "saved_span_id_baseline": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 30,
+      "failure_count": 0,
+      "answer_coverage": 0.6,
+      "answerable_token_f1": 0.21408410287572385,
+      "false_refusal_rate": 0.3157894736842105,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.6666666666666666,
+      "missing_refusal_rate": 0.3333333333333333,
+      "upstream_citation_precision": 0.42857142857142855,
+      "upstream_citation_recall": 0.25862068965517243,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    }
+  },
+  "usage": {
+    "call_limit": 32,
+    "calls": 32,
+    "reserved_tokens": 12288
+  },
+  "supervisor": {
+    "elapsed_seconds": 63.54700000002049,
+    "exit_code": 0,
+    "reason": "process_exit"
+  },
+  "verified_at_utc": "2026-09-24T21:11:47.518990+00:00",
+  "prepared_commit": "5f7701c397bcbd88a2d4d125c4d0233296e3ad11",
+  "snapshot_sha256": "784b44c5e71307300b0b77d0a835d38c820d8bef7e9f8c6e5c04d4e94f927228",
+  "decisions": [
+    {
+      "elapsed_ms": 1914.5332000916824,
+      "generation_calls": 1,
+      "input_sha256": "334865cd91d822511e32e0752c0d308017d096932efe9fbd62d5e79133b33346",
+      "output_tokens": 27,
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "raw": "{\"answer\":\"support vector machines with radial basis function kernel\",\"span_ids\":[\"E1.S5\", \"E1.S6\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1679.7205000184476,
+      "generation_calls": 1,
+      "input_sha256": "2267c3ee7e664630ecbe870c90ae91477eb9d0cb118e920bc3cdafdab9c75936",
+      "output_tokens": 52,
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "raw": "{\"answer\":\"10-fold cross validation on 3543 code-mixed tweets was carried out by dividing the corpus into 10 equal parts with nine parts as training corpus and rest one for testing.\",\"span_ids\":[\"E3.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 934.8656999645755,
+      "generation_calls": 1,
+      "input_sha256": "a8d15362ca0b20d321d48e62f258cef4fd0d30b7c8e3ce575afe63bf765b91cf",
+      "output_tokens": 29,
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "raw": "{\"answer\":\"NCEL outperforms the state-of-the-art collective methods across five different datasets.\",\"span_ids\":[\"E2.S4\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 689.8740000324324,
+      "generation_calls": 1,
+      "input_sha256": "ba3258555c594132a25340af6f529ec5e7014426e9e418db92ef1440336d66c7",
+      "output_tokens": 20,
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "raw": "{\"answer\":\"features extracted from the pre-trained models\",\"span_ids\":[\"E1.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 934.7563999472186,
+      "generation_calls": 1,
+      "input_sha256": "e625cd5ec4f80ef172911a75b5d98eaff8b131f4c1852ccbde929e87a9287ab8",
+      "output_tokens": 27,
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "raw": "{\"answer\":\"CNN-SVM on the baseline + sentiment + emotion + personality feature set\",\"span_ids\":[\"E2.S6\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 619.6752999676391,
+      "generation_calls": 1,
+      "input_sha256": "b8e86242c0c22bd972ce2982fb871b49f2833d07558b6bc08e1d5686f81a008c",
+      "output_tokens": 18,
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "raw": "{\"answer\":\"correct classification rate (CCR)\",\"span_ids\":[\"E3.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 769.1081999801099,
+      "generation_calls": 1,
+      "input_sha256": "3687f1d8159cdd45a8241033c90af4a93468b9eba711640a2f9818704d17230d",
+      "output_tokens": 24,
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "raw": "{\"answer\":\"BIBREF17 and BIBREF18\",\"span_ids\":[\"E2.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1079.9588999943808,
+      "generation_calls": 1,
+      "input_sha256": "d32edc2d7383ba9446bab76c99aea3c7e96b512c29d14e55aa6611e8f26efa85",
+      "output_tokens": 35,
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "raw": "{\"answer\":\"In the zero-shot setting, the model learns to perform reading comprehension tasks in languages it was not explicitly trained on.\",\"span_ids\":[\"E2.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 646.2995000183582,
+      "generation_calls": 1,
+      "input_sha256": "a498fb327e5f55e7e988c14711cd4c72b29c4d582ca2ace64bcc2dccfaa99140",
+      "output_tokens": 17,
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "raw": "{\"answer\":\"Microsoft stock price data\",\"span_ids\":[\"E1.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 715.6282000942156,
+      "generation_calls": 1,
+      "input_sha256": "bfbb1f8267dae50535688fd6dbf1b2fdae757ffedfddb5253f956c0c74d28e56",
+      "output_tokens": 24,
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "raw": "{\"answer\":\"salience-based features by Dunietz and Gillick\",\"span_ids\":[\"E1.S2\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1794.281900045462,
+      "generation_calls": 1,
+      "input_sha256": "cc42abda6a7f163ba697652992566b704b265a2ac374ab8435879ec5e9b63369",
+      "output_tokens": 57,
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "raw": "{\"answer\":\"the novelty of an article w.r.t the already existing entity profile, measured by the KL divergence between the language model of the article and articles in the entity page, combined with the entity overlap.\",\"span_ids\":[\"E2.S1\", \"E2.S2\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 2317.2081999946386,
+      "generation_calls": 1,
+      "input_sha256": "c3d6d82708628ab0c01bcab00c9f7a1189443f2504220877f44749b093bf1a0f",
+      "output_tokens": 76,
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "raw": "{\"answer\":\"Acquiring a very large Vietnamese corpus, applying linguistics knowledge on word context to extract useful features, designing and developing a big data warehouse for Vietnamese documents, and building a system that can incrementally learn new corpora and interactively process feedback.\",\"span_ids\":[\"E2.S2\",\"E2.S3\",\"E2.S4\",\"E2.S8\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1300.126799964346,
+      "generation_calls": 1,
+      "input_sha256": "a11e41227668bc988971c276d0f54cf743e6db85835add31f5ec505a824508d6",
+      "output_tokens": 41,
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "raw": "{\"answer\":\"According to our observation, there are achievements and limitations in existing Vietnamese word segmentation systems, but the success varies due to the lack of comprehensive review.\",\"span_ids\":[\"E1.S5\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 2216.0168000264093,
+      "generation_calls": 1,
+      "input_sha256": "5456be28dcbc5269f87a9affa2fbc9b15cab165fbd5f7fd1289df8f476aa0a88",
+      "output_tokens": 73,
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "raw": "{\"answer\":\"They achieved F1 scores of 0.94 for the Wikipedia and Twitter datasets using BLSTM with attention and feature level transfer learning. For the Formspring dataset, they achieved an F1 score of 0.95 with an accuracy score of 98%.\",\"span_ids\":[\"E3.S3\",\"E3.S6\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 752.5120999198407,
+      "generation_calls": 1,
+      "input_sha256": "9d66f671e24ecb8800ffd52fe2be55ec5fe7b1da8b2a34f976d9b30cfcc7451d",
+      "output_tokens": 20,
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "raw": "{\"answer\":\"personal attack, racism, and sexism\",\"span_ids\":[\"E1.S9\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 915.3569000773132,
+      "generation_calls": 1,
+      "input_sha256": "8dd4c9c14a8a49323bdd65e764eb2a168e84993ef5bcf2e8dd55a1008da1c56e",
+      "output_tokens": 29,
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "raw": "{\"answer\":\"190 hours (100K instances) of transcribed speech data\",\"span_ids\":[\"E3.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 918.2599999476224,
+      "generation_calls": 1,
+      "input_sha256": "f7893f0ce5ee5c6647c75ceebdf835f23682f713247e7f638b488924deb51b75",
+      "output_tokens": 27,
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "raw": "{\"answer\":\"ASGD Weight-Dropped Long Short Term Memory (AWD_LSTM)\",\"span_ids\":[\"E3.S3\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1172.9722999734804,
+      "generation_calls": 1,
+      "input_sha256": "0055437a70bbf200c00a0558995209e2253a5611053a79090bf0c6bfe737e0c3",
+      "output_tokens": 36,
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "raw": "{\"answer\":\"Our solution placed 3rd in Task 1 and 2nd in Task 2 in the final competition standings.\",\"span_ids\":[\"E1.S2\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 924.0064999321476,
+      "generation_calls": 1,
+      "input_sha256": "0d3f59309b073f4de134f72963c1d59582d6cf88c56f78e55f608a52f257c9e5",
+      "output_tokens": 29,
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "raw": "{\"answer\":\"language model combination technique\",\"span_ids\":[\"E1.S4\", \"E2.S1\", \"E3.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 722.9779999470338,
+      "generation_calls": 1,
+      "input_sha256": "6a84fd92b8b9df3bffc7b03915bca721eefcaf9916051dcb954710c9beaf2ec6",
+      "output_tokens": 20,
+      "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+      "raw": "{\"answer\":\"7.05 BLEU points\",\"span_ids\":[\"E1.S6\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1259.616700001061,
+      "generation_calls": 1,
+      "input_sha256": "39a4df77630550991420f324c343e0b0abcf8e9932bfda30b709fff8f0e6f464",
+      "output_tokens": 39,
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "raw": "{\"answer\":\"A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation.\",\"span_ids\":[\"E2.S2\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 974.2489999625832,
+      "generation_calls": 1,
+      "input_sha256": "7327bcb3bc18961e9c77ca15cb5544ab2506573f8100ddb5b18566bd67694912",
+      "output_tokens": 29,
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "raw": "{\"answer\":\"KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts\",\"span_ids\":[\"E3.S2\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 756.6958999959752,
+      "generation_calls": 1,
+      "input_sha256": "1c2ef0da4ca4612292151fce0caff4d14dda972c1abe0d016bdaeb67b2d949bc",
+      "output_tokens": 24,
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "raw": "{\"answer\":\"Japanese-Vietnamese parallel corpus in the DongDu corpus\",\"span_ids\":[\"E1.S4\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 621.0380999837071,
+      "generation_calls": 1,
+      "input_sha256": "4926b5daf2d108f5b8e12f0de695e1dcd79166e483d8e4c9917d06e9b54261b8",
+      "output_tokens": 19,
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "raw": "{\"answer\":\"LRCN1u model\",\"span_ids\":[\"E2.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 871.9627000391483,
+      "generation_calls": 1,
+      "input_sha256": "d17b4bdd44d44ea3a0f1955458b05473c861fff4ff283ba119b7129a88a268e4",
+      "output_tokens": 27,
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "raw": "{\"answer\":\"traditional features, a Doc2vec model\",\"span_ids\":[\"E3.S1\", \"E3.S3\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 583.726599928923,
+      "generation_calls": 1,
+      "input_sha256": "dfe1b95735aa9c2f1b198b4d37522efa503ec53c730ba76850edc85d90b13cf7",
+      "output_tokens": 16,
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "raw": "{\"answer\":\"an existing dataset\",\"span_ids\":[\"E1.S8\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1156.5498999552801,
+      "generation_calls": 1,
+      "input_sha256": "a5333ee98ffa4a5e3269b2e9d13e6df4687999f1e90c397e03493ace1027b288",
+      "output_tokens": 37,
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "raw": "{\"answer\":\"French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi)\",\"span_ids\":[\"E2.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 769.9395000236109,
+      "generation_calls": 1,
+      "input_sha256": "d10aa87f8758d5bd2ad546f16dadaaeab68b2135e6c2381394157caaae475b69",
+      "output_tokens": 24,
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "raw": "{\"answer\":\"23,700\",\"span_ids\":[\"E1.S2\",\"E3.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1688.6168000055477,
+      "generation_calls": 1,
+      "input_sha256": "7074ab98f5da361eb635d467f32659ff2fead6103d8bd8986ad2be5b5cf6b2ff",
+      "output_tokens": 54,
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "raw": "{\"answer\":\"They have a background in analyzing text as social and cultural data, involving defining concepts, using domain experts, and employing computational methods like machine learning algorithms.\",\"span_ids\":[\"E1.S3\", \"E1.S4\", \"E3.S2\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 676.4917999971658,
+      "generation_calls": 1,
+      "input_sha256": "813f6cae0e53604d05b6ac44045f941b6e52c63969576994d58db2b531c44792",
+      "output_tokens": 19,
+      "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+      "raw": "{\"answer\":\"European Union Court of Human Rights\",\"span_ids\":[\"E1.S5\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 876.924299984239,
+      "generation_calls": 1,
+      "input_sha256": "7458cd1b73ea5aa1551b9fafb157da25591f641e575b0a2ec2c2b430ea35b0e5",
+      "output_tokens": 28,
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "raw": "{\"answer\":\"lemmas and morphosyntactic descriptions (MSD), word forms\",\"span_ids\":[\"E1.S1\"]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 775.9000000078231,
+      "generation_calls": 1,
+      "input_sha256": "9ddc103e00df44fde04c7a471b1f1e0f7ffb5c000af70302cb6fe44266db4215",
+      "output_tokens": 23,
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "raw": "{\"answer\":\"TF-IDF features\",\"span_ids\":[\"E1.S3\", \"E1.S4\"]}",
+      "reason": null
+    }
+  ],
+  "actual_output_tokens": 1020,
+  "status_counts": {
+    "refused": 18,
+    "answered": 31,
+    "failure": 1
+  },
+  "failure_reasons": {
+    "nonempty answer needs one to three span IDs": 1
+  },
+  "status_transitions": {
+    "refused -> refused": 18,
+    "answered -> answered": 29,
+    "answered -> failure": 1,
+    "refused -> answered": 2
+  },
+  "generation_latency_seconds": {
+    "p50": 0.9168084500124678,
+    "p95": 2.0502008200623094,
+    "queries": 32
+  },
+  "hardware": {
+    "device": "cuda:0",
+    "dtype": "bfloat16",
+    "free_vram_before_load": 24104665088,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "total_vram": 25756696576
+  },
+  "external_spend_usd": 0,
+  "attempt_consumed": true,
+  "final_test_used": false,
+  "preserved_threshold_refusals": 18,
+  "paired_answerable_f1": {
+    "delta": 0.02610177434177972,
+    "low": -0.01621967229947779,
+    "high": 0.09452587381139033,
+    "family_count": 26,
+    "query_count": 38,
+    "samples": 2000,
+    "seed": 42,
+    "warning": null
+  },
+  "paired_answerable_rows": [
+    {
+      "query_id": "7bd6a6ec230e1efb27d691762cc0674237dc7967",
+      "family_id": "qasper-1808.09029",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "family_id": "qasper-1806.05513",
+      "baseline": 0.19047619047619047,
+      "candidate": 0.19047619047619047
+    },
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "family_id": "qasper-1806.05513",
+      "baseline": 0.046511627906976744,
+      "candidate": 0.046511627906976744
+    },
+    {
+      "query_id": "91e326fde8b0a538bc34d419541b5990d8aae14b",
+      "family_id": "qasper-1710.03348",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "bb3267c3f0a12d8014d51105de5d81686afe5f1b",
+      "family_id": "qasper-1811.08603",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "family_id": "qasper-1811.08603",
+      "baseline": 0.2,
+      "candidate": 0.2
+    },
+    {
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "family_id": "qasper-1610.08815",
+      "baseline": 0.6,
+      "candidate": 0.6
+    },
+    {
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "family_id": "qasper-1610.08815",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "family_id": "qasper-2002.04181",
+      "baseline": 1.0,
+      "candidate": 1.0
+    },
+    {
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "family_id": "qasper-2002.04181",
+      "baseline": 0.4,
+      "candidate": 0.4
+    },
+    {
+      "query_id": "b962cc817a4baf6c56150f0d97097f18ad6cd9ed",
+      "family_id": "qasper-1810.12196",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "c571deefe93f0a41b60f9886db119947648e967c",
+      "family_id": "qasper-1810.12085",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "family_id": "qasper-1909.09587",
+      "baseline": 0.13043478260869565,
+      "candidate": 0.10256410256410256
+    },
+    {
+      "query_id": "ef396a34436072cb3c40b0c9bc9179fee4a168ae",
+      "family_id": "qasper-1705.04153",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "family_id": "qasper-1610.09225",
+      "baseline": 0.2857142857142857,
+      "candidate": 0.2857142857142857
+    },
+    {
+      "query_id": "4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",
+      "family_id": "qasper-1610.09225",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "family_id": "qasper-1703.10344",
+      "baseline": 0.22580645161290322,
+      "candidate": 0.22580645161290322
+    },
+    {
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "family_id": "qasper-1703.10344",
+      "baseline": 0.25,
+      "candidate": 0.46153846153846156
+    },
+    {
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "family_id": "qasper-1906.07662",
+      "baseline": 0.26666666666666666,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "family_id": "qasper-1906.07662",
+      "baseline": 0.18181818181818182,
+      "candidate": 0.18181818181818182
+    },
+    {
+      "query_id": "03ebb29c08375afc42a957c7b2dc1a42bed7b713",
+      "family_id": "qasper-1909.05359",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "435570723b37ee1f5898c1a34ef86a0b2e8701bb",
+      "family_id": "qasper-1801.10293",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "family_id": "qasper-1801.06482",
+      "baseline": 0.47058823529411764,
+      "candidate": 0.5454545454545454
+    },
+    {
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "family_id": "qasper-1801.06482",
+      "baseline": 0.0,
+      "candidate": 1.0
+    },
+    {
+      "query_id": "b8d7d055ddb94f5826a9aad7479b4a92a9c8a2f0",
+      "family_id": "qasper-1612.03226",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "family_id": "qasper-1612.03226",
+      "baseline": 0.6153846153846154,
+      "candidate": 0.6153846153846154
+    },
+    {
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "family_id": "qasper-1907.03187",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "family_id": "qasper-1910.05603",
+      "baseline": 0.2,
+      "candidate": 0.2
+    },
+    {
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "family_id": "qasper-1612.02482",
+      "baseline": 0.20512820512820512,
+      "candidate": 0.20512820512820512
+    },
+    {
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "family_id": "qasper-1805.07133",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "family_id": "qasper-1805.07133",
+      "baseline": 0.2,
+      "candidate": 0.2
+    },
+    {
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "family_id": "qasper-1912.08960",
+      "baseline": 0.6666666666666666,
+      "candidate": 0.6666666666666666
+    },
+    {
+      "query_id": "45e9533586199bde19313cd43b3d0ecadcaf7a33",
+      "family_id": "qasper-1809.09194",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "family_id": "qasper-1910.14076",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "family_id": "qasper-1910.14076",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "family_id": "qasper-2002.07306",
+      "baseline": 1.0,
+      "candidate": 1.0
+    },
+    {
+      "query_id": "d571e0b0f402a3d36fb30d70cdcd2911df883bc7",
+      "family_id": "qasper-2002.07306",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "family_id": "qasper-1909.02027",
+      "baseline": 1.0,
+      "candidate": 1.0
+    }
+  ],
+  "uncertainty_scope": "Post-hoc descriptive paper-family bootstrap on reused development data; not a predeclared gate, selection-adjusted interval or independent final test.",
+  "artifact_sha256": {
+    "config.json": "784b44c5e71307300b0b77d0a835d38c820d8bef7e9f8c6e5c04d4e94f927228",
+    "decisions.jsonl": "d329f4c4826f1f99bbbf199de9ab38f06354f3ddfc9e4b9c29d827c88ba2ffd7",
+    "inputs.json": "9682a9147132bc30cef61db3a8a7994a88989b4169c7b8e4ee4bdbf675739850",
+    "manifest.json": "336664414fcbbaf68c190e08981059b228c9a045effcf8c36e598f39cd2bbc15",
+    "metrics.json": "49f4d24e08e2c28acc9bbdb0a87eabdff86ac0870e0f3ef308a7727adba3c80c",
+    "predictions.jsonl": "b00ef90d14045ed2d9b94d757c57699ec08677a0f7234518dce917786728ee5b",
+    "source.zip": "4ef08b7d15f9cf1dd9a3f94c9e87dc5433a0b4018f0e100ba5c6ae4870b76324",
+    "usage.json": "a10a3bb4b631d456b2f60b7459a76f2250dccaf24cd36221c4222010c70845da",
+    "worker-complete.json": "99520699c869d113b7b91289b0c94c159d3c3365444076a66f0eac34cf10240f"
+  },
+  "root_artifact_sha256": {
+    "attempt.json": "f152f64fbd2ecbad3dfc28fdace0f611bb712ac95bbdb25049932c4833fae95b",
+    "authorization.json": "cc549513c48aabb7078c5d585e5e49748e5506c93db2d3c9f79874a367d287fe",
+    "termination.json": "e8a133a4fba7016245a8696ab2c77084d523b85187acdcf7e8f6b9ecf447a352",
+    "worker.started": "921e5c543438a7e74db83ab7c6ae870f458ee645b620f1ee9f88107a1a8af4d4"
+  },
+  "review_material_sha256": {
+    "reports/intact-passage-review-packet.md": "b3612de29aa7f74d70bd8f211e50c1c1f1d86c89ca3527a840ff10ac9bb70921",
+    "reports/intact-passage-human-review-template.json": "5e4515cc80b63b9bec29a600d83522e2a5fa2a1ee1ad75826efefdc28c783dd3"
+  },
+  "review_source_pdfs_sha256": {
+    "data/raw/qasper-fresh-v1/1806.05513.pdf": "415d7cbe7b0a5a6eb2d06160d7f5e514fe4a37dd26e40355e078e5a1fcc7fa9a",
+    "data/raw/qasper-fresh-v1/1811.08603.pdf": "efcef7cf2e3edb107fee4b3c61502a835c8201b5bbc6f2ccad96ac6fe1a185e5",
+    "data/raw/qasper-fresh-v1/1610.08815.pdf": "21ecb52240460890a581e724d20b2c8081ca3b6e357ff2d8889b1a4df27cb0e5",
+    "data/raw/qasper-fresh-v1/2002.04181.pdf": "59130916e02aef176497abe93be07629964cbd6aaa31e16ab04fb954e8b0117c",
+    "data/raw/qasper-fresh-v1/1909.09587.pdf": "7d84ea44e957839008676c367cf7f1065bb53c6ae36947ca3d24ebf012fea84c",
+    "data/raw/qasper-fresh-v1/1610.09225.pdf": "92c6f9a146739433c9657cc0a3a8ca38f302250a75072c74dccbde14239e5653",
+    "data/raw/qasper-fresh-v1/1703.10344.pdf": "f20ca8357ff02fe03415a9792568c12a02a42fe9c5bc9cfc6af1cc0e11d3b447",
+    "data/raw/qasper-fresh-v1/1906.07662.pdf": "e9ec4eca42af00cbe060c4d0f5f1ea8acb269b9e4ccd3856d71cf769702ff1e1",
+    "data/raw/qasper-fresh-v1/1801.06482.pdf": "9b08fa8ffde5165df06b762c50e1f349677b1893ee3df0c0091b48600a6960cb",
+    "data/raw/qasper-fresh-v1/1612.03226.pdf": "8475795b62187d16625ed7ea7d73203d5039ef345e25ddfafe78c7a2f5f4e0c8",
+    "data/raw/qasper-fresh-v1/1907.03187.pdf": "eced5fe80a0efca6df0ca81a223811c9e45b6858c2d1792f731795009621a80d",
+    "data/raw/qasper-fresh-v1/1910.05603.pdf": "f618b4b9c686f01d5da7208d8d5b72d3a4e37bc4c9cd00ae218b45af158ff5d5",
+    "data/raw/qasper-fresh-v1/1612.02482.pdf": "c039656781f1e752cd1387e49696029228604b0549b6d630bd2e5241314c8378",
+    "data/raw/qasper-fresh-v1/1805.07133.pdf": "8ef0e6434859aaf767b340c358d7798aed845907b6e93c8096f4a0757ffcba78",
+    "data/raw/qasper-fresh-v1/1912.08960.pdf": "d6acc72ef94364bd1ae5d353ec04ed3b750eb77d5b67c6d1e05b9eeab87fb5fd",
+    "data/raw/qasper-fresh-v1/1910.14076.pdf": "6947f536bf1d18d179a730be9d328af7c702cb5e43e254703330b3780fdc2685",
+    "data/raw/qasper-fresh-v1/2002.07306.pdf": "79be7a045afc79ae192d93ed1db20dd48f9fa3624795918038b3f6764da8af74",
+    "data/raw/qasper-fresh-v1/1909.02027.pdf": "dea6cf0bdf4cd9cd06a048e5f5aac7b2165f8788ad9793593af885511c871497",
+    "data/raw/qasper-fresh-v1/1907.01468.pdf": "007671ec95669ef9c14cd8dbcf04f8610f21ebe558f46dc52e90514c95a9fe3c",
+    "data/raw/qasper-fresh-v1/1809.01541.pdf": "99d9cbed4fa2be85ec45af5d90c9585192a203837790bf8680bef2a3fe678f4c",
+    "data/raw/qasper-fresh-v1/1903.07406.pdf": "2981b734772829d2994d3d6dec4332f2fe8d2bb1021e9faa5e1c4b1203e12947"
+  },
+  "comparison_baseline": "artifacts/span-id-answer-v1/runs/20260924T055954Z-4ed67439fb",
+  "input_subgroups": {
+    "restored": {
+      "query_count": 18,
+      "before": {
+        "query_count": 18,
+        "answerable_count": 15,
+        "unanswerable_count": 3,
+        "answered_count": 16,
+        "failure_count": 0,
+        "answer_coverage": 0.8888888888888888,
+        "answerable_token_f1": 0.1929336561519991,
+        "false_refusal_rate": 0.0,
+        "answerable_failure_rate": 0.0,
+        "unanswerable_refusal_recall": 0.6666666666666666,
+        "missing_refusal_rate": 0.3333333333333333,
+        "upstream_citation_precision": 0.4117647058823529,
+        "upstream_citation_recall": 0.3333333333333333,
+        "p50_ms": 866.1069499794394,
+        "p95_ms": 1919.9642449442745,
+        "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+      },
+      "after": {
+        "query_count": 18,
+        "answerable_count": 15,
+        "unanswerable_count": 3,
+        "answered_count": 17,
+        "failure_count": 1,
+        "answer_coverage": 0.9444444444444444,
+        "answerable_token_f1": 0.2590581511511744,
+        "false_refusal_rate": 0.0,
+        "answerable_failure_rate": 0.06666666666666667,
+        "unanswerable_refusal_recall": 0.0,
+        "missing_refusal_rate": 1.0,
+        "upstream_citation_precision": 0.35294117647058826,
+        "upstream_citation_recall": 0.2857142857142857,
+        "p50_ms": 934.811049955897,
+        "p95_ms": 2231.1955100216437,
+        "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+      },
+      "identical_answers": 10,
+      "identical_raw_outputs": 9
+    },
+    "unchanged": {
+      "query_count": 14,
+      "before": {
+        "query_count": 14,
+        "answerable_count": 11,
+        "unanswerable_count": 3,
+        "answered_count": 14,
+        "failure_count": 0,
+        "answer_coverage": 1.0,
+        "answerable_token_f1": 0.47647191518159265,
+        "false_refusal_rate": 0.0,
+        "answerable_failure_rate": 0.0,
+        "unanswerable_refusal_recall": 0.0,
+        "missing_refusal_rate": 1.0,
+        "upstream_citation_precision": 0.4444444444444444,
+        "upstream_citation_recall": 0.36363636363636365,
+        "p50_ms": 848.3552499092184,
+        "p95_ms": 1289.041410014033,
+        "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+      },
+      "after": {
+        "query_count": 14,
+        "answerable_count": 11,
+        "unanswerable_count": 3,
+        "answered_count": 14,
+        "failure_count": 0,
+        "answer_coverage": 1.0,
+        "answerable_token_f1": 0.47647191518159265,
+        "false_refusal_rate": 0.0,
+        "answerable_failure_rate": 0.0,
+        "unanswerable_refusal_recall": 0.0,
+        "missing_refusal_rate": 1.0,
+        "upstream_citation_precision": 0.4444444444444444,
+        "upstream_citation_recall": 0.36363636363636365,
+        "p50_ms": 896.1406000307761,
+        "p95_ms": 1353.4478749847037,
+        "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+      },
+      "identical_answers": 14,
+      "identical_raw_outputs": 14
+    }
+  },
+  "case_comparisons": [
+    {
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "question": "In the paper 'Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System', What type of system does the baseline classification use?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "support vector machines with radial basis function kernel",
+      "after_answer": "support vector machines with radial basis function kernel",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.19047619047619047,
+      "after_f1": 0.19047619047619047
+    },
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "question": "In the paper 'Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System', What experiments were carried out on the corpus?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "10-fold cross validation on 3543 code-mixed tweets was carried out by dividing the corpus into 10 equal parts with nine parts as training corpus and rest one for testing.",
+      "after_answer": "10-fold cross validation on 3543 code-mixed tweets was carried out by dividing the corpus into 10 equal parts with nine parts as training corpus and rest one for testing.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.046511627906976744,
+      "after_f1": 0.046511627906976744
+    },
+    {
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "question": "In the paper 'Neural Collective Entity Linking', How effective is their NCEL approach overall?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "NCEL outperforms the state-of-the-art collective methods across five different datasets.",
+      "after_answer": "NCEL outperforms the state-of-the-art collective methods across five different datasets.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.2,
+      "after_f1": 0.2
+    },
+    {
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "question": "In the paper 'A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks', What are the network's baseline features?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "features extracted from the pre-trained models",
+      "after_answer": "features extracted from the pre-trained models",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.6,
+      "after_f1": 0.6
+    },
+    {
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "question": "In the paper 'A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks', What are the state of the art models?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "CNN-SVM on the baseline + sentiment + emotion + personality feature set",
+      "after_answer": "CNN-SVM on the baseline + sentiment + emotion + personality feature set",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.0,
+      "after_f1": 0.0
+    },
+    {
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "question": "In the paper 'Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets', What measures are used for evaluation?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "correct classification rate (CCR)",
+      "after_answer": "correct classification rate (CCR)",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 1.0,
+      "after_f1": 1.0
+    },
+    {
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "question": "In the paper 'Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets', Which toolkits do they use?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "BIBREF17 and BIBREF18",
+      "after_answer": "BIBREF17 and BIBREF18",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.4,
+      "after_f1": 0.4
+    },
+    {
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "question": "In the paper 'Zero-shot Reading Comprehension by Cross-lingual Transfer Learning with Multi-lingual Language Representation Model', what does the model learn in zero-shot setting?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "In the zero-shot setting, the model learns to perform reading comprehension tasks in languages other than those it was trained on, leveraging a pre-trained multi-BERT model.",
+      "after_answer": "In the zero-shot setting, the model learns to perform reading comprehension tasks in languages it was not explicitly trained on.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.13043478260869565,
+      "after_f1": 0.10256410256410256
+    },
+    {
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "question": "In the paper 'Sentiment Analysis of Twitter Data for Predicting Stock Market Movements', What dataset is used to train the model?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "Microsoft stock price data",
+      "after_answer": "Microsoft stock price data",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.2857142857142857,
+      "after_f1": 0.2857142857142857
+    },
+    {
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "question": "In the paper 'Automated News Suggestions for Populating Wikipedia Entity Pages', What baseline model is used?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "salience-based features by Dunietz and Gillick",
+      "after_answer": "salience-based features by Dunietz and Gillick",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.22580645161290322,
+      "after_f1": 0.22580645161290322
+    },
+    {
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "question": "In the paper 'Automated News Suggestions for Populating Wikipedia Entity Pages', What features are used to represent the novelty of news articles to entity pages?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "novelty of news articles w.r.t the already existing entity profile",
+      "after_answer": "the novelty of an article w.r.t the already existing entity profile, measured by the KL divergence between the language model of the article and articles in the entity page, combined with the entity overlap.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.25,
+      "after_f1": 0.46153846153846156
+    },
+    {
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "question": "In the paper 'State-of-the-Art Vietnamese Word Segmentation', Why challenges does word segmentation in Vietnamese pose?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "Acquiring a very large Vietnamese corpus and applying linguistics knowledge on word context to extract useful features.",
+      "after_answer": "",
+      "before_status": "answered",
+      "after_status": "failure",
+      "before_f1": 0.26666666666666666,
+      "after_f1": 0.0
+    },
+    {
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "question": "In the paper 'State-of-the-Art Vietnamese Word Segmentation', How successful are the approaches used to solve word segmentation in Vietnamese?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "According to our observation, there are both achievements and limitations in existing Vietnamese word segmentation systems. The study reports a few of these achievements and limitations.",
+      "after_answer": "According to our observation, there are achievements and limitations in existing Vietnamese word segmentation systems, but the success varies due to the lack of comprehensive review.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.18181818181818182,
+      "after_f1": 0.18181818181818182
+    },
+    {
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "question": "In the paper 'Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms', What were their performance results?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "The performance results show that DNN based models coupled with transfer learning beat the best-known results for the Wikipedia and Twitter datasets. For Wikipedia, the F1 score achieved is 0.94, and for Twitter, it is 0.95. For the Formspring dataset, the F1 score achieved is 0.95 with an accuracy score of 98%.",
+      "after_answer": "They achieved F1 scores of 0.94 for the Wikipedia and Twitter datasets using BLSTM with attention and feature level transfer learning. For the Formspring dataset, they achieved an F1 score of 0.95 with an accuracy score of 98%.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.47058823529411764,
+      "after_f1": 0.5454545454545454
+    },
+    {
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "question": "In the paper 'Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms', What cyberbulling topics did they address?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "perso",
+      "after_answer": "personal attack, racism, and sexism",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.0,
+      "after_f1": 1.0
+    },
+    {
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "question": "In the paper 'Active Learning for Speech Recognition: the Power of Gradients', Which dataset do they use?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "190 hours (100K instances) of transcribed speech data",
+      "after_answer": "190 hours (100K instances) of transcribed speech data",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.6153846153846154,
+      "after_f1": 0.6153846153846154
+    },
+    {
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "question": "In the paper 'Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction', What did the best systems use for their model?",
+      "answerable": false,
+      "input_changed": false,
+      "before_answer": "ASGD Weight-Dropped Long Short Term Memory (AWD_LSTM)",
+      "after_answer": "ASGD Weight-Dropped Long Short Term Memory (AWD_LSTM)",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": null,
+      "after_f1": null
+    },
+    {
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "question": "In the paper 'Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction', What were their results on the classification and regression tasks",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "Our solution placed 3rd in Task 1 and 2nd in Task 2 in the final competition standings.",
+      "after_answer": "Our solution placed 3rd in Task 1 and 2nd in Task 2 in the final competition standings.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.0,
+      "after_f1": 0.0
+    },
+    {
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "question": "In the paper 'VAIS ASR: Building a conversational speech recognition system using language model combination', What is the language model combination technique used in the paper?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "language model combination technique",
+      "after_answer": "language model combination technique",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.2,
+      "after_f1": 0.2
+    },
+    {
+      "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+      "question": "In the paper 'Improving the Performance of Neural Machine Translation Involving Morphologically Rich Languages', By how much do they improve the efficacy of the attention mechanism?",
+      "answerable": false,
+      "input_changed": true,
+      "before_answer": "",
+      "after_answer": "7.05 BLEU points",
+      "before_status": "refused",
+      "after_status": "answered",
+      "before_f1": null,
+      "after_f1": null
+    },
+    {
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "question": "In the paper 'Improving the Performance of Neural Machine Translation Involving Morphologically Rich Languages', How were the human judgements assembled?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation.",
+      "after_answer": "A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.20512820512820512,
+      "after_f1": 0.20512820512820512
+    },
+    {
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "question": "In the paper 'Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation', what was the baseline?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts",
+      "after_answer": "KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.0,
+      "after_f1": 0.0
+    },
+    {
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "question": "In the paper 'Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation', what japanese-vietnamese dataset do they use?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "Japanese-Vietnamese parallel corpus in the DongDu corpus",
+      "after_answer": "Japanese-Vietnamese parallel corpus in the DongDu corpus",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.2,
+      "after_f1": 0.2
+    },
+    {
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "question": "In the paper 'Going Beneath the Surface: Evaluating Image Captioning for Grammaticality, Truthfulness and Diversity', Which existing models are evaluated?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "LRCN1u model",
+      "after_answer": "LRCN1u model",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.6666666666666666,
+      "after_f1": 0.6666666666666666
+    },
+    {
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "question": "In the paper 'A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation', To what baseline models is proposed model compared?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "traditional features, a Doc2vec model",
+      "after_answer": "traditional features, a Doc2vec model",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.0,
+      "after_f1": 0.0
+    },
+    {
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "question": "In the paper 'A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation', What existing dataset is re-examined and corrected for training?",
+      "answerable": true,
+      "input_changed": true,
+      "before_answer": "an existing dataset",
+      "after_answer": "an existing dataset",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 0.0,
+      "after_f1": 0.0
+    },
+    {
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "question": "In the paper 'From English To Foreign Languages: Transferring Pre-trained Language Models', What languages are the model transferred to?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi)",
+      "after_answer": "French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi)",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 1.0,
+      "after_f1": 1.0
+    },
+    {
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "question": "In the paper 'An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction', What is the size of this dataset?",
+      "answerable": true,
+      "input_changed": false,
+      "before_answer": "23,700",
+      "after_answer": "23,700",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": 1.0,
+      "after_f1": 1.0
+    },
+    {
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "question": "In the paper 'How we do things with words: Analyzing text as social and cultural data', What background do they have?",
+      "answerable": false,
+      "input_changed": false,
+      "before_answer": "They have a background in analyzing text as social and cultural data, involving defining concepts, using domain experts, and employing computational methods like machine learning algorithms.",
+      "after_answer": "They have a background in analyzing text as social and cultural data, involving defining concepts, using domain experts, and employing computational methods like machine learning algorithms.",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": null,
+      "after_f1": null
+    },
+    {
+      "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+      "question": "In the paper 'How we do things with words: Analyzing text as social and cultural data', What dataset do they use for analysis?",
+      "answerable": false,
+      "input_changed": true,
+      "before_answer": "",
+      "after_answer": "European Union Court of Human Rights",
+      "before_status": "refused",
+      "after_status": "answered",
+      "before_f1": null,
+      "after_f1": null
+    },
+    {
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "question": "In the paper 'Copenhagen at CoNLL--SIGMORPHON 2018: Multilingual Inflection in Context with Explicit Morphosyntactic Decoding', What type of inflections are considered?",
+      "answerable": false,
+      "input_changed": false,
+      "before_answer": "lemmas and morphosyntactic descriptions (MSD), word forms",
+      "after_answer": "lemmas and morphosyntactic descriptions (MSD), word forms",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": null,
+      "after_f1": null
+    },
+    {
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "question": "In the paper 'Automatic Classification of Pathology Reports using TF-IDF Features', What features are used?",
+      "answerable": false,
+      "input_changed": true,
+      "before_answer": "TF-IDF features",
+      "after_answer": "TF-IDF features",
+      "before_status": "answered",
+      "after_status": "answered",
+      "before_f1": null,
+      "after_f1": null
+    }
+  ],
+  "quote_audit": {
+    "exact_quotes": 41,
+    "max_quote_words": 40,
+    "max_total_words": 104,
+    "semantics_proven": false
+  },
+  "reporting_script_sha256": "439965ac1c6052f0c264a16b7a08d23099a653b779240b9e39e82f7b3a2a490e"
+}
