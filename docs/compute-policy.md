@@ -55,3 +55,12 @@ $0 external spend. The quality gate fails; ten outputs violate the answer contra
 This allowance is consumed. Saved-result verification and reporting made no new
 model calls. Any further training or inference needs a new prepared and approved
 allowance; the unused final test remains outside this authorization.
+
+The user then approved the exact source span-ID experiment. Its
+[authorization](../reports/span-id-answer-authorization.json) and
+[verified result](../reports/span-id-answer-development.md) record one RTX 4090
+attempt: 32 calls, 962 actual output tokens, 12,288 reserved tokens, 60.656 seconds
+and $0 external spend. No structural or runtime failures occurred, but the quality
+gate fails two conditions. This allowance is consumed. Independent saved-result
+verification, quote audits and reporting used no further model calls. No training,
+retry, final-test access or deployment was authorized or performed.

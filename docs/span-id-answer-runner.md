@@ -1,7 +1,10 @@
 # Source span-ID experiment runner
 
 The [proposal](span-id-answer-proposal.md) specifies the experiment and approval
-limits. No real run is authorized during preparation.
+limits. The single approved run has now completed; its allowance is consumed.
+[Results](../reports/span-id-answer-development.md) pass nine of eleven development
+conditions, so the candidate is not promoted. Use saved-result verification below;
+the execution instructions describe the historical attempt and do not permit a retry.
 
 ## Read-only preparation
 
@@ -16,7 +19,7 @@ readiness record before requesting approval. The separate tokenizer-only check
 uses the isolated GPU environment on CPU to measure all 32 prompts; it is not an
 inference run or a memory/performance test.
 
-## Approval and one execution
+## Historical approval and one execution
 
 After explicit user approval, record `reports/span-id-answer-authorization.json`
 with `status: approved`, `scope: span-id-answer-v1`, the exact `snapshot_sha256`,

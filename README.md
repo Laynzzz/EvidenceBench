@@ -170,9 +170,12 @@ The [runner](docs/grounded-answer-runner.md) supports read-only saved-result che
 The preparation's 170 passing software tests are distinct from model quality.
 Final test and independent human semantic acceptance remain pending.
 
-The next [span-ID answer experiment](docs/span-id-answer-proposal.md) is prepared:
-the model selects source IDs and code supplies exact bounded quotations. All 194
-software tests pass, including PostgreSQL after [Docker socket recovery](reports/docker-startup-recovery.md).
-Read-only checks verify the saved assets and all 32 prompt lengths. It has no model
-quality result yet. [Readiness](reports/span-id-answer-readiness.json) records the
-proposed one-attempt GPU scope; new explicit approval is required before execution.
+The [span-ID answer experiment](reports/span-id-answer-development.md) completed:
+F1 .2141, 30 answers and zero failures. Code assembles exact quotes from selected
+source IDs. Nine of eleven conditions pass, but four unanswerable answers exceed
+the limit of three and citation-ID precision .4286 falls below the saved 7B .4583.
+The descriptive F1-gain interval is positive but not adjusted for repeated selection.
+It is not promoted. One approved attempt used 32 calls/962 actual tokens/60.656
+seconds at $0 external spend; the allowance is consumed. The preparation's 194
+passing software tests are separate from this real model result and its semantic
+limitations. All 30 emitted answers have a [review packet](reports/span-id-answer-review-packet.md).

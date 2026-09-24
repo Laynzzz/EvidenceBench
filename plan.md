@@ -690,3 +690,16 @@ two code reviews found no actionable issues. Read-only preflight and tokenizatio
 verify all 32 prompts fit the 2,048-token limit. [Readiness](reports/span-id-answer-readiness.json)
 pins a proposed single 32-call/12,288-token/20-minute/$0 attempt. It awaits new explicit
 approval; no model run or final-test access occurred. Phase 4 remains incomplete.
+
+The user subsequently approved that exact [span-ID attempt](reports/span-id-answer-development.md).
+It completed with 30 answers, zero failures and F1 .214084; all ten invalid responses
+from the previous protocol became valid answers. Nine of eleven gates pass, but
+four unanswerable answers and citation-ID precision .428571 miss the required
+three/.458333 thresholds. The descriptive F1-gain interval [.029309, .160313] excludes
+zero without correcting repeated development selection. One attempt used 32 calls,
+962 actual tokens and 60.656 seconds at $0 external spend. The allowance is consumed.
+No promotion, retry or final-test access occurred; Phase 4 remains incomplete.
+Focused source inspection still finds factual misattribution and incomplete answers.
+All 30 emitted answers are preserved for semantic review. Next analyze evidence
+sufficiency, clipping and claim attribution from saved artifacts before another
+experiment; any additional model work requires a new prepared and approved scope.

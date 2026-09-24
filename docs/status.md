@@ -10,7 +10,7 @@ production-ready or fully complete.
 | 1. Corpus and reproducible data | Verified | 191 papers, 5,908 paragraphs, byte-identical rebuild and frozen selection |
 | 2. Labels and baselines | Verified | 200/50/100 human-labeled questions; baselines; 36 dev failures inspected |
 | 3. Adaptation | Verified | 50/100/200 learning curve, hard/random ablation, three seeds, reload parity and failed-run retention |
-| 4. Grounded answers | Latest complete-answer gate failed; acceptance incomplete | Complete-answer F1 .1438, 10 failures, 5/12 unanswerable answers; saved 7B span candidate retains its earlier gate pass; human support review and fresh final evaluation remain pending |
+| 4. Grounded answers | Latest span-ID gate failed; acceptance incomplete | Span-ID F1 .2141, zero failures, 4/12 unanswerable answers; citation precision .4286 misses .4583 threshold; human support review and fresh final evaluation remain pending |
 | 5. Deployment | Verified locally | Five routes, real answer/refusal, DB outage, rollback, concurrency, fresh environment, 50-query Linux parity |
 | 6. MLE focus | Verified within local scope | Controlled hard negatives, exact mining cache, three-seed sensitivity and failure analysis; agent deferred |
 | 7. Final evaluation / portfolio | Verified experimental handoff | Five-system ranking, 100-question answers, restored artifact bundle and recorded API demo; human claim audit remains missing |
@@ -369,25 +369,36 @@ The next engineering work is to design a simpler auditable citation output while
 addressing answer completeness; it needs a new proposal before any model run.
 Independent human review and Phase 4 acceptance remain incomplete.
 
-## Source span-ID comparison — prepared; new approval needed
+## Source span-ID comparison — completed; not promoted
 
 - [x] Replace model-copied quotes with IDs of deterministic source spans.
 - [x] Preserve original inputs, 18 threshold refusals, all-50 scoring and eleven gates.
 - [x] Verify 24 new synthetic checks and all 194 software tests with real PostgreSQL.
 - [x] Complete independent contract/runner reviews; no actionable findings.
 - [x] Verify frozen assets and all 32 prompt lengths without model loading.
-- [ ] Obtain new explicit approval before the single model attempt.
+- [x] Obtain new explicit approval and execute the single bounded model attempt.
+- [x] Independently recompute saved results, inspect remaining errors and preserve all 30 answers.
 
 [Proposal](span-id-answer-proposal.md), [runner](span-id-answer-runner.md) and
 [readiness](../reports/span-id-answer-readiness.json) specify one RTX 4090 attempt:
 at most 32 calls, 12,288 reserved output tokens, 20 minutes and $0 external spend.
 All 543 source spans preserve body text and offsets; prompts use 484–1,142 of 2,048
-input tokens. Quote copying/length errors are eliminated structurally, but malformed
-JSON, unsupported answers and incomplete evidence remain possible. Model quality
-is unmeasured; Phase 4 remains incomplete and final test unused.
+input tokens. The preparation records remain historical. [Verified results](../reports/span-id-answer-development.md)
+show 30 answers, 20 refusals and zero failures; all ten prior invalid outputs now
+produce valid answers. F1 improves to .214084, but nine of eleven conditions pass:
+four unanswerable answers exceed the limit of three and citation-ID precision
+.428571 falls below .458333. A descriptive F1-gain interval [.029309, .160313]
+excludes zero but does not adjust for repeated development selection.
 
 The first full software check failed because Docker's engine was unavailable.
 [Socket recovery](../reports/docker-startup-recovery.md) restored Docker and the
 existing database without resetting volumes; the subsequent suite passed 194 tests
-with two existing deprecation warnings. Runtime socket backups are retained. No new
-training, inference, authorization or attempt exists for this candidate.
+with two existing deprecation warnings. Runtime socket backups are retained.
+The approved GPU run subsequently used 32 calls, 962 actual output tokens and
+60.656 seconds of worker time at $0 external spend. It completed within its
+12,288-reserved-token/20-minute allowance, which is now consumed. No retry, training,
+service change or final-test access occurred. All 41 quotations match source spans,
+but focused inspection finds wrong numerical attribution, incomplete fragments and
+nonresponsive answers. Phase 4 and independent human semantic acceptance remain
+incomplete. The next offline analysis should address evidence sufficiency and
+claim attribution, including refusals; any new model run needs fresh approval.
