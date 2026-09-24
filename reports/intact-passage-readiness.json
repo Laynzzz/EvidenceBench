@@ -1,0 +1,238 @@
+{
+  "status": "ready_for_authorization",
+  "prepared_at_utc": "2026-09-24T20:56:51.028147+00:00",
+  "prepared_commit": "5f7701c397bcbd88a2d4d125c4d0233296e3ad11",
+  "scope": "intact-passage-v1",
+  "snapshot_sha256": "784b44c5e71307300b0b77d0a835d38c820d8bef7e9f8c6e5c04d4e94f927228",
+  "baseline_run": "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5",
+  "prior_span_run": "artifacts/span-id-answer-v1/runs/20260924T055954Z-4ed67439fb",
+  "limits": {
+    "calls": 32,
+    "max_new_tokens": 384,
+    "reserved_tokens": 12288
+  },
+  "deadline_seconds": 1200,
+  "external_spend_usd": 0,
+  "attempt_exists": false,
+  "authorization_exists": false,
+  "model_calls": 0,
+  "training_runs": 0,
+  "final_test_used": false,
+  "software_tests": {
+    "new_synthetic_passed": 35,
+    "total_passed": 242,
+    "total_failed": 0,
+    "real_postgresql_passed": true,
+    "warnings": 2,
+    "elapsed_seconds": 10.77
+  },
+  "code_review": {
+    "status": "completed",
+    "blocking_findings": 0,
+    "changes": "Persisted strict-gain/equality/regression/inherited-failure boundary tests.",
+    "operational_requirement": "Separate exact-snapshot tokenizer check required before approval; completed for this snapshot."
+  },
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "runtime": {
+    "cuda_build": "12.8",
+    "packages": {
+      "accelerate": "1.12.0",
+      "certifi": "2026.7.22",
+      "charset-normalizer": "3.5.1",
+      "colorama": "0.4.6",
+      "filelock": "3.32.3",
+      "fsspec": "2026.7.0",
+      "huggingface_hub": "0.36.2",
+      "idna": "3.20",
+      "jinja2": "3.1.6",
+      "markupsafe": "3.0.3",
+      "mpmath": "1.3.0",
+      "networkx": "3.6.1",
+      "numpy": "2.5.3",
+      "packaging": "26.3",
+      "pip": "25.0.1",
+      "psutil": "7.2.2",
+      "pyyaml": "6.0.3",
+      "regex": "2026.9.10",
+      "requests": "2.34.2",
+      "safetensors": "0.8.0",
+      "setuptools": "78.1.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.10.0+cu128",
+      "tqdm": "4.70.1",
+      "transformers": "4.57.6",
+      "typing_extensions": "4.16.0",
+      "urllib3": "2.8.0"
+    },
+    "torch": "2.10.0+cu128",
+    "transformers": "4.57.6"
+  },
+  "model_manifest_sha256": "0b448b718c0e7d457398f16d3017391d7458a2d897437a8683ba24b95e648a76",
+  "tokenization": {
+    "changed_inputs": 18,
+    "input_limit": 2048,
+    "inputs_sha256": "9682a9147132bc30cef61db3a8a7994a88989b4169c7b8e4ee4bdbf675739850",
+    "lengths": [
+      {
+        "input_tokens": 1224,
+        "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596"
+      },
+      {
+        "input_tokens": 1223,
+        "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc"
+      },
+      {
+        "input_tokens": 975,
+        "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2"
+      },
+      {
+        "input_tokens": 842,
+        "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809"
+      },
+      {
+        "input_tokens": 1185,
+        "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46"
+      },
+      {
+        "input_tokens": 890,
+        "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24"
+      },
+      {
+        "input_tokens": 870,
+        "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026"
+      },
+      {
+        "input_tokens": 868,
+        "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2"
+      },
+      {
+        "input_tokens": 1155,
+        "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0"
+      },
+      {
+        "input_tokens": 484,
+        "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d"
+      },
+      {
+        "input_tokens": 928,
+        "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af"
+      },
+      {
+        "input_tokens": 1022,
+        "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277"
+      },
+      {
+        "input_tokens": 973,
+        "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4"
+      },
+      {
+        "input_tokens": 1096,
+        "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9"
+      },
+      {
+        "input_tokens": 1245,
+        "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471"
+      },
+      {
+        "input_tokens": 921,
+        "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58"
+      },
+      {
+        "input_tokens": 1114,
+        "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725"
+      },
+      {
+        "input_tokens": 1021,
+        "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04"
+      },
+      {
+        "input_tokens": 697,
+        "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08"
+      },
+      {
+        "input_tokens": 1152,
+        "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad"
+      },
+      {
+        "input_tokens": 1220,
+        "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96"
+      },
+      {
+        "input_tokens": 925,
+        "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb"
+      },
+      {
+        "input_tokens": 863,
+        "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4"
+      },
+      {
+        "input_tokens": 780,
+        "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa"
+      },
+      {
+        "input_tokens": 990,
+        "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59"
+      },
+      {
+        "input_tokens": 1014,
+        "query_id": "a9a532399237b514c1227f2d6be8601474e669be"
+      },
+      {
+        "input_tokens": 758,
+        "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc"
+      },
+      {
+        "input_tokens": 770,
+        "query_id": "27de1d499348e17fec324d0ef00361a490659988"
+      },
+      {
+        "input_tokens": 947,
+        "query_id": "975e60535724f4149c7488699a199ba2920a062c"
+      },
+      {
+        "input_tokens": 1025,
+        "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd"
+      },
+      {
+        "input_tokens": 789,
+        "query_id": "c9b8d3858c112859eabee54248b874331c48f71b"
+      },
+      {
+        "input_tokens": 1018,
+        "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b"
+      }
+    ],
+    "max_paragraph_characters": 1626,
+    "max_tokens": 1245,
+    "messages_sha256": "cb338972fb2499ebe134dbcc198facc53219fc73d4c2c64f0cb6de3f4abd0e99",
+    "min_tokens": 484,
+    "model_calls": 0,
+    "model_loaded": false,
+    "prompt_count": 32,
+    "snapshot_sha256": "784b44c5e71307300b0b77d0a835d38c820d8bef7e9f8c6e5c04d4e94f927228",
+    "span_count": 582,
+    "status": "verified",
+    "total_tokens": 30984
+  },
+  "source_sha256": {
+    "scripts/intact_passage_contract.py": "e247c6dde46227315ea0fa45658a517b651e633c8f9cbed35222ae513dafd0a1",
+    "scripts/intact_passage_worker.py": "6e8066d122e1cc6e5b2fc2e0c3b3759222b7347458260b41d5efb740f4d1215f",
+    "scripts/run_intact_passage.py": "7ebf847eccd481a2e8e0454bbfcea180997d73a3945ea0711c15920789f7d29d",
+    "docs/intact-passage-proposal.md": "34da05742a58d7336d10a000a1f60d87c0247664cfe37584c872526cccdff78f"
+  },
+  "preparation_artifact_sha256": {
+    "artifacts/intact-passage-preparation/snapshot.json": "784b44c5e71307300b0b77d0a835d38c820d8bef7e9f8c6e5c04d4e94f927228",
+    "artifacts/intact-passage-preparation/inputs.json": "9682a9147132bc30cef61db3a8a7994a88989b4169c7b8e4ee4bdbf675739850",
+    "artifacts/intact-passage-preparation/tokenization.json": "bb0310643bf519964bafc46194aa1e31543fcb4a530510e2b524e91b7c916630"
+  },
+  "commands": {
+    "preflight": ".venv/Scripts/python.exe -X utf8 scripts/run_intact_passage.py",
+    "tokenizer": "docs/intact-passage-runner.md exact-snapshot tokenizer-only command",
+    "synthetic": ".venv/Scripts/python.exe -X utf8 -m pytest tests/unit/test_intact_passages.py tests/unit/test_intact_passage_runner.py tests/unit/test_intact_passage_worker.py -q --tb=short",
+    "full_suite": "docs/runbook.md database-enabled pytest command, Python -X utf8 and --tb=short"
+  },
+  "limits_of_evidence": "No model weights were loaded. Tokenizer fit and synthetic checks are preparation evidence, not measured answer quality.",
+  "initial_auxiliary_failure": "Combined synthetic check without Python UTF-8 mode hit existing GBK Unicode fixture read; rerun with -X utf8 passed without frozen-source edits."
+}
