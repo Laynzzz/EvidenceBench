@@ -689,3 +689,33 @@ Thirty-five new synthetic checks and 242 total software tests pass. Read
 `scripts/intact_passage_worker.py` for the isolated worker boundary. Optional later
 exercise: explain how a restored tail changes span IDs while the parent paragraph
 ID stays fixed, and why the frozen prior catalog must not be used to parse new output.
+
+## What happened when the original paragraphs were restored
+
+The [completed comparison](../reports/intact-passage-development.md) lets you inspect
+the effect of packing on saved model outputs. All 14 unchanged inputs reproduce
+the same raw answer, while restoring text changes eight answers/statuses among
+18 inputs. Overall F1 rises from .214084 to .240186, but the paired family interval
+[-.016220, .094526] includes zero and three acceptance conditions fail. The topic
+list repaired from `perso` accounts for almost all the aggregate F1 increase.
+
+More context has two effects in this example: it makes missing facts available,
+and it changes which facts the model chooses. The corrected Twitter number and
+new KL-divergence answer draw on facts already present before restoration. In
+contrast, two earlier refusals now become unsupported answers: translation BLEU
+is presented as attention-mechanism improvement, and a definition source as a
+dataset. Matching words and exact citations cannot check those semantic roles.
+
+The local Python output validator also rejects a response with four span IDs
+because the frozen contract permits only three. Its raw prose is preserved for
+diagnosis, but the scored answer remains a failure. Raising the limit after seeing
+this result would change the measured protocol; a different coverage design needs
+separate preparation and approval, not a silent repair.
+
+Verification reconstructs all 50 rows from saved raw outputs, preserves 18 threshold
+refusals, checks all 41 accepted source quotations and records 32 calls/1,020 actual
+tokens/63.547 seconds at $0 external spend. Preparation's 242 software tests are
+historical; this result adds model behavior evidence without establishing human
+semantic acceptance. Read the [failure](../reports/intact-passage-errors.md) beside
+the [review packet](../reports/intact-passage-review-packet.md). Optional exercise:
+explain how F1 can rise while citation precision and correct refusal behavior worsen.

@@ -466,3 +466,26 @@ would remain development evidence requiring separate semantic review and authori
 fresh final evaluation. See [proposal](intact-passage-proposal.md) and
 [readiness](../reports/intact-passage-readiness.json); do not present this unexecuted
 experiment as an achieved benchmark or a personally practiced interview answer.
+
+## Explaining the measured context-restoration result
+
+**Did intact paragraphs improve the system?** They improved development token F1
+from .214084 to .240186, largely through one repaired topic list. The candidate
+still failed three of twelve conditions: six unanswerable answers, one contract
+failure and citation-ID precision .400000. It was not promoted. The descriptive
+paired gain interval includes zero; these are repeated-development observations,
+not independent final performance. See [results](../reports/intact-passage-development.md).
+
+**What did the controlled comparison reveal?** All 14 unchanged inputs reproduced
+their old raw outputs. Restored inputs sometimes improved, but both previous model
+refusals became answers confusing a metric or source role. The missing problem is
+not merely how much text fits: the answer must attach each fact to the right task,
+dataset or method. Follow-up: some corrected facts were already in the clipped
+input, so improved selection cannot be attributed only to newly exposed facts.
+
+**Why keep the four-span answer as a failure?** The predeclared contract allowed
+three spans, and the model emitted four. Preserving the raw response while assigning
+failure keeps comparison honest. Relaxing the contract afterward would require a
+new protocol and comparison. Follow-up: how would you make citation coverage and
+multi-part answer length compatible without hiding unsupported claims? This remains
+future design work; no further model run or training has been authorized.
