@@ -243,3 +243,19 @@ do not claim completed semantic review. Reports preserve all run/root artifact
 hashes; the preparation records above remain historical. The allowance is consumed,
 with 3,443 actual output tokens, 176.969 seconds and $0 external spend. No training,
 retry, final-test access or deployment occurred.
+
+## Prepared source span-ID comparison
+
+[Proposal](span-id-answer-proposal.md), [runner](span-id-answer-runner.md) and
+[readiness](../reports/span-id-answer-readiness.json) describe the deterministic
+quote-assembly experiment. New contract/lifecycle tests total 24; the complete
+software suite passes 194 tests with PostgreSQL and two existing warnings. Both
+independent code reviews found no actionable issues. The initial database failure
+and [Docker recovery](../reports/docker-startup-recovery.md) are retained separately.
+
+Cached asset verification and tokenizer-only checks load no model weights. The
+32 prompts use 484–1,142 input tokens and contain 543 source spans; body coverage,
+offsets and word limits were checked on every supplied passage. The readiness
+record includes source and preparation-artifact hashes. This proves preparation
+and software invariants, not model quality or semantic support. No allowance or
+real attempt exists; the 100-question final test remains unused.

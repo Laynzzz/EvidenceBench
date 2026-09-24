@@ -169,3 +169,10 @@ seconds at $0 external spend. It is not promoted; the allowance is consumed.
 The [runner](docs/grounded-answer-runner.md) supports read-only saved-result checks.
 The preparation's 170 passing software tests are distinct from model quality.
 Final test and independent human semantic acceptance remain pending.
+
+The next [span-ID answer experiment](docs/span-id-answer-proposal.md) is prepared:
+the model selects source IDs and code supplies exact bounded quotations. All 194
+software tests pass, including PostgreSQL after [Docker socket recovery](reports/docker-startup-recovery.md).
+Read-only checks verify the saved assets and all 32 prompt lengths. It has no model
+quality result yet. [Readiness](reports/span-id-answer-readiness.json) records the
+proposed one-attempt GPU scope; new explicit approval is required before execution.

@@ -679,3 +679,14 @@ all 19 emitted answers have a review packet. No independent human review or fres
 final-test evaluation occurred. Phase 4 remains incomplete. A future experiment
 should separate reliable citation formatting from useful, complete answers and
 must receive its own prepared scope and explicit approval before model execution.
+
+That [source span-ID comparison](docs/span-id-answer-proposal.md) is now prepared.
+The model selects one to three short source spans; deterministic code assembles
+quotes and deduplicates parent passage citations. Saved evidence, model, time/token
+limits and all eleven gates stay fixed. The new prompt presentation and selection
+constraints remain an experimental protocol change, not a semantic-support guarantee.
+Twenty-four new synthetic checks and all 194 software tests pass with PostgreSQL;
+two code reviews found no actionable issues. Read-only preflight and tokenization
+verify all 32 prompts fit the 2,048-token limit. [Readiness](reports/span-id-answer-readiness.json)
+pins a proposed single 32-call/12,288-token/20-minute/$0 attempt. It awaits new explicit
+approval; no model run or final-test access occurred. Phase 4 remains incomplete.

@@ -30,7 +30,7 @@ used; none remain. Retain artifacts, model caches, local MLflow and database vol
 Existing job-market research links refer to files absent from this checkout; they
 were not recreated or independently revalidated during implementation.
 
-Final retained service: app and database running on loopback only. Reproduction bundle is 32,055,932 bytes; extraction, every included file hash, corpus/index and selected checkpoint were verified in a separate directory.
+At the original handoff, app and database were running on loopback only. After the September 24 Docker recovery, the database is healthy and the app remains stopped. Reproduction bundle is 32,055,932 bytes; extraction, every included file hash, corpus/index and selected checkpoint were verified in a separate directory.
 
 The user-requested [paper-based AI review](claim-review.md) is complete for all nine
 emitted answers and 16 citation links. Paper correctness: two correct, four incorrect,
@@ -368,3 +368,26 @@ occurred. The 170-test preparation result is historical and was not rerun here.
 The next engineering work is to design a simpler auditable citation output while
 addressing answer completeness; it needs a new proposal before any model run.
 Independent human review and Phase 4 acceptance remain incomplete.
+
+## Source span-ID comparison — prepared; new approval needed
+
+- [x] Replace model-copied quotes with IDs of deterministic source spans.
+- [x] Preserve original inputs, 18 threshold refusals, all-50 scoring and eleven gates.
+- [x] Verify 24 new synthetic checks and all 194 software tests with real PostgreSQL.
+- [x] Complete independent contract/runner reviews; no actionable findings.
+- [x] Verify frozen assets and all 32 prompt lengths without model loading.
+- [ ] Obtain new explicit approval before the single model attempt.
+
+[Proposal](span-id-answer-proposal.md), [runner](span-id-answer-runner.md) and
+[readiness](../reports/span-id-answer-readiness.json) specify one RTX 4090 attempt:
+at most 32 calls, 12,288 reserved output tokens, 20 minutes and $0 external spend.
+All 543 source spans preserve body text and offsets; prompts use 484–1,142 of 2,048
+input tokens. Quote copying/length errors are eliminated structurally, but malformed
+JSON, unsupported answers and incomplete evidence remain possible. Model quality
+is unmeasured; Phase 4 remains incomplete and final test unused.
+
+The first full software check failed because Docker's engine was unavailable.
+[Socket recovery](../reports/docker-startup-recovery.md) restored Docker and the
+existing database without resetting volumes; the subsequent suite passed 194 tests
+with two existing deprecation warnings. Runtime socket backups are retained. No new
+training, inference, authorization or attempt exists for this candidate.

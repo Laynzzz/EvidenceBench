@@ -1,0 +1,283 @@
+{
+  "status": "ready_for_authorization",
+  "prepared_at_utc": "2026-09-24T05:51:16.119929+00:00",
+  "prepared_commit": "7392884e76b7f4db38853e3c949d4af01a92a101",
+  "snapshot_sha256": "70f950e327ed4a198e50de38e2476325cdc7154f708a966d4830f8e290c7932b",
+  "scope": "span-id-answer-v1",
+  "baseline_run": "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5",
+  "prior_complete_run": "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae",
+  "limits": {
+    "calls": 32,
+    "max_new_tokens": 384,
+    "reserved_tokens": 12288
+  },
+  "deadline_seconds": 1200,
+  "external_spend_usd": 0,
+  "attempt_exists": false,
+  "authorization_exists": false,
+  "model_calls": 0,
+  "training_runs": 0,
+  "final_test_used": false,
+  "software_tests": {
+    "new_synthetic_passed": 24,
+    "total_passed": 194,
+    "total_failed": 0,
+    "real_postgresql_passed": true,
+    "warnings": 2,
+    "elapsed_seconds": 12.43,
+    "model_workloads": false
+  },
+  "static_checks": {
+    "ruff_check": "passed",
+    "ruff_format": "168 files formatted",
+    "schema_mypy": "passed"
+  },
+  "code_review": {
+    "contract": "no actionable findings",
+    "runner": "no actionable findings",
+    "reviewed_through_commit": "07eb9b4"
+  },
+  "source_sha256": {
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/config.json": "9d18f8259b643720968ae21a5c9b5622a49afe4be1778544325f8abec45d0cdc",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/decisions.jsonl": "4c12f1eebcfdd6240bfa83961b8396f100a883ccc0bbdc27226fd6b0fd966de1",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/inputs.json": "92c6acd73daa848a796b5681025a8a512919ed610631d2c727e6ab43be1e1064",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/manifest.json": "105cab3c163a9dc0df27fa10890f806a6590bb90ea78e7867dfed5a61119f3eb",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/metrics.json": "9b5d3f08e2043b94eadb1763e4d9ad557cfef887517d578e8a5df39838f39a34",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/predictions.jsonl": "a7e3ab230bf22d14a575c66dab688bfab8328ed08d8867aba8cb88b163b38047",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/source.zip": "eee9ef30fd49ed66d9a2155cfb2f94d8d944607bb933ac910982b0babcf9f985",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/usage.json": "2cf5c87b3286b880d7de9a0314c4f0ce8254c5429700f97b1c71ff8df2364e7a",
+    "artifacts/gpu-generation-v1/runs/20260920T145452Z-b1abbfbaf5/worker-complete.json": "70099680367fbdff78dca340483a3eff1ddba7f46ae3cc099889d41805ef9d94",
+    "artifacts/grounded-answer-v1/attempt.json": "b1e3eddbc3900503ccbfdcfd94b2b6fb51fdfa0e57f5953e3f08f1ba0b8b4ef8",
+    "artifacts/grounded-answer-v1/authorization.json": "fe2e05e899831cb25df16fe771756319af4f2edefd0dcf1de43fc1e3f9334459",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/config.json": "bca98bde2292bbe57782d7a7f5e8bd532cfea5b3aa9c599f5a78051ac4e330c0",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/decisions.jsonl": "356eb5a09e3f5c5ae60b8c23f258657a9dcd10484a7f306decc07cb3d9c1be59",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/inputs.json": "4bb06b8d0cb04b2e164ea517cd6eddbdd9bbe0456125a5ef01b1a9188f364b44",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/manifest.json": "1beb189850f52649f13a8934c0c4ca1030f2a8dd064af3d5ca93b5e880580120",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/metrics.json": "91377bca898222c76fd5778ffb3316f7d6dddec5eb628e336a8941c98e7598eb",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/predictions.jsonl": "a651d3fd3db33bbeac1cdee5deaac53ed33ee06c1a03b23093afd5ca84138863",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/source.zip": "a1e282b8f485a4df5bf5620bd9bc30f4299f16f37c19fb9d54415d702a0cfe05",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/usage.json": "a10a3bb4b631d456b2f60b7459a76f2250dccaf24cd36221c4222010c70845da",
+    "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae/worker-complete.json": "d05753f2e3cd227d0ebff3a8ca97674ff8ccff2e0d7d9002d70115433d95044d",
+    "artifacts/grounded-answer-v1/termination.json": "a3e677a3f76fceb861c44358f5f3a1918e9b393e444a80f90463124fc902a874",
+    "artifacts/grounded-answer-v1/worker.started": "1cc584b481e5b19f48492f322473fcaaaab724a17a10e1c06e233ef630b54374",
+    "configs/gpu-support-requirements.lock": "ba131168027706a2154d8cf198623c6c2439662449b41a6f1700262a318768a1",
+    "docs/gpu-generation-proposal.md": "33669ec943165112421c6020cdfba761b584993cd7d752bc186108ddcfb10a67",
+    "docs/gpu-support-proposal.md": "8350cb169fcf883422178975bbcba40ede951e6e84088250b8fd92c4996abdee",
+    "docs/grounded-answer-proposal.md": "a7debb10a98ef4012c780d700b9b7b26236f2df0523f6125c8f0793dbdfa6fc5",
+    "docs/span-id-answer-proposal.md": "482c943e073d6db060e5bf48c293deaae1160ab851671da56845b5262ac7d3df",
+    "reports/gpu-generation-ai-review.json": "1bb11d4dd4e02f7c2c5727d10c0392444b317216021331c9995c24a8808a046d",
+    "reports/gpu-generation-development.json": "1323f423d8f491373e143329fbd5bcc4abb44dc4db303fee507ff38064f5b221",
+    "reports/gpu-support-assets.json": "696b2493ef6150a04c2139c7be431ca4949f32622c84612ccac29f6d24538016",
+    "reports/grounded-answer-development.json": "69bb1e08b33c7d199330d5a7680395cd88e6f2bb9528c9a848cfce16564faf3e",
+    "scripts/gpu_generation_worker.py": "7dc3841d27f2e86c484a61726e6f0c713d2e3740fbc5bd8eb152ca9b02ec5364",
+    "scripts/gpu_support_worker.py": "25a0d3d8e0fda603c89cf42e4f1e88c8d72060c5ae2505e9ae51d4867976f8a2",
+    "scripts/grounded_answer_contract.py": "10a87427eba02d4f652036371a4b0da953b891e94bd10a0df6285b5c52d03b25",
+    "scripts/grounded_answer_worker.py": "42eaf09b96fa1fee698265dda3f67b4b397fb5dbf4393c36bec232c4cfef1c51",
+    "scripts/run_gpu_generation.py": "8b8b9b0a3d867413084b1c4c0a55e0517f6582f36e783b7a72372213edfa7ed6",
+    "scripts/run_gpu_support_filter.py": "48c8861f2625a607b42535eb67460fc775ad3cbfef66ac2a61e36001c54e7171",
+    "scripts/run_grounded_answer.py": "2438dc825f7eefc6b6a5de40cb1857a80965b050c9b1739566559fc32edd3e9d",
+    "scripts/run_span_id_answer.py": "e98bc63c889e6cf381047d8b4c0617d84a5e4c8dbea9407c6903c846ccc17bae",
+    "scripts/run_support_filter.py": "7457eeb3d52faf313451ce072de508f77fa3fb4d260792842ca03208d989fa6f",
+    "scripts/span_id_answer_contract.py": "44ecce4873b0602e0d8f5166dbdb8376039ddf3dd8dce94d75ff8810e62aef7e",
+    "scripts/span_id_answer_worker.py": "d98743125a840c88729d2a96552f0fba1609802b7e6145b3308435e46415882e"
+  },
+  "preparation_artifact_sha256": {
+    "artifacts/span-id-answer-preparation/config.json": "70f950e327ed4a198e50de38e2476325cdc7154f708a966d4830f8e290c7932b",
+    "artifacts/span-id-answer-preparation/inputs.json": "4bb06b8d0cb04b2e164ea517cd6eddbdd9bbe0456125a5ef01b1a9188f364b44",
+    "artifacts/span-id-answer-preparation/messages.json": "f4f348d5817b55ff8efef0737a94c6cf7c6a451b4aa156cdad0fc6a12e5f0ee4",
+    "artifacts/span-id-answer-preparation/span-catalogs.json": "1e721f214f5eca29f644b987d618da4c4f550cb9ff4b0c8e4c6b27e41588e061",
+    "artifacts/span-id-answer-preparation/tokenizer-check.json": "6a8f0a2f7ad33fe1d434ca423e370c0b563cd737146b1df28fb4fa2373c02e98"
+  },
+  "tokenizer_check": {
+    "model_loaded": false,
+    "model_calls": 0,
+    "tokenizer_only": true,
+    "runtime": "artifacts/gpu-support-env",
+    "query_count": 32,
+    "min_input_tokens": 484,
+    "max_input_tokens": 1142,
+    "max_input_tokens_allowed": 2048,
+    "span_count": 543,
+    "all_body_text_preserved": true,
+    "rows": [
+      {
+        "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+        "tokens": 1018,
+        "spans": 19
+      },
+      {
+        "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+        "tokens": 1017,
+        "spans": 19
+      },
+      {
+        "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+        "tokens": 920,
+        "spans": 19
+      },
+      {
+        "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+        "tokens": 842,
+        "spans": 15
+      },
+      {
+        "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+        "tokens": 1118,
+        "spans": 24
+      },
+      {
+        "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+        "tokens": 890,
+        "spans": 14
+      },
+      {
+        "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+        "tokens": 870,
+        "spans": 12
+      },
+      {
+        "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+        "tokens": 853,
+        "spans": 13
+      },
+      {
+        "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+        "tokens": 1043,
+        "spans": 20
+      },
+      {
+        "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+        "tokens": 484,
+        "spans": 5
+      },
+      {
+        "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+        "tokens": 839,
+        "spans": 15
+      },
+      {
+        "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+        "tokens": 949,
+        "spans": 19
+      },
+      {
+        "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+        "tokens": 965,
+        "spans": 21
+      },
+      {
+        "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+        "tokens": 1028,
+        "spans": 22
+      },
+      {
+        "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+        "tokens": 1142,
+        "spans": 28
+      },
+      {
+        "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+        "tokens": 921,
+        "spans": 18
+      },
+      {
+        "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+        "tokens": 1114,
+        "spans": 24
+      },
+      {
+        "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+        "tokens": 1021,
+        "spans": 22
+      },
+      {
+        "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+        "tokens": 697,
+        "spans": 8
+      },
+      {
+        "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+        "tokens": 1010,
+        "spans": 19
+      },
+      {
+        "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+        "tokens": 1005,
+        "spans": 20
+      },
+      {
+        "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+        "tokens": 925,
+        "spans": 17
+      },
+      {
+        "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+        "tokens": 863,
+        "spans": 15
+      },
+      {
+        "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+        "tokens": 777,
+        "spans": 12
+      },
+      {
+        "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+        "tokens": 901,
+        "spans": 18
+      },
+      {
+        "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+        "tokens": 925,
+        "spans": 18
+      },
+      {
+        "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+        "tokens": 758,
+        "spans": 12
+      },
+      {
+        "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+        "tokens": 770,
+        "spans": 12
+      },
+      {
+        "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+        "tokens": 947,
+        "spans": 16
+      },
+      {
+        "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+        "tokens": 970,
+        "spans": 19
+      },
+      {
+        "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+        "tokens": 789,
+        "spans": 9
+      },
+      {
+        "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+        "tokens": 979,
+        "spans": 19
+      }
+    ]
+  },
+  "commands": {
+    "preflight": ".venv/Scripts/python.exe -X utf8 scripts/run_span_id_answer.py",
+    "synthetic": ".venv/Scripts/python.exe -m pytest tests/unit/test_span_id_answer.py tests/unit/test_span_id_runner.py -q",
+    "full_suite": "docs/runbook.md database-enabled pytest command"
+  },
+  "initial_software_check": {
+    "new_synthetic_passed": 24,
+    "total_passed": 193,
+    "total_failed": 1,
+    "real_postgresql_passed": false,
+    "warnings": 2,
+    "model_workloads": false,
+    "failed_test": "tests/integration/test_pgvector.py::test_postgres_roundtrip_and_filtered_cosine_rank",
+    "failure_reason": "PostgreSQL connection timed out; Docker Desktop Linux engine pipe unavailable",
+    "initial_synthetic_fixture_failure": "Added missing elapsed_ms to fabricated baseline; subsequent 24 synthetic tests passed"
+  },
+  "verified_at_utc": "2026-09-24T05:56:34.040466+00:00",
+  "resolved_blocker": "Docker runtime sockets preserved and refreshed together; engine restored, PostgreSQL healthy, full software suite passes. See reports/docker-startup-recovery.md."
+}
