@@ -570,3 +570,35 @@ worker and verifier. Reproduce the saved checks with
 `passes_development_gate: false` records the failed quality decision. Optional later
 exercise: explain why a copied but overlong quote is a protocol failure, while a
 short exact quote attached to "an existing dataset" can pass syntax yet be unhelpful.
+
+## Selecting evidence IDs instead of copying quotations
+
+The next experiment can assemble quotations from source IDs. The Python
+[contract](../scripts/span_id_answer_contract.py) runs locally in both the validator
+and GPU worker. It partitions supplied passage bodies into ordered spans of at
+most 40 whitespace words, preserves source offsets and gives each span an ID.
+The generator returns a complete answer plus up to three IDs; code supplies the
+quotes. Two selected spans in one passage count as one passage citation in the
+existing evidence-ID metrics.
+
+This removes copying and quote-length arithmetic from generation. It does not
+ensure valid JSON or useful answers. All body words remain available, but selecting
+only three short spans can omit context needed to support a complete answer.
+The partition is deterministic punctuation/whitespace processing, not learned
+segmentation. Prompt presentation changes, so the comparison cannot isolate JSON
+format alone. We retain the same model, evidence, token budgets and eleven gates.
+
+The Python [runner](../scripts/run_span_id_answer.py) and
+[worker](../scripts/span_id_answer_worker.py) reuse frozen helpers through private
+module instances. This avoids modifying old experiments or duplicating their
+supervisor, scoring and inference code. The trade-off is that function globals
+remain attached to their module instance: tests must verify the new contract is
+used and that an independently loaded old runner keeps its old behavior.
+
+Twenty-four new synthetic tests cover source coverage/offsets, malformed outputs,
+unique passage scoring, label exclusion, a full 50-row lifecycle, durable budgets,
+one-use execution and pre-load tamper rejection. Both code reviews found no
+actionable issues. Tokenizer-only preparation verifies all 32 prompts fit the
+2,048-token limit, with 484–1,142 tokens and 543 spans. No new model-quality result
+exists. Optional later exercise: explain why a correctly assembled quotation may
+still fail to support the generated answer, and how you would review that case.

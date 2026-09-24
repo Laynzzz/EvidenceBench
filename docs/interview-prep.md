@@ -377,3 +377,25 @@ Evidence: [measured report](../reports/grounded-answer-development.md),
 [review packet](../reports/grounded-answer-review-packet.md). Implementation and
 analysis were agent-assisted; personal explanation and debugging practice remain
 future learning work. No customer use or production readiness is claimed.
+
+## Preparing a simpler citation protocol
+
+**Why have code assemble quotations?** The failed complete-answer run showed seven
+quote validation errors. Selecting IDs of fixed source spans guarantees that the
+attached text comes from those spans and fits the quote budget. The generator
+still owns the answer and evidence selection; neither becomes semantically correct
+just because the quotations are real. Follow-up: three short spans may lose needed
+context, and malformed JSON remains possible.
+
+**How did you keep the experiment comparable?** The model, original evidence,
+question roster, 18 threshold refusals, token/time limits and eleven gates stay
+fixed. Evidence presentation and selection constraints change together. Cite
+[the proposal](span-id-answer-proposal.md), not an unmeasured claim of improvement.
+The final-test set remains unused; the new model run still needs approval.
+
+**Why use isolated module adapters?** Frozen experiment files are already part of
+approved source hashes. Private instances let the new runner reuse reviewed
+metering, supervision and scoring without editing those files. Synthetic tests
+exercise the whole lifecycle and verify that the old contract stays unchanged.
+Follow-up: inherited default arguments and function globals require careful binding;
+the new entry point passes its own output root explicitly.
