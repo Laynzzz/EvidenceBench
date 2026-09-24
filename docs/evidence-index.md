@@ -223,3 +223,23 @@ JSON, quote limits, reference exclusion, budgets, tampering, baseline binding,
 failure/refusal separation and full-cohort reconstruction. All 170 tests pass with
 PostgreSQL. Preflight is read-only; no real experiment or semantic quality result
 exists for this candidate. The requested allowance remains unapproved.
+
+## Completed complete-answer comparison
+
+[Report](../reports/grounded-answer-development.md),
+[structured results](../reports/grounded-answer-development.json),
+[raw validation failures](../reports/grounded-answer-errors.md) and
+[authorization](../reports/grounded-answer-authorization.json) record one completed
+32-call RTX 4090 attempt. Launch verification and independent saved-result
+recomputation passed. Six of eleven quality conditions pass; the candidate is not
+promoted. F1 .143765, ten failures and five unanswerable answers must be reported
+together. The descriptive F1-gain interval includes zero.
+
+[Review packet](../reports/grounded-answer-review-packet.md) and
+[blank human template](../reports/grounded-answer-human-review-template.json) cover
+all 19 emitted answers, with exact quotations and verified PDF hashes/links. Their
+roster, answers, quotes and hashes were checked against saved predictions. They
+do not claim completed semantic review. Reports preserve all run/root artifact
+hashes; the preparation records above remain historical. The allowance is consumed,
+with 3,443 actual output tokens, 176.969 seconds and $0 external spend. No training,
+retry, final-test access or deployment occurred.

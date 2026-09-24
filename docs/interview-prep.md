@@ -348,3 +348,32 @@ fixed. We can compare protocols, but cannot attribute any improvement solely to 
 unchanged refusals. A reviewer found a baseline-path binding gap, fixed before any
 new model run. All 170 software tests pass; model quality remains unmeasured until
 the user approves the [bounded experiment](grounded-answer-proposal.md).
+
+## Explaining the failed complete-answer comparison
+
+**Why reject a model change with higher F1?** The same 50 development questions
+give .143765 versus .123578, but failures increase from zero to ten, citation-ID
+precision falls and unanswerable answers rise from three to five. Five of eleven
+predeclared conditions fail, so we retain the earlier candidate as historical
+evidence and do not promote the new protocol. Follow-up: token overlap, source
+presence and semantic usefulness measure different properties.
+
+**Why did tested software produce invalid model responses?** Synthetic tests check
+that the validator accepts and rejects the intended cases; they cannot guarantee
+that a real generator follows instructions. Seven outputs violate exact-quote or
+length requirements and three are invalid JSON. Preserving them as failures keeps
+the comparison honest. Follow-up: selecting span IDs could remove quotation-copying
+errors, but would still require evidence-sufficiency and answer-quality evaluation.
+
+**What does reproducibility mean for a failed run?** The one-use approval pins the
+code, inputs, model and runtime. Saved-result verification reconstructs all 50
+predictions and metrics without another model call. We retain original raw outputs,
+usage, failure reasons and hashes, and consume the allowance even when quality
+fails. Follow-up: the descriptive F1-gain interval includes zero, and repeated use
+of development data prevents treating this as an unbiased final result.
+
+Evidence: [measured report](../reports/grounded-answer-development.md),
+[raw failures](../reports/grounded-answer-errors.md) and
+[review packet](../reports/grounded-answer-review-packet.md). Implementation and
+analysis were agent-assisted; personal explanation and debugging practice remain
+future learning work. No customer use or production readiness is claimed.

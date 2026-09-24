@@ -533,3 +533,40 @@ select another baseline path; the runner now binds both paths to the same run.
 Read-only preparation verifies cached files without model execution. The proposed
 32-call allowance is new and unconsumed. Optional later exercise: explain why an
 80-word correct response can have lower token F1 than a short partial response.
+
+## Interpreting the failed complete-answer run
+
+You can now inspect a real failed GPU protocol comparison, including every invalid
+output and all emitted answers. It sits between generation and offline scoring;
+the local API remains the earlier frozen release. The Python verifier reconstructs
+predictions from saved JSON without loading a model, while the isolated PyTorch/
+Transformers worker performed the original 32 calls on RTX 4090.
+
+The [result](../reports/grounded-answer-development.md) shows why one improving
+metric is insufficient: token F1 increases from .123578 to .143765, but ten outputs
+become failures and citation-ID precision falls. The 11-condition gate rejects the
+candidate. Four outputs copy exact quotes that exceed the length limit, two alter
+quotes, one does both, and three contain malformed JSON. Relaxing validation after
+seeing failures would evaluate a different protocol and obscure the comparison.
+
+The design allowed paraphrased answers with verbatim evidence to improve completeness.
+That also made the generator responsible for JSON syntax, copying and word limits.
+A possible alternative is returning IDs of predefined spans, with quotations
+assembled deterministically; it would need its own proposal and verification, and
+would still not prove that selected spans support a useful answer.
+
+Launch verification and separate read-only recomputation check the actual run.
+The 170 software tests passed during preparation; they prove software behavior on
+fixtures, not that a language model obeys the contract. A paired family bootstrap
+on 38 answerable queries gives an F1-gain interval [-.048272, .086372]; repeated
+development inspection further limits generalization claims. Human semantic
+acceptance and the unused final test remain separate work.
+
+Read [the raw failures](../reports/grounded-answer-errors.md) beside the Python
+[contract](../scripts/grounded_answer_contract.py), which runs locally in the
+worker and verifier. Reproduce the saved checks with
+`.venv/Scripts/python.exe -X utf8 scripts/run_grounded_answer.py --verify`;
+`status: verified` means intact, reproducible artifacts, while
+`passes_development_gate: false` records the failed quality decision. Optional later
+exercise: explain why a copied but overlong quote is a protocol failure, while a
+short exact quote attached to "an existing dataset" can pass syntax yet be unhelpful.
