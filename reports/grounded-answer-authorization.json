@@ -1,0 +1,21 @@
+{
+  "status": "approved",
+  "scope": "grounded-answer-v1",
+  "snapshot_sha256": "bca98bde2292bbe57782d7a7f5e8bd532cfea5b3aa9c599f5a78051ac4e330c0",
+  "user_approval_text": "aproved",
+  "recorded_at_utc": "2026-09-24T04:16:42.109885+00:00",
+  "limits": {
+    "attempts": 1,
+    "generation_calls": 32,
+    "reserved_output_tokens": 12288,
+    "worker_deadline_seconds": 1200,
+    "external_spend_usd": 0
+  },
+  "exclusions": [
+    "training",
+    "final-test access",
+    "retry",
+    "deployment",
+    "label revision"
+  ]
+}
