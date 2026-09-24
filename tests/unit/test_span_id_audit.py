@@ -25,7 +25,11 @@ def row():
         citation_ids=["g"],
         supporting_evidence=["g"],
         answer_quotes=[
-            {"span_id": "E1.S1", "evidence_id": "E1", "quote": full[:1000].partition("\n")[2][-8:]}
+            {
+                "span_id": "E1.S13",
+                "evidence_id": "E1",
+                "quote": full[:1000].partition("\n")[2][960:],
+            }
         ],
         trace={
             "pre_ranking": [{"element_id": "g"}],
@@ -124,3 +128,33 @@ def test_short_passage_and_punctuation_boundary_not_midword():
     r["answer_quotes"] = []
     p = m.analyze([r], u)["cases"][0]["passages"][0]
     assert not p["clipped"] and not p["cut_inside_alphanumeric_word"]
+
+
+def test_partial_packing_is_not_attributed_to_threshold():
+    r, u = row()
+    r["supporting_evidence"] = ["other"]
+    r["trace"]["pre_ranking"].append({"element_id": "other"})
+    r["trace"]["post_ranking"].append({"element_id": "other"})
+    with pytest.raises(ValueError, match="roster"):
+        audit().analyze([r], u)
+
+
+def test_empty_packing_requires_threshold_refusal():
+    r, u = row()
+    r["trace"].update(packed_ids=[], packed_evidence={})
+    with pytest.raises(ValueError, match="threshold"):
+        audit().analyze([r], u)
+
+
+def test_repeated_quote_text_does_not_move_selected_span_to_cut():
+    r, u = row()
+    full = "Title\nRepeated. " + "x" * 973 + ". Repeated. More text."
+    assert full[:1000].endswith("Repeated.")
+    u["g"]["text"] = full
+    r["trace"]["packed_evidence"]["E1"] = full[:1000]
+    r["answer_quotes"] = [{"span_id": "E1.S1", "evidence_id": "E1", "quote": "Repeated."}]
+    p = audit().analyze([r], u)["cases"][0]["passages"][0]
+    assert not p["selected_quote_touches_clipped_end"]
+    r["answer_quotes"][0]["span_id"] = "E1.S3"
+    p = audit().analyze([r], u)["cases"][0]["passages"][0]
+    assert p["selected_quote_touches_clipped_end"]

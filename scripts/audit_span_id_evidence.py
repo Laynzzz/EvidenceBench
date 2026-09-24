@@ -13,6 +13,10 @@ OUTPUT = Path("reports/span-id-evidence-audit.json")
 
 
 def analyze(rows, units):
+    path = Path(__file__).with_name("span_id_answer_contract.py")
+    spec = importlib.util.spec_from_file_location("audit_span_contract", path)
+    contract = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(contract)
     if not rows or len({r["query_id"] for r in rows}) != len(rows):
         raise ValueError("nonempty unique query roster required")
     cases = []
@@ -25,12 +29,22 @@ def analyze(rows, units):
             len(set(packed_ids)) != len(packed_ids)
             or set(packed) != {f"E{i}" for i in range(1, len(packed_ids) + 1)}
             or len(packed_ids) > 3
-            or packed_ids != post[: len(packed_ids)]
+            or (packed_ids and packed_ids != post[:3])
             or len(set(pre)) != len(pre)
             or len(set(post)) != len(post)
             or set(post) != set(pre)
         ):
             raise ValueError("invalid saved evidence roster")
+        if not packed_ids and (
+            row["status"] != "refused" or row["reason"] != "insufficient_evidence"
+        ):
+            raise ValueError("empty packing requires saved threshold refusal")
+        spans = contract.catalog(packed)
+        selected = row.get("answer_quotes", [])
+        for quote in selected:
+            span = spans.get(quote["span_id"])
+            if not span or any(quote[k] != span[k] for k in ("evidence_id", "quote")):
+                raise ValueError("saved quote differs from identified source span")
         gold = set(row["supporting_evidence"])
         counts = dict(
             gold_in_retrieved=len(gold & set(pre)),
@@ -83,7 +97,12 @@ def analyze(rows, units):
                     gold_id=key in gold,
                     cited=key in row["citation_ids"],
                     selected_quote_touches_clipped_end=bool(
-                        clipped and any(body.rstrip().endswith(q) for q in quotes)
+                        clipped
+                        and any(
+                            spans[q["span_id"]]["end"] == len(body.rstrip())
+                            for q in selected
+                            if q["evidence_id"] == alias
+                        )
                     ),
                     supplied_suffix=supplied[-80:],
                     omitted_prefix=full[length : length + 160],
@@ -164,6 +183,7 @@ def build_report():
                 run / "config.json",
                 CORPUS,
                 Path("src/evidencebench/ingestion.py"),
+                Path("scripts/span_id_answer_contract.py"),
             ]
         },
         limitations=(
