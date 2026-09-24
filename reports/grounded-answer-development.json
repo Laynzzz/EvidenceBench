@@ -1,0 +1,700 @@
+{
+  "status": "verified",
+  "run": "artifacts/grounded-answer-v1/runs/20260924T041708Z-d0f23e62ae",
+  "metrics": {
+    "control": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 11,
+      "failure_count": 21,
+      "answer_coverage": 0.22,
+      "answerable_token_f1": 0.012025255446308078,
+      "false_refusal_rate": 0.3157894736842105,
+      "answerable_failure_rate": 0.47368421052631576,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.36363636363636365,
+      "upstream_citation_recall": 0.06896551724137931,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "gate": {
+      "f1_exceeds_control": true,
+      "failures_do_not_increase": true,
+      "unanswerable_answers_do_not_increase": false,
+      "citation_precision_not_lower": false,
+      "retain_80_percent_f1": true,
+      "retain_half_answers": true,
+      "no_new_generation_failures": false,
+      "f1_exceeds_constrained_baseline": true,
+      "f1_exceeds_saved_7b": true,
+      "citation_precision_not_lower_than_saved_7b": false,
+      "retain_80_percent_saved_7b_answers": false
+    },
+    "passes_development_gate": false,
+    "scope": "Reused validation development experiment; not independent semantic review",
+    "baseline": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 28,
+      "failure_count": 0,
+      "answer_coverage": 0.56,
+      "answerable_token_f1": 0.07542449567049109,
+      "false_refusal_rate": 0.42105263157894735,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.5,
+      "missing_refusal_rate": 0.5,
+      "upstream_citation_precision": 0.32142857142857145,
+      "upstream_citation_recall": 0.15517241379310345,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "candidate": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 19,
+      "failure_count": 10,
+      "answer_coverage": 0.38,
+      "answerable_token_f1": 0.14376507508086456,
+      "false_refusal_rate": 0.3684210526315789,
+      "answerable_failure_rate": 0.2631578947368421,
+      "unanswerable_refusal_recall": 0.5833333333333334,
+      "missing_refusal_rate": 0.4166666666666667,
+      "upstream_citation_precision": 0.34782608695652173,
+      "upstream_citation_recall": 0.13793103448275862,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    },
+    "saved_7b_baseline": {
+      "query_count": 50,
+      "answerable_count": 38,
+      "unanswerable_count": 12,
+      "answered_count": 24,
+      "failure_count": 0,
+      "answer_coverage": 0.48,
+      "answerable_token_f1": 0.12357810681224572,
+      "false_refusal_rate": 0.4473684210526316,
+      "answerable_failure_rate": 0.0,
+      "unanswerable_refusal_recall": 0.75,
+      "missing_refusal_rate": 0.25,
+      "upstream_citation_precision": 0.4583333333333333,
+      "upstream_citation_recall": 0.1896551724137931,
+      "limitations": "Token overlap and evidence-ID overlap are reference agreement, not human semantic judgments of generated claims."
+    }
+  },
+  "usage": {
+    "call_limit": 32,
+    "calls": 32,
+    "reserved_tokens": 12288
+  },
+  "supervisor": {
+    "elapsed_seconds": 176.96900000004098,
+    "exit_code": 0,
+    "reason": "process_exit"
+  },
+  "verified_at_utc": "2026-09-24T04:23:12.113471+00:00",
+  "prepared_commit": "205302726ced7dbfb12dcbe9b5bede725feca4f8",
+  "snapshot_sha256": "bca98bde2292bbe57782d7a7f5e8bd532cfea5b3aa9c599f5a78051ac4e330c0",
+  "decisions": [
+    {
+      "elapsed_ms": 4920.336600043811,
+      "generation_calls": 1,
+      "input_sha256": "96b134c2d0f8c2cf780c97304ce38d8b062747e05354f8ec35731c0753969b06",
+      "output_tokens": 78,
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "raw": "{\"answer\":\"support vector machines with radial basis function kernel\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"N-grams when trained with support vector machines with radial basis function kernel performed better than other features and yielded an accuracy of 68.5%. The best accuracy (69.3%) was given by support vector machines with radial basis function kernel.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 14529.228300089017,
+      "generation_calls": 1,
+      "input_sha256": "5ca4f84266a12ae267ce4840df1134281ffd2478b215b7671f71a30bd8d87a67",
+      "output_tokens": 358,
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "raw": "{\"answer\":\"The experiments involved analyzing the task of humor identification in social media texts as a classification problem and using several machine learning classification models such as support vector machines with radial basis function kernel and extra tree classifier. N-grams, bag-of-words, common words, and hashtags were used as features.\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"In this paper, we describe a freely available corpus of 3453 English-Hindi code-mixed tweets. The tweets are annotated with humorous(H) and non-humorous(N) tags along with the language tags at the word level. The task of humor identification in social media texts is analyzed as a classification problem and several machine learning classification models are used. The features used in our classification system are n-grams, bag-of-words, common words and hashtags. N-grams when trained with support vector machines with radial basis function kernel performed better than other features and yielded an accuracy of 68.5%. The best accuracy (69.3%) was given by support vector machines with radial basis function kernel.\"},{\"evidence_id\":\"E3\",\"quote\":\"10-fold cross validation on 3543 code-mixed tweets was carried out by dividing the corpus into 10 equal parts with nine parts as training corpus and rest one for testing. Mean accuracy is calculated by taking the average of the accuracy obtained in each iteration of the testing process. Table 2 shows the accuracy for each feature when trained using mentioned classifiers along with the accuracy when all the features are used along with the overall accuracy. Support vector machine with radial basis function kernel and extra tree classifier performs better than other classifiers and yields 69.3% and 67.8% accuracy respectively.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 3324.44489991758,
+      "generation_calls": 1,
+      "input_sha256": "f36a5db8434f734945a21ee10fe81248f2a6da2860e56d83a410661072f73b48",
+      "output_tokens": 60,
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "raw": "{\"answer\":\"NCEL outperforms the state-of-the-art collective methods across five different datasets.\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"Trained on collected Wikipedia hyperlinks, NCEL outperforms the state-of-the-art collective methods across five different datasets.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 3017.2555000754073,
+      "generation_calls": 1,
+      "input_sha256": "ba3258555c594132a25340af6f529ec5e7014426e9e418db92ef1440336d66c7",
+      "output_tokens": 77,
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "raw": "{\"answer\":\"The baseline features include features extracted from pre-trained models.\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"In another setting, we use the features extracted from the pre-trained models as the static channels of features in the CNN of the baseline method. These features are appended to the hidden layer of the baseline CNN, preceding the final output softmax layer.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 3705.1996999653056,
+      "generation_calls": 1,
+      "input_sha256": "70db04fa14211354129ca23fd81754bbb65c19ff46619316bd134498300e6d67",
+      "output_tokens": 99,
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "raw": "{\"answer\":\"CNN-SVM on the baseline + sentiment + emotion + personality feature set\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"Among the pre-trained models, the sentiment model performs best (F1-score: 87.00%). As shown in Table TABREF30 , CNN-SVM on the baseline + sentiment + emotion + personality feature set outperforms the state of the art (F1-score: 94.80%).\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 6900.187400053255,
+      "generation_calls": 1,
+      "input_sha256": "b8e86242c0c22bd972ce2982fb871b49f2833d07558b6bc08e1d5686f81a008c",
+      "output_tokens": 159,
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "raw": "{\"answer\":\"correct classification rate (CCR)\",\"citations\":[{\"evidence_id\":\"E3\",\"quote\":\"We report the experimental results for our two tasks in terms of the correct classification rate (CCR). For sentiment analysis, we have a three-class problem (positive, negative, and neutral), where the classes are mutually exclusive. The CCR, averaged for a set of tweets, is defined to be the number of correctly-predicted sentiments over the number of groundtruth sentiments in these tweets. For NER, we consider that each tweet may reference up to four candidates, i.e., targeted entities. The CCR, averaged for a set of tweets, is the number of correctly predicted entities (candidates) over the number of groundtruth entities (candidates) in this set.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 8056.992499972694,
+      "generation_calls": 1,
+      "input_sha256": "3687f1d8159cdd45a8241033c90af4a93468b9eba711640a2f9818704d17230d",
+      "output_tokens": 198,
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "raw": "{\"answer\":\"BIBREF17, BIBREF18, TensiStrength BIBREF13, TwitterNLP BIBREF6, CogComp-NLP BIBREF20, Stanford NLP NER BIBREF21\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"Among commercial NLP toolkits (e.g., BIBREF14, BIBREF15, BIBREF16), we selected BIBREF17 and BIBREF18 for our experiments, which, to the best of our knowledge, are the only publicly accessible commercial APIs for the task of entity-level sentiment analysis that is agnostic to the text domain. We also report results of TensiStrength BIBREF13, TwitterNLP BIBREF6, BIBREF19, CogComp-NLP BIBREF20, and Stanford NLP NER BIBREF21.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 344.2171999486163,
+      "generation_calls": 1,
+      "input_sha256": "644a8b1b64a9530255e040bd7d48fbc8a78e74b270cb9373db6887fd60bc34db",
+      "output_tokens": 8,
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "raw": "{\"answer\":\"\",\"citations\":[]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 2812.6492999726906,
+      "generation_calls": 1,
+      "input_sha256": "cf5480178d45468419aed013f956adaca6c45c8848526738fb39da56d0d6e23d",
+      "output_tokens": 78,
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "raw": "{\"answer\":\"Microsoft stock price data\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"The stock price data of Microsoft are labeled suitably for training using a simple program. If the previous day stock price is more than the current day stock price, the current day is marked with a numeric value of 0, else marked with a numeric value of 1.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1828.7325999699533,
+      "generation_calls": 1,
+      "input_sha256": "bfbb1f8267dae50535688fd6dbf1b2fdae757ffedfddb5253f956c0c74d28e56",
+      "output_tokens": 46,
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "raw": "{\"answer\":\"salience-based features\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"The first baseline uses only the salience-based features by Dunietz and Gillick BIBREF11.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 4264.986800029874,
+      "generation_calls": 1,
+      "input_sha256": "c417cdc1781e011a3566261dd656b861883cff10f9eadf8f59a7be8c3da4e32b",
+      "output_tokens": 119,
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "raw": "{\"answer\":\"novelty of news articles w.r.t the already existing entity profile\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"Given an entity INLINEFORM0 and the already added news references INLINEFORM1 up to year INLINEFORM2 , the novelty of INLINEFORM3 at year INLINEFORM4 is measured by the KL divergence between the language model of INLINEFORM5 and articles in INLINEFORM6 . We combine this measure with the entity overlap of INLINEFORM7 and INLINEFORM8 . The novelty value of INLINEFORM9 is given by the minimal divergence value.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 7505.594699992798,
+      "generation_calls": 1,
+      "input_sha256": "bfd81202c80efcecb52b431a3f6144cd43a00d9cb4f7fb1686f295e3fe2bf35b",
+      "output_tokens": 178,
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "raw": "{\"answer\":\"Acquiring a very large Vietnamese corpus, applying linguistics knowledge on word context to extract useful features, and handling various types of Vietnamese documents.\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"The first challenge is to acquire very large Vietnamese corpus and to use them in building a classifier, which could further improve accuracy. In addition, applying linguistics knowledge on word context to extract useful features also enhances prediction performance. The second challenge is design and development of big data warehouse and analytic framework for Vietnamese documents, which corresponds to the rapid and continuous growth of gigantic volume of articles and/or documents from Web 2.0 applications, such as, Facebook, Twitter, and so on. It should be addressed that there are many kinds of Vietnamese documents, for example, Han - Nom documents and old and modern Vietnamese documents that are essential and still needs further analysis.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 374.51140000484884,
+      "generation_calls": 1,
+      "input_sha256": "c5dc176ee78b65afb69335433eaa0495f575cf40dceb2adb976497d9604df0da",
+      "output_tokens": 8,
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "raw": "{\"answer\":\"\",\"citations\":[]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 7599.147800006904,
+      "generation_calls": 1,
+      "input_sha256": "81b8df111de646924a0bd82e2d28d8986e95592dfab25956bb018bbf3550bbca",
+      "output_tokens": 186,
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "raw": "{\"answer\":\"F1 scores of 0.94 for Wikipedia and Twitter datasets, and an F1 score of 0.95 for the Formspring dataset\",\"citations\":[{\"evidence_id\":\"E3\",\"quote\":\"DNN based models coupled with transfer learning beat the best-known results for all three datasets. Previous best F1 scores for Wikipedia BIBREF4 and Twitter BIBREF8 datasets were 0.68 and 0.93 respectively. We achieve F1 scores of 0.94 for both these datasets using BLSTM with attention and feature level transfer learning (Table TABREF25 ). For Formspring dataset, authors have not reported F1 score. Their method has accuracy score of 78.5% BIBREF2 . We achieve F1 score of 0.95 with accuracy score of 98% for the same dataset.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 2711.0737999901175,
+      "generation_calls": 1,
+      "input_sha256": "eab9ceea97146fc41da3e0052cd9b014782304c251967f2f5fa5e6386ac3a446",
+      "output_tokens": 71,
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "raw": "{\"answer\":\"perso\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"In contrast to existing bottlenecks, this work targets three different types of social networks (Formspring: a Q&A forum, Twitter: microblogging, and Wikipedia: collaborative knowledge repository) for three topics of cyberbullying (perso\")}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 6683.346700039692,
+      "generation_calls": 1,
+      "input_sha256": "8dd4c9c14a8a49323bdd65e764eb2a168e84993ef5bcf2e8dd55a1008da1c56e",
+      "output_tokens": 177,
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "raw": "{\"answer\":\"190 hours of transcribed speech data and a 156-hour test set\",\"citations\":[{\"evidence_id\":\"E3\",\"quote\":\"A base model, INLINEFORM0 , is trained on 190 hours (INLINEFORM1 100K instances) of transcribed speech data. Then, it selects a subset of a 1,700-hour (INLINEFORM2 1.1M instances) unlabeled dataset. We query labels for the selected subset and incorporate them into training. Learning rates are tuned on a small validation set of 2048 instances. The trained model is then tested on a 156-hour (INLINEFORM3 100K instances) test set and we report CTC loss, Character Error Rate (CER) and Word Error Rate (WER).\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 3806.3639000756666,
+      "generation_calls": 1,
+      "input_sha256": "f7893f0ce5ee5c6647c75ceebdf835f23682f713247e7f638b488924deb51b75",
+      "output_tokens": 107,
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "raw": "{\"answer\":\"ASGD Weight-Dropped Long Short Term Memory (AWD_LSTM) model\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"We have open-sourced all code used in this contest to further enable research on this task in the future.\"},{\"evidence_id\":\"E3\",\"quote\":\"For the LM, we selected an ASGD Weight-Dropped Long Short Term Memory (AWD_LSTM, described in Merity et al. BIBREF5 ) model included in Fast.ai.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 2475.866499939002,
+      "generation_calls": 1,
+      "input_sha256": "0055437a70bbf200c00a0558995209e2253a5611053a79090bf0c6bfe737e0c3",
+      "output_tokens": 66,
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "raw": "{\"answer\":\"3rd in the classification task and 2nd in the regression task\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"Our entry into the HAHA 2019 Challenge placed $3^{rd}$ in the classification task and $2^{nd}$ in the regression task.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 5543.353199958801,
+      "generation_calls": 1,
+      "input_sha256": "0d3f59309b073f4de134f72963c1d59582d6cf88c56f78e55f608a52f257c9e5",
+      "output_tokens": 160,
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "raw": "{\"answer\":\"language model combination technique\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"In this paper, we attempt to mitigate the problems using language models combination techniques that allows us to utilize both large amount of writing style text and small number of conversation text data.\"},{\"evidence_id\":\"E2\",\"quote\":\"In this paper, we presented our ASR system participated in VLSP 2019 challenge that incorporates a language model combination technique to handle conversation speech with small amount of text data required.\"},{\"evidence_id\":\"E3\",\"quote\":\"In this paper, we present our attempt to mitigate the problems using a large scale data set and a language model combination technique that only require a small amount of conversation data but can still handle very well conversation speech.\"}]}```",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 437.83329997677356,
+      "generation_calls": 1,
+      "input_sha256": "b1d647172daa4af431b17a3cd4748dfd027b15e8864bed5d25044210fb7fa5d1",
+      "output_tokens": 8,
+      "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+      "raw": "{\"answer\":\"\",\"citations\":[]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 5494.376800023019,
+      "generation_calls": 1,
+      "input_sha256": "05986b5a80a8218295fe7528668dd4696d0772bb14e2ef51a4feeea93f13d803",
+      "output_tokens": 123,
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "raw": "{\"answer\":\"A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation.\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"To ensure that the increase in BLEU score correlated to actual increase in performance of translation, human evaluation metrics like adequacy, precision and ranking values (between RNNSearch and RNNMorph outputs) were estimated in Table TABREF30 . A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation.\"}]}```",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 5742.055299924687,
+      "generation_calls": 1,
+      "input_sha256": "7327bcb3bc18961e9c77ca15cb5544ab2506573f8100ddb5b18566bd67694912",
+      "output_tokens": 144,
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "raw": "{\"answer\":\"For the baseline systems, the training data includes KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts. For comparison purpose, we build two baseline systems for each direction: one is use the traditional phrase-based statistical machine translation (SMT), the other one is the NMT system.\",\"citations\":[{\"evidence_id\":\"E3\",\"quote\":\"Baseline. For the baseline systems, the training data includes KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts. For comparison purpose, we build two baseline systems for each direction: one is use the traditional phrase-based statistical machine translation (SMT), the other one is the NMT system.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 2581.4193000551313,
+      "generation_calls": 1,
+      "input_sha256": "1c2ef0da4ca4612292151fce0caff4d14dda972c1abe0d016bdaeb67b2d949bc",
+      "output_tokens": 67,
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "raw": "{\"answer\":\"Japanese-Vietnamese parallel corpus\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"For Mix-Source, instead of using a subsampled monolingual corpus, we use the Vietnamese part of the Japanese-Vietnamese parallel corpus in order to learn the multilingual information in the same domain.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 4678.856200072914,
+      "generation_calls": 1,
+      "input_sha256": "6ab70f2520c213eb092c0a8d7d3c2ae6bcca56f53dfc51f2f7c5a8392b65aef7",
+      "output_tokens": 133,
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "raw": "{\"answer\":\"LRCN1u model\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"We introduce a new diagnostic evaluation framework for the task of image captioning, with the goal of directly assessing models for grammaticality, truthfulness and diversity (GTD) of generated captions. We demonstrate the potential of our evaluation framework by evaluating existing image captioning models on a wide ranging set of synthetic datasets that we construct for diagnostic evaluation.\"},{\"evidence_id\":\"E3\",\"quote\":\"In the remainder of the paper we discuss in detail the diagnostic results of the LRCN1u model demonstrated by the GTD evaluation framework.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 4544.3819999927655,
+      "generation_calls": 1,
+      "input_sha256": "b5c0c201bdbbd510baa658c684e236416a0c582c35d97ca6354604a6aae169e5",
+      "output_tokens": 110,
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "raw": "{\"answer\":\"traditional features and Doc2vec model\",\"citations\":[{\"evidence_id\":\"E3\",\"quote\":\"We conducted a comprehensive comparison with the baseline models, and some of them were never investigated for the abbreviation disambiguation task. We applied traditional features by simply taking the TF-IDF features as the inputs into the classic classifiers. Deep features are also considered: a Doc2vec model BIBREF19 was pre-trained using Gensim and these word embeddings were applied to initialize deep models and fine-tuned.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 2258.7713999673724,
+      "generation_calls": 1,
+      "input_sha256": "a4302ceae76aa6afbc6c388df7eb35c4a8f44cdd85b00fb23ff4d4b087687b66",
+      "output_tokens": 48,
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "raw": "{\"answer\":\"an existing dataset\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"We re-examine and correct an existing dataset for training and collect a test set to evaluate the models fairly especially for rare senses.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 3367.4651999026537,
+      "generation_calls": 1,
+      "input_sha256": "a5333ee98ffa4a5e3269b2e9d13e6df4687999f1e90c397e03493ace1027b288",
+      "output_tokens": 77,
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "raw": "{\"answer\":\"French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi)\",\"citations\":[{\"evidence_id\":\"E2\",\"quote\":\"We evaluate our approach for six target languages: French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi).\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 6999.22920006793,
+      "generation_calls": 1,
+      "input_sha256": "d10aa87f8758d5bd2ad546f16dadaaeab68b2135e6c2381394157caaae475b69",
+      "output_tokens": 137,
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "raw": "{\"answer\":\"23,700 queries\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"To do so, we constructed a new dataset with 23,700 queries that are short and unstructured, in the same style made by real users of task-oriented systems.\"},{\"evidence_id\":\"E3\",\"quote\":\"We introduce a new crowdsourced dataset of 23,700 queries, including 22,500 in-scope queries covering 150 intents, which can be grouped into 10 general domains. The dataset also includes 1,200 out-of-scope queries.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 7567.03070004005,
+      "generation_calls": 1,
+      "input_sha256": "7074ab98f5da361eb635d467f32659ff2fead6103d8bd8986ad2be5b5cf6b2ff",
+      "output_tokens": 196,
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "raw": "{\"answer\":\"They have a background in analyzing text as social and cultural data, focusing on defining concepts like hate speech and rumor, and using computational methods to measure these concepts. They also address challenges in marking up data and the limitations of NLP tools.\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"A core step in many analyses is translating social and cultural concepts (such as hate speech, rumor, or conversion) into measurable quantities. Before we can develop measurements for these concepts (the operationalization step, or the “implementation” step as denoted by BIBREF12 ), we need to define them.\"},{\"evidence_id\":\"E3\",\"quote\":\"In the Reddit case, for example, hate speech is measured, however imperfectly, by the presence of particular words semi-automatically extracted from a machine learning algorithm. Operationalizations are never perfect translations, and are often refined over the course of an investigation, but they are crucial.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 2083.2269999664277,
+      "generation_calls": 1,
+      "input_sha256": "36b1af7f4953e2bdf97e6299b5d23544289b402553c077546e35fdb1baa6ccca",
+      "output_tokens": 51,
+      "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+      "raw": "{\"answer\":\"hate speech\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"For example, our introductory study on hate speech BIBREF0 used a statement on hate speech produced by the European Union Court of Human Rights.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 3342.5778000382707,
+      "generation_calls": 1,
+      "input_sha256": "7458cd1b73ea5aa1551b9fafb157da25591f641e575b0a2ec2c2b430ea35b0e5",
+      "output_tokens": 71,
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "raw": "{\"answer\":\"lemmas and morphosyntactic descriptions (MSD), word forms\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"in Track 1 the context is given in terms of word forms, lemmas and morphosyntactic descriptions (MSD); in Track 2 only word forms are available.\"}]}",
+      "reason": null
+    },
+    {
+      "elapsed_ms": 1817.060500034131,
+      "generation_calls": 1,
+      "input_sha256": "8f07aff9ea5f3f9da02215ccd930b5f028b59ef33ff8460ee18072ff8dcdb576",
+      "output_tokens": 45,
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "raw": "{\"answer\":\"TF-IDF features\",\"citations\":[{\"evidence_id\":\"E1\",\"quote\":\"For the first experiment series, training reports are pre-processed, then their TF-IDF features are extracted.\"}]}",
+      "reason": null
+    }
+  ],
+  "actual_output_tokens": 3443,
+  "status_counts": {
+    "refused": 21,
+    "answered": 19,
+    "failure": 10
+  },
+  "failure_reasons": {
+    "quote must occur exactly in passage body and fit word limit": 7,
+    "invalid JSON": 3
+  },
+  "status_transitions": {
+    "refused -> refused": 21,
+    "answered -> answered": 15,
+    "answered -> failure": 9,
+    "refused -> answered": 4,
+    "refused -> failure": 1
+  },
+  "generation_latency_seconds": {
+    "p50": 3.755781800020486,
+    "p95": 7.805177914991509,
+    "queries": 32
+  },
+  "hardware": {
+    "device": "cuda:0",
+    "dtype": "bfloat16",
+    "free_vram_before_load": 24104665088,
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "total_vram": 25756696576
+  },
+  "external_spend_usd": 0,
+  "attempt_consumed": true,
+  "final_test_used": false,
+  "preserved_threshold_refusals": 18,
+  "paired_answerable_f1": {
+    "delta": 0.020186968268618842,
+    "low": -0.04827226488471392,
+    "high": 0.08637243413253967,
+    "family_count": 26,
+    "query_count": 38,
+    "samples": 2000,
+    "seed": 42,
+    "warning": null
+  },
+  "paired_answerable_rows": [
+    {
+      "query_id": "7bd6a6ec230e1efb27d691762cc0674237dc7967",
+      "family_id": "qasper-1808.09029",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "family_id": "qasper-1806.05513",
+      "baseline": 0.19047619047619047,
+      "candidate": 0.19047619047619047
+    },
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "family_id": "qasper-1806.05513",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "91e326fde8b0a538bc34d419541b5990d8aae14b",
+      "family_id": "qasper-1710.03348",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "bb3267c3f0a12d8014d51105de5d81686afe5f1b",
+      "family_id": "qasper-1811.08603",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "family_id": "qasper-1811.08603",
+      "baseline": 0.16,
+      "candidate": 0.2
+    },
+    {
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "family_id": "qasper-1610.08815",
+      "baseline": 0.1,
+      "candidate": 0.46153846153846156
+    },
+    {
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "family_id": "qasper-1610.08815",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "family_id": "qasper-2002.04181",
+      "baseline": 0.23529411764705882,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "family_id": "qasper-2002.04181",
+      "baseline": 0.13333333333333333,
+      "candidate": 0.9629629629629629
+    },
+    {
+      "query_id": "b962cc817a4baf6c56150f0d97097f18ad6cd9ed",
+      "family_id": "qasper-1810.12196",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "c571deefe93f0a41b60f9886db119947648e967c",
+      "family_id": "qasper-1810.12085",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "family_id": "qasper-1909.09587",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "ef396a34436072cb3c40b0c9bc9179fee4a168ae",
+      "family_id": "qasper-1705.04153",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "family_id": "qasper-1610.09225",
+      "baseline": 0.0,
+      "candidate": 0.2857142857142857
+    },
+    {
+      "query_id": "4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",
+      "family_id": "qasper-1610.09225",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "family_id": "qasper-1703.10344",
+      "baseline": 0.3582089552238806,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "family_id": "qasper-1703.10344",
+      "baseline": 0.3,
+      "candidate": 0.25
+    },
+    {
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "family_id": "qasper-1906.07662",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "family_id": "qasper-1906.07662",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "03ebb29c08375afc42a957c7b2dc1a42bed7b713",
+      "family_id": "qasper-1909.05359",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "435570723b37ee1f5898c1a34ef86a0b2e8701bb",
+      "family_id": "qasper-1801.10293",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "family_id": "qasper-1801.06482",
+      "baseline": 0.17647058823529413,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "family_id": "qasper-1801.06482",
+      "baseline": 0.08,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "b8d7d055ddb94f5826a9aad7479b4a92a9c8a2f0",
+      "family_id": "qasper-1612.03226",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "family_id": "qasper-1612.03226",
+      "baseline": 0.5714285714285714,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "family_id": "qasper-1907.03187",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "family_id": "qasper-1910.05603",
+      "baseline": 0.2,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "family_id": "qasper-1612.02482",
+      "baseline": 0.17647058823529413,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "family_id": "qasper-1805.07133",
+      "baseline": 0.0,
+      "candidate": 0.36
+    },
+    {
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "family_id": "qasper-1805.07133",
+      "baseline": 0.2857142857142857,
+      "candidate": 0.2857142857142857
+    },
+    {
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "family_id": "qasper-1912.08960",
+      "baseline": 0.0,
+      "candidate": 0.6666666666666666
+    },
+    {
+      "query_id": "45e9533586199bde19313cd43b3d0ecadcaf7a33",
+      "family_id": "qasper-1809.09194",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "family_id": "qasper-1910.14076",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "family_id": "qasper-1910.14076",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "family_id": "qasper-2002.07306",
+      "baseline": 0.9285714285714286,
+      "candidate": 1.0
+    },
+    {
+      "query_id": "d571e0b0f402a3d36fb30d70cdcd2911df883bc7",
+      "family_id": "qasper-2002.07306",
+      "baseline": 0.0,
+      "candidate": 0.0
+    },
+    {
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "family_id": "qasper-1909.02027",
+      "baseline": 0.8,
+      "candidate": 0.8
+    }
+  ],
+  "uncertainty_scope": "Post-hoc descriptive paper-family bootstrap on reused development data; not a predeclared gate, selection-adjusted interval or independent final test.",
+  "artifact_sha256": {
+    "config.json": "bca98bde2292bbe57782d7a7f5e8bd532cfea5b3aa9c599f5a78051ac4e330c0",
+    "decisions.jsonl": "356eb5a09e3f5c5ae60b8c23f258657a9dcd10484a7f306decc07cb3d9c1be59",
+    "inputs.json": "4bb06b8d0cb04b2e164ea517cd6eddbdd9bbe0456125a5ef01b1a9188f364b44",
+    "manifest.json": "1beb189850f52649f13a8934c0c4ca1030f2a8dd064af3d5ca93b5e880580120",
+    "metrics.json": "91377bca898222c76fd5778ffb3316f7d6dddec5eb628e336a8941c98e7598eb",
+    "predictions.jsonl": "a651d3fd3db33bbeac1cdee5deaac53ed33ee06c1a03b23093afd5ca84138863",
+    "source.zip": "a1e282b8f485a4df5bf5620bd9bc30f4299f16f37c19fb9d54415d702a0cfe05",
+    "usage.json": "a10a3bb4b631d456b2f60b7459a76f2250dccaf24cd36221c4222010c70845da",
+    "worker-complete.json": "d05753f2e3cd227d0ebff3a8ca97674ff8ccff2e0d7d9002d70115433d95044d"
+  },
+  "root_artifact_sha256": {
+    "attempt.json": "b1e3eddbc3900503ccbfdcfd94b2b6fb51fdfa0e57f5953e3f08f1ba0b8b4ef8",
+    "authorization.json": "fe2e05e899831cb25df16fe771756319af4f2edefd0dcf1de43fc1e3f9334459",
+    "termination.json": "a3e677a3f76fceb861c44358f5f3a1918e9b393e444a80f90463124fc902a874",
+    "worker.started": "1cc584b481e5b19f48492f322473fcaaaab724a17a10e1c06e233ef630b54374"
+  },
+  "review_material_sha256": {
+    "reports/grounded-answer-review-packet.md": "0e156de1a138316347a73e38b64c8634484c988db40d394d2e5e958685a3ce39",
+    "reports/grounded-answer-human-review-template.json": "d5d89e332efb621b468c87dde62c60473f521f0e2de9f42ff1513683834d50a9"
+  },
+  "review_source_pdfs_sha256": {
+    "data/raw/qasper-fresh-v1/1806.05513.pdf": "415d7cbe7b0a5a6eb2d06160d7f5e514fe4a37dd26e40355e078e5a1fcc7fa9a",
+    "data/raw/qasper-fresh-v1/1811.08603.pdf": "efcef7cf2e3edb107fee4b3c61502a835c8201b5bbc6f2ccad96ac6fe1a185e5",
+    "data/raw/qasper-fresh-v1/1610.08815.pdf": "21ecb52240460890a581e724d20b2c8081ca3b6e357ff2d8889b1a4df27cb0e5",
+    "data/raw/qasper-fresh-v1/2002.04181.pdf": "59130916e02aef176497abe93be07629964cbd6aaa31e16ab04fb954e8b0117c",
+    "data/raw/qasper-fresh-v1/1610.09225.pdf": "92c6f9a146739433c9657cc0a3a8ca38f302250a75072c74dccbde14239e5653",
+    "data/raw/qasper-fresh-v1/1703.10344.pdf": "f20ca8357ff02fe03415a9792568c12a02a42fe9c5bc9cfc6af1cc0e11d3b447",
+    "data/raw/qasper-fresh-v1/1907.03187.pdf": "eced5fe80a0efca6df0ca81a223811c9e45b6858c2d1792f731795009621a80d",
+    "data/raw/qasper-fresh-v1/1805.07133.pdf": "8ef0e6434859aaf767b340c358d7798aed845907b6e93c8096f4a0757ffcba78",
+    "data/raw/qasper-fresh-v1/1912.08960.pdf": "d6acc72ef94364bd1ae5d353ec04ed3b750eb77d5b67c6d1e05b9eeab87fb5fd",
+    "data/raw/qasper-fresh-v1/1910.14076.pdf": "6947f536bf1d18d179a730be9d328af7c702cb5e43e254703330b3780fdc2685",
+    "data/raw/qasper-fresh-v1/2002.07306.pdf": "79be7a045afc79ae192d93ed1db20dd48f9fa3624795918038b3f6764da8af74",
+    "data/raw/qasper-fresh-v1/1909.02027.pdf": "dea6cf0bdf4cd9cd06a048e5f5aac7b2165f8788ad9793593af885511c871497",
+    "data/raw/qasper-fresh-v1/1907.01468.pdf": "007671ec95669ef9c14cd8dbcf04f8610f21ebe558f46dc52e90514c95a9fe3c",
+    "data/raw/qasper-fresh-v1/1809.01541.pdf": "99d9cbed4fa2be85ec45af5d90c9585192a203837790bf8680bef2a3fe678f4c",
+    "data/raw/qasper-fresh-v1/1903.07406.pdf": "2981b734772829d2994d3d6dec4332f2fe8d2bb1021e9faa5e1c4b1203e12947"
+  }
+}
