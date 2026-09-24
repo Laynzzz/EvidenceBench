@@ -602,3 +602,33 @@ actionable issues. Tokenizer-only preparation verifies all 32 prompts fit the
 2,048-token limit, with 484–1,142 tokens and 543 spans. No new model-quality result
 exists. Optional later exercise: explain why a correctly assembled quotation may
 still fail to support the generated answer, and how you would review that case.
+
+## A successful format change can still fail the quality gate
+
+You can now reproduce the [real span-ID result](../reports/span-id-answer-development.md)
+from saved raw JSON. The local Python validator maps the model's span IDs back to
+source text; all 41 quotes match. Compared with the failed complete-answer protocol,
+all ten invalid responses become valid answers. With 30 answers and no failures,
+token F1 reaches .214084. This is measured development behavior, separate from the
+194 synthetic/integration software tests that passed during preparation.
+
+The architecture separates structure from meaning. Deterministic quote assembly
+solves exact copying and quote budgets. It cannot prevent an answer from reporting
+Twitter F1 .95 while its own source says .94, nor detect that "perso" is an incomplete
+answer copied from a clipped passage. The source packet makes these mistakes
+inspectable. Increasing token overlap does not make those claims correct.
+
+Nine of eleven gates pass. Four unanswerable answers exceed the allowed three and
+citation-ID precision .428571 misses .458333. The paired family-bootstrap F1-gain
+interval [.029309, .160313] is positive, but reuse of development data means it is
+not an unbiased confirmation or permission to waive other criteria. Retain both
+the improvements and failed conditions when explaining the experiment.
+
+The run consumed 32 calls, 962 actual output tokens and 60.656 seconds on RTX 4090;
+the new allowance cannot be reused. Verification reconstructs every row and metric,
+checks the 18 unchanged refusals and records source/usage hashes without inference.
+Use `.venv/Scripts/python.exe -X utf8 scripts/run_span_id_answer.py --verify` to
+recompute saved evidence. Read the [result](../reports/span-id-answer-development.md)
+beside the [review packet](../reports/span-id-answer-review-packet.md). Optional
+exercise: explain why improved citation recall can coexist with lower citation
+precision, and why neither alone establishes support for the full generated claim.

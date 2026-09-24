@@ -399,3 +399,26 @@ metering, supervision and scoring without editing those files. Synthetic tests
 exercise the whole lifecycle and verify that the old contract stays unchanged.
 Follow-up: inherited default arguments and function globals require careful binding;
 the new entry point passes its own output root explicitly.
+
+## Explaining the measured span-ID result
+
+**What improved and what still failed?** The [run](../reports/span-id-answer-development.md)
+produced 30 answers, zero failures and F1 .214084 versus saved 7B .123578. All ten
+invalid outputs from the prior complete-answer protocol became valid answers.
+However, four unanswerable answers exceeded the limit of three, and citation-ID
+precision .428571 missed .458333. The candidate failed two of eleven conditions
+and was not promoted. Follow-up: prompt presentation and citation selection changed
+together, so this is not a clean attribution to one formatting choice.
+
+**Does a valid exact quotation guarantee a grounded answer?** No. The cyberbullying
+answer assigns .95 to Twitter even though its cited text says .94 for both Twitter
+and Wikipedia. A deterministic quote proves where text came from; semantic support
+requires checking the generated claim and its referent. Follow-up: clipping can
+also produce a valid source fragment that is not a complete answer.
+
+**How would you describe the positive bootstrap interval?** The descriptive paired
+family interval for F1 gain is [.029309, .160313]. It excludes zero under this
+resampling scheme but does not correct repeated development selection. Keep the
+failed gate conditions, untouched final test and absent independent human semantic
+review explicit. The implementation and diagnosis are agent-assisted evidence;
+personal interview practice and production-use claims remain separate.

@@ -259,3 +259,24 @@ offsets and word limits were checked on every supplied passage. The readiness
 record includes source and preparation-artifact hashes. This proves preparation
 and software invariants, not model quality or semantic support. No allowance or
 real attempt exists; the 100-question final test remains unused.
+
+## Completed source span-ID comparison
+
+[Results](../reports/span-id-answer-development.md),
+[structured evidence](../reports/span-id-answer-development.json) and
+[authorization](../reports/span-id-answer-authorization.json) record the completed
+32-call RTX 4090 attempt. Launch verification and independent saved-result
+recomputation passed. F1 .214084, 30 answers and zero failures improve development
+results; four unanswerable answers and citation-ID precision .428571 fail two of
+eleven gates. The positive descriptive bootstrap interval is not selection-adjusted
+or a fresh final result. The candidate is not promoted.
+
+All 41 quotations were checked against source catalogs, including source offsets
+through catalog reconstruction and unchanged input hashes. The
+[30-answer packet](../reports/span-id-answer-review-packet.md) preserves the selected
+spans, full supplied passages and verified paper links/hashes. Its
+[human template](../reports/span-id-answer-human-review-template.json) is blank.
+Focused assistant observations identify numerical misattribution, clipped fragments
+and nonresponsive answers; no full semantic score or independent human review is
+claimed. One attempt consumed 962 actual output tokens and 60.656 seconds at $0
+external spend. No retry, training or final-test access occurred.
