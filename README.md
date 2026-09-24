@@ -185,9 +185,11 @@ from answer-selection errors. Assistant review finds useful omitted details in f
 cases; nine of 16 inputs judged sufficient still produce non-adequate answers.
 These are non-blinded assistant judgments, not independent human evaluation.
 
-A controlled [intact-paragraph comparison](docs/intact-passage-proposal.md) is
-prepared: same paragraph IDs, model, output format and threshold, with original
-bodies restored. All 242 software tests pass with PostgreSQL; all 32 prompts fit
-the unchanged context limit. [Readiness](reports/intact-passage-readiness.json)
-requests fresh approval for one 32-call/20-minute/$0 RTX 4090 attempt. It has not
-run. Phase 4, independent human acceptance and fresh final evaluation remain open.
+The approved [intact-paragraph comparison](reports/intact-passage-development.md)
+completed: F1 .2402 versus .2141, 31 answers and one failure. Nine of twelve
+conditions pass, but six unanswerable answers, a four-span response violating the
+three-span limit, and citation-ID precision .4000 block promotion. The F1-gain
+interval includes zero. All 14 unchanged inputs reproduce the prior raw outputs.
+One attempt used 32 calls/1,020 actual tokens/63.547 seconds at $0 external cost;
+the allowance is consumed. The preparation's 242 software tests are historical.
+Phase 4, independent human acceptance and fresh final evaluation remain open.

@@ -722,3 +722,16 @@ checks verify 484–1,245 of 2,048 input tokens. The exact
 [readiness snapshot](reports/intact-passage-readiness.json) needs new explicit
 approval for one 32-call/12,288-reserved-token/20-minute/$0 GPU attempt. No inference,
 training or final-test access occurred; Phase 4 remains incomplete.
+
+The user subsequently approved that exact
+[intact-paragraph attempt](reports/intact-passage-development.md). It completed
+with 31 answers, 18 refusals, one invalid four-span response and F1 .240186 versus
+.214084. Nine of twelve conditions pass; six unanswerable answers, one failure
+and citation-ID precision .400000 miss the required three/zero/.458333 limits.
+The descriptive paired F1-gain interval [-.016220, .094526] includes zero.
+All 14 unchanged inputs reproduce prior raw outputs; the clipped topic list is
+repaired, but two former refusals become answers with incorrect source roles.
+One attempt used 32 calls, 1,020 actual tokens and 63.547 seconds at $0 external
+spend. Its allowance is consumed. The candidate is not promoted; Phase 4 and
+independent human review remain incomplete. Use saved failures to design better
+claim attribution and multi-part citation coverage before any new compute proposal.

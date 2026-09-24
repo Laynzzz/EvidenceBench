@@ -314,3 +314,26 @@ exact snapshot. A prior auxiliary test invocation without UTF-8 mode failed an
 existing GBK fixture read; rerunning in UTF-8 mode passed without frozen-source
 changes. No real evaluation or training occurred. One 32-call/20-minute/$0 attempt
 needs new approval. The final test remains unused.
+
+## Completed intact-paragraph comparison
+
+[Results](../reports/intact-passage-development.md),
+[structured evidence](../reports/intact-passage-development.json) and
+[authorization](../reports/intact-passage-authorization.json) preserve the single
+32-call RTX 4090 attempt. Launch and separate read-only reconstruction passed.
+All 18 threshold refusals and scoring labels are unchanged; restored bodies match
+original development units. All 14 unchanged inputs reproduce previous raw output.
+
+F1 .240186 exceeds .214084, but six unanswerable answers, one invalid response and
+citation-ID precision .400000 fail three of twelve conditions. The descriptive
+paired-family gain interval [-.016220, .094526] includes zero. The
+[failure report](../reports/intact-passage-errors.md) preserves the four-span output
+without repair. The [31-answer packet](../reports/intact-passage-review-packet.md)
+and [blank human template](../reports/intact-passage-human-review-template.json)
+include exact quotes, full supplied passages and verified local paper links.
+All 41 accepted quotes match source catalogs; exact matching is not entailment.
+
+The run used 1,020 actual tokens and 63.547 worker seconds at $0 external spend.
+The allowance is consumed. No new software behavior changed, so preparation's
+242 tests were not rerun for execution/reporting. No training, retry, deployment
+or final-test access occurred. Phase 4 and independent human acceptance remain open.

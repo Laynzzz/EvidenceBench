@@ -72,3 +72,12 @@ one RTX 4090 attempt, at most 32 calls/12,288 reserved tokens/1,200 worker secon
 and $0 external spend remains pending. Snapshot and preparation evidence are in
 [readiness](../reports/intact-passage-readiness.json). The consumed span-ID approval
 does not apply; there is no intact-paragraph authorization or attempt yet.
+
+The user subsequently approved the exact intact-paragraph snapshot with "approved".
+[Authorization](../reports/intact-passage-authorization.json) and
+[verified results](../reports/intact-passage-development.md) record one RTX 4090
+attempt: 32 calls, 1,020 actual output tokens, 12,288 reserved output tokens,
+63.547 worker seconds and $0 external spend. The quality gate fails three conditions.
+The allowance is consumed. Separate saved-result verification and reporting used
+no additional model calls. No retry, training, final-test access, deployment or
+runtime change occurred; the model cache and run artifacts remain local.

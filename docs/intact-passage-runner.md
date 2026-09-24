@@ -1,9 +1,11 @@
 # Intact-paragraph comparison runner
 
 The [proposal](intact-passage-proposal.md) and
-[readiness record](../reports/intact-passage-readiness.json) describe a prepared,
-unexecuted experiment. No model allowance has been granted. The previously approved
-span-ID attempt is consumed and cannot authorize this run.
+[readiness record](../reports/intact-passage-readiness.json) preserve the preparation.
+The single approved attempt has now completed; [results](../reports/intact-passage-development.md)
+pass nine of twelve conditions, so the candidate is not promoted. Its allowance
+is consumed. Use saved-result verification below; the historical execution
+instructions do not authorize a retry.
 
 ## Read-only preflight and tokenizer check
 
@@ -72,9 +74,9 @@ manifest and runtime. The runner itself enforces character limits during preflig
 the worker enforces token limits. **Do not authorize or launch a different snapshot
 without repeating the separate tokenizer check.**
 
-## Approval and one attempt
+## Historical approval and one attempt
 
-After new explicit approval only, record `reports/intact-passage-authorization.json`
+The completed attempt used `reports/intact-passage-authorization.json`
 with status `approved`, scope `intact-passage-v1`, the exact readiness snapshot hash,
 the user's approval text/time, and these limits:
 
@@ -82,7 +84,7 @@ the user's approval text/time, and these limits:
 {"attempts":1,"generation_calls":32,"reserved_output_tokens":12288,"worker_deadline_seconds":1200,"external_spend_usd":0}
 ```
 
-Then run once:
+The historical launch command was:
 
 ```powershell
 .venv/Scripts/python.exe -X utf8 scripts/run_intact_passage.py --run-approved

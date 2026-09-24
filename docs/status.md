@@ -421,7 +421,7 @@ gates, frozen outputs and the final test remain unchanged. Next prepare an
 intact-paragraph comparison within a checked context budget; no model call is
 authorized by this diagnosis.
 
-## Intact-paragraph comparison — prepared; awaiting new execution approval
+## Intact-paragraph comparison — completed; not promoted
 
 - [x] Restore the same selected development paragraphs in full; preserve 18 refusals.
 - [x] Keep span-ID output, model, token/time limits and eleven prior conditions fixed.
@@ -429,11 +429,25 @@ authorized by this diagnosis.
 - [x] Verify 35 new synthetic checks and all 242 software tests with PostgreSQL.
 - [x] Complete code review and verify source/model/runtime hashes without inference.
 - [x] Tokenize all 32 exact prompts: 484–1,245 of 2,048 tokens, 582 spans.
-- [ ] Obtain a new explicit allowance before model loading or execution.
+- [x] Obtain new explicit approval and execute the single bounded GPU attempt.
+- [x] Independently reconstruct all outputs and preserve the failed response.
+- [x] Compare restored/unchanged inputs and prepare all 31 answers for semantic review.
 
 [Proposal](intact-passage-proposal.md), [runner guide](intact-passage-runner.md) and
 [readiness](../reports/intact-passage-readiness.json) pin a single local RTX 4090
 attempt: at most 32 calls, 12,288 reserved output tokens, 20 minutes and $0 external
-spend. Eighteen inputs change; 14 remain identical. No attempt or authorization
-exists, and no model was loaded. Phase 4 semantic acceptance remains incomplete;
-the human template and 100-question final test remain unused.
+spend. Those preparation records remain historical. The
+[completed result](../reports/intact-passage-development.md) has F1 .240186 versus
+.214084, 31 answers, 18 refusals and one output-contract failure. Nine of twelve
+conditions pass: six unanswerable answers, one failure and citation-ID precision
+.400000 violate the required three/zero/.458333 limits. The descriptive F1-gain
+interval [-.016220, .094526] includes zero. All 14 unchanged inputs give identical
+raw outputs; restoring text fixes the cyberbullying-topic fragment but both former
+model refusals become inappropriate answers.
+
+One attempt consumed 32 calls, 1,020 actual output tokens and 63.547 worker seconds
+at $0 external spend. No retry, training, deployment or final-test access occurred.
+The allowance is consumed. Phase 4 semantic acceptance remains incomplete; the
+31-answer human template and 100-question final test remain unused. Next design
+work should address the requested fact's role and multi-part citation coverage
+using the saved failures before proposing more compute.
