@@ -27,9 +27,7 @@ def validate_payloads(payloads, expected):
         if set(evidence) != {f"E{i}" for i in range(1, len(evidence) + 1)}:
             raise ValueError("sequential evidence aliases required")
         if not all(
-            isinstance(v, str)
-            and v.partition("\n")[2].strip()
-            and len(v) <= MAX_PASSAGE_CHARACTERS
+            isinstance(v, str) and v.partition("\n")[2].strip() and len(v) <= MAX_PASSAGE_CHARACTERS
             for v in evidence.values()
         ):
             raise ValueError("bounded nonempty paragraph bodies required; never truncate")
