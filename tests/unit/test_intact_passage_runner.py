@@ -2,6 +2,7 @@ import copy
 import importlib.util
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -209,3 +210,31 @@ def test_full_synthetic_lifecycle_records_restored_evidence_and_twelve_gates(tmp
     monkeypatch.setattr(m, "span_baseline_rows", lambda: list(reversed(clipped)))
     with pytest.raises(ValueError, match="roster"):
         e.verify(root, snapshot)
+
+
+@pytest.mark.parametrize(
+    "current,old_pass,expected",
+    [(0.1, True, False), (0.2, True, False), (0.3, True, True), (0.3, False, False)],
+)
+def test_new_gate_requires_strict_gain_and_preserves_old_failures(
+    monkeypatch, current, old_pass, expected
+):
+    m = load("run_intact_passage")
+    rows = [{"query_id": "q"}]
+    monkeypatch.setattr(m, "span_baseline_rows", lambda: rows)
+    monkeypatch.setattr(
+        m,
+        "original_score",
+        lambda *args: {"candidate": {"answerable_token_f1": current}, "gate": {"old": old_pass}},
+    )
+    monkeypatch.setattr(
+        m,
+        "module",
+        lambda name: SimpleNamespace(
+            score=lambda *args: {"candidate": {"answerable_token_f1": 0.2}}
+        ),
+    )
+    result = m.score(None, None, rows, rows)
+    assert result["gate"]["f1_exceeds_saved_span_id"] == (current > 0.2)
+    assert result["gate"]["old"] == old_pass
+    assert result["passes_development_gate"] == expected
