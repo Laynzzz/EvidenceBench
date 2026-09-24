@@ -64,3 +64,11 @@ and $0 external spend. No structural or runtime failures occurred, but the quali
 gate fails two conditions. This allowance is consumed. Independent saved-result
 verification, quote audits and reporting used no further model calls. No training,
 retry, final-test access or deployment was authorized or performed.
+
+The next [intact-paragraph proposal](intact-passage-proposal.md) is prepared with
+35 new synthetic checks, 242 total passing software tests and tokenizer-only
+verification of all 32 prompts. No model weights were loaded. A new allowance of
+one RTX 4090 attempt, at most 32 calls/12,288 reserved tokens/1,200 worker seconds
+and $0 external spend remains pending. Snapshot and preparation evidence are in
+[readiness](../reports/intact-passage-readiness.json). The consumed span-ID approval
+does not apply; there is no intact-paragraph authorization or attempt yet.

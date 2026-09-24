@@ -297,3 +297,20 @@ recomputes exactly with `scripts/audit_span_id_evidence.py --verify`; the review
 verifier checks source/reviewer hashes, roster, answers, excerpts and counts.
 Negative checks reject fabricated excerpts, duplicate cases, altered counts and
 changed source hashes. No model run, final-test access, rescore or promotion occurred.
+
+## Prepared intact-paragraph comparison
+
+[Proposal](intact-passage-proposal.md), [execution guide](intact-passage-runner.md)
+and [readiness](../reports/intact-passage-readiness.json) pin the complete-paragraph
+input intervention. Preparation revision `5f7701c`: 35 new synthetic checks and all
+242 software tests pass with PostgreSQL and two existing warnings. Read-only
+preflight verifies predecessor/source/model/runtime artifacts. Exact-message
+tokenization in the isolated GPU runtime, on CPU and without weights, yields
+484–1,245 input tokens across 32 prompts and 582 spans. All fit 2,048 tokens.
+
+Code review found no blocking adapter bug. Its requested F1 boundary cases are
+persisted; the separate tokenizer requirement is documented and completed for the
+exact snapshot. A prior auxiliary test invocation without UTF-8 mode failed an
+existing GBK fixture read; rerunning in UTF-8 mode passed without frozen-source
+changes. No real evaluation or training occurred. One 32-call/20-minute/$0 attempt
+needs new approval. The final test remains unused.

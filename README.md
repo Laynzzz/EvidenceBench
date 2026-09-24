@@ -179,3 +179,15 @@ It is not promoted. One approved attempt used 32 calls/962 actual tokens/60.656
 seconds at $0 external spend; the allowance is consumed. The preparation's 194
 passing software tests are separate from this real model result and its semantic
 limitations. All 30 emitted answers have a [review packet](reports/span-id-answer-review-packet.md).
+
+The [saved evidence audit](reports/span-id-evidence-audit.md) separates clipping
+from answer-selection errors. Assistant review finds useful omitted details in four
+cases; nine of 16 inputs judged sufficient still produce non-adequate answers.
+These are non-blinded assistant judgments, not independent human evaluation.
+
+A controlled [intact-paragraph comparison](docs/intact-passage-proposal.md) is
+prepared: same paragraph IDs, model, output format and threshold, with original
+bodies restored. All 242 software tests pass with PostgreSQL; all 32 prompts fit
+the unchanged context limit. [Readiness](reports/intact-passage-readiness.json)
+requests fresh approval for one 32-call/20-minute/$0 RTX 4090 attempt. It has not
+run. Phase 4, independent human acceptance and fresh final evaluation remain open.

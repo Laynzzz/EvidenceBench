@@ -420,3 +420,20 @@ NCEL packed-only rating retains the prior full-paper overclaim caveat. Labels,
 gates, frozen outputs and the final test remain unchanged. Next prepare an
 intact-paragraph comparison within a checked context budget; no model call is
 authorized by this diagnosis.
+
+## Intact-paragraph comparison — prepared; awaiting new execution approval
+
+- [x] Restore the same selected development paragraphs in full; preserve 18 refusals.
+- [x] Keep span-ID output, model, token/time limits and eleven prior conditions fixed.
+- [x] Add strict F1 improvement over the verified saved span-ID comparator.
+- [x] Verify 35 new synthetic checks and all 242 software tests with PostgreSQL.
+- [x] Complete code review and verify source/model/runtime hashes without inference.
+- [x] Tokenize all 32 exact prompts: 484–1,245 of 2,048 tokens, 582 spans.
+- [ ] Obtain a new explicit allowance before model loading or execution.
+
+[Proposal](intact-passage-proposal.md), [runner guide](intact-passage-runner.md) and
+[readiness](../reports/intact-passage-readiness.json) pin a single local RTX 4090
+attempt: at most 32 calls, 12,288 reserved output tokens, 20 minutes and $0 external
+spend. Eighteen inputs change; 14 remain identical. No attempt or authorization
+exists, and no model was loaded. Phase 4 semantic acceptance remains incomplete;
+the human template and 100-question final test remain unused.

@@ -712,3 +712,13 @@ and answer-selection problems. All 207 software tests pass, including PostgreSQL
 no new inference or final-test access occurred. Prepare a controlled intact-paragraph
 comparison next, preserving the paragraph roster, threshold decisions and answer
 contract. Fresh execution approval and independent human acceptance remain required.
+
+That [intact-paragraph comparison](docs/intact-passage-proposal.md) is now prepared.
+It restores the same selected paragraph bodies for all 32 generator inputs, changing
+18 inputs while retaining 14 and all 18 threshold refusals. The same span-ID format,
+model and eleven prior gates remain; a twelfth requires F1 strictly above the saved
+span-ID result. All 242 software tests pass, including PostgreSQL; tokenizer-only
+checks verify 484–1,245 of 2,048 input tokens. The exact
+[readiness snapshot](reports/intact-passage-readiness.json) needs new explicit
+approval for one 32-call/12,288-reserved-token/20-minute/$0 GPU attempt. No inference,
+training or final-test access occurred; Phase 4 remains incomplete.
