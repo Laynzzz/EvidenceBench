@@ -632,3 +632,31 @@ recompute saved evidence. Read the [result](../reports/span-id-answer-developmen
 beside the [review packet](../reports/span-id-answer-review-packet.md). Optional
 exercise: explain why improved citation recall can coexist with lower citation
 precision, and why neither alone establishes support for the full generated claim.
+
+## Diagnose the evidence path before another model experiment
+
+You can now trace whether supporting text was retrieved, survived top-three
+selection, passed the threshold, and was cited. The Python audit runs locally on
+saved JSON and development Parquet rows; it does not load a model. Of 38 answerable
+queries, those stages retain gold passage IDs for 37, 23, 17 and 14 queries.
+Gold means annotated support, not proof that the generated claim is supported.
+
+The architecture has two distinct failure points. Packing cuts 25 of 96 passage
+occurrences, including useful facts in four reviewed cases. But nine of 16 inputs
+judged sufficient still produce non-adequate answers. Restoring whole paragraphs
+can address missing information; it cannot by itself fix choosing features when
+asked for model names or assigning a number to the wrong dataset.
+
+The decision is to prepare a controlled packing comparison before adding training
+complexity. Increasing top-k would change paragraph identities and confound that
+comparison. The same source can also overstate its results: the NCEL conclusion
+supports the copied wording while its tables undermine a blanket superiority claim.
+Distinguish source provenance, local claim support, responsiveness and paper-level
+correctness rather than treating them as one metric.
+
+[Audit and reproduction](../reports/span-id-evidence-audit.md) document 207 passing
+software tests and 72 checked excerpts. The assistant's 32-case judgments are not
+independent human labels. Read `scripts/audit_span_id_evidence.py` for mechanical
+trace analysis and `scripts/verify_span_id_evidence_review.py` for provenance and
+excerpt checks. Optional exercise: explain why 19 quote-supported answers can
+coexist with only seven packed-evidence-adequate answers.

@@ -422,3 +422,25 @@ resampling scheme but does not correct repeated development selection. Keep the
 failed gate conditions, untouched final test and absent independent human semantic
 review explicit. The implementation and diagnosis are agent-assisted evidence;
 personal interview practice and production-use claims remain separate.
+
+## Separating retrieval, packing and generation failures
+
+**How did you locate the remaining failures?** The saved-output
+[audit](../reports/span-id-evidence-audit.md) follows 38 answerable questions through
+retrieval, top-three selection, packing and citation. Gold-ID presence falls from
+37 to 23 to 17 to 14. These are annotation-agreement facts; they do not independently
+measure entailment. Follow-up: alternative supporting paragraphs may be unannotated.
+
+**Would more context solve the problem?** Four cases lose useful facts at the
+1,000-character cut, so an intact-paragraph comparison is justified. Yet nine of
+16 inputs judged sufficient still yield non-adequate answers. More context cannot
+be claimed to fix role confusion or numerical misattribution without measurement.
+Follow-up: hold paragraph identities, threshold and model constant to isolate
+packing, and tokenize before fixing the runtime allowance.
+
+**How trustworthy is the review?** Two assistants reviewed disjoint case batches
+with labels visible; this is non-blinded diagnosis, not inter-rater agreement or
+independent human evaluation. A verifier checks 72 exact excerpts and the source
+hashes, but cannot prove the judgments. Preserve the TF-IDF label conflict and the
+NCEL full-paper caveat without changing frozen scores. This is agent-assisted
+project evidence, not a claim of personal practice or production deployment.
