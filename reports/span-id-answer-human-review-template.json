@@ -1,0 +1,279 @@
+{
+  "status": "pending_independent_human_review",
+  "run": "artifacts/span-id-answer-v1/runs/20260924T055954Z-4ed67439fb",
+  "reviewer_name": null,
+  "reviewed_at": null,
+  "prior_exposure": null,
+  "cases": [
+    {
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    },
+    {
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "responsiveness": null,
+      "completeness": null,
+      "cited_support": null,
+      "paper_correctness": null,
+      "rationale": null,
+      "paper_pages_checked": []
+    }
+  ]
+}
