@@ -660,3 +660,32 @@ independent human labels. Read `scripts/audit_span_id_evidence.py` for mechanica
 trace analysis and `scripts/verify_span_id_evidence_review.py` for provenance and
 excerpt checks. Optional exercise: explain why 19 quote-supported answers can
 coexist with only seven packed-evidence-adequate answers.
+
+## A controlled packing intervention, prepared but unmeasured
+
+You can now prepare [the intact-paragraph comparison](intact-passage-runner.md)
+without running a model. Local Python resolves the same passage IDs in development
+Parquet rows, verifies each old prefix and restores the original body. The worker
+still receives only questions and text. Eighteen of 32 inputs change; 14 stay the
+same, and 18 pre-generation refusals are carried through unchanged.
+
+Private adapters reuse the frozen span-ID renderer/parser and supervised GPU worker.
+The new runner stores restored text in candidate traces, so a selected tail span
+can be audited afterward. Saved baseline answers and citation IDs remain the
+scoring comparator. Source, input, message and catalog hashes bind this intervention
+to one approval. The twelfth gate requires strict F1 gain over the latest span-ID
+run while retaining all eleven earlier checks; equality is insufficient.
+
+The deliberate trade-off is to change the available text while holding the selected
+paragraphs and output contract fixed. Longer text could distract the model; unchanged
+inputs provide a descriptive consistency check. This is repeatedly inspected
+development data, not a new independent confirmation. No answer improvement has
+been measured yet.
+
+Transformers' cached tokenizer runs on CPU to check the exact rendered prompts:
+484–1,245 of 2,048 tokens. Tokenization is not model inference or a GPU memory test.
+Thirty-five new synthetic checks and 242 total software tests pass. Read
+`scripts/run_intact_passage.py` for restoration/provenance and
+`scripts/intact_passage_worker.py` for the isolated worker boundary. Optional later
+exercise: explain how a restored tail changes span IDs while the parent paragraph
+ID stays fixed, and why the frozen prior catalog must not be used to parse new output.

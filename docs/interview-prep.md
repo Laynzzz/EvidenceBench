@@ -444,3 +444,25 @@ independent human evaluation. A verifier checks 72 exact excerpts and the source
 hashes, but cannot prove the judgments. Preserve the TF-IDF label conflict and the
 NCEL full-paper caveat without changing frozen scores. This is agent-assisted
 project evidence, not a claim of personal practice or production deployment.
+
+## Designing the next comparison without claiming its outcome
+
+**What changes in the intact-paragraph experiment?** The same selected paragraph
+IDs resolve to their entire original bodies instead of 1,000-character prefixes.
+The model, prompt, answer format, threshold and 50-row scoring roster stay fixed.
+Eighteen inputs change and 14 do not. This isolates that packing intervention from
+retrieval changes, though text length and available spans change together.
+
+**How did you check readiness without using an experiment allowance?** Synthetic
+tests exercise the lifecycle with an injected generator. Source/model hashes and
+runtime versions are verified read-only; the cached tokenizer checks all 32 prompts
+at 484–1,245 input tokens. No model weights load. Follow-up: token fit does not
+measure CUDA memory use, answer quality or inference latency.
+
+**What would count as progress?** All eleven prior gates plus strict F1 improvement
+over the saved span-ID .214084 result. Equality, regression or failure of an old
+condition blocks acceptance; synthetic boundary tests check each. Even a pass
+would remain development evidence requiring separate semantic review and authorized
+fresh final evaluation. See [proposal](intact-passage-proposal.md) and
+[readiness](../reports/intact-passage-readiness.json); do not present this unexecuted
+experiment as an achieved benchmark or a personally practiced interview answer.
