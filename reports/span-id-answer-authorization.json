@@ -1,0 +1,23 @@
+{
+  "status": "approved",
+  "scope": "span-id-answer-v1",
+  "snapshot_sha256": "70f950e327ed4a198e50de38e2476325cdc7154f708a966d4830f8e290c7932b",
+  "user_approval_text": "approved",
+  "recorded_at_utc": "2026-09-24T05:59:18.671086+00:00",
+  "limits": {
+    "attempts": 1,
+    "generation_calls": 32,
+    "reserved_output_tokens": 12288,
+    "worker_deadline_seconds": 1200,
+    "external_spend_usd": 0
+  },
+  "exclusions": [
+    "training",
+    "retry",
+    "warmup",
+    "repair calls",
+    "final-test access",
+    "deployment",
+    "label revision"
+  ]
+}
