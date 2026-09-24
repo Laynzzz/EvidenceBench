@@ -1,0 +1,1076 @@
+{
+  "scope": "Non-blinded assistant review of saved development outputs; not independent human evaluation or a benchmark rescore.",
+  "review_date": "2026-09-24",
+  "run": "artifacts/span-id-answer-v1/runs/20260924T055954Z-4ed67439fb",
+  "model_inference_calls": 0,
+  "final_test_used": false,
+  "review_method": "Two assistant reviewers split the 32 supplied-evidence cases into disjoint batches of 16; each case has one reviewer. Root checked provenance, exact evidence excerpts and interpretation limits. No inter-rater agreement was measured.",
+  "source_sha256": {
+    "reports/span-id-evidence-audit.json": "1a11739044a8febe979fe3a53a946373782bc22de32018e3fdee5ece1100e006",
+    "artifacts/span-id-answer-v1/runs/20260924T055954Z-4ed67439fb/predictions.jsonl": "f132914d3bdcf7886bbda4c4ecd45f35b5a7ff96fe50af4e8817fd4905ef473c",
+    "data/processed/qasper-fresh-v1/units.parquet": "4ad32d81db19fb775d886781be19ae430053c90b40c1e22b157096f9ef65030e",
+    "reports/gpu-generation-ai-review.md": "b0232a4d4a4fdcb702f11115801c4fb991179d1bae4dd85a08adabfa79645bdc"
+  },
+  "reviewer_artifact_sha256": {
+    "artifacts/span-id-answer-audit/review-input-1.json": "f68e160a5912938305718b3058c45bcaf8263ae7739d7422d315f102f1acb4d8",
+    "artifacts/span-id-answer-audit/review-input-2.json": "8a70d7a1f12d9bf6b5498ee97599155bf75b15edad335a51a71d8ac39f786191",
+    "artifacts/span-id-answer-audit/review-output-1.json": "4208b3b34beb30017ff4bd0653ad1a791c6ca0daf69398d9ac89b4c44d46250b",
+    "artifacts/span-id-answer-audit/review-output-2.json": "ea98f535b3ee5c2388368d4beafc012f01ac839d72dbb350d50fcc4656325976"
+  },
+  "rubric": {
+    "packed_sufficiency": "Whether generator-visible passages supply the requested facts; sufficient, partial, insufficient, or ambiguous scope.",
+    "answer_quality": "Responsiveness, completeness and correctness within supplied evidence; adequate, partial, inadequate, ambiguous, or not_applicable for refusals.",
+    "selected_quote_support": "Whether selected quotations support the entire emitted answer with the correct referents, independent of whether it answers the question.",
+    "clipping_effect": "Material means an omitted original-paragraph continuation contains useful requested details; it does not prove that restoring them would change the output."
+  },
+  "limitations": [
+    "References and benchmark answerability were visible to reviewers; judgments are subjective and not blinded.",
+    "Original full paragraphs were available only for clipping diagnosis; the generator did not see omitted tails.",
+    "This is not a new full-paper audit and does not establish exhaustive paper-level answerability.",
+    "The 18 pre-generation threshold refusals are covered by the mechanical audit only; the 2 model refusals receive qualitative review.",
+    "Known NCEL caveat: case 114934e1a1e818630ff33ac5c4cd4be6c6f75bb2 is adequate relative to the supplied conclusion wording, but the prior paper-grounded review found the blanket outperformance claim overstated against table losses/ties. Its packed-only rating does not override that finding.",
+    "Label/reference conflicts are documented without changing frozen predictions, labels, metrics, gates or human-review templates."
+  ],
+  "summary": {
+    "packed_sufficiency": {
+      "partial": 9,
+      "sufficient": 16,
+      "ambiguous": 5,
+      "insufficient": 2
+    },
+    "answer_quality": {
+      "partial": 9,
+      "adequate": 7,
+      "inadequate": 13,
+      "ambiguous": 1,
+      "not_applicable": 2
+    },
+    "selected_quote_support": {
+      "supported": 19,
+      "unsupported": 8,
+      "partial": 3,
+      "not_applicable": 2
+    },
+    "clipping_effect": {
+      "material": 4,
+      "not_demonstrated": 28
+    },
+    "answer_quality_given_sufficient_packing": {
+      "partial": 5,
+      "adequate": 7,
+      "inadequate": 4
+    }
+  },
+  "cases": [
+    {
+      "question": "In the paper 'Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System', What type of system does the baseline classification use?",
+      "answer": "support vector machines with radial basis function kernel",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "packed_sufficiency": "partial",
+      "answer_quality": "partial",
+      "selected_quote_support": "supported",
+      "clipping_effect": "material",
+      "diagnostic_tags": [
+        "incomplete_classifier_list",
+        "clipped_answer_detail"
+      ],
+      "rationale": "Packed E1 identifies classification features and the RBF SVM, while E3 also names extra tree, so a broader answer than the emitted single classifier was possible. The selected quotes support that classifier but not an exhaustive account of the baseline. The clipped end of original E3 supplies random forest and naive Bayes, which are absent from the packed excerpts.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "The best accuracy (69.3%) was given by support vector machines with radial basis function kernel."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "Support vector machine with radial basis function kernel and extra tree classifier performs better than other classifiers"
+        },
+        {
+          "location": "original_paragraph",
+          "evidence_id": "E3",
+          "quote": "Bag-of-words feature performed the worst in SVM, random forest and extra tree classifier but yielded better result in naive bayes classifiers."
+        }
+      ],
+      "reference_caveat": "The question's singular 'type of system' admits a shorter description; the reference instead requests the family of evaluated classifiers and optionally their features.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System', What experiments were carried out on the corpus?",
+      "answer": "10-fold cross validation on 3543 code-mixed tweets was carried out by dividing the corpus into 10 equal parts with nine parts as training corpus and rest one for testing.",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "partial",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "protocol_without_task",
+        "source_count_inconsistency"
+      ],
+      "rationale": "The packed excerpts describe humor classification, feature comparisons, and ten-fold cross-validation, adequately answering what experiments were performed. The answer accurately reproduces the evaluation procedure but omits the humor-identification task and the model/feature comparisons. Its 3543 count matches the quote although E2 gives a conflicting corpus count of 3453; this is a source inconsistency, not an invented number.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "10-fold cross validation on 3543 code-mixed tweets was carried out by dividing the corpus into 10 equal parts with nine parts as training corpus and rest one for testing."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "The task of humor identification in social media texts is analyzed as a classification problem and several machine learning classification models are used."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "a freely available corpus of 3453 English-Hindi code-mixed tweets."
+        }
+      ],
+      "reference_caveat": "The reference emphasizes the task, whereas cross-validation is also a relevant experimental detail; lexical mismatch alone would not make this answer wholly wrong.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Neural Collective Entity Linking', How effective is their NCEL approach overall?",
+      "answer": "NCEL outperforms the state-of-the-art collective methods across five different datasets.",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "adequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "supported_overall_result"
+      ],
+      "rationale": "E2 directly reports stronger performance than collective methods across five datasets, supporting the concise overall-effectiveness answer. Although E3 loses text explicitly mentioning generalization, the uncut E2 already supplies an adequate overall result. These are the paper's reported findings, not independently verified performance.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E2",
+          "quote": "Trained on collected Wikipedia hyperlinks, NCEL outperforms the state-of-the-art collective methods across five different datasets."
+        }
+      ],
+      "reference_caveat": null,
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks', What are the network's baseline features?",
+      "answer": "features extracted from the pre-trained models",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "packed_sufficiency": "partial",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "unsupported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "baseline_augmentation_confusion",
+        "missing_baseline_definition"
+      ],
+      "rationale": "The excerpts distinguish baseline features from sentiment, emotion, and personality features and describe adding pretrained features to the baseline CNN. They do not explicitly define the original baseline feature extraction. The chosen quote describes an additional setting and does not establish that pretrained-model features are the baseline features being asked about.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "In another setting, we use the features extracted from the pre-trained models as the static channels of features in the CNN of the baseline method."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "These features are appended to the hidden layer of the baseline CNN, preceding the final output softmax layer."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "CNN-SVM on the baseline + sentiment + emotion + personality feature set"
+        }
+      ],
+      "reference_caveat": "The reference says CNN-extracted features; the packed passages imply a CNN baseline but do not explicitly supply that feature definition.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks', What are the state of the art models?",
+      "answer": "CNN-SVM on the baseline + sentiment + emotion + personality feature set",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "unsupported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "proposed_model_comparator_confusion",
+        "unresolved_bibliography_ids"
+      ],
+      "rationale": "Packed E3 explicitly identifies the two comparison approaches as BIBREF9 and BIBREF8, and E1 characterizes related n-gram methods with sentiment features. The answer instead names the proposed CNN-SVM combination, while its quote only says that combination outperforms the state of the art. Clipping removes later performance details but preserves the comparator identities needed for the question.",
+      "evidence_checks": [
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "Similar trends are seen in the performance of other two state-of-the-art approaches BIBREF9 , BIBREF8 ."
+        },
+        {
+          "location": "selected_quote",
+          "evidence_id": "E2",
+          "quote": "CNN-SVM on the baseline + sentiment + emotion + personality feature set outperforms the state of the art"
+        }
+      ],
+      "reference_caveat": "'State of the art models' could broadly include a newly superior model, but the reference and the excerpt's explicit comparator terminology target the prior approaches. Their human-readable bibliographic names are not available here.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets', What measures are used for evaluation?",
+      "answer": "correct classification rate (CCR)",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "adequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "direct_supported_answer"
+      ],
+      "rationale": "Packed E3 names correct classification rate as the reported measure for both tasks and gives its definitions. The selected sentence directly entails the answer, and these passages are not clipped.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "We report the experimental results for our two tasks in terms of the correct classification rate (CCR)."
+        }
+      ],
+      "reference_caveat": null,
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets', Which toolkits do they use?",
+      "answer": "BIBREF17 and BIBREF18",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "partial",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "incomplete_toolkit_list",
+        "unresolved_bibliography_ids"
+      ],
+      "rationale": "E2 contains both selected commercial APIs and the five additional systems whose results are reported. The answer gives only the two commercial identifiers, which are supported by its selected quote but omit the rest of the available list. No paragraph clipping accounts for the omission.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E2",
+          "quote": "we selected BIBREF17 and BIBREF18 for our experiments"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "We also report results of TensiStrength BIBREF13, TwitterNLP BIBREF6, BIBREF19, CogComp-NLP BIBREF20, and Stanford NLP NER BIBREF21."
+        }
+      ],
+      "reference_caveat": "The alternative reference uses a different set of bibliography identifiers; the judgment follows the actual packed list, not an assumption that those IDs are interchangeable.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Zero-shot Reading Comprehension by Cross-lingual Transfer Learning with Multi-lingual Language Representation Model', what does the model learn in zero-shot setting?",
+      "answer": "In the zero-shot setting, the model learns to perform reading comprehension tasks in languages other than those it was trained on, leveraging a pre-trained multi-BERT model.",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "packed_sufficiency": "ambiguous",
+      "answer_quality": "ambiguous",
+      "selected_quote_support": "partial",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "question_reference_scope_mismatch",
+        "task_goal_as_outcome",
+        "pretraining_finetuning_ambiguity"
+      ],
+      "rationale": "The question asks what is learned, whereas the reference describes how fine-tuning is performed, so the intended scope is unclear. Packed E2 states a goal of testing zero-shot reading comprehension rather than an achieved result, and E1 says pretraining already includes 104 languages. The selected quote supports general cross-lingual zero-shot capability but neither reading-comprehension success nor the unqualified claim of languages absent from training.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E2",
+          "quote": "Multi-BERT has showcased its ability to enable cross-lingual zero-shot learning on the natural language understanding tasks including XNLI BIBREF19, NER, POS, Dependency Parsing, and so on."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "We now seek to know if a pre-trained multi-BERT has ability to solve RC tasks in the zero-shot setting."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "This multi-lingual version of BERT were pre-trained on corpus in 104 languages."
+        }
+      ],
+      "reference_caveat": "The reference answers a fine-tuning-procedure question rather than clearly answering the literal 'what does the model learn' question; neither it nor the emitted broader claim should be accepted uncritically.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Sentiment Analysis of Twitter Data for Predicting Stock Market Movements', What dataset is used to train the model?",
+      "answer": "Microsoft stock price data",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "partial",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "omitted_tweet_inputs",
+        "dataset_detail_limits"
+      ],
+      "rationale": "Packed E1 supplies a useful dataset description: Microsoft stock labels paired with three-day aggregates of tweet sentiment, with 355 instances. The answer accurately identifies the stock-price component but leaves out the tweet inputs, so it only partially describes the training data. The reference's raw tweet count and date range are absent, and restoring the clipped E2 would not supply them.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "The stock price data of Microsoft are labeled suitably for training using a simple program."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "The total positive, negative and neutral emotions in tweets in a 3 day period are calculated successively which are used as features for the classifier model"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "A total of 355 instances, each with 3 attributes are fed to the classifier"
+        }
+      ],
+      "reference_caveat": "Sufficiency is for the literal dataset question at a substantive descriptive level. The detailed reference's 250,000 tweets, date range, and opening/closing distinction cannot be recovered from these excerpts.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Automated News Suggestions for Populating Wikipedia Entity Pages', What baseline model is used?",
+      "answer": "salience-based features by Dunietz and Gillick",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "packed_sufficiency": "partial",
+      "answer_quality": "partial",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "incomplete_baseline_list",
+        "missing_second_stage_evidence",
+        "formula_placeholders"
+      ],
+      "rationale": "The answer correctly names the first baseline and its quote directly supports it. Packed E2 also supplies a second title-appearance rule, although its arguments are formula placeholders; no article-section baselines are provided. The single returned baseline therefore leaves out available information and cannot cover the broader multi-stage reference from these excerpts.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "The first baseline uses only the salience-based features by Dunietz and Gillick BIBREF11 ."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "The second baseline assigns the value relevant to a pair INLINEFORM0 , if and only if INLINEFORM1 appears in the title of INLINEFORM2 ."
+        }
+      ],
+      "reference_caveat": "The singular wording could accept one baseline, while the reference asks for four across two stages; the packed evidence itself establishes at least two.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Automated News Suggestions for Populating Wikipedia Entity Pages', What features are used to represent the novelty of news articles to entity pages?",
+      "answer": "novelty of news articles w.r.t the already existing entity profile",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "tautological_answer",
+        "missed_explicit_measure"
+      ],
+      "rationale": "Packed E2 states the requested measurement: KL divergence between language models, combined with entity overlap, using a minimum divergence score. The answer merely restates that novelty is relative to the existing entity profile and names no feature or measure. Its statement is supported by the selected quote but does not answer the substantive question; no relevant clipping prevents doing so.",
+      "evidence_checks": [
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "is measured by the KL divergence between the language model of INLINEFORM5 and articles in INLINEFORM6 . We combine this measure with the entity overlap"
+        },
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "An important feature when suggesting an article INLINEFORM0 to an entity INLINEFORM1 is the novelty of INLINEFORM2 w.r.t the already existing entity profile INLINEFORM3 ."
+        }
+      ],
+      "reference_caveat": "Formula identifiers obscure variable names, but the measurement type remains readable. The reference mentions KL divergence and omits the additional entity-overlap component explicitly present in E2.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'State-of-the-Art Vietnamese Word Segmentation', Why challenges does word segmentation in Vietnamese pose?",
+      "answer": "Acquiring a very large Vietnamese corpus and applying linguistics knowledge on word context to extract useful features.",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "packed_sufficiency": "partial",
+      "answer_quality": "partial",
+      "selected_quote_support": "supported",
+      "clipping_effect": "material",
+      "diagnostic_tags": [
+        "incomplete_challenge_list",
+        "clipped_answer_detail"
+      ],
+      "rationale": "Packed E2 supports the corpus-acquisition challenge and linguistic feature work in the answer, and also explicitly supplies a big-data warehouse and analytics challenge that the answer omits. The final challenge of incremental corpus learning and interactive feedback occurs only in the clipped original tail. Thus both answer omission and evidence clipping contribute to incompleteness.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E2",
+          "quote": "The first challenge is to acquire very large Vietnamese corpus and to use them in building a classifier, which could further improve accuracy."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "The second challenge is design and development of big data warehouse and analytic framework for Vietnamese documents"
+        },
+        {
+          "location": "original_paragraph",
+          "evidence_id": "E2",
+          "quote": "The final challenge relates to building a system, which is able to incrementally learn new corpora and interactively process feedback."
+        }
+      ],
+      "reference_caveat": "The malformed question could refer to linguistic segmentation difficulties, whereas the reference and returned passage concern future supervised-learning engineering challenges; this review uses the latter scope.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'State-of-the-Art Vietnamese Word Segmentation', How successful are the approaches used to solve word segmentation in Vietnamese?",
+      "answer": "According to our observation, there are both achievements and limitations in existing Vietnamese word segmentation systems. The study reports a few of these achievements and limitations.",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "packed_sufficiency": "insufficient",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "generic_nonanswer",
+        "missing_performance_evidence"
+      ],
+      "rationale": "The packed excerpts introduce a survey and mention that achievements and limitations are discussed, without giving performance levels or substantive success findings. The answer faithfully repeats that announcement but does not explain how successful the approaches are. The clipped text is only a section-outline ending, so restoring it would not supply the missing result.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "According to our observation, this study also reports a few of achivements and limitations in existing Vietnamese word segmentation systems."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "Several experiments based on mentioned approaches and toolkits are described in Section VI."
+        }
+      ],
+      "reference_caveat": "The reference's 94%-97% accuracy is not evidenced in these provided excerpts; no full-paper verification was performed.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms', What were their performance results?",
+      "answer": "The performance results show that DNN based models coupled with transfer learning beat the best-known results for the Wikipedia and Twitter datasets. For Wikipedia, the F1 score achieved is 0.94, and for Twitter, it is 0.95. For the Formspring dataset, the F1 score achieved is 0.95 with an accuracy score of 98%.",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "partial",
+      "selected_quote_support": "partial",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "wrong_metric_assignment",
+        "missing_quote_antecedents"
+      ],
+      "rationale": "Packed E3 unambiguously gives F1 0.94 for both Wikipedia and Twitter, and F1 0.95 with 98% accuracy for Formspring. The answer incorrectly changes Twitter to 0.95 while retaining the other results. Its selected quotes omit the sentences that identify the datasets referred to by 'both these datasets' and 'the same dataset', so even the correct assignments are not fully supported by the selected spans alone.",
+      "evidence_checks": [
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "Previous best F1 scores for Wikipedia BIBREF4 and Twitter BIBREF8 datasets were 0.68 and 0.93 respectively. We achieve F1 scores of 0.94 for both these datasets"
+        },
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "We achieve F1 score of 0.95 with accuracy score of 98% for the same dataset."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "For Formspring dataset, authors have not reported F1 score."
+        }
+      ],
+      "reference_caveat": null,
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms', What cyberbulling topics did they address?",
+      "answer": "perso",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "packed_sufficiency": "insufficient",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "unsupported",
+      "clipping_effect": "material",
+      "diagnostic_tags": [
+        "midword_clipping",
+        "fragment_answer",
+        "prior_work_target_confusion_risk"
+      ],
+      "rationale": "The target-study topic list is clipped inside its first word, leaving no complete identified target topic; racism and sexism earlier in E1 describe prior work rather than explicitly establishing this study's topic list. The answer 'perso' copies that fragment but does not denote a substantive topic, so exact substring presence is not semantic support. Original E1 supplies the complete personal-attack, racism, and sexism list that the generator did not see.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "for three topics of cyberbullying (perso"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "they address only one topic of cyberbullying such as racism, and sexism."
+        },
+        {
+          "location": "original_paragraph",
+          "evidence_id": "E1",
+          "quote": "for three topics of cyberbullying (personal attack, racism, and sexism)"
+        }
+      ],
+      "reference_caveat": null,
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Active Learning for Speech Recognition: the Power of Gradients', Which dataset do they use?",
+      "answer": "190 hours (100K instances) of transcribed speech data",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "adequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "supported_training_dataset",
+        "broader_dataset_scope_available"
+      ],
+      "rationale": "Packed E3 directly describes the initial 190-hour transcribed dataset and also the unlabeled pool, validation set, and test set. The answer provides an adequate concise identification of the base training dataset with direct quote support. A fuller account of all data used would include the 1,700-hour unlabeled pool, but no clipping or false claim is present.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "A base model, INLINEFORM0 , is trained on 190 hours ( INLINEFORM1 100K instances) of transcribed speech data."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "Then, it selects a subset of a 1,700-hour ( INLINEFORM2 1.1M instances) unlabeled dataset."
+        }
+      ],
+      "reference_caveat": "The short reference accepts the initial training set, while the alternative adds the unlabeled pool. No named corpus is given in the provided evidence.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction', What did the best systems use for their model?",
+      "answer": "ASGD Weight-Dropped Long Short Term Memory (AWD_LSTM)",
+      "status": "answered",
+      "answerable": false,
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "packed_sufficiency": "ambiguous",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "unsupported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "unclear_best_systems_scope",
+        "own_model_vs_winners",
+        "missing_qrnn_modification",
+        "citation_fragment"
+      ],
+      "rationale": "The packed text describes the authors' third-place classifier and their AWD_LSTM-based language model with QRNN units, but does not identify the models used by the best competing systems. The answer silently treats the authors' language-model choice as the answer and omits its QRNN modification. Its selected quote contains neither the model name nor the necessary antecedent, so it cannot support the emitted answer.",
+      "evidence_checks": [
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "We replaced the typical Long Short Term Memory (LSTM) units with Quasi Recurrent Neural Network"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "our third place entry was 1.1% worse in F1 score than first place"
+        },
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "BIBREF5 ) model included in Fast.ai."
+        }
+      ],
+      "reference_caveat": "The unanswerable label is plausible if 'best systems' means competition leaders; the packed evidence does describe the authors' own model, so scope should remain explicit.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction', What were their results on the classification and regression tasks",
+      "answer": "Our solution placed 3rd in Task 1 and 2nd in Task 2 in the final competition standings.",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "adequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "supported_rank_results",
+        "reference_scope_mismatch"
+      ],
+      "rationale": "Competition placements provide a legitimate answer to the broad request for results on both tasks, and E2 explicitly maps the placements to classification and regression. The emitted sentence faithfully reports the two placements and its selected quote directly supports it. The packed evidence does not supply the reference F1, but that does not invalidate the supported rank-based answer.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "Our solution placed 3rd in Task 1 and 2nd in Task 2 in the final competition standings."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "placed $3^{rd}$ in the classification task and $2^{nd}$ in the regression task"
+        }
+      ],
+      "reference_caveat": "The reference gives only classification F1 although the question requests both tasks; the visible placements answer both under a reasonable reading of 'results'.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'VAIS ASR: Building a conversational speech recognition system using language model combination', What is the language model combination technique used in the paper?",
+      "answer": "language model combination technique",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "packed_sufficiency": "partial",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "generic_restatement",
+        "missing_combination_mechanism"
+      ],
+      "rationale": "The packed paragraphs explain that the method combines language models to exploit writing-style and conversational text, but give no mechanism or combination level. The answer merely repeats 'language model combination technique' and does not identify the technique. That generic statement is supported by the selected quotes despite failing to answer the substantive question; the full supplied paragraphs add no missing mechanism.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "using language models combination techniques that allows us to utilize both large amount of writing style text and small number of conversation text data"
+        }
+      ],
+      "reference_caveat": "Decoding-lattice combination and weights appear in the reference but cannot be verified from these supplied paragraphs.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Improving the Performance of Neural Machine Translation Involving Morphologically Rich Languages', By how much do they improve the efficacy of the attention mechanism?",
+      "answer": "",
+      "status": "refused",
+      "answerable": false,
+      "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+      "packed_sufficiency": "partial",
+      "answer_quality": "not_applicable",
+      "selected_quote_support": "not_applicable",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "qualitative_improvement_only",
+        "requested_quantity_absent",
+        "justified_refusal"
+      ],
+      "rationale": "The packed evidence offers qualitative improvement in attention lookup but no amount measuring attention efficacy. Refusing to state a numerical amount is justified on this evidence. Clipping removes a translation BLEU improvement and vocabulary-coverage detail, but neither establishes a numerical improvement in the attention mechanism itself.",
+      "evidence_checks": [
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "the reduction in vocabulary size has improved the source sentence lookup by quite an extent"
+        },
+        {
+          "location": "original_paragraph",
+          "evidence_id": "E1",
+          "quote": "improved the performance of neural machine translation by 7.05 BLEU points"
+        }
+      ],
+      "reference_caveat": "The supplied evidence supports only the narrower claim that the requested attention quantity is absent here, not a full-paper unanswerability conclusion.",
+      "refusal_judgment": "justified"
+    },
+    {
+      "question": "In the paper 'Improving the Performance of Neural Machine Translation Involving Morphologically Rich Languages', How were the human judgements assembled?",
+      "answer": "A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation.",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "partial",
+      "selected_quote_support": "supported",
+      "clipping_effect": "material",
+      "diagnostic_tags": [
+        "annotators_only",
+        "available_protocol_omitted",
+        "clipped_ranking_procedure"
+      ],
+      "rationale": "The packed evidence can support an adequate summary covering 50 bilingual annotators, about 100 randomly selected test translations, adequacy, fluency and ranking, and five-point ratings. The answer supplies only who annotated and omits most of the available assembly procedure, although its one claim is fully supported. Clipping additionally removes the exact fluency categories and sentence-level paired ranking with ties; this loses relevant procedural detail but does not explain the omission of details already visible.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E2",
+          "quote": "A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "A collection of samples of about 100 sentences were taken from the test set results for comparison."
+        },
+        {
+          "location": "original_paragraph",
+          "evidence_id": "E2",
+          "quote": "permitting the two translations to have ties in the ranking"
+        }
+      ],
+      "reference_caveat": "The longer reference can be read as placing overall ranking on a five-point scale; the full supplied paragraph instead describes paired rankings permitting ties, while the five-point scales apply to adequacy and fluency.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation', what was the baseline?",
+      "answer": "KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "unsupported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "training_data_as_baseline",
+        "available_model_types_omitted",
+        "citation_role_mismatch"
+      ],
+      "rationale": "E3 explicitly identifies two baseline systems, phrase-based SMT and NMT, so the requested information is present. The answer gives their segmented training texts instead of identifying either model type. Its selected quote supports that those texts are training data, but does not support presenting the data as the baseline systems.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "the training data includes KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "one is use the traditional phrase-based statistical machine translation (SMT), the other one is the NMT system"
+        }
+      ],
+      "reference_caveat": null,
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation', what japanese-vietnamese dataset do they use?",
+      "answer": "Japanese-Vietnamese parallel corpus in the DongDu corpus",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "partial",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "parallel_monolingual_conflation",
+        "unsupported_corpus_attribution",
+        "dataset_description_available"
+      ],
+      "rationale": "The packed text supports a descriptive dataset answer: TED parallel data, plus Vietnamese monolingual VNESEcorpus from DongDu for augmentation. The answer conflates the Japanese-Vietnamese parallel corpus with DongDu, which E1 identifies as the source of monolingual Vietnamese text. The selected quote supports using the Vietnamese part of a parallel corpus but does not support its attribution to DongDu.",
+      "evidence_checks": [
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "we use Vietnamese monolingual data from VNESEcorpus of DongDu"
+        },
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "we use the Vietnamese part of the Japanese-Vietnamese parallel corpus"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "We also built phrase-based systems on the TED data and achieved better BLEU scores when using NMT."
+        }
+      ],
+      "reference_caveat": "The reference name WIT3 is not present in these paragraphs. The TED-data description nevertheless supports a substantive answer without inventing that exact corpus name.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Going Beneath the Surface: Evaluating Image Captioning for Grammaticality, Truthfulness and Diversity', Which existing models are evaluated?",
+      "answer": "LRCN1u model",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "packed_sufficiency": "partial",
+      "answer_quality": "partial",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "one_model_identified",
+        "exhaustiveness_not_established"
+      ],
+      "rationale": "The packed paragraphs name LRCN1u as evaluated and refer generally to multiple existing models, but do not establish a complete model list. The answer correctly names the one visible model and its selected quote directly supports that claim. The clipped abstract ending adds no additional model name, so clipping does not account for the missing list.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E2",
+          "quote": "While performing the evaluation experiments on the LRCN1u model"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "evaluating existing image captioning models"
+        }
+      ],
+      "reference_caveat": "The reference additionally names Show&Tell, which is not independently verifiable from these supplied paragraphs; incompleteness is consistent with, but not established solely by, that reference.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation', To what baseline models is proposed model compared?",
+      "answer": "traditional features, a Doc2vec model",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "packed_sufficiency": "partial",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "unsupported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "features_as_models",
+        "initializer_as_baseline",
+        "baseline_names_absent"
+      ],
+      "rationale": "The packed text describes classic classifiers with TF-IDF inputs and deep models initialized with Doc2vec embeddings, but does not name the compared classifier architectures. The answer mistakes features and an embedding initializer for the requested baseline models. The selected quotes establish that comparisons occurred and explain Doc2vec's initialization role, not that Doc2vec itself was an evaluated baseline; they also omit the sentence about traditional features.",
+      "evidence_checks": [
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "TF-IDF features as the inputs into the classic classifiers"
+        },
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "these word embeddings were applied to initialize deep models and fine-tuned"
+        }
+      ],
+      "reference_caveat": "The individual baseline names listed in the reference are not present in the supplied evidence, so this review cannot independently verify that list.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation', What existing dataset is re-examined and corrected for training?",
+      "answer": "an existing dataset",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "packed_sufficiency": "partial",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "unnamed_dataset",
+        "generic_restatement",
+        "dataset_identity_absent"
+      ],
+      "rationale": "The packed evidence gives the dataset's medical abbreviation task and some training-set characteristics, but never identifies the existing dataset. The answer repeats the indefinite phrase in the question instead of naming or usefully describing the dataset. Its quote supports that a dataset was corrected, while the clipped full-paragraph continuation still does not reveal the dataset's name.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "We re-examine and correct an existing dataset for training"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "the training set which contains 30 abbreviation terms as categories"
+        },
+        {
+          "location": "original_paragraph",
+          "evidence_id": "E1",
+          "quote": "selected from a public abbreviation disambiguation dataset"
+        }
+      ],
+      "reference_caveat": "UM Inventory is supplied only by the reference, not identified in any of the provided paragraphs.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'From English To Foreign Languages: Transferring Pre-trained Language Models', What languages are the model transferred to?",
+      "answer": "French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi)",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "adequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "complete_supported_list"
+      ],
+      "rationale": "E2 explicitly enumerates all six target languages. The answer reproduces that complete list, and its selected quote establishes both the target-language role and every item. No clipped detail is needed for the question.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E2",
+          "quote": "We evaluate our approach for six target languages: French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi)."
+        }
+      ],
+      "reference_caveat": null,
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction', What is the size of this dataset?",
+      "answer": "23,700",
+      "status": "answered",
+      "answerable": true,
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "adequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "correct_total_size"
+      ],
+      "rationale": "The total dataset size is stated explicitly in both E1 and E3, with the in-scope and out-of-scope counts also available. The concise answer gives the requested total, and both selected quotes support it. Adding the unit 'queries' would improve clarity but is not necessary to recover the requested size in context.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E3",
+          "quote": "a new crowdsourced dataset of 23,700 queries"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "The dataset also includes 1,200 out-of-scope queries."
+        }
+      ],
+      "reference_caveat": null,
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'How we do things with words: Analyzing text as social and cultural data', What background do they have?",
+      "answer": "They have a background in analyzing text as social and cultural data, involving defining concepts, using domain experts, and employing computational methods like machine learning algorithms.",
+      "status": "answered",
+      "answerable": false,
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "packed_sufficiency": "ambiguous",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "unsupported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "unclear_person_referent",
+        "methods_as_personal_background",
+        "unsupported_biographical_inference"
+      ],
+      "rationale": "The question leaves 'they' and the intended meaning of background unclear. The evidence describes a research process and examples, not the authors' or another group's personal background. The answer converts those methods into a biographical claim, and the selected quotes do not establish that relationship or include the machine-learning example.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "who are the domain experts, and how have they approached the topic?"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "we take the reader through a typical research process"
+        }
+      ],
+      "reference_caveat": "The unanswerable label is compatible with a biographical reading, but the question's referent is underspecified and only the supplied paragraphs were reviewed.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'How we do things with words: Analyzing text as social and cultural data', What dataset do they use for analysis?",
+      "answer": "",
+      "status": "refused",
+      "answerable": false,
+      "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+      "packed_sufficiency": "ambiguous",
+      "answer_quality": "not_applicable",
+      "selected_quote_support": "not_applicable",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "dataset_scope_ambiguous",
+        "reddit_example_available",
+        "refusal_scope_uncertain"
+      ],
+      "rationale": "The packed evidence discusses a Reddit hate-speech study along with general examples of textual archives, without clearly identifying a single dataset for this article's own analysis. A qualified answer could mention the Reddit example, while a unique named dataset cannot be established. The refusal is therefore unclear rather than unequivocally justified or unjustified, and the clipped continuation provides follow-up discussion rather than a dataset identifier.",
+      "evidence_checks": [
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "For example, the Reddit study on hate speech BIBREF0 raised various follow-up questions"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E3",
+          "quote": "Google Books is frequently used to study cultural patterns"
+        }
+      ],
+      "reference_caveat": "The unanswerable label should not erase the visible Reddit-study context, but that context alone does not identify a unique dataset used for the article's own analysis.",
+      "refusal_judgment": "unclear"
+    },
+    {
+      "question": "In the paper 'Copenhagen at CoNLL--SIGMORPHON 2018: Multilingual Inflection in Context with Explicit Morphosyntactic Decoding', What type of inflections are considered?",
+      "answer": "lemmas and morphosyntactic descriptions (MSD), word forms",
+      "status": "answered",
+      "answerable": false,
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "packed_sufficiency": "ambiguous",
+      "answer_quality": "inadequate",
+      "selected_quote_support": "unsupported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "inflection_scope_ambiguous",
+        "context_inputs_as_inflection_types",
+        "citation_role_mismatch"
+      ],
+      "rationale": "The evidence identifies the task as generating inflected forms from lemmas in context, but 'type of inflections' could instead ask for specific grammatical categories that are not listed. The answer names representations supplied as context rather than types of inflection. Its selected quote explicitly assigns word forms, lemmas and MSD to the context-input role and therefore does not establish the requested role.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "the context is given in terms of word forms, lemmas and morphosyntactic descriptions (MSD)"
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E2",
+          "quote": "The task is to generate an inflected word form given its lemma and the context in which it occurs."
+        }
+      ],
+      "reference_caveat": "The unanswerable label is plausible for specific grammatical inflection categories, but the packed evidence does provide a general task description under a broader reading.",
+      "refusal_judgment": null
+    },
+    {
+      "question": "In the paper 'Automatic Classification of Pathology Reports using TF-IDF Features', What features are used?",
+      "answer": "TF-IDF features",
+      "status": "answered",
+      "answerable": false,
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "packed_sufficiency": "sufficient",
+      "answer_quality": "adequate",
+      "selected_quote_support": "supported",
+      "clipping_effect": "not_demonstrated",
+      "diagnostic_tags": [
+        "direct_feature_evidence",
+        "unanswerable_label_conflict"
+      ],
+      "rationale": "The packed text directly states that TF-IDF features are extracted from reports and used to train classification models. The answer identifies those features, and its E1 quote establishes their actual use. Clipping affects later keyword-highlighting details rather than the feature identity asked for.",
+      "evidence_checks": [
+        {
+          "location": "selected_quote",
+          "evidence_id": "E1",
+          "quote": "For the first experiment series, training reports are pre-processed, then their TF-IDF features are extracted."
+        },
+        {
+          "location": "packed",
+          "evidence_id": "E1",
+          "quote": "The TF-IDF features and the training labels are used to train different classification models."
+        }
+      ],
+      "reference_caveat": "The unanswerable label conflicts with explicit packed evidence answering the question; no full-paper inference is required to identify TF-IDF features.",
+      "refusal_judgment": null
+    }
+  ]
+}
