@@ -10,6 +10,14 @@ MAX_NEW_TOKENS = 384
 MAX_INPUT_TOKENS = 2048
 TIMEOUT_SECONDS = 30
 CALL_LIMIT = 32
+LIMITS = {"calls": CALL_LIMIT, "max_new_tokens": MAX_NEW_TOKENS, "reserved_tokens": 12288}
+ALLOWANCE = {
+    "attempts": 1,
+    "generation_calls": CALL_LIMIT,
+    "reserved_output_tokens": 12288,
+    "worker_deadline_seconds": 1200,
+    "external_spend_usd": 0,
+}
 
 
 def previous():
