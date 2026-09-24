@@ -46,3 +46,12 @@ The user subsequently approved the exact fixed-input GPU generation snapshot.
 actual tokens and 50.750 seconds of worker time. All eight development conditions
 pass; the single allowance is consumed. It does not authorize further inference,
 training, final-test access or deployment.
+
+The user subsequently approved the exact complete-answer snapshot with "aproved".
+[Authorization](../reports/grounded-answer-authorization.json) and
+[verified results](../reports/grounded-answer-development.md) record one RTX 4090
+attempt: 32 calls, 3,443 actual tokens, 12,288 reserved tokens, 176.969 seconds and
+$0 external spend. The quality gate fails; ten outputs violate the answer contract.
+This allowance is consumed. Saved-result verification and reporting made no new
+model calls. Any further training or inference needs a new prepared and approved
+allowance; the unused final test remains outside this authorization.

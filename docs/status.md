@@ -10,7 +10,7 @@ production-ready or fully complete.
 | 1. Corpus and reproducible data | Verified | 191 papers, 5,908 paragraphs, byte-identical rebuild and frozen selection |
 | 2. Labels and baselines | Verified | 200/50/100 human-labeled questions; baselines; 36 dev failures inspected |
 | 3. Adaptation | Verified | 50/100/200 learning curve, hard/random ablation, three seeds, reload parity and failed-run retention |
-| 4. Grounded answers | Latest development gate passed; acceptance incomplete | Fixed-input GPU candidate F1 .1236 versus constrained .0754, zero failures, 3/12 unanswerable answers; F1 interval includes zero; human support review and fresh final evaluation remain pending |
+| 4. Grounded answers | Latest complete-answer gate failed; acceptance incomplete | Complete-answer F1 .1438, 10 failures, 5/12 unanswerable answers; saved 7B span candidate retains its earlier gate pass; human support review and fresh final evaluation remain pending |
 | 5. Deployment | Verified locally | Five routes, real answer/refusal, DB outage, rollback, concurrency, fresh environment, 50-query Linux parity |
 | 6. MLE focus | Verified within local scope | Controlled hard negatives, exact mining cache, three-seed sensitivity and failure analysis; agent deferred |
 | 7. Final evaluation / portfolio | Verified experimental handoff | Five-system ranking, 100-question answers, restored artifact bundle and recorded API demo; human claim audit remains missing |
@@ -340,7 +340,7 @@ The user's requested review is finished, with no new model calls, training or
 final-test access. Future preparation can address answer selection and completeness;
 any new model experiment still requires a concrete proposal and fresh approval.
 
-## Complete-answer comparison — prepared; execution awaits approval
+## Complete-answer comparison — completed; not promoted
 
 - [x] Implement complete-answer JSON and exact source-body quotation validation.
 - [x] Keep worker inputs free of old answers, references and annotation labels.
@@ -348,10 +348,23 @@ any new model experiment still requires a concrete proposal and fresh approval.
 - [x] Verify 26 new synthetic checks and all 170 software tests, including PostgreSQL.
 - [x] Fix the code-review finding binding baseline selection to the verified prior run.
 - [x] Verify cached source/model/runtime artifacts and 32 payloads without inference.
-- [ ] Obtain new explicit approval for the single bounded GPU attempt.
+- [x] Obtain new explicit approval and execute the single bounded GPU attempt.
+- [x] Independently recompute saved results and diagnose all ten validation failures.
+- [x] Preserve all 19 emitted answers in a separate review packet.
 
 [Proposal](grounded-answer-proposal.md), [runner](grounded-answer-runner.md) and
-[readiness](../reports/grounded-answer-readiness.json) describe one 32-call,
-12,288-token, 20-minute experiment at $0 external spend. Exact quotes prove source
-presence only. No generated-answer quality claim, training, new inference, service
-change or final-test access occurred. Phase 4 is still incomplete.
+[readiness](../reports/grounded-answer-readiness.json) preserve the frozen preparation.
+[Verified results](../reports/grounded-answer-development.md): 19 answers, 21 refusals,
+10 failures; F1 .143765 versus .123578, citation-ID precision .347826 versus .458333,
+and five versus three answers to unanswerable questions. Six of eleven conditions
+pass; the candidate is not promoted. The F1-gain interval [-.048272, .086372]
+includes zero and is descriptive on repeatedly used development data.
+
+One attempt used 32 calls, 3,443 actual output tokens, 12,288 reserved tokens and
+176.969 seconds of worker time at $0 external spend. Seven failures violate quote
+requirements and three have malformed JSON; no runtime failure or timeout occurred.
+The allowance is consumed. No retry, training, service change or final-test access
+occurred. The 170-test preparation result is historical and was not rerun here.
+The next engineering work is to design a simpler auditable citation output while
+addressing answer completeness; it needs a new proposal before any model run.
+Independent human review and Phase 4 acceptance remain incomplete.

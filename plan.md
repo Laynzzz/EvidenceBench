@@ -667,3 +667,15 @@ gap was fixed with a regression test. Read-only preflight passes without inferen
 One attempt of at most 32 calls/12,288 reserved tokens/20 minutes/$0 external spend
 requires fresh approval. Serving, frozen labels, independent-human acceptance and
 the unused final test remain unchanged.
+
+The subsequently approved [complete-answer run](reports/grounded-answer-development.md)
+completed and verified, but failed five of eleven conditions. F1 is .143765 versus
+.123578; ten outputs fail validation, citation-ID precision declines to .347826,
+and answers to unanswerable questions rise from three to five. The paired descriptive
+F1-gain interval [-.048272, .086372] includes zero. One RTX 4090 attempt used 32 calls,
+3,443 actual output tokens and 176.969 seconds at $0 external spend. The allowance
+is consumed and the candidate is not promoted. All ten failures are documented;
+all 19 emitted answers have a review packet. No independent human review or fresh
+final-test evaluation occurred. Phase 4 remains incomplete. A future experiment
+should separate reliable citation formatting from useful, complete answers and
+must receive its own prepared scope and explicit approval before model execution.

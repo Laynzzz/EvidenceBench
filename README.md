@@ -160,9 +160,12 @@ These are assistant judgments on emitted development answers, not independent
 human labels. Source copying often misses the requested information; original
 scores and benchmark labels remain unchanged. The candidate remains development-only.
 
-A [complete-answer comparison](docs/grounded-answer-proposal.md) is prepared using
-the same 7B model and saved evidence, with up to 80-word answers and exact supporting
-quotations. Quote presence is checked separately from semantic correctness. All
-170 software tests pass, including PostgreSQL. Its [runner](docs/grounded-answer-runner.md)
-requires new approval for one 32-call, 20-minute local attempt; no new model run has
-occurred. [Readiness](reports/grounded-answer-readiness.json) binds the exact snapshot.
+The [complete-answer comparison](reports/grounded-answer-development.md) completed
+and failed five of eleven development conditions. F1 rose from .1236 to .1438,
+but failures increased from zero to ten, citation-ID precision fell from .4583 to
+.3478, and answers to unanswerable questions rose from three to five. The F1-gain
+interval includes zero. One approved RTX 4090 attempt used 32 calls and 176.969
+seconds at $0 external spend. It is not promoted; the allowance is consumed.
+The [runner](docs/grounded-answer-runner.md) supports read-only saved-result checks.
+The preparation's 170 passing software tests are distinct from model quality.
+Final test and independent human semantic acceptance remain pending.

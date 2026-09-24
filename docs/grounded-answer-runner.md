@@ -2,7 +2,10 @@
 
 This is an experimental answer protocol on saved development evidence. The
 [proposal](grounded-answer-proposal.md) defines all changes, gate conditions and
-limits. No real attempt or authorization is supplied during preparation.
+limits. The single approved attempt has now completed and its allowance is consumed.
+The [results](../reports/grounded-answer-development.md) fail five of eleven quality
+conditions. Use saved-result verification below; execution instructions describe
+the historical run and do not authorize another attempt or deletion of its ledger.
 
 ## Read-only preflight
 
@@ -17,7 +20,7 @@ This verifies the completed predecessor runs, frozen source/data/results, cached
 payloads. It loads no model and generates no answers. The printed snapshot hash
 must match `reports/grounded-answer-readiness.json` before execution.
 
-## Approval and execution
+## Historical approval and execution
 
 After the user explicitly approves that exact snapshot, record a new
 `reports/grounded-answer-authorization.json` with `status: approved`,
@@ -61,4 +64,4 @@ rows separately from prior end-to-end serving latency.
 
 These use fabricated passages and an injected synthetic generator. They do not
 load a model, establish answer quality or consume an experiment allowance. The
-preparation record distinguishes this evidence from a future real run.
+preparation record distinguishes this evidence from the completed real run.
