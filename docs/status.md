@@ -402,3 +402,21 @@ but focused inspection finds wrong numerical attribution, incomplete fragments a
 nonresponsive answers. Phase 4 and independent human semantic acceptance remain
 incomplete. The next offline analysis should address evidence sufficiency and
 claim attribution, including refusals; any new model run needs fresh approval.
+
+## Saved evidence diagnosis — completed without inference
+
+- [x] Trace all 50 cases through retrieval, top-three selection, packing and citation.
+- [x] Review all 32 supplied-evidence inputs, including both model refusals.
+- [x] Check 72 quoted excerpts and preserve reference/scope conflicts without rescoring.
+- [x] Fix two audit edge cases; pass 13 audit tests and all 207 software tests.
+
+[Audit](../reports/span-id-evidence-audit.md): 37 of 38 answerable queries have
+retrieved gold, 23 have top-three gold, 17 receive gold and 14 cite gold. These are
+annotation-ID facts, not semantic quality. Clipping affects 25 of 96 passage
+occurrences; assistant review finds useful omitted facts in four cases. Sixteen
+inputs are judged sufficient but only seven corresponding answers adequate.
+The non-blinded assistant review does not replace independent human review; the
+NCEL packed-only rating retains the prior full-paper overclaim caveat. Labels,
+gates, frozen outputs and the final test remain unchanged. Next prepare an
+intact-paragraph comparison within a checked context budget; no model call is
+authorized by this diagnosis.

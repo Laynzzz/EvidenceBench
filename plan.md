@@ -703,3 +703,12 @@ Focused source inspection still finds factual misattribution and incomplete answ
 All 30 emitted answers are preserved for semantic review. Next analyze evidence
 sufficiency, clipping and claim attribution from saved artifacts before another
 experiment; any additional model work requires a new prepared and approved scope.
+
+The [saved evidence audit](reports/span-id-evidence-audit.md) is complete. It traces
+all 50 cases and provides non-blinded assistant review of all 32 generator inputs.
+Clipping removes useful facts in four cases, while nine of 16 inputs judged
+sufficient still produce non-adequate answers. These are separate evidence-delivery
+and answer-selection problems. All 207 software tests pass, including PostgreSQL;
+no new inference or final-test access occurred. Prepare a controlled intact-paragraph
+comparison next, preserving the paragraph roster, threshold decisions and answer
+contract. Fresh execution approval and independent human acceptance remain required.

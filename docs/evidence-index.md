@@ -280,3 +280,20 @@ Focused assistant observations identify numerical misattribution, clipped fragme
 and nonresponsive answers; no full semantic score or independent human review is
 claimed. One attempt consumed 962 actual output tokens and 60.656 seconds at $0
 external spend. No retry, training or final-test access occurred.
+
+## Saved span-ID evidence diagnosis
+
+[Narrative audit](../reports/span-id-evidence-audit.md),
+[mechanical facts](../reports/span-id-evidence-audit.json) and
+[assistant case review](../reports/span-id-evidence-review.json) separate gold-ID
+delivery, string clipping, input sufficiency and claim support. All 50 rows are
+traced; 32 supplied-evidence cases are reviewed, with 72 exact excerpts verified.
+The assistant labels are non-blinded diagnostic judgments, not human acceptance.
+Original-paragraph tails diagnose clipping only; prior full-paper caveats remain.
+
+Audit revision `05d7d01`: 13 synthetic audit tests and 207 total software tests pass,
+with real PostgreSQL and two existing deprecation warnings. The saved audit
+recomputes exactly with `scripts/audit_span_id_evidence.py --verify`; the review
+verifier checks source/reviewer hashes, roster, answers, excerpts and counts.
+Negative checks reject fabricated excerpts, duplicate cases, altered counts and
+changed source hashes. No model run, final-test access, rescore or promotion occurred.
