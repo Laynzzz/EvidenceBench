@@ -469,6 +469,8 @@ limit. The full suite passes (267 passed; the real PostgreSQL integration test w
 skipped), Ruff lint/format and the targeted mypy check pass. No model weights were
 loaded and no inference or training occurred. PostgreSQL integration remains
 blocked: Docker's Linux engine is unavailable, no PostgreSQL service is installed,
-port 5432 is unreachable and no test database URL is configured. The existing
+port 5432 is unreachable and no test database URL is configured. Docker Desktop
+was launched during this preparation, but `docker info` and `docker ps` still
+cannot find the Linux-engine endpoint. The existing
 deployed CPU release, public API, frozen labels/scores and reserved final test remain
 unchanged.

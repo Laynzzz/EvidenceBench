@@ -386,3 +386,7 @@ test; rerunning in the repository's UTF-8 mode passed without a code change.
 passed. Docker's Linux engine is unreachable, no PostgreSQL Windows service is
 installed, and local port 5432 is closed, so the real database check remains
 unverified. No experiment, training, final-set access or deployment occurred.
+Docker Desktop was then opened from the installed app. Its Linux-engine endpoint
+still did not become available: `docker info` and `docker ps` both failed with
+“The system cannot find the file specified.” No integration test was run against a
+mock in place of PostgreSQL.
