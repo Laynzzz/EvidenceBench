@@ -240,6 +240,12 @@ separate readiness freeze and approval, plus the cached development units file. 
 uses only the first three paragraphs from each saved development ranking; it does
 not rerun retrieval or ranking. The 18 previously cutoff-blocked questions are
 reported separately. Use the proposal and cycle protocol for limits and interpretation.
+If these safeguards pass in a future verified A run, use
+`scripts/run_claim_grounded_no_cutoff.py` for B's preflight, readiness freeze,
+approved execution and verification. This B-only entry point records latency for the
+actual supplied calls and adds its own code to B's source snapshot, leaving A's
+already frozen runner and verification unchanged. The current A result fails its
+safeguards, so B remains skipped.
 
 To independently reconstruct the existing A predictions and metrics without
 inference, use the preflight arguments above and add `--verify`. This checks the

@@ -741,6 +741,12 @@ it was skipped after A produced 28 output failures and only four answers. The ac
 result is [reported here](../reports/claim-grounded-development.md), with the full
 [32-case assistant audit](../reports/claim-grounded-answer-review.json).
 
+Experiment B has its own entry point in `scripts/run_claim_grounded_no_cutoff.py`.
+It adds the B-only latency scope and includes its own source hash in a B readiness
+snapshot. This keeps the frozen A runner byte-for-byte unchanged, so A's saved run
+continues to verify against the code that produced it. B remains unavailable until
+all four predeclared A safeguards pass.
+
 **What this milestone lets you inspect:** a claim-to-span output contract, its
 deterministic adapter to the existing API-shaped answer, and how strict output
 validation affects coverage. **Where it fits:** the offline generator and evaluation

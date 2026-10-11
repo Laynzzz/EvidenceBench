@@ -15,6 +15,15 @@ def load_runner():
     return module
 
 
+def load_no_cutoff_wrapper():
+    path = Path("scripts/run_claim_grounded_no_cutoff.py")
+    assert path.is_file(), "no-cutoff experiment wrapper is not implemented"
+    spec = importlib.util.spec_from_file_location("claim_grounded_no_cutoff_test", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def baseline_rows():
     rows = []
     for i in range(50):
@@ -223,6 +232,67 @@ def test_experiment_b_requires_all_four_prespecified_safeguards(candidate, expec
     runner = load_runner()
 
     assert runner.eligible_for_experiment_b(candidate) is expected
+
+
+def test_experiment_b_latency_scope_reports_all_50_supplied_evidence_calls(monkeypatch):
+    wrapper = load_no_cutoff_wrapper()
+    runner = wrapper.runner
+    candidate = [{"query_id": f"q{i}", "status": "answered", "answerable": True} for i in range(50)]
+    decisions = [
+        {
+            "query_id": f"q{i}",
+            "generation_calls": 1,
+            "elapsed_ms": 10.0,
+            "output_tokens": 5,
+        }
+        for i in range(50)
+    ]
+    monkeypatch.setattr(runner, "answer_metrics", lambda _rows: {"p50_ms": 10, "p95_ms": 10})
+    monkeypatch.setattr(runner, "development_gate", lambda *_args: {})
+    monkeypatch.setattr(runner, "eligible_for_experiment_b", lambda _metrics: False)
+    monkeypatch.setattr(runner, "_paired_bootstraps", lambda *_args: {})
+    baseline_metrics = {
+        key: {}
+        for key in (
+            "control",
+            "baseline",
+            "candidate",
+            "saved_7b_baseline",
+            "saved_span_id_baseline",
+        )
+    }
+
+    result = wrapper.score_candidate(
+        candidate,
+        [],
+        decisions,
+        {"calls": 50},
+        {"elapsed_seconds": 1.0},
+        {"metrics": baseline_metrics},
+    )
+
+    assert result["candidate"]["generation_latency_ms"]["scope"] == (
+        "50 supplied-evidence calls; excludes model loading and historical refusals"
+    )
+
+
+def test_no_cutoff_wrapper_is_hashed_only_for_experiment_b():
+    runner = load_runner()
+    wrapper = load_no_cutoff_wrapper()
+    wrapper_path = Path("scripts/run_claim_grounded_no_cutoff.py")
+
+    assert wrapper_path not in runner.SOURCE_PATHS
+    assert wrapper_path in wrapper.runner.SOURCE_PATHS
+
+
+def test_no_cutoff_wrapper_help_only_advertises_experiment_b(capsys):
+    wrapper = load_no_cutoff_wrapper()
+
+    with pytest.raises(SystemExit) as raised:
+        wrapper.main(["--help"])
+
+    assert raised.value.code == 0
+    assert "--experiment {B}" in capsys.readouterr().out
 
 
 def test_no_cutoff_payloads_use_saved_top_three_complete_dev_paragraphs_for_all_50():
