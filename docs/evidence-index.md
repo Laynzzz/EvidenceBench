@@ -358,9 +358,8 @@ occurred.
 
 ### Preparation verification — 2026-10-10
 
-On branch `codex/bounded-improvement-cycle`, the read-only A preflight ran against
-the working tree based on `b94638f`; that runner and label-alignment fix were then
-committed as `eaa5722`. The preflight verified the frozen baseline and fresh-
+On branch `codex/bounded-improvement-cycle`, the final read-only A preflight ran
+after preparation commit `5797ffe`. It verified the frozen baseline and fresh-
 development label roster by query ID, then used the pinned offline CUDA runtime's
 local tokenizer.
 
@@ -371,10 +370,12 @@ python -X utf8 scripts/run_claim_grounded.py `
 ```
 
 All 32 exact prompts measured 525–1,286 input tokens, below the 2,048 limit. The
-preflight reserved 32 calls/12,288 output tokens and recorded `model_calls: 0`; it
-loaded no model weights. The source snapshot hash from that pre-documentation run
-is intentionally not frozen because the final preparation documents changed after
-inspection; rerun preflight before freezing readiness.
+preflight output was `ready_for_authorization` with snapshot SHA-256
+`4377bad5ddd52df255c8c4e5d1160b1231a89d525fab3ebb62e322494875e512`, 32 calls,
+12,288 reserved output tokens, a 1,200-second deadline and `model_calls: 0`. The
+artifact root, readiness record and approval receipt did not exist; it loaded no
+model weights. Readiness is not frozen until the required PostgreSQL integration
+check is complete.
 
 `python -X utf8 -m pytest -q`: 267 passed, one skipped, two dependency deprecation
 warnings. The skipped test is the real PostgreSQL integration test because
