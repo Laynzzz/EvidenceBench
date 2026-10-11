@@ -37,7 +37,15 @@ ml = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=8,<10", "ruff>=0.11,<1", "mypy>=1.15,<2", "types-PyYAML>=6,<7", "reportlab>=4,<5"]
+dev = [
+  "pytest>=8,<10",
+  "ruff>=0.11,<1",
+  "mypy>=1.15,<2",
+  "types-PyYAML>=6,<7",
+  "reportlab>=4,<5",
+  "huggingface-hub>=0.34,<2",
+  "torch==2.14.0",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
