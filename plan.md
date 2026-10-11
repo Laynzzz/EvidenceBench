@@ -735,3 +735,11 @@ One attempt used 32 calls, 1,020 actual tokens and 63.547 seconds at $0 external
 spend. Its allowance is consumed. The candidate is not promoted; Phase 4 and
 independent human review remain incomplete. Use saved failures to design better
 claim attribution and multi-part citation coverage before any new compute proposal.
+
+## Cycle 4 — bounded claim-grounded improvement cycle (implementation in progress)
+
+The verified intact-paragraph candidate reaches .240186 F1 but fails three of twelve gates: six benchmark-unanswerable answers, one invalid output, and .400000 citation-ID precision. The deployed CPU pipeline remains unchanged. The frozen [cycle 4 protocol](docs/answer-improvement-cycle4.md), [proposal](docs/claim-grounded-proposal.md), and [32-case assistant review](reports/claim-grounded-input-review.json) target those failures. The review is non-blinded diagnostic evidence, preserves the TF-IDF answerability conflict separately, and changes no frozen labels or scores.
+
+Experiment A is limited to one RTX 4090 BF16 attempt with 32 calls, 12,288 reserved output tokens, 20 minutes and $0 external spend. Experiment B is a separate 50-call/19,200-token/30-minute/$0 attempt and may be prepared only if A has zero failures, no more than three unanswerable answers, citation precision at least .458333 and at least 20 answers. Each needs its own explicit approval. No model run or training is authorized by the plan alone; the 100-question final set, public API and deployment are unchanged.
+
+The contract, A/B runner and synthetic checks are implemented on `codex/bounded-improvement-cycle`. Tokenizer-only inspection measured all 32 A prompts at 525–1,286 tokens (limit 2,048). The full suite passes with real PostgreSQL integration enabled (268 passed); Ruff lint/format and targeted mypy checks pass. Docker Desktop's stale socket-only runtime directories were preserved under recovery names, and its Linux engine is healthy. The pre-existing PostgreSQL volume and its credentials were preserved; the DB container is stopped after the check. No model weights, inference or training have been run. Freeze the exact A readiness snapshot before requesting its separate explicit approval. Phase 4 and independent human acceptance remain incomplete.

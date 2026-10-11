@@ -367,10 +367,13 @@ ml = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "huggingface-hub" },
     { name = "mypy" },
     { name = "pytest" },
     { name = "reportlab" },
     { name = "ruff" },
+    { name = "torch", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'linux'" },
+    { name = "torch", version = "2.14.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "sys_platform == 'linux'" },
     { name = "types-pyyaml" },
 ]
 
@@ -401,10 +404,13 @@ provides-extras = ["ml"]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "huggingface-hub", specifier = ">=0.34,<2" },
     { name = "mypy", specifier = ">=1.15,<2" },
     { name = "pytest", specifier = ">=8,<10" },
     { name = "reportlab", specifier = ">=4,<5" },
     { name = "ruff", specifier = ">=0.11,<1" },
+    { name = "torch", marker = "sys_platform != 'linux'", specifier = "==2.14.0" },
+    { name = "torch", marker = "sys_platform == 'linux'", specifier = "==2.14.0", index = "https://download.pytorch.org/whl/cpu" },
     { name = "types-pyyaml", specifier = ">=6,<7" },
 ]
 

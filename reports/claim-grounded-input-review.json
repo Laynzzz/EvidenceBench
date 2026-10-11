@@ -1,0 +1,1022 @@
+{
+  "artifact_version": 1,
+  "review_scope": "All 32 saved intact-paragraph generator inputs and corresponding raw outputs; supplied context only.",
+  "reviewer": "Assistant diagnostic review; non-blinded and not an independent human evaluation.",
+  "reviewed_at_utc": "2026-10-10",
+  "blindness_note": "The reviewer had access to earlier benchmark reports and label-conflict notes. Per-case rationales use the supplied input passages; this review does not replace human acceptance.",
+  "rubric": {
+    "scale": "0=inadequate or unsupported; 1=partial, indirect or needs qualification; 2=adequate/direct within supplied context.",
+    "responsiveness": "Does the response address the requested subject, attribute and relationship?",
+    "completeness": "Does it include the material detail requested without unnecessary expansion?",
+    "claim_support": "Are the response claims supported by the supplied passages?",
+    "attribution": "Are numbers, methods, datasets, definitions, models and features assigned to the right roles?",
+    "refusal_appropriateness": "Could the requested fact be answered directly from supplied evidence (2), only with qualification (1), or should the model refuse for lack of support (0)? For a structurally failed output, judge whether its semantic content would have been answerable if valid."
+  },
+  "source_run": {
+    "run_id": "20260924T210922Z-e266a7a622",
+    "manifest_sha256": "336664414fcbbaf68c190e08981059b228c9a045effcf8c36e598f39cd2bbc15",
+    "inputs_sha256": "9682a9147132bc30cef61db3a8a7994a88989b4169c7b8e4ee4bdbf675739850",
+    "predictions_sha256": "b00ef90d14045ed2d9b94d757c57699ec08677a0f7234518dce917786728ee5b",
+    "input_count": 32,
+    "generation_calls": 32,
+    "successful_answers": 31,
+    "output_failures": 1
+  },
+  "annotation_conflicts": [
+    {
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "frozen_benchmark_answerability": "unanswerable",
+      "review_observation": "The supplied passage explicitly says training TF-IDF features are extracted and used with labels to train classifiers; assistant review judges the response supported by the provided evidence.",
+      "action": "Preserve the frozen label, prediction and score; do not resolve by rescoring this experiment."
+    }
+  ],
+  "evidence_ambiguities": [
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "note": "Supplied paragraphs state both 3,453 and 3,543 corpus examples; retain the discrepancy."
+    },
+    {
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "note": "The supplied abstract-level conclusion is broader than table-level findings noted in the prior full-paper audit; distinguish source wording from paper-wide correctness."
+    }
+  ],
+  "cases": [
+    {
+      "query_id": "dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",
+      "question": "In the paper 'Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System', What type of system does the baseline classification use?",
+      "output_status": "answered",
+      "reviewed_response": "support vector machines with radial basis function kernel",
+      "raw_output_sha256": "34d0fdb1b7dd4698e14f5da153f96a8cca1cffff06788381906b776acd0c8ea1",
+      "input_sha256": "334865cd91d822511e32e0752c0d308017d096932efe9fbd62d5e79133b33346",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "73ef08cee3d541066bd8a40bb48e6ede4b0030669bf08e9312a3664c50659f2b"
+      ],
+      "cited_span_ids": [
+        "E1.S5",
+        "E1.S6"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Names the RBF-kernel SVM baseline; the supplied paragraph directly reports it as best-performing.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",
+      "question": "In the paper 'Humor Detection in English-Hindi Code-Mixed Social Media Content : Corpus and Baseline System', What experiments were carried out on the corpus?",
+      "output_status": "answered",
+      "reviewed_response": "10-fold cross validation on 3543 code-mixed tweets was carried out by dividing the corpus into 10 equal parts with nine parts as training corpus and rest one for testing.",
+      "raw_output_sha256": "f7af2533ea3d31c8f93f947f4cebef60ad7bd69cd2af1cbc84090e6812e4a450",
+      "input_sha256": "2267c3ee7e664630ecbe870c90ae91477eb9d0cb118e920bc3cdafdab9c75936",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "e368501d32ed3457935de46fa33983fc33dfdc21368e35537767d90f435f8d81"
+      ],
+      "cited_span_ids": [
+        "E3.S1"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Gives the ten-fold split, but omits grid-search/model comparisons and the supplied paper excerpts conflict on corpus size (3,453 versus 3,543).",
+      "cited_parent_passage_aliases": [
+        "E3"
+      ]
+    },
+    {
+      "query_id": "114934e1a1e818630ff33ac5c4cd4be6c6f75bb2",
+      "question": "In the paper 'Neural Collective Entity Linking', How effective is their NCEL approach overall?",
+      "output_status": "answered",
+      "reviewed_response": "NCEL outperforms the state-of-the-art collective methods across five different datasets.",
+      "raw_output_sha256": "181f374c6779d35740280e5d29efcb72d98d67d63807a16e3a08bf0bf8e9012b",
+      "input_sha256": "a8d15362ca0b20d321d48e62f258cef4fd0d30b7c8e3ce575afe63bf765b91cf",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "44f4ac2694aca983869722da7de8fdce9e758a7d6f313ca42a6157edd6084871"
+      ],
+      "cited_span_ids": [
+        "E2.S4"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Repeats the abstract-level five-dataset superiority claim; a prior full-paper audit records contrary table-level qualifications, so an overall answer needs that caveat.",
+      "cited_parent_passage_aliases": [
+        "E2"
+      ]
+    },
+    {
+      "query_id": "1beb4a590fa6127a138f4ed1dd13d5d51cc96809",
+      "question": "In the paper 'A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks', What are the network's baseline features?",
+      "output_status": "answered",
+      "reviewed_response": "features extracted from the pre-trained models",
+      "raw_output_sha256": "f5120fed18fd6beb09fba405a7d61956725a257686e7be53c62c38a919a1ad9a",
+      "input_sha256": "ba3258555c594132a25340af6f529ec5e7014426e9e418db92ef1440336d66c7",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "4c44f96a6d1dff7f8a791ff94e60949c02c595ea951a1564172847b68d54daff"
+      ],
+      "cited_span_ids": [
+        "E1.S1"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "The cited paragraph supports pretrained-model features, but the answer does not identify the feature/model distinction or specify the requested baseline feature set.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "question": "In the paper 'A Deeper Look into Sarcastic Tweets Using Deep Convolutional Neural Networks', What are the state of the art models?",
+      "output_status": "answered",
+      "reviewed_response": "CNN-SVM on the baseline + sentiment + emotion + personality feature set",
+      "raw_output_sha256": "25b19666b40fb0838865dfaccfb3a10263a220204925da8d67b1965245a33939",
+      "input_sha256": "e625cd5ec4f80ef172911a75b5d98eaff8b131f4c1852ccbde929e87a9287ab8",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "16acd0fda96cf58d4630fd1cdaf9794a2f8c26a8577c30fba386f5273cec8efe"
+      ],
+      "cited_span_ids": [
+        "E2.S6"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 1,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Reports a proposed CNN-SVM feature combination as a state-of-the-art model; the excerpts do not name the comparator models and the answer misses that distinction.",
+      "cited_parent_passage_aliases": [
+        "E2"
+      ]
+    },
+    {
+      "query_id": "58c6737070ef559e9220a8d08adc481fdcd53a24",
+      "question": "In the paper 'Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets', What measures are used for evaluation?",
+      "output_status": "answered",
+      "reviewed_response": "correct classification rate (CCR)",
+      "raw_output_sha256": "244b4f4c4a0b26bc5042e8640a04d531155795195a0c1bcaddb54c4b133a21c8",
+      "input_sha256": "b8e86242c0c22bd972ce2982fb871b49f2833d07558b6bc08e1d5686f81a008c",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "5f47870252ed44c727275bba11d6ee17dbe98dd4f1871b4ae8802921ae524cfb"
+      ],
+      "cited_span_ids": [
+        "E3.S1"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Correctly gives CCR, but omits that the paper defines it separately for sentiment classification and NER.",
+      "cited_parent_passage_aliases": [
+        "E3"
+      ]
+    },
+    {
+      "query_id": "9b7655d39c7a19a23eb8944568eb5618042b9026",
+      "question": "In the paper 'Performance Comparison of Crowdworkers and NLP Tools onNamed-Entity Recognition and Sentiment Analysis of Political Tweets', Which toolkits do they use?",
+      "output_status": "answered",
+      "reviewed_response": "BIBREF17 and BIBREF18",
+      "raw_output_sha256": "14bdac0572acfd54663d8cbfd9bfc949e6d1bbf7087b7f6ee9d7350fa11ad131",
+      "input_sha256": "3687f1d8159cdd45a8241033c90af4a93468b9eba711640a2f9818704d17230d",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "08096ee5c3e269ddcd6f75076cf4254014ed736efb1affef1526e23be2eacf9d"
+      ],
+      "cited_span_ids": [
+        "E2.S1"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 0,
+        "claim_support": 1,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Returns unresolved BIBREF placeholders rather than toolkit names; the input supports that two commercial APIs were selected but cannot identify them.",
+      "cited_parent_passage_aliases": [
+        "E2"
+      ]
+    },
+    {
+      "query_id": "55569d0a4586d20c01268a80a7e31a17a18198e2",
+      "question": "In the paper 'Zero-shot Reading Comprehension by Cross-lingual Transfer Learning with Multi-lingual Language Representation Model', what does the model learn in zero-shot setting?",
+      "output_status": "answered",
+      "reviewed_response": "In the zero-shot setting, the model learns to perform reading comprehension tasks in languages it was not explicitly trained on.",
+      "raw_output_sha256": "dffca9dcf8d1aec336f8464d14013db9efeb4bade4121b57d51b188fad25fb4d",
+      "input_sha256": "d32edc2d7383ba9446bab76c99aea3c7e96b512c29d14e55aa6611e8f26efa85",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "bd243581a2e6d6378e25db83bd0fa612db3eb658194caaae32f46fcee9c9b6c3"
+      ],
+      "cited_span_ids": [
+        "E2.S1"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 1,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Gives a generic definition of zero-shot transfer, not the paper-specific result; the supplied text says the study tests multi-BERT on reading comprehension.",
+      "cited_parent_passage_aliases": [
+        "E2"
+      ]
+    },
+    {
+      "query_id": "b1ce129678e37070e69f01332f1a8587e18e06b0",
+      "question": "In the paper 'Sentiment Analysis of Twitter Data for Predicting Stock Market Movements', What dataset is used to train the model?",
+      "output_status": "answered",
+      "reviewed_response": "Microsoft stock price data",
+      "raw_output_sha256": "7f8f196978a8a6a8f9a9500acd3835259d5967cfb537dec2f0085af130160254",
+      "input_sha256": "a498fb327e5f55e7e988c14711cd4c72b29c4d582ca2ace64bcc2dccfaa99140",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "2f02f978d7a3380cdd6036c8a8998e307f6ebd1a2a897fbaeb230617769c7530"
+      ],
+      "cited_span_ids": [
+        "E1.S1"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Microsoft stock-price labels are named, but the training input also combines aggregated Twitter sentiment features; the answer blurs the full dataset/task setup.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "2ee715c7c6289669f11a79743a6b2b696073805d",
+      "question": "In the paper 'Automated News Suggestions for Populating Wikipedia Entity Pages', What baseline model is used?",
+      "output_status": "answered",
+      "reviewed_response": "salience-based features by Dunietz and Gillick",
+      "raw_output_sha256": "938e5fe8fde62c20ba1baca5b5f9300fea2f616c6f5c1e75339ca375955600b2",
+      "input_sha256": "bfbb1f8267dae50535688fd6dbf1b2fdae757ffedfddb5253f956c0c74d28e56",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "63446954c95a94c941b01c0d74760738b8647bcbc4ca2e0611daef04a996bfb7"
+      ],
+      "cited_span_ids": [
+        "E1.S2"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Names the salience-feature first baseline, while a second title-match baseline is also present in supplied evidence.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "question": "In the paper 'Automated News Suggestions for Populating Wikipedia Entity Pages', What features are used to represent the novelty of news articles to entity pages?",
+      "output_status": "answered",
+      "reviewed_response": "the novelty of an article w.r.t the already existing entity profile, measured by the KL divergence between the language model of the article and articles in the entity page, combined with the entity overlap.",
+      "raw_output_sha256": "da80d0f20caeb8737f127061a944aa3a4dd79a8b0283ba4a7fe6d18e27361104",
+      "input_sha256": "cc42abda6a7f163ba697652992566b704b265a2ac374ab8435879ec5e9b63369",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "3ad76c37380c3256df0fd4407c066e137b2a7eea62016718d2b21b7e921ab679"
+      ],
+      "cited_span_ids": [
+        "E2.S1",
+        "E2.S2"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Accurately describes novelty as KL divergence combined with entity overlap; the snippet supports the requested feature.",
+      "cited_parent_passage_aliases": [
+        "E2"
+      ]
+    },
+    {
+      "query_id": "fe2666ace293b4bfac3182db6d0c6f03ea799277",
+      "question": "In the paper 'State-of-the-Art Vietnamese Word Segmentation', Why challenges does word segmentation in Vietnamese pose?",
+      "output_status": "failure",
+      "reviewed_response": "Acquiring a very large Vietnamese corpus, applying linguistics knowledge on word context to extract useful features, designing and developing a big data warehouse for Vietnamese documents, and building a system that can incrementally learn new corpora and interactively process feedback.",
+      "raw_output_sha256": "dfdcea75e019793ce77728fab1f2c6c44de6c49b6857660371b72e24f26216ef",
+      "input_sha256": "c3d6d82708628ab0c01bcab00c9f7a1189443f2504220877f44749b093bf1a0f",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [],
+      "cited_span_ids": [
+        "E2.S2",
+        "E2.S3",
+        "E2.S4",
+        "E2.S8"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "The raw prose lists the challenges, but the output is invalid: it uses four span IDs where the frozen contract allows at most three. Keep it as a failure.",
+      "cited_parent_passage_aliases": []
+    },
+    {
+      "query_id": "70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",
+      "question": "In the paper 'State-of-the-Art Vietnamese Word Segmentation', How successful are the approaches used to solve word segmentation in Vietnamese?",
+      "output_status": "answered",
+      "reviewed_response": "According to our observation, there are achievements and limitations in existing Vietnamese word segmentation systems, but the success varies due to the lack of comprehensive review.",
+      "raw_output_sha256": "4d6ca2cee4fc466d3f4bb21800384349a1c73430feec84641353b308189f518e",
+      "input_sha256": "a11e41227668bc988971c276d0f54cf743e6db85835add31f5ec505a824508d6",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "e091f5f031ed1d44d46ea91f155abee8120cc71255001011cae49b19a82bfc1a"
+      ],
+      "cited_span_ids": [
+        "E1.S5"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 1,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "The answer is vague and attributes varying success to a lack of review; the supplied text does not establish that causal explanation or provide comparative results.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "5c6fa86757410aee6f5a0762328637de03a569e9",
+      "question": "In the paper 'Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms', What were their performance results?",
+      "output_status": "answered",
+      "reviewed_response": "They achieved F1 scores of 0.94 for the Wikipedia and Twitter datasets using BLSTM with attention and feature level transfer learning. For the Formspring dataset, they achieved an F1 score of 0.95 with an accuracy score of 98%.",
+      "raw_output_sha256": "52668a93377bc7ad16c6eb23006cae80ecaec066cba8db939a4228fc589cb5e9",
+      "input_sha256": "5456be28dcbc5269f87a9affa2fbc9b15cab165fbd5f7fd1289df8f476aa0a88",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "68fbda457f1c9dbf437f2cdb21f0cce715041ad7aabb50e1fb29860eb6bf2409"
+      ],
+      "cited_span_ids": [
+        "E3.S3",
+        "E3.S6"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Correctly assigns F1 .94 to both Wikipedia and Twitter and F1 .95/accuracy .98 to Formspring.",
+      "cited_parent_passage_aliases": [
+        "E3"
+      ]
+    },
+    {
+      "query_id": "7e38e0279a620d3df05ab9b5e2795044f18d4471",
+      "question": "In the paper 'Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms', What cyberbulling topics did they address?",
+      "output_status": "answered",
+      "reviewed_response": "personal attack, racism, and sexism",
+      "raw_output_sha256": "8900ece448a9dc14be9c424ca1efd45c23ceea6a88a46c0a38acc46de843c798",
+      "input_sha256": "9d66f671e24ecb8800ffd52fe2be55ec5fe7b1da8b2a34f976d9b30cfcc7451d",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "26d80e947aed1c517de5fe6db46f1c247025c067a4db90c2512f5b1c7883fb92"
+      ],
+      "cited_span_ids": [
+        "E1.S9"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Lists all three topics exactly as stated in the supplied paragraph.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "551457ed34ca7fc0878c85bc664b135c21059b58",
+      "question": "In the paper 'Active Learning for Speech Recognition: the Power of Gradients', Which dataset do they use?",
+      "output_status": "answered",
+      "reviewed_response": "190 hours (100K instances) of transcribed speech data",
+      "raw_output_sha256": "70c53aa01406ac011ade3b58ed052a813f529b0cb0e0e5fbc37919e9de98aae2",
+      "input_sha256": "8dd4c9c14a8a49323bdd65e764eb2a168e84993ef5bcf2e8dd55a1008da1c56e",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "fdb8739cfeb7ed99a347cccaf1a5677e094b6dca880db200c8192c3986726d0b"
+      ],
+      "cited_span_ids": [
+        "E3.S1"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "190 hours describes the labeled base training set; the supplied text also identifies 1,700 hours of unlabeled pool and 156 hours of test data.",
+      "cited_parent_passage_aliases": [
+        "E3"
+      ]
+    },
+    {
+      "query_id": "b7c3f3942a07c118e57130bc4c3ec4adc431d725",
+      "question": "In the paper 'Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction', What did the best systems use for their model?",
+      "output_status": "answered",
+      "reviewed_response": "ASGD Weight-Dropped Long Short Term Memory (AWD_LSTM)",
+      "raw_output_sha256": "65a37980c7808f0411cc84d1865c2bf82db20514ac60f798689bfc3546a59769",
+      "input_sha256": "f7893f0ce5ee5c6647c75ceebdf835f23682f713247e7f638b488924deb51b75",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "73ef061fa0b6167114acecb9d09bfd111998e8e4e9445580bf1eea3387a5df85"
+      ],
+      "cited_span_ids": [
+        "E3.S3"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Names AWD_LSTM, but the cited description says typical LSTM units were replaced by QRNN units; “best systems” is also broader than this language-model choice.",
+      "cited_parent_passage_aliases": [
+        "E3"
+      ]
+    },
+    {
+      "query_id": "a5505e25ee9ae84090e1442034ddbb3cedabcf04",
+      "question": "In the paper 'Applying a Pre-trained Language Model to Spanish Twitter Humor Prediction', What were their results on the classification and regression tasks",
+      "output_status": "answered",
+      "reviewed_response": "Our solution placed 3rd in Task 1 and 2nd in Task 2 in the final competition standings.",
+      "raw_output_sha256": "d35a1f13fd76953eed134f2f4796e1395e30524052ed0d1f54f25d54e81c489d",
+      "input_sha256": "0055437a70bbf200c00a0558995209e2253a5611053a79090bf0c6bfe737e0c3",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "bd1cf89c9bf9cad0ac9e24eb5d9137cb8aeb52f413e35feea7f1280b7fcb7235"
+      ],
+      "cited_span_ids": [
+        "E1.S2"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Correctly reports third place in classification and second in regression.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",
+      "question": "In the paper 'VAIS ASR: Building a conversational speech recognition system using language model combination', What is the language model combination technique used in the paper?",
+      "output_status": "answered",
+      "reviewed_response": "language model combination technique",
+      "raw_output_sha256": "279b00b3f96d1f317711f329c267c3394f59623c94307bd1a266c48005da5a85",
+      "input_sha256": "0d3f59309b073f4de134f72963c1d59582d6cf88c56f78e55f608a52f257c9e5",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "dd26663492ff6aceaa2e4af661161a4747d42e25e0ff7e3e55c20363734caa5e",
+        "a0456a8ffba121adc789d7e2c6f2082b4eb752d82ed50a9139f4ff9d09f44e7d",
+        "302b68eea12e337ef47ff6d8d4e837e8c780662bb9e11acf514ef0d90f45060b"
+      ],
+      "cited_span_ids": [
+        "E1.S4",
+        "E2.S1",
+        "E3.S1"
+      ],
+      "ratings": {
+        "responsiveness": 0,
+        "completeness": 0,
+        "claim_support": 1,
+        "attribution": 0,
+        "refusal_appropriateness": 0
+      },
+      "rationale": "Restates “language model combination technique” without naming or explaining the technique; supplied excerpts only describe combining writing-style and conversational data at a high level.",
+      "cited_parent_passage_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ]
+    },
+    {
+      "query_id": "44497509fdf5e87cff05cdcbe254fbd288d857ad",
+      "question": "In the paper 'Improving the Performance of Neural Machine Translation Involving Morphologically Rich Languages', By how much do they improve the efficacy of the attention mechanism?",
+      "output_status": "answered",
+      "reviewed_response": "7.05 BLEU points",
+      "raw_output_sha256": "7dd02dea215e6c25eafcc00622f1d6510ed2030271324f5748762ee3f3c5adee",
+      "input_sha256": "6a84fd92b8b9df3bffc7b03915bca721eefcaf9916051dcb954710c9beaf2ec6",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "e2f28a88d661fb774db00bceb0f13e14fd5e1610129c307d5f50d315f11a55c9"
+      ],
+      "cited_span_ids": [
+        "E1.S6"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 0,
+        "claim_support": 2,
+        "attribution": 0,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "7.05 BLEU is in the passage for RNNMorph translation performance, not a measured improvement in attention-mechanism effectiveness.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "0ee73909ac638903da4a0e5565c8571fc794ab96",
+      "question": "In the paper 'Improving the Performance of Neural Machine Translation Involving Morphologically Rich Languages', How were the human judgements assembled?",
+      "output_status": "answered",
+      "reviewed_response": "A group of 50 native people who were well-versed in both English and Tamil languages acted as annotators for the evaluation.",
+      "raw_output_sha256": "9e5def85f981d2b189cb1b13ace917b903419a386a36d9d72ac036c74ee81002",
+      "input_sha256": "39a4df77630550991420f324c343e0b0abcf8e9932bfda30b709fff8f0e6f464",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "d6c1ef8eee6488ca505001bca8f3cb9de7c4f79ac0cc9eecdf5ade5559ad7e19"
+      ],
+      "cited_span_ids": [
+        "E2.S2"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Correctly names 50 bilingual native annotators, but omits the roughly 100 randomized test sentences and the adequacy/fluency/ranking procedures.",
+      "cited_parent_passage_aliases": [
+        "E2"
+      ]
+    },
+    {
+      "query_id": "e35a7f9513ff1cc0f0520f1d4ad9168a47dc18bb",
+      "question": "In the paper 'Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation', what was the baseline?",
+      "output_status": "answered",
+      "reviewed_response": "KyTea-segmented Japanese texts and pyvi-segmented Vietnamese texts",
+      "raw_output_sha256": "e8903e4cdb65861d67d6679571b1c43ca14d19a5b1bf6524dff2190774e360db",
+      "input_sha256": "7327bcb3bc18961e9c77ca15cb5544ab2506573f8100ddb5b18566bd67694912",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "3f6ad0f6ad50272338d87ef8913d7b3607ef71d1f99be60fae76fc5affedc2ef"
+      ],
+      "cited_span_ids": [
+        "E3.S2"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 0,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Gives tokenization/segmentation rather than the baseline systems; supplied text identifies phrase-based SMT and NMT as the two baselines.",
+      "cited_parent_passage_aliases": [
+        "E3"
+      ]
+    },
+    {
+      "query_id": "219af68afeaecabdfd279f439f10ba7c231736e4",
+      "question": "In the paper 'Combining Advanced Methods in Japanese-Vietnamese Neural Machine Translation', what japanese-vietnamese dataset do they use?",
+      "output_status": "answered",
+      "reviewed_response": "Japanese-Vietnamese parallel corpus in the DongDu corpus",
+      "raw_output_sha256": "ab4a89346d4fc97c4f92540932c566ff76c440d5046d3950c6c116031ae1dc33",
+      "input_sha256": "1c2ef0da4ca4612292151fce0caff4d14dda972c1abe0d016bdaeb67b2d949bc",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "3dbb1f0ae946dcbb5dc3e9ddeec55bd3f60b17eb98da65b9cd3cf45ed5df4522"
+      ],
+      "cited_span_ids": [
+        "E1.S4"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 0,
+        "claim_support": 1,
+        "attribution": 0,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "DongDu appears for Vietnamese monolingual data augmentation; these excerpts do not identify it as the Japanese–Vietnamese parallel corpus.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "question": "In the paper 'Going Beneath the Surface: Evaluating Image Captioning for Grammaticality, Truthfulness and Diversity', Which existing models are evaluated?",
+      "output_status": "answered",
+      "reviewed_response": "LRCN1u model",
+      "raw_output_sha256": "4938aff36ee824f23f12b0b1f0ae95fe7f96c6ae8bcef69f7ca9a495dfc852cb",
+      "input_sha256": "4926b5daf2d108f5b8e12f0de695e1dcd79166e483d8e4c9917d06e9b54261b8",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "dce82ef7f83afe19a44df662a7f26bc0c311ea47127cbd721b997078dc638773"
+      ],
+      "cited_span_ids": [
+        "E2.S1"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "LRCN1u is present in the excerpts, but only one model is identified despite the plural question; scope should be qualified.",
+      "cited_parent_passage_aliases": [
+        "E2"
+      ]
+    },
+    {
+      "query_id": "3116453e35352a3a90ee5b12246dc7f2e60cfc59",
+      "question": "In the paper 'A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation', To what baseline models is proposed model compared?",
+      "output_status": "answered",
+      "reviewed_response": "traditional features, a Doc2vec model",
+      "raw_output_sha256": "3eeae86348330634cb9149f609202ac563f7dc02a499376c5b914ffbe055b562",
+      "input_sha256": "d17b4bdd44d44ea3a0f1955458b05473c861fff4ff283ba119b7129a88a268e4",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "f7a883b21fcdc91e78956a3d9c7ecf3bc3f0e67e47d384e103df4c027535b830"
+      ],
+      "cited_span_ids": [
+        "E3.S1",
+        "E3.S3"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Mentions TF-IDF-style traditional features and Doc2vec, but the requested model comparison is underspecified; classic classifiers are not named in these excerpts.",
+      "cited_parent_passage_aliases": [
+        "E3"
+      ]
+    },
+    {
+      "query_id": "a9a532399237b514c1227f2d6be8601474e669be",
+      "question": "In the paper 'A Neural Topic-Attention Model for Medical Term Abbreviation Disambiguation', What existing dataset is re-examined and corrected for training?",
+      "output_status": "answered",
+      "reviewed_response": "an existing dataset",
+      "raw_output_sha256": "44341075e5aaa3fdcd84aa1e074a82145a25fd594d667a9ae1a0db2cff1efb72",
+      "input_sha256": "dfe1b95735aa9c2f1b198b4d37522efa503ec53c730ba76850edc85d90b13cf7",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "a7d5933bbb91162837b430cd199f833ab80cc5002cbd62dd1ecee288bd0bb320"
+      ],
+      "cited_span_ids": [
+        "E1.S8"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 0,
+        "claim_support": 1,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "“An existing dataset” avoids inventing a name, but does not answer which dataset; the supplied paragraphs do not expose its exact name.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "ce2b921e4442a21555d65d8ce4ef7e3bde931dfc",
+      "question": "In the paper 'From English To Foreign Languages: Transferring Pre-trained Language Models', What languages are the model transferred to?",
+      "output_status": "answered",
+      "reviewed_response": "French (fr), Russian (ru), Arabic (ar), Chinese (zh), Hindi (hi), and Vietnamese (vi)",
+      "raw_output_sha256": "0706f8f398c93f0fa2ec8dbae991a620cba9228e50d744e221cb833968631e48",
+      "input_sha256": "a5333ee98ffa4a5e3269b2e9d13e6df4687999f1e90c397e03493ace1027b288",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "b76b2d9ce9a06eafa7108ff22558300359e5f741b0b75b18631a561531fcedc5"
+      ],
+      "cited_span_ids": [
+        "E2.S1"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Lists all six target languages and matches the supplied evaluation paragraph.",
+      "cited_parent_passage_aliases": [
+        "E2"
+      ]
+    },
+    {
+      "query_id": "27de1d499348e17fec324d0ef00361a490659988",
+      "question": "In the paper 'An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction', What is the size of this dataset?",
+      "output_status": "answered",
+      "reviewed_response": "23,700",
+      "raw_output_sha256": "bef327939600949ab8a50e5b47f02970fc39b6cafe526c467ad10c9d34c9cfee",
+      "input_sha256": "d10aa87f8758d5bd2ad546f16dadaaeab68b2135e6c2381394157caaae475b69",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "a405aa0aa05aca332f43985a32b70ea3d75bedbf8b1ef1a68eb2179c4b66ad21",
+        "17366665037e9a77366d87d042a136f58b97979b9bfc410fc604234bd04206b2"
+      ],
+      "cited_span_ids": [
+        "E1.S2",
+        "E3.S1"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "Correctly gives the total of 23,700 queries; the other supplied excerpt breaks this into 22,500 in-scope and 1,200 out-of-scope queries.",
+      "cited_parent_passage_aliases": [
+        "E1",
+        "E3"
+      ]
+    },
+    {
+      "query_id": "975e60535724f4149c7488699a199ba2920a062c",
+      "question": "In the paper 'How we do things with words: Analyzing text as social and cultural data', What background do they have?",
+      "output_status": "answered",
+      "reviewed_response": "They have a background in analyzing text as social and cultural data, involving defining concepts, using domain experts, and employing computational methods like machine learning algorithms.",
+      "raw_output_sha256": "fe302d9dbc994a967a3410b8e056f0c950c3ce5c6b36a5b07c7f12400676ea61",
+      "input_sha256": "7074ab98f5da361eb635d467f32659ff2fead6103d8bd8986ad2be5b5cf6b2ff",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "392ff54172889875d0aa0577f83bdcc4fc6412f07e95e5535e3265486fe57b47",
+        "a700efc08c77d225dd63fd5183af20cd1adcf919db8915e756cfb7d59546a025"
+      ],
+      "cited_span_ids": [
+        "E1.S3",
+        "E1.S4",
+        "E3.S2"
+      ],
+      "ratings": {
+        "responsiveness": 0,
+        "completeness": 0,
+        "claim_support": 1,
+        "attribution": 0,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Infers researcher background from the paper topic; the excerpts discuss conceptualization and methods, not the authors’ personal background.",
+      "cited_parent_passage_aliases": [
+        "E1",
+        "E3"
+      ]
+    },
+    {
+      "query_id": "f903396d943541a8cc65edefb04ca37814ed30dd",
+      "question": "In the paper 'How we do things with words: Analyzing text as social and cultural data', What dataset do they use for analysis?",
+      "output_status": "answered",
+      "reviewed_response": "European Union Court of Human Rights",
+      "raw_output_sha256": "501cd78e9ed4cd2ee5381b214e04b053ab64e6a190ee4f926825ba2e862bdbd4",
+      "input_sha256": "813f6cae0e53604d05b6ac44045f941b6e52c63969576994d58db2b531c44792",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "392ff54172889875d0aa0577f83bdcc4fc6412f07e95e5535e3265486fe57b47"
+      ],
+      "cited_span_ids": [
+        "E1.S5"
+      ],
+      "ratings": {
+        "responsiveness": 0,
+        "completeness": 0,
+        "claim_support": 0,
+        "attribution": 0,
+        "refusal_appropriateness": 0
+      },
+      "rationale": "Names a hate-speech definition source as the analyzed dataset; the cited passage explicitly distinguishes the definition reference from the dataset.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "c9b8d3858c112859eabee54248b874331c48f71b",
+      "question": "In the paper 'Copenhagen at CoNLL--SIGMORPHON 2018: Multilingual Inflection in Context with Explicit Morphosyntactic Decoding', What type of inflections are considered?",
+      "output_status": "answered",
+      "reviewed_response": "lemmas and morphosyntactic descriptions (MSD), word forms",
+      "raw_output_sha256": "62b92da5d6d25ca9fcfff09b546e231699247ecd5bb1f2b89e61274433e4904e",
+      "input_sha256": "7458cd1b73ea5aa1551b9fafb157da25591f641e575b0a2ec2c2b430ea35b0e5",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "a47999977605b6ecf67e3c66bfdd4c52b6f2ad7739c50d6dd35d0e9be7b1f6ae"
+      ],
+      "cited_span_ids": [
+        "E1.S1"
+      ],
+      "ratings": {
+        "responsiveness": 1,
+        "completeness": 1,
+        "claim_support": 2,
+        "attribution": 1,
+        "refusal_appropriateness": 1
+      },
+      "rationale": "Lists track inputs (word forms, lemmas, MSD) but does not clearly distinguish the two task tracks or explain that the target is an inflected word form.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    },
+    {
+      "query_id": "1eef2d2c296fdd10b08bf7b4ff7792cccf177d3b",
+      "question": "In the paper 'Automatic Classification of Pathology Reports using TF-IDF Features', What features are used?",
+      "output_status": "answered",
+      "reviewed_response": "TF-IDF features",
+      "raw_output_sha256": "8595941b318c62ca35c06993035ea16039964c841ec81d65572bcb9824b55ebe",
+      "input_sha256": "9ddc103e00df44fde04c7a471b1f1e0f7ffb5c000af70302cb6fe44266db4215",
+      "provided_evidence_aliases": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "cited_parent_passage_ids": [
+        "343455627f6a06fa94ae71eff460616a99eef2e74c558b33b5359f53779d35c3"
+      ],
+      "cited_span_ids": [
+        "E1.S3",
+        "E1.S4"
+      ],
+      "ratings": {
+        "responsiveness": 2,
+        "completeness": 2,
+        "claim_support": 2,
+        "attribution": 2,
+        "refusal_appropriateness": 2
+      },
+      "rationale": "TF-IDF features are directly stated in the exact supplied paragraph; keep the existing benchmark-unanswerable label unchanged and record this conflict separately.",
+      "cited_parent_passage_aliases": [
+        "E1"
+      ]
+    }
+  ]
+}

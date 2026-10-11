@@ -193,3 +193,11 @@ interval includes zero. All 14 unchanged inputs reproduce the prior raw outputs.
 One attempt used 32 calls/1,020 actual tokens/63.547 seconds at $0 external cost;
 the allowance is consumed. The preparation's 242 software tests are historical.
 Phase 4, independent human acceptance and fresh final evaluation remain open.
+
+The [claim-grounded cycle](reports/claim-grounded-development.md) is complete for
+Experiment A and was not promoted: only 4 of 32 outputs passed the strict JSON
+contract, and answerable token F1 fell to .0276. The conditional second experiment
+was skipped because A missed its safeguards. Its [32-case assistant review](reports/claim-grounded-answer-review.json)
+preserves output failures and the TF-IDF label conflict; it is diagnostic, not
+independent human review. The deployed CPU pipeline, public API, frozen labels and
+reserved final test remain unchanged. Further model runs need separate approval.

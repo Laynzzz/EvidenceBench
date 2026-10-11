@@ -201,3 +201,68 @@ uv run --extra ml python -m evidencebench.evaluation.span_watchdog --variant NAM
 NAME is plain, constrained or focused. It supplies an external 900-second cap; the lower-level
 runner alone has cooperative bounds. Local attempt records reject reruns because
 all three slots are used. None of these candidates replaces the v1 service.
+
+## Claim-grounded cycle: preparation and saved-result verification
+
+Run from the isolated project worktree after installing the locked project
+environment. Point to the frozen intact-paragraph attempt and the already installed
+offline CUDA Python environment. The initial command validates cached artifacts,
+inspects the local tokenizer, records exact prompt lengths and loads no model weights:
+
+```powershell
+$baselineRun = 'F:\Me\Project\evidencebench\artifacts\intact-passage-v1\runs\20260924T210922Z-e266a7a622'
+$gpuPython = 'F:\Me\Project\evidencebench\artifacts\gpu-support-env\Scripts\python.exe'
+uv run python scripts/run_claim_grounded.py --baseline-run $baselineRun --gpu-python $gpuPython
+```
+
+All 32 prompts must fit 2,048 tokens; the runner rejects overflow instead of
+truncating. After the final preparation commit and checks, freeze A's readiness:
+
+```powershell
+uv run python scripts/run_claim_grounded.py --baseline-run $baselineRun --gpu-python $gpuPython --freeze
+```
+
+This creates a one-snapshot readiness record and makes no model call. An
+`--run-approved` launch is guarded by that frozen snapshot and a separate explicit
+approval receipt; the command is not permission to run by itself. A failed attempt
+consumes its one-use root and must be retained.
+
+Experiment A was authorized for this exact snapshot and its one-use attempt has
+already been consumed. Its readiness is frozen in
+`reports/claim-grounded-readiness.json` with snapshot SHA-256
+`9092877265d540985c3bad9ce80a994f06d100e5cf65bb5f7d1dc6cafb6dd9c5`. Do not use
+that approval for another run. The verified result is documented in
+`reports/claim-grounded-development.md`.
+
+Only if verified A passes zero failures, at most three unanswerable answers,
+precision .458333 or higher and at least 20 answers can B be prepared. B requires a
+separate readiness freeze and approval, plus the cached development units file. It
+uses only the first three paragraphs from each saved development ranking; it does
+not rerun retrieval or ranking. The 18 previously cutoff-blocked questions are
+reported separately. Use the proposal and cycle protocol for limits and interpretation.
+If these safeguards pass in a future verified A run, use
+`scripts/run_claim_grounded_no_cutoff.py` for B's preflight, readiness freeze,
+approved execution and verification. This B-only entry point records latency for the
+actual supplied calls and adds its own code to B's source snapshot, leaving A's
+already frozen runner and verification unchanged. The current A result fails its
+safeguards, so B remains skipped.
+
+To independently reconstruct the existing A predictions and metrics without
+inference, use the preflight arguments above and add `--verify`. This checks the
+frozen source and baseline hashes plus saved worker output; it does not grant a new
+model-run allowance. The preparation's full suite passed with real PostgreSQL
+integration enabled (268 passed), with Ruff lint/format and targeted mypy also
+passing. The check reused the existing named volume, then stopped only the DB
+container; the volume remains preserved.
+
+Windows recovery note for this workstation: Docker Desktop 4.53.0 failed at
+`%LOCALAPPDATA%\Docker\run\dockerInference`. The zero-byte AF_UNIX reparse-point
+endpoints were left from an earlier run. With Docker processes, its service and the
+`docker-desktop` WSL distribution stopped, the socket-only `Docker\run` and
+`docker-secrets-engine` directories were renamed aside rather than deleted. Docker
+then started successfully. The prior ignored local `.env` was reused so the existing
+database volume's password was not changed. This matches reports in the
+[Docker Desktop feedback issue](https://github.com/docker/desktop-feedback/issues/531)
+and [related startup report](https://github.com/docker/desktop-feedback/issues/625);
+these reports corroborate the symptom, not an official repair procedure. The
+timestamped directories remain as backups; do not remove them as routine cleanup.

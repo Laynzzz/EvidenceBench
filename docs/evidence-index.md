@@ -337,3 +337,83 @@ The run used 1,020 actual tokens and 63.547 worker seconds at $0 external spend.
 The allowance is consumed. No new software behavior changed, so preparation's
 242 tests were not rerun for execution/reporting. No training, retry, deployment
 or final-test access occurred. Phase 4 and independent human acceptance remain open.
+
+## Claim-grounded cycle 4 — completed negative result
+
+[Protocol](answer-improvement-cycle4.md) freezes claim-attached span IDs, answer and
+quote limits, refusal behavior, selection rules and the stopping boundary.
+[Proposal](claim-grounded-proposal.md) defines the 32-call A comparison and the
+separate 50-call B comparison, which is gated on A's four safeguards.
+[Assistant review](../reports/claim-grounded-input-review.json) covers all 32 prior
+inputs and raw outputs with source hashes and a frozen rubric; it preserves the
+TF-IDF answerability conflict separately and does not alter labels or scores.
+
+The contract and isolated runner are in `scripts/claim_grounded_contract.py`,
+`scripts/claim_grounded_worker.py` and `scripts/run_claim_grounded.py`. Synthetic
+tests exercise claim validation, the one-use A lifecycle, tamper/deadline/budget
+checks, and B's saved-top-three payload/citation mapping and 50-call worker budget.
+The [verified A result](../reports/claim-grounded-development.md) has F1 .027634,
+four answers, 28 invalid outputs and one answer to a benchmark-unanswerable item.
+Twenty-six outputs had trailing Markdown fences and two ended with incomplete JSON.
+The strict runner preserved all failures. A did not meet the safeguards for B, so B
+was skipped. No training, deployment or final-test access occurred. The structured
+[assistant answer review](../reports/claim-grounded-answer-review.json) is diagnostic,
+not independent human acceptance. Raw outputs, the consumed approval receipt, and
+the reconstructable run remain in the ignored local artifact directory; `--verify`
+checks them without inference.
+
+### Preparation verification — 2026-10-10
+
+On branch `codex/bounded-improvement-cycle`, the final A preflight and readiness
+freeze ran against preparation commit `0ea5c2e`. It verified the frozen baseline
+and fresh-development label roster by query ID, then used the pinned offline CUDA
+runtime's local tokenizer.
+
+```powershell
+python -X utf8 scripts/run_claim_grounded.py `
+  --baseline-run F:\Me\Project\evidencebench\artifacts\intact-passage-v1\runs\20260924T210922Z-e266a7a622 `
+  --gpu-python F:\Me\Project\evidencebench\artifacts\gpu-support-env\Scripts\python.exe
+```
+
+All 32 exact prompts measured 525–1,286 input tokens, below the 2,048 limit. The
+frozen readiness is committed at `reports/claim-grounded-readiness.json`
+(`ecb7e6d`) with snapshot SHA-256
+`9092877265d540985c3bad9ce80a994f06d100e5cf65bb5f7d1dc6cafb6dd9c5`. It reserves
+32 calls, 12,288 output tokens and 1,200 seconds. At freeze time the record confirmed
+zero model calls/training, no final-test use, no artifact root and no approval
+receipt. This is preparation evidence; the later approved attempt and consumed
+approval receipt are retained inside the local run artifact.
+
+Before Docker recovery, the full unit/software suite passed 267 tests and skipped
+the real PostgreSQL integration test. `ruff check .`, `ruff format --check .`, and
+`mypy src/evidencebench/schemas.py` passed. The first suite invocation omitted
+`-X utf8` and hit a Windows default-code-page decoding error in an existing
+synthetic test; the UTF-8 rerun passed without a code change.
+
+Docker Desktop 4.53.0.211793 failed to start on a zero-byte `dockerInference`
+AF_UNIX reparse point dated 2026-09-24. The companion `engine.sock` and another
+socket were also zero-byte reparse points. No Docker process, service or Docker WSL
+distro was running, and Model Runner was already disabled. I moved only these
+socket-containing directories aside, preserving them as
+`%LOCALAPPDATA%\Docker\run.recovery-20261010-202417` and
+`%LOCALAPPDATA%\docker-secrets-engine.recovery-20261010-202417`. No images or
+volumes were deleted, and no Docker settings were changed. Docker then reported
+Linux engine 29.0.1.
+
+The project already had `evidencebench_postgres-data` (created 2026-09-19). An
+initial database test failed because a newly generated worktree `.env` did not match
+that volume's existing password. I restored the ignored local `.env` from the
+original checkout, did not reset the password, and reran the suite against the
+existing volume. Compose recreated the database container while preserving that
+volume. `python -X utf8 -m pytest -q --tb=no` then passed **268 tests**,
+including the real PostgreSQL round-trip and filtered-cosine test, with two existing
+dependency deprecation warnings. Three `fixture-*` index rows remained afterward;
+because no pre-test count was captured, they were left untouched. The database
+container was stopped and the original named volume remains. No model experiment,
+training, final-test access or deployment occurred.
+
+The stale AF_UNIX socket diagnosis and data-preserving directory relocation have
+similar reports in [Docker Desktop feedback #531](https://github.com/docker/desktop-feedback/issues/531)
+and [#625](https://github.com/docker/desktop-feedback/issues/625). These are
+community reports that corroborate the symptom and workaround, not official Docker
+repair instructions.
