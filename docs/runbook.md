@@ -237,5 +237,18 @@ reported separately. Use the proposal and cycle protocol for limits and interpre
 After an authorized attempt, use the same command with `--verify` to independently
 reconstruct saved predictions and metrics without inference. The full software
 suite, formatting, lint, type and PostgreSQL integration checks must pass before
-requesting authorization. The local Docker Linux engine is currently unavailable;
-real PostgreSQL integration verification remains pending.
+requesting authorization. On 2026-10-10, the full suite passed with the real local
+PostgreSQL integration enabled (268 passed). The check reused the existing named
+volume, then stopped only the DB container; the volume remains preserved.
+
+Windows recovery note for this workstation: Docker Desktop 4.53.0 failed at
+`%LOCALAPPDATA%\Docker\run\dockerInference`. The zero-byte AF_UNIX reparse-point
+endpoints were left from an earlier run. With Docker processes, its service and the
+`docker-desktop` WSL distribution stopped, the socket-only `Docker\run` and
+`docker-secrets-engine` directories were renamed aside rather than deleted. Docker
+then started successfully. The prior ignored local `.env` was reused so the existing
+database volume's password was not changed. This matches reports in the
+[Docker Desktop feedback issue](https://github.com/docker/desktop-feedback/issues/531)
+and [related startup report](https://github.com/docker/desktop-feedback/issues/625);
+these reports corroborate the symptom, not an official repair procedure. The
+timestamped directories remain as backups; do not remove them as routine cleanup.

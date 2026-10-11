@@ -452,7 +452,7 @@ The allowance is consumed. Phase 4 semantic acceptance remains incomplete; the
 work should address the requested fact's role and multi-part citation coverage
 using the saved failures before proposing more compute.
 
-## Cycle 4 — claim-grounded comparison prepared in code; no run yet
+## Cycle 4 — claim-grounded preparation verified; no model run yet
 
 The [frozen response protocol](answer-improvement-cycle4.md),
 [experiment proposal](claim-grounded-proposal.md), and
@@ -465,12 +465,11 @@ prepared unless a verified A result passes all four safeguards.
 
 Synthetic tests cover both budgets and the A full-run lifecycle. The tokenizer-only
 preflight inspected all 32 exact prompts: 525–1,286 tokens, below the 2,048-token
-limit. The full suite passes (267 passed; the real PostgreSQL integration test was
-skipped), Ruff lint/format and the targeted mypy check pass. No model weights were
-loaded and no inference or training occurred. PostgreSQL integration remains
-blocked: Docker's Linux engine is unavailable, no PostgreSQL service is installed,
-port 5432 is unreachable and no test database URL is configured. Docker Desktop
-was launched during this preparation, but `docker info` and `docker ps` still
-cannot find the Linux-engine endpoint. The existing
-deployed CPU release, public API, frozen labels/scores and reserved final test remain
-unchanged.
+limit. The full suite passes with real PostgreSQL integration enabled (268 passed);
+Ruff lint/format and the targeted mypy check pass. Docker Desktop's stale socket-only
+runtime directories were preserved under timestamped recovery names, restoring the
+Linux engine. The pre-existing PostgreSQL volume and its original local credentials
+were preserved; the DB container is stopped. No model weights were loaded and no
+inference or training occurred. A still needs a frozen readiness record and separate
+explicit approval. The deployed CPU release, public API, frozen labels/scores and
+reserved final test remain unchanged.

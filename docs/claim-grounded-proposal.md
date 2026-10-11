@@ -87,6 +87,10 @@ No model run is authorized by this proposal. Each exact readiness snapshot needs
 separate explicit user approval. The current work is preparation only: contract,
 runner, synthetic verification, source review, frozen documentation and exact prompt
 length verification (all 32 prompts are 525–1,286 tokens). The full software suite,
-lint, formatting and targeted type check pass. PostgreSQL integration remains
-pending because the local Docker Linux engine is unavailable; no local PostgreSQL
-service, reachable default port or configured test database URL was found.
+lint, formatting, targeted type check and real PostgreSQL integration pass. The
+PostgreSQL check used the existing local data volume and original ignored local
+credentials; it left the volume intact and stopped the DB container afterward.
+Docker Desktop's stale socket-only runtime directories were preserved under
+timestamped recovery names to restore its Linux engine. No inference or training is
+included; the A readiness snapshot and a separate user approval are required before
+any model call.

@@ -370,23 +370,41 @@ python -X utf8 scripts/run_claim_grounded.py `
 ```
 
 All 32 exact prompts measured 525–1,286 input tokens, below the 2,048 limit. The
-preflight output was `ready_for_authorization` with snapshot SHA-256
-`4377bad5ddd52df255c8c4e5d1160b1231a89d525fab3ebb62e322494875e512`, 32 calls,
-12,288 reserved output tokens, a 1,200-second deadline and `model_calls: 0`. The
-artifact root, readiness record and approval receipt did not exist; it loaded no
-model weights. Readiness is not frozen until the required PostgreSQL integration
-check is complete.
+preflight loaded no model weights and made zero model calls. Its then-current hash
+`4377bad5ddd52df255c8c4e5d1160b1231a89d525fab3ebb62e322494875e512` predates the
+final plan/proposal verification edits below and is no longer the current snapshot;
+rerun the preflight and freeze the final committed source before requesting A.
 
-`python -X utf8 -m pytest -q`: 267 passed, one skipped, two dependency deprecation
-warnings. The skipped test is the real PostgreSQL integration test because
-`EVIDENCEBENCH_TEST_DATABASE_URL` is unset. The first suite invocation omitted
-`-X utf8` and hit a Windows default-code-page decode error in an existing synthetic
-test; rerunning in the repository's UTF-8 mode passed without a code change.
-`ruff check .`, `ruff format --check .`, and `mypy src/evidencebench/schemas.py`
-passed. Docker's Linux engine is unreachable, no PostgreSQL Windows service is
-installed, and local port 5432 is closed, so the real database check remains
-unverified. No experiment, training, final-set access or deployment occurred.
-Docker Desktop was then opened from the installed app. Its Linux-engine endpoint
-still did not become available: `docker info` and `docker ps` both failed with
-“The system cannot find the file specified.” No integration test was run against a
-mock in place of PostgreSQL.
+Before Docker recovery, the full unit/software suite passed 267 tests and skipped
+the real PostgreSQL integration test. `ruff check .`, `ruff format --check .`, and
+`mypy src/evidencebench/schemas.py` passed. The first suite invocation omitted
+`-X utf8` and hit a Windows default-code-page decoding error in an existing
+synthetic test; the UTF-8 rerun passed without a code change.
+
+Docker Desktop 4.53.0.211793 failed to start on a zero-byte `dockerInference`
+AF_UNIX reparse point dated 2026-09-24. The companion `engine.sock` and another
+socket were also zero-byte reparse points. No Docker process, service or Docker WSL
+distro was running, and Model Runner was already disabled. I moved only these
+socket-containing directories aside, preserving them as
+`%LOCALAPPDATA%\Docker\run.recovery-20261010-202417` and
+`%LOCALAPPDATA%\docker-secrets-engine.recovery-20261010-202417`. No images or
+volumes were deleted, and no Docker settings were changed. Docker then reported
+Linux engine 29.0.1.
+
+The project already had `evidencebench_postgres-data` (created 2026-09-19). An
+initial database test failed because a newly generated worktree `.env` did not match
+that volume's existing password. I restored the ignored local `.env` from the
+original checkout, did not reset the password, and reran the suite against the
+existing volume. Compose recreated the database container while preserving that
+volume. `python -X utf8 -m pytest -q --tb=no` then passed **268 tests**,
+including the real PostgreSQL round-trip and filtered-cosine test, with two existing
+dependency deprecation warnings. Three `fixture-*` index rows remained afterward;
+because no pre-test count was captured, they were left untouched. The database
+container was stopped and the original named volume remains. No model experiment,
+training, final-test access or deployment occurred.
+
+The stale AF_UNIX socket diagnosis and data-preserving directory relocation have
+similar reports in [Docker Desktop feedback #531](https://github.com/docker/desktop-feedback/issues/531)
+and [#625](https://github.com/docker/desktop-feedback/issues/625). These are
+community reports that corroborate the symptom and workaround, not official Docker
+repair instructions.
