@@ -227,6 +227,11 @@ This creates a one-snapshot readiness record and makes no model call. An
 approval receipt; the command is not permission to run by itself. A failed attempt
 consumes its one-use root and must be retained.
 
+Current A readiness is frozen in `reports/claim-grounded-readiness.json` with
+snapshot SHA-256 `9092877265d540985c3bad9ce80a994f06d100e5cf65bb5f7d1dc6cafb6dd9c5`.
+The user has not approved the run; do not launch it until the exact allowance and
+snapshot receive explicit approval.
+
 Only if verified A passes zero failures, at most three unanswerable answers,
 precision .458333 or higher and at least 20 answers can B be prepared. B requires a
 separate readiness freeze and approval, plus the cached development units file. It

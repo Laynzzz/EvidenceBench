@@ -470,6 +470,9 @@ Ruff lint/format and the targeted mypy check pass. Docker Desktop's stale socket
 runtime directories were preserved under timestamped recovery names, restoring the
 Linux engine. The pre-existing PostgreSQL volume and its original local credentials
 were preserved; the DB container is stopped. No model weights were loaded and no
-inference or training occurred. A still needs a frozen readiness record and separate
-explicit approval. The deployed CPU release, public API, frozen labels/scores and
+inference or training occurred. A's readiness record is frozen at
+`reports/claim-grounded-readiness.json` with snapshot SHA-256
+`9092877265d540985c3bad9ce80a994f06d100e5cf65bb5f7d1dc6cafb6dd9c5`. The artifact
+root and approval receipt do not exist; explicit approval for the one A attempt is
+still required. The deployed CPU release, public API, frozen labels/scores and
 reserved final test remain unchanged.

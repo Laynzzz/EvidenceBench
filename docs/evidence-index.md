@@ -358,10 +358,10 @@ occurred.
 
 ### Preparation verification — 2026-10-10
 
-On branch `codex/bounded-improvement-cycle`, the final read-only A preflight ran
-after preparation commit `5797ffe`. It verified the frozen baseline and fresh-
-development label roster by query ID, then used the pinned offline CUDA runtime's
-local tokenizer.
+On branch `codex/bounded-improvement-cycle`, the final A preflight and readiness
+freeze ran against preparation commit `0ea5c2e`. It verified the frozen baseline
+and fresh-development label roster by query ID, then used the pinned offline CUDA
+runtime's local tokenizer.
 
 ```powershell
 python -X utf8 scripts/run_claim_grounded.py `
@@ -370,10 +370,12 @@ python -X utf8 scripts/run_claim_grounded.py `
 ```
 
 All 32 exact prompts measured 525–1,286 input tokens, below the 2,048 limit. The
-preflight loaded no model weights and made zero model calls. Its then-current hash
-`4377bad5ddd52df255c8c4e5d1160b1231a89d525fab3ebb62e322494875e512` predates the
-final plan/proposal verification edits below and is no longer the current snapshot;
-rerun the preflight and freeze the final committed source before requesting A.
+frozen readiness is committed at `reports/claim-grounded-readiness.json`
+(`ecb7e6d`) with snapshot SHA-256
+`9092877265d540985c3bad9ce80a994f06d100e5cf65bb5f7d1dc6cafb6dd9c5`. It reserves
+32 calls, 12,288 output tokens and 1,200 seconds. The record confirms zero model
+calls/training, no final-test use, no artifact root and no approval receipt. It loads
+no model weights; explicit approval is still needed before execution.
 
 Before Docker recovery, the full unit/software suite passed 267 tests and skipped
 the real PostgreSQL integration test. `ruff check .`, `ruff format --check .`, and
