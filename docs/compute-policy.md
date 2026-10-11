@@ -81,3 +81,11 @@ attempt: 32 calls, 1,020 actual output tokens, 12,288 reserved output tokens,
 The allowance is consumed. Separate saved-result verification and reporting used
 no additional model calls. No retry, training, final-test access, deployment or
 runtime change occurred; the model cache and run artifacts remain local.
+
+The next proposed cycle is recorded in [claim-grounded-proposal.md](claim-grounded-proposal.md).
+Experiment A would be one offline RTX 4090 BF16 attempt: 32 calls, 12,288 reserved
+output tokens, a 20-minute worker deadline and $0 external spend. Experiment B is
+separate and conditional on A's four safeguards: at most 50 calls, 19,200 reserved
+tokens, 30 minutes and $0. Neither allowance is authorized yet. The user requires
+fresh explicit approval for each exact frozen snapshot; approval for A cannot cover
+B. No inference has occurred during this preparation.

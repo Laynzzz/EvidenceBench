@@ -193,3 +193,11 @@ interval includes zero. All 14 unchanged inputs reproduce the prior raw outputs.
 One attempt used 32 calls/1,020 actual tokens/63.547 seconds at $0 external cost;
 the allowance is consumed. The preparation's 242 software tests are historical.
 Phase 4, independent human acceptance and fresh final evaluation remain open.
+
+The next [bounded cycle](docs/claim-grounded-proposal.md) is under preparation on
+an isolated branch. It adds claim-to-span citations and a strict refusal contract,
+then conditionally removes only the relevance cutoff if the first comparison meets
+four safeguards. The deployed CPU pipeline and public API remain unchanged. The
+[32-case assistant review](reports/claim-grounded-input-review.json) preserves the
+invalid output and label conflicts; it is diagnostic, not independent human review.
+No new inference has run. Each experiment needs its own explicit approval.

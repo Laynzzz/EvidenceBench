@@ -201,3 +201,41 @@ uv run --extra ml python -m evidencebench.evaluation.span_watchdog --variant NAM
 NAME is plain, constrained or focused. It supplies an external 900-second cap; the lower-level
 runner alone has cooperative bounds. Local attempt records reject reruns because
 all three slots are used. None of these candidates replaces the v1 service.
+
+## Prepare the claim-grounded cycle (no model calls)
+
+Run from the isolated project worktree after installing the locked project
+environment. Point to the frozen intact-paragraph attempt and the already installed
+offline CUDA Python environment. The initial command validates cached artifacts,
+inspects the local tokenizer, records exact prompt lengths and loads no model weights:
+
+```powershell
+$baselineRun = 'F:\Me\Project\evidencebench\artifacts\intact-passage-v1\runs\20260924T210922Z-e266a7a622'
+$gpuPython = 'F:\Me\Project\evidencebench\artifacts\gpu-support-env\Scripts\python.exe'
+uv run python scripts/run_claim_grounded.py --baseline-run $baselineRun --gpu-python $gpuPython
+```
+
+All 32 prompts must fit 2,048 tokens; the runner rejects overflow instead of
+truncating. After the final preparation commit and checks, freeze A's readiness:
+
+```powershell
+uv run python scripts/run_claim_grounded.py --baseline-run $baselineRun --gpu-python $gpuPython --freeze
+```
+
+This creates a one-snapshot readiness record and makes no model call. An
+`--run-approved` launch is guarded by that frozen snapshot and a separate explicit
+approval receipt; the command is not permission to run by itself. A failed attempt
+consumes its one-use root and must be retained.
+
+Only if verified A passes zero failures, at most three unanswerable answers,
+precision .458333 or higher and at least 20 answers can B be prepared. B requires a
+separate readiness freeze and approval, plus the cached development units file. It
+uses only the first three paragraphs from each saved development ranking; it does
+not rerun retrieval or ranking. The 18 previously cutoff-blocked questions are
+reported separately. Use the proposal and cycle protocol for limits and interpretation.
+
+After an authorized attempt, use the same command with `--verify` to independently
+reconstruct saved predictions and metrics without inference. The full software
+suite, formatting, lint, type and PostgreSQL integration checks must pass before
+requesting authorization. The local Docker Linux engine is currently unavailable;
+real PostgreSQL integration verification remains pending.

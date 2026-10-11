@@ -719,3 +719,34 @@ historical; this result adds model behavior evidence without establishing human
 semantic acceptance. Read the [failure](../reports/intact-passage-errors.md) beside
 the [review packet](../reports/intact-passage-review-packet.md). Optional exercise:
 explain how F1 can rise while citation precision and correct refusal behavior worsen.
+
+## Preparing claim-grounded answers without changing deployment
+
+The next local experiment changes how generated facts link to evidence. Its Python
+contract in `scripts/claim_grounded_contract.py` receives the query and the same
+saved paragraphs, then builds a short-span catalog. The model returns one to four
+claims and the span IDs supporting each claim. Python validates those IDs and
+limits, joins the claim text into the existing flat answer, and deduplicates parent
+passage citations for existing scoring. The FastAPI response stays unchanged.
+
+This separates **provenance** from **meaning**: a valid span ID proves that a quoted
+span came from supplied text, but it cannot prove the claim answers the requested
+question. The prompt therefore names recurring semantic errors—confusing BLEU with
+attention effectiveness, a definition source with a dataset, and features with
+models—and requires refusal when the requested fact is not supported. These are
+model behavior instructions; the validator cannot enforce their truth conditions.
+
+The runner in `scripts/run_claim_grounded.py` is a local offline experiment entry
+point. Experiment A uses the 32 previously supplied paragraphs and keeps 18 prior
+threshold refusals in the 50-question score. Experiment B is a separate scope that
+uses saved top-three rankings and complete development paragraphs for every query;
+it cannot be prepared until verified A meets four fixed safeguards. Synthetic
+generators test usage limits, approval binding, tamper detection and reconstruction,
+but they do not predict real model behavior. The deployed CPU system and API remain
+unchanged; no new inference has been run. See the [protocol](answer-improvement-cycle4.md)
+and [prepared case review](../reports/claim-grounded-input-review.json).
+
+For later practice, explain why claim-level citations improve inspectability without
+guaranteeing semantic support, and why B must change only the cutoff. Implementation
+and review are agent-assisted; the numerical result, if run, will remain development
+evidence and independent human acceptance will still be required.

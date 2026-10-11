@@ -1,6 +1,6 @@
 # Execution status
 
-Branch: `feat/mle-core`. The user selected an existing human-labeled benchmark;
+The user selected an existing human-labeled benchmark;
 QASPER v0.3 supplies labels, while NIST remains historical extraction evidence.
 This is an experimental local release. Criteria below are not weakened to call it
 production-ready or fully complete.
@@ -10,7 +10,7 @@ production-ready or fully complete.
 | 1. Corpus and reproducible data | Verified | 191 papers, 5,908 paragraphs, byte-identical rebuild and frozen selection |
 | 2. Labels and baselines | Verified | 200/50/100 human-labeled questions; baselines; 36 dev failures inspected |
 | 3. Adaptation | Verified | 50/100/200 learning curve, hard/random ablation, three seeds, reload parity and failed-run retention |
-| 4. Grounded answers | Latest span-ID gate failed; acceptance incomplete | Span-ID F1 .2141, zero failures, 4/12 unanswerable answers; citation precision .4286 misses .4583 threshold; human support review and fresh final evaluation remain pending |
+| 4. Grounded answers | Latest intact-paragraph gate failed; acceptance incomplete | F1 .2402, one output failure, 6/12 unanswerable answers, citation precision .4000; independent human semantic review and fresh final evaluation remain pending |
 | 5. Deployment | Verified locally | Five routes, real answer/refusal, DB outage, rollback, concurrency, fresh environment, 50-query Linux parity |
 | 6. MLE focus | Verified within local scope | Controlled hard negatives, exact mining cache, three-seed sensitivity and failure analysis; agent deferred |
 | 7. Final evaluation / portfolio | Verified experimental handoff | Five-system ranking, 100-question answers, restored artifact bundle and recorded API demo; human claim audit remains missing |
@@ -451,3 +451,24 @@ The allowance is consumed. Phase 4 semantic acceptance remains incomplete; the
 31-answer human template and 100-question final test remain unused. Next design
 work should address the requested fact's role and multi-part citation coverage
 using the saved failures before proposing more compute.
+
+## Cycle 4 — claim-grounded comparison prepared in code; no run yet
+
+The [frozen response protocol](answer-improvement-cycle4.md),
+[experiment proposal](claim-grounded-proposal.md), and
+[32-case assistant input review](../reports/claim-grounded-input-review.json) now
+target the current errors. The Python contract attaches source-span IDs to individual
+claims while retaining the existing flat API answer and parent-passage citations.
+The runner supports A and B as separate one-use scopes. B reconstructs the saved
+post-cutoff top-three development paragraphs for all 50 questions and cannot be
+prepared unless a verified A result passes all four safeguards.
+
+Synthetic tests cover both budgets and the A full-run lifecycle. The tokenizer-only
+preflight inspected all 32 exact prompts: 525–1,286 tokens, below the 2,048-token
+limit. The full suite passes (267 passed; the real PostgreSQL integration test was
+skipped), Ruff lint/format and the targeted mypy check pass. No model weights were
+loaded and no inference or training occurred. PostgreSQL integration remains
+blocked: Docker's Linux engine is unavailable, no PostgreSQL service is installed,
+port 5432 is unreachable and no test database URL is configured. The existing
+deployed CPU release, public API, frozen labels/scores and reserved final test remain
+unchanged.

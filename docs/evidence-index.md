@@ -337,3 +337,51 @@ The run used 1,020 actual tokens and 63.547 worker seconds at $0 external spend.
 The allowance is consumed. No new software behavior changed, so preparation's
 242 tests were not rerun for execution/reporting. No training, retry, deployment
 or final-test access occurred. Phase 4 and independent human acceptance remain open.
+
+## Prepared claim-grounded cycle 4
+
+[Protocol](answer-improvement-cycle4.md) freezes claim-attached span IDs, answer and
+quote limits, refusal behavior, selection rules and the stopping boundary.
+[Proposal](claim-grounded-proposal.md) defines the 32-call A comparison and the
+separate 50-call B comparison, which is gated on A's four safeguards.
+[Assistant review](../reports/claim-grounded-input-review.json) covers all 32 prior
+inputs and raw outputs with source hashes and a frozen rubric; it preserves the
+TF-IDF answerability conflict separately and does not alter labels or scores.
+
+The contract and isolated runner are in `scripts/claim_grounded_contract.py`,
+`scripts/claim_grounded_worker.py` and `scripts/run_claim_grounded.py`. Synthetic
+tests exercise claim validation, the one-use A lifecycle, tamper/deadline/budget
+checks, and B's saved-top-three payload/citation mapping and 50-call worker budget.
+Tokenizer-only preparation is complete; real PostgreSQL integration verification is
+still pending. No model inference, training, deployment or final-test access has
+occurred.
+
+### Preparation verification — 2026-10-10
+
+On branch `codex/bounded-improvement-cycle`, the read-only A preflight ran against
+the working tree based on `b94638f`; that runner and label-alignment fix were then
+committed as `eaa5722`. The preflight verified the frozen baseline and fresh-
+development label roster by query ID, then used the pinned offline CUDA runtime's
+local tokenizer.
+
+```powershell
+python -X utf8 scripts/run_claim_grounded.py `
+  --baseline-run F:\Me\Project\evidencebench\artifacts\intact-passage-v1\runs\20260924T210922Z-e266a7a622 `
+  --gpu-python F:\Me\Project\evidencebench\artifacts\gpu-support-env\Scripts\python.exe
+```
+
+All 32 exact prompts measured 525–1,286 input tokens, below the 2,048 limit. The
+preflight reserved 32 calls/12,288 output tokens and recorded `model_calls: 0`; it
+loaded no model weights. The source snapshot hash from that pre-documentation run
+is intentionally not frozen because the final preparation documents changed after
+inspection; rerun preflight before freezing readiness.
+
+`python -X utf8 -m pytest -q`: 267 passed, one skipped, two dependency deprecation
+warnings. The skipped test is the real PostgreSQL integration test because
+`EVIDENCEBENCH_TEST_DATABASE_URL` is unset. The first suite invocation omitted
+`-X utf8` and hit a Windows default-code-page decode error in an existing synthetic
+test; rerunning in the repository's UTF-8 mode passed without a code change.
+`ruff check .`, `ruff format --check .`, and `mypy src/evidencebench/schemas.py`
+passed. Docker's Linux engine is unreachable, no PostgreSQL Windows service is
+installed, and local port 5432 is closed, so the real database check remains
+unverified. No experiment, training, final-set access or deployment occurred.

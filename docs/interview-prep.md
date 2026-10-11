@@ -489,3 +489,30 @@ failure keeps comparison honest. Relaxing the contract afterward would require a
 new protocol and comparison. Follow-up: how would you make citation coverage and
 multi-part answer length compatible without hiding unsupported claims? This remains
 future design work; no further model run or training has been authorized.
+
+## Prepared claim-grounded follow-up experiment
+
+This is a proposed and implemented evaluation harness, not a measured result. The
+Python answer contract ties each claim to deterministic source-span IDs while the
+API still returns the existing flat answer and passage IDs. The runner checks
+structure and provenance; it cannot prove that a claim is semantically true.
+
+1. **Why attach citations to claims?** A response-wide citation list does not say
+   which source supports which fact. Per-claim span mappings make attribution
+   inspectable, while a deterministic adapter preserves existing scoring/API shape.
+   Follow-up: a perfectly real quote can still be irrelevant or misattributed.
+2. **Why focus on refusal and attribution?** The latest candidate had six answers on
+   unanswerable items, one invalid response and .400 citation-ID precision. Its
+   higher .2402 F1 alone did not pass the twelve fixed gates. Follow-up: reference
+   overlap and source IDs still do not measure human claim support.
+3. **Why is the second experiment conditional?** Removing a relevance cutoff exposes
+   the generator to more evidence. A proceeds only if it first has zero failures,
+   at most three unanswerable answers, precision at least .458333 and at least 20
+   answers. B then changes only the cutoff and has its own approval/budget. Follow-up:
+   what would you conclude if one safeguard misses? Skip B and report the negative
+   result honestly.
+
+See [the frozen protocol](answer-improvement-cycle4.md) and [case review](../reports/claim-grounded-input-review.json).
+No run has occurred; all implementation and assistant-review judgments are
+agent-assisted. Do not describe the harness as accepted answer quality or independent
+human review.
