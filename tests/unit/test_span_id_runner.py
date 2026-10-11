@@ -174,7 +174,10 @@ def test_complete_synthetic_run_one_attempt_and_all_frozen_rows(tmp_path, monkey
     assert result["usage"] == dict(calls=32, call_limit=32, reserved_tokens=12288)
     assert len(result["metrics"]["gate"]) == 11
     saved = [
-        json.loads(x) for x in (Path(result["run"]) / "predictions.jsonl").read_text().splitlines()
+        json.loads(x)
+        for x in (Path(result["run"]) / "predictions.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()
     ]
     assert len(saved) == 50 and saved[32:] == rows[32:]
     assert all(r["status"] == "answered" and r["citation_ids"] == ["p"] for r in saved[:32])
