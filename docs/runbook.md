@@ -202,7 +202,7 @@ NAME is plain, constrained or focused. It supplies an external 900-second cap; t
 runner alone has cooperative bounds. Local attempt records reject reruns because
 all three slots are used. None of these candidates replaces the v1 service.
 
-## Prepare the claim-grounded cycle (no model calls)
+## Claim-grounded cycle: preparation and saved-result verification
 
 Run from the isolated project worktree after installing the locked project
 environment. Point to the frozen intact-paragraph attempt and the already installed
@@ -227,10 +227,12 @@ This creates a one-snapshot readiness record and makes no model call. An
 approval receipt; the command is not permission to run by itself. A failed attempt
 consumes its one-use root and must be retained.
 
-Current A readiness is frozen in `reports/claim-grounded-readiness.json` with
-snapshot SHA-256 `9092877265d540985c3bad9ce80a994f06d100e5cf65bb5f7d1dc6cafb6dd9c5`.
-The user has not approved the run; do not launch it until the exact allowance and
-snapshot receive explicit approval.
+Experiment A was authorized for this exact snapshot and its one-use attempt has
+already been consumed. Its readiness is frozen in
+`reports/claim-grounded-readiness.json` with snapshot SHA-256
+`9092877265d540985c3bad9ce80a994f06d100e5cf65bb5f7d1dc6cafb6dd9c5`. Do not use
+that approval for another run. The verified result is documented in
+`reports/claim-grounded-development.md`.
 
 Only if verified A passes zero failures, at most three unanswerable answers,
 precision .458333 or higher and at least 20 answers can B be prepared. B requires a
@@ -239,12 +241,13 @@ uses only the first three paragraphs from each saved development ranking; it doe
 not rerun retrieval or ranking. The 18 previously cutoff-blocked questions are
 reported separately. Use the proposal and cycle protocol for limits and interpretation.
 
-After an authorized attempt, use the same command with `--verify` to independently
-reconstruct saved predictions and metrics without inference. The full software
-suite, formatting, lint, type and PostgreSQL integration checks must pass before
-requesting authorization. On 2026-10-10, the full suite passed with the real local
-PostgreSQL integration enabled (268 passed). The check reused the existing named
-volume, then stopped only the DB container; the volume remains preserved.
+To independently reconstruct the existing A predictions and metrics without
+inference, use the preflight arguments above and add `--verify`. This checks the
+frozen source and baseline hashes plus saved worker output; it does not grant a new
+model-run allowance. The preparation's full suite passed with real PostgreSQL
+integration enabled (268 passed), with Ruff lint/format and targeted mypy also
+passing. The check reused the existing named volume, then stopped only the DB
+container; the volume remains preserved.
 
 Windows recovery note for this workstation: Docker Desktop 4.53.0 failed at
 `%LOCALAPPDATA%\Docker\run\dockerInference`. The zero-byte AF_UNIX reparse-point

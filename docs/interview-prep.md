@@ -490,29 +490,39 @@ new protocol and comparison. Follow-up: how would you make citation coverage and
 multi-part answer length compatible without hiding unsupported claims? This remains
 future design work; no further model run or training has been authorized.
 
-## Prepared claim-grounded follow-up experiment
+## Claim-grounded Experiment A: a failed answer-contract hypothesis
 
-This is a proposed and implemented evaluation harness, not a measured result. The
-Python answer contract ties each claim to deterministic source-span IDs while the
-API still returns the existing flat answer and passage IDs. The runner checks
-structure and provenance; it cannot prove that a claim is semantically true.
+The claim-grounded harness was executed once after a snapshot-specific approval.
+The Python answer contract ties each claim to deterministic source-span IDs while
+the API still returns the existing flat answer and passage IDs. The runner checks
+structure and provenance; it cannot prove that a claim is semantically true. A
+scored .0276 answerable token F1, four answers and 28 failures on the 50-question
+development cohort, so it was not promoted. See the [result](../reports/claim-grounded-development.md)
+and [case review](../reports/claim-grounded-answer-review.json).
 
 1. **Why attach citations to claims?** A response-wide citation list does not say
    which source supports which fact. Per-claim span mappings make attribution
    inspectable, while a deterministic adapter preserves existing scoring/API shape.
    Follow-up: a perfectly real quote can still be irrelevant or misattributed.
-2. **Why focus on refusal and attribution?** The latest candidate had six answers on
-   unanswerable items, one invalid response and .400 citation-ID precision. Its
-   higher .2402 F1 alone did not pass the twelve fixed gates. Follow-up: reference
-   overlap and source IDs still do not measure human claim support.
-3. **Why is the second experiment conditional?** Removing a relevance cutoff exposes
-   the generator to more evidence. A proceeds only if it first has zero failures,
-   at most three unanswerable answers, precision at least .458333 and at least 20
-   answers. B then changes only the cutoff and has its own approval/budget. Follow-up:
-   what would you conclude if one safeguard misses? Skip B and report the negative
-   result honestly.
+2. **What happened to output reliability?** Twenty-six raw outputs appended a
+   Markdown closing fence after complete JSON; two outputs ended before closing the
+   JSON object. The strict parser kept all 28 as failures instead of repairing them.
+   Follow-up: why might JSON mode or constrained decoding help in a future approved
+   test, and what semantic failures would those methods leave untouched?
+3. **Why was B skipped?** B required zero A failures and at least 20 answers, among
+   four safeguards. A had 28 failures and four answers, despite meeting the
+   unanswerable-count and citation-precision thresholds. Follow-up: why shouldn't
+   broader evidence exposure proceed when the generator fails the basic contract?
 
-See [the frozen protocol](answer-improvement-cycle4.md) and [case review](../reports/claim-grounded-input-review.json).
-No run has occurred; all implementation and assistant-review judgments are
-agent-assisted. Do not describe the harness as accepted answer quality or independent
-human review.
+This is a negative result on reused development data. The descriptive paired
+paper-family interval versus the saved span-ID run is [−.2558, −.1175], but it is
+not an independent test or selection-adjusted interval. Assistant review is
+non-blinded, and a TF-IDF response conflicts with the frozen unanswerable label;
+neither labels nor scores changed. The deployed CPU release remains intact. This was
+agent-assisted work and is not evidence of personal implementation practice or
+independent human acceptance.
+
+See [the frozen protocol](answer-improvement-cycle4.md), the [initial input review](../reports/claim-grounded-input-review.json),
+and the [post-run answer review](../reports/claim-grounded-answer-review.json). The
+numerical candidate failed its gate; do not describe it as accepted answer quality
+or independent human review.

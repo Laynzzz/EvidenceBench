@@ -41,8 +41,13 @@ semantic correctness. `/api/v1/retrieve` shows rankings without involving genera
 
 The recorded response is `refused`. Then open the NUS/ABUS development failure:
 it asks for a difference, but the system quotes `94.0%` instead of calculating a gap.
-Explain why arithmetic, long lists and missing table content challenge this pipeline.
-Do not hide the generator's low coverage and failures behind the reranker's gain.
+For a more recent offline failure, show the summary in
+`reports/claim-grounded-development.md`: strict claim-grounded generation rejected
+28 of 32 outputs, mostly because the model appended Markdown fences to JSON. This
+was an experimental generator run, not the deployed API. Explain why correct
+serialization, arithmetic, long lists and missing table content all challenge the
+pipeline. Do not hide the generator's low coverage or failures behind the reranker's
+gain; this walkthrough uses saved records and makes no new model call.
 
 ## 4:00–5:00 — trace the deployed release
 

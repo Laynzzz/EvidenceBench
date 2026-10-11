@@ -720,33 +720,51 @@ semantic acceptance. Read the [failure](../reports/intact-passage-errors.md) bes
 the [review packet](../reports/intact-passage-review-packet.md). Optional exercise:
 explain how F1 can rise while citation precision and correct refusal behavior worsen.
 
-## Preparing claim-grounded answers without changing deployment
+## Claim-grounded cycle: architecture and measured result
 
-The next local experiment changes how generated facts link to evidence. Its Python
-contract in `scripts/claim_grounded_contract.py` receives the query and the same
-saved paragraphs, then builds a short-span catalog. The model returns one to four
-claims and the span IDs supporting each claim. Python validates those IDs and
-limits, joins the claim text into the existing flat answer, and deduplicates parent
-passage citations for existing scoring. The FastAPI response stays unchanged.
+The Python contract in `scripts/claim_grounded_contract.py` receives the question
+and the same saved paragraphs, builds a short-span catalog, and validates the
+model's one-to-four claims and their span IDs. A deterministic adapter joins those
+claims into the existing flat answer and deduplicates parent-passage citations, so
+the API response schema stays unchanged. The validator establishes output shape and
+source provenance, not semantic truth.
 
-This separates **provenance** from **meaning**: a valid span ID proves that a quoted
-span came from supplied text, but it cannot prove the claim answers the requested
-question. The prompt therefore names recurring semantic errors—confusing BLEU with
-attention effectiveness, a definition source with a dataset, and features with
-models—and requires refusal when the requested fact is not supported. These are
-model behavior instructions; the validator cannot enforce their truth conditions.
+The prompt names recurring role confusions—translation BLEU versus attention
+effectiveness, a definition source versus a dataset, and features versus models—and
+requires refusal when evidence is insufficient. These are behavioral instructions;
+they are not mechanically enforced by span validation.
 
 The runner in `scripts/run_claim_grounded.py` is a local offline experiment entry
-point. Experiment A uses the 32 previously supplied paragraphs and keeps 18 prior
-threshold refusals in the 50-question score. Experiment B is a separate scope that
-uses saved top-three rankings and complete development paragraphs for every query;
-it cannot be prepared until verified A meets four fixed safeguards. Synthetic
-generators test usage limits, approval binding, tamper detection and reconstruction,
-but they do not predict real model behavior. The deployed CPU system and API remain
-unchanged; no new inference has been run. See the [protocol](answer-improvement-cycle4.md)
-and [prepared case review](../reports/claim-grounded-input-review.json).
+point. The approved A attempt used 32 saved intact-paragraph inputs and kept 18 prior
+threshold refusals in the 50-question score. B was conditional on four safeguards;
+it was skipped after A produced 28 output failures and only four answers. The actual
+result is [reported here](../reports/claim-grounded-development.md), with the full
+[32-case assistant audit](../reports/claim-grounded-answer-review.json).
 
-For later practice, explain why claim-level citations improve inspectability without
-guaranteeing semantic support, and why B must change only the cutoff. Implementation
-and review are agent-assisted; the numerical result, if run, will remain development
-evidence and independent human acceptance will still be required.
+**What this milestone lets you inspect:** a claim-to-span output contract, its
+deterministic adapter to the existing API-shaped answer, and how strict output
+validation affects coverage. **Where it fits:** the offline generator and evaluation
+runner sit after frozen retrieval; FastAPI, the CPU deployment, and its public
+response schema do not use the experimental contract. **Tools and techniques:**
+Python validates JSON and span provenance; a one-use supervisor ran the pinned
+Qwen2.5-7B BF16 model on the local RTX 4090. Greedy decoding kept token sampling
+fixed. **Decision and trade-off:** the experiment changed the response format,
+attribution instructions, and citation coverage together. Its result cannot isolate
+one cause. Strict validation kept malformed outputs honest as failures, but the
+model's frequent Markdown fences caused 26 of 32 failures; two other outputs ended
+with incomplete JSON.
+
+**Verification and limits:** the post-run verifier reconstructed all 50 rows and
+matched the saved metrics. A scored .027634 answerable token F1, four answers, 28
+failures and one answer on a benchmark-unanswerable item. It did not beat the saved
+span-ID F1 .214084 and failed the A safeguards, so B was skipped. Assistant review
+is non-blinded and not independent human acceptance; one supported TF-IDF response
+conflicts with the frozen unanswerable label, which remains unchanged. This is
+repeated development data, not test or production evidence.
+
+Read `scripts/claim_grounded_contract.py` (Python response validation), then
+`scripts/run_claim_grounded.py` (offline snapshot, approval, scoring and verification)
+and the [frozen protocol](answer-improvement-cycle4.md). Optional exercise: trace
+why a JSON object followed by ``` remains a failure, and design a future serializer
+test without repairing this saved run. Implementation and assistant review were
+agent-assisted; personal practice and independent human acceptance remain separate.

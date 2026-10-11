@@ -338,7 +338,7 @@ The allowance is consumed. No new software behavior changed, so preparation's
 242 tests were not rerun for execution/reporting. No training, retry, deployment
 or final-test access occurred. Phase 4 and independent human acceptance remain open.
 
-## Prepared claim-grounded cycle 4
+## Claim-grounded cycle 4 — completed negative result
 
 [Protocol](answer-improvement-cycle4.md) freezes claim-attached span IDs, answer and
 quote limits, refusal behavior, selection rules and the stopping boundary.
@@ -352,9 +352,15 @@ The contract and isolated runner are in `scripts/claim_grounded_contract.py`,
 `scripts/claim_grounded_worker.py` and `scripts/run_claim_grounded.py`. Synthetic
 tests exercise claim validation, the one-use A lifecycle, tamper/deadline/budget
 checks, and B's saved-top-three payload/citation mapping and 50-call worker budget.
-Tokenizer-only preparation is complete; real PostgreSQL integration verification is
-still pending. No model inference, training, deployment or final-test access has
-occurred.
+The [verified A result](../reports/claim-grounded-development.md) has F1 .027634,
+four answers, 28 invalid outputs and one answer to a benchmark-unanswerable item.
+Twenty-six outputs had trailing Markdown fences and two ended with incomplete JSON.
+The strict runner preserved all failures. A did not meet the safeguards for B, so B
+was skipped. No training, deployment or final-test access occurred. The structured
+[assistant answer review](../reports/claim-grounded-answer-review.json) is diagnostic,
+not independent human acceptance. Raw outputs, the consumed approval receipt, and
+the reconstructable run remain in the ignored local artifact directory; `--verify`
+checks them without inference.
 
 ### Preparation verification — 2026-10-10
 
@@ -373,9 +379,10 @@ All 32 exact prompts measured 525–1,286 input tokens, below the 2,048 limit. T
 frozen readiness is committed at `reports/claim-grounded-readiness.json`
 (`ecb7e6d`) with snapshot SHA-256
 `9092877265d540985c3bad9ce80a994f06d100e5cf65bb5f7d1dc6cafb6dd9c5`. It reserves
-32 calls, 12,288 output tokens and 1,200 seconds. The record confirms zero model
-calls/training, no final-test use, no artifact root and no approval receipt. It loads
-no model weights; explicit approval is still needed before execution.
+32 calls, 12,288 output tokens and 1,200 seconds. At freeze time the record confirmed
+zero model calls/training, no final-test use, no artifact root and no approval
+receipt. This is preparation evidence; the later approved attempt and consumed
+approval receipt are retained inside the local run artifact.
 
 Before Docker recovery, the full unit/software suite passed 267 tests and skipped
 the real PostgreSQL integration test. `ruff check .`, `ruff format --check .`, and
