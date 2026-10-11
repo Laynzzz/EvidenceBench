@@ -765,6 +765,7 @@ repeated development data, not test or production evidence.
 Read `scripts/claim_grounded_contract.py` (Python response validation), then
 `scripts/run_claim_grounded.py` (offline snapshot, approval, scoring and verification)
 and the [frozen protocol](answer-improvement-cycle4.md). Optional exercise: trace
-why a JSON object followed by ``` remains a failure, and design a future serializer
-test without repairing this saved run. Implementation and assistant review were
-agent-assisted; personal practice and independent human acceptance remain separate.
+why a JSON object followed by a Markdown code fence remains a failure, and design
+a future serializer test without repairing this saved run. Implementation and
+assistant review were agent-assisted; personal practice and independent human
+acceptance remain separate.
