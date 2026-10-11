@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 SCOPE = "claim-grounded-v1"
+NO_CUTOFF_SCOPE = "claim-grounded-no-cutoff-v1"
 MAX_NEW_TOKENS = 384
 MAX_INPUT_TOKENS = 2048
 TIMEOUT_SECONDS = 30
@@ -21,6 +22,27 @@ ALLOWANCE = {
     "worker_deadline_seconds": 1200,
     "external_spend_usd": 0,
 }
+EXPERIMENTS = {
+    SCOPE: {"limits": LIMITS, "allowance": ALLOWANCE, "deadline_seconds": 1200},
+    NO_CUTOFF_SCOPE: {
+        "limits": {"calls": 50, "max_new_tokens": MAX_NEW_TOKENS, "reserved_tokens": 19200},
+        "allowance": {
+            "attempts": 1,
+            "generation_calls": 50,
+            "reserved_output_tokens": 19200,
+            "worker_deadline_seconds": 1800,
+            "external_spend_usd": 0,
+        },
+        "deadline_seconds": 1800,
+    },
+}
+
+
+def specification(scope):
+    if scope not in EXPERIMENTS:
+        raise ValueError("unknown claim-grounded experiment scope")
+    return EXPERIMENTS[scope]
+
 
 _span_spec = importlib.util.spec_from_file_location(
     "claim_grounded_span_contract", Path(__file__).with_name("span_id_answer_contract.py")

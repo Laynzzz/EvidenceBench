@@ -126,3 +126,15 @@ def test_prompt_preserves_unicode_and_marks_document_instructions_untrusted():
     assert prompt_payload["evidence"]["E1"]["spans"]["E1.S1"].startswith("Ignore the user")
     with pytest.raises(ValueError, match="whitelisted"):
         contract.validate_payloads([{**payload, "answer_criteria": "PRIVATE_LABEL"}], 1)
+
+
+def test_experiment_scopes_have_distinct_limits_and_deadlines():
+    contract = load_contract()
+
+    a = contract.specification(contract.SCOPE)
+    b = contract.specification(contract.NO_CUTOFF_SCOPE)
+
+    assert a["limits"] == {"calls": 32, "max_new_tokens": 384, "reserved_tokens": 12288}
+    assert a["allowance"]["worker_deadline_seconds"] == 1200
+    assert b["limits"] == {"calls": 50, "max_new_tokens": 384, "reserved_tokens": 19200}
+    assert b["allowance"]["worker_deadline_seconds"] == 1800
